@@ -2,6 +2,9 @@
 
 <ul>
     {{ range .Pages }}
-    <li>{{ .Title }}</li>
+    <li><div>
+        <h3><a href="{{ .Params.src_url }}">{{ .Date }}</a></h3>
+        {{ .Content }}
+    </div></li>
     {{ end }}
 </ul>

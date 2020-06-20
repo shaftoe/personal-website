@@ -1,4 +1,5 @@
 const axios = require('axios');
+const fs = require('fs');
 
 const mastodon = {
     accountId: 36187,
@@ -19,11 +20,26 @@ const requestConfig = {
     }],
 }
 
+function formatMarkdown(id, created_at, url, content) {
+    return `---
+title: ${id}
+date: ${created_at}
+src_url: ${url}
+---
+
+${content}\n`
+}
+
+function createFile(id, created_at, url, content) {
+    const md = formatMarkdown(id, created_at, url, content)
+    fs.writeFileSync(`content/microblog/${id}.html`, md)
+}
+
 axios.request(requestConfig)
   .then(function (response) {
       response.data.forEach(el => {
-          console.log(`---\ntitle: ${el.id}\ndate: ${el.created_at}\nsrc_url: ${el.url}\n---\n\n${el.content}\n`)
-      });
+          createFile(el.id, el.created_at, el.url, el.content)
+      })
   })
   .catch(function (error) {
     console.log(error);
