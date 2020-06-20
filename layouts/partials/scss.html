@@ -1,0 +1,3 @@
+{{- $scssFile := printf "scss/%s.scss" . }}
+{{- $css := resources.Get $scssFile | toCSS | minify -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" type="text/css">

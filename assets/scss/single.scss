@@ -1,0 +1,42 @@
+@import 'variables';
+
+main {
+  h1,
+  h2,
+  h3 {
+    margin: 4rem auto;
+    color: $color-text;
+    text-align: center;
+    line-height: 2.3rem;
+  }
+}
+
+main nav ul {
+  margin: 6rem auto;
+  display: flex;
+  justify-content: center;
+
+  li + li {
+    padding-left: 2rem;
+  }
+}
+
+fieldset {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 1rem 0;
+
+  .send {
+    background-color: $color-main;
+    border: 0;
+    min-height: 2.5rem;
+    transition: ease-in 0.2s;
+  }
+
+  .send:hover {
+    color: $color-main;
+    background-color: $color-bkg-light;
+    border: 2px solid;
+    border-color: $color-main;
+  }
+}

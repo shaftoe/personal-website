@@ -1,0 +1,9 @@
+node_modules/
+assets/css/normalize.css
+assets/js/vendor/axios.min.js
+public/
+assets/css/fontawesome.css
+static/webfonts/
+resources/
+.vscode/
+content/*/item*

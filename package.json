@@ -1,0 +1,24 @@
+{
+  "name": "a.l3x.in",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "Apache",
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "axios": "^0.19.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "fast-xml-parser": "^3.17.4",
+    "ncu": "^0.2.1",
+    "normalize.css": "^8.0.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0"
+  }
+}

@@ -1,0 +1,33 @@
+{{- define "head" -}}
+
+    {{- $title := .Param "title" -}}
+    <title>{{ $title }}</title>
+
+    {{- partial "scss" "list" -}}
+
+    {{- with .OutputFormats.Get "rss" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{ end -}}
+
+{{ end -}}
+
+{{ define "main" }}
+{{- $title := .Param "title" -}}
+
+<section class="list">
+    <h1 class="blog-title">
+        <a
+            href="{{ .Page.RelPermalink }}"
+            title="Go to {{ $title }} main page"
+        >
+            {{- $title -}}
+        </a>
+    </h1>
+
+    {{ partial "articles" . }}
+</section>
+
+<aside>
+    {{ partial "tag_list" . }}
+</aside>
+{{- end -}}

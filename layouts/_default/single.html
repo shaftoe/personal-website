@@ -1,0 +1,38 @@
+{{- define "head" -}}
+    <title>{{ .Site.Title }} - {{ .Title }}</title>
+
+    {{- with resources.Get "scss/single.scss" | toCSS | minify -}}
+    <style>{{ .Content | safeCSS }}</style>
+    {{- end -}}
+{{ end -}}
+
+{{- define "main" -}}
+{{ .Content }}
+
+<nav>
+    <ul>
+        <li>
+            <a
+                class="button"
+                href="/"
+                title="Go to Home Page"
+            >
+                Home Page
+            </a>
+        </li>
+
+        {{- with .Site.GetPage "/blog" }}
+        <li>
+            <a
+                class="button"
+                title="Go back to {{ .Title }}"
+                href="{{ .RelPermalink }}"
+            >
+                {{ .Title }}
+            </a>
+        </li>
+        {{- end -}}
+    </ul>
+</nav>
+
+{{- end -}}

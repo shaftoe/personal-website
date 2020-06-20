@@ -1,0 +1,32 @@
+section.list {
+  margin-bottom: 2rem;
+}
+
+section {
+  color: $color-text;
+  background: linear-gradient(to bottom, $color-bkg-light 0%, $color-bkg-dark 50%, $color-bkg-light 100%,);
+  border-radius: 1rem;
+
+  > header {
+    padding-top: 1.5rem;
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+}
+
+section + section {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: $media-min-width) {
+  section > header {
+    padding: initial;
+  }
+
+  section + section {
+    margin-top: unset;
+  }
+}

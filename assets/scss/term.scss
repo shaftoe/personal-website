@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'section';
+@import 'article';
+@import 'tag_list';
+@import 'list';
+@import 'blog_title';
+
+section > h1 {
+  text-align: center;
+  color: $color-text;
+  margin: 3rem auto;
+}
+
+header {
+  margin: initial;
+}

@@ -1,0 +1,7 @@
+{{ $context := .context }}
+{{ $row := .row }}
+{{ $sections := where $context.Site.Sections "Params.index_row" $row }}
+
+{{ range $section_index, $section := $sections }}
+    {{ partial "section" (dict "row" $row "section_index" $section_index "section" $section)}}
+{{ end }}

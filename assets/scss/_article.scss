@@ -1,0 +1,61 @@
+article {
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, $color-main, rgba(0, 0, 0, 0)) 1 100%;
+  padding: 0 1rem 0;
+  margin: 2rem auto;
+  line-height: 1.5rem;
+  overflow: hidden;
+
+  p {
+    margin-bottom: 0.2rem;
+
+    > a {
+      overflow-wrap: break-word;
+    }
+  }
+
+  > header {
+    margin-top: 0;
+  }
+
+  > footer {
+    margin: 0.5rem auto;
+    text-align: unset;
+    font-size: 0.9rem;
+  }
+
+  ul.tag_list {
+    font-size: 1rem;
+
+    li a {
+      padding: 0.5rem;
+      border: none;
+    }
+
+    li:first-child {
+      padding-left: initial;
+    }
+  }
+
+  blockquote {
+    font-style: italic;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+  }
+
+  div.content ul {
+    list-style-type: initial;
+    margin: 1rem auto;
+    padding-left: 2rem;
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  article ul.tag_list {
+    justify-content: initial;
+  }
+}

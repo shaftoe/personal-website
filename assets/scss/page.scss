@@ -1,0 +1,44 @@
+@import 'variables';
+@import 'article';
+@import 'tag_list';
+@import 'keyframes';
+@import 'blog_title';
+@import 'comments';
+
+body {
+  max-width: 54rem;
+}
+
+article {
+  border: unset;
+  border-image: unset;
+  color: $color-text;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 3rem;
+    text-align: unset;
+    line-height: 1.7rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    text-align: unset;
+    margin: 1rem 0 0;
+    line-height: 2.5rem;
+  }
+
+  div.content img {
+    margin: 2rem 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
+header {
+  margin: initial;
+}

@@ -1,0 +1,82 @@
+div.comments {
+  border-radius: 1rem;
+  margin: 6rem auto;
+
+  img.avatar {
+    float: left;
+    padding-right: 1rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  h5 {
+    margin-top: initial;
+    padding-top: 0.2rem;
+  }
+
+  ol {
+    list-style-type: none;
+    margin-bottom: 6rem;
+    padding: 0;
+
+    li {
+      border-radius: 1rem;
+      background-color: $color-bkg-light;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+  }
+
+  form * {
+    border: none;
+    border-radius: 0.5rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.5rem;
+  }
+
+  textarea {
+    width: 98%;
+    margin-bottom: 1rem;
+  }
+
+  div.input {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: initial;
+
+    input {
+      height: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    input[type="submit"] {
+      background-color: $color-main;
+      height: 3rem;
+    }
+  }
+
+  label.title {
+    font-size: 2.5rem;
+    display: block;
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 2rem;
+  }
+
+  label {
+    margin-left: 0.5rem;
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  div.input label {
+    padding-top: 0.8rem;
+  }
+}

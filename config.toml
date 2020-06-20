@@ -1,0 +1,163 @@
+baseURL = "https://a.l3x.in/"
+languageCode = "en-us"
+title = "Al3x"
+copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
+rssLimit = 20
+enableRobotsTXT = true
+disqusShortname = "a-l3x-in"
+
+[params]
+  author = "Al3x"
+  description = "Alexander Fortin's personal web site"
+  listed_articles = 3
+  feed = "/index.xml"
+  staticmanUrl = "https://a-l3x-in-staticman.herokuapp.com/v2/entry/shaftoe/personal-website/master/comments"
+
+[menu]
+
+  [[menu.main]]
+    name = "home"
+    url = "/"
+    weight = -1
+
+  [[menu.main]]
+    name = "about"
+    url = "https://cv.l3x.in/about/"
+    weight = 1
+
+  [[menu.main]]
+    name = "hire me!"
+    url = "https://www.toptal.com/resume/alexander-fortin"
+    weight = 3
+
+  [[menu.main]]
+    name = "RSS"
+    weight = 4
+
+  [[menu.content]]
+    name = "Tech Blog"
+    url = "/blog"
+    weight = 1
+
+  [[menu.content]]
+    name = "Micro Blog"
+    url = "https://fosstodon.org/@alex/"
+    weight = 2
+
+  [[menu.content]]
+    name = "Music Mixes"
+    url = "https://www.mixcloud.com/al3xf"
+    weight = 3
+
+  [[menu.content]]
+    name = "Videos"
+    url = "https://www.youtube.com/channel/UCb5FGNik4wXGrVGRS1x2JZw"
+    weight = 4
+
+  [[menu.content]]
+    name = "Contact"
+    url = "/contact"
+    weight = 5
+
+  [[menu.content]]
+    name = "Privacy"
+    url = "/privacy"
+    weight = 6
+
+  [[menu.content]]
+    name = "License"
+    url = "https://creativecommons.org/licenses/by-sa/4.0/"
+    weight = 6
+
+  [[menu.socialnetworks]]
+    name = "github"
+    url = "https://github.com/shaftoe"
+    weight = 1
+
+  [[menu.socialnetworks]]
+    name = "mixcloud"
+    url = "https://www.mixcloud.com/al3xf"
+    weight = 2
+
+  [[menu.socialnetworks]]
+    name = "youtube"
+    url = "https://www.youtube.com/channel/UCb5FGNik4wXGrVGRS1x2JZw"
+    weight = 2
+
+  [[menu.socialnetworks]]
+    name = "mastodon"
+    url = "https://fosstodon.org/@alex/"
+    weight = 3
+
+  [[menu.socialnetworks]]
+    name = "twitter"
+    url = "https://www.twitter.com/alexanderfortin"
+    weight = 3
+
+  [[menu.socialnetworks]]
+    name = "goodreads"
+    url = "https://www.goodreads.com/user/show/20133803-alexander"
+    weight = 4
+
+  [[menu.socialnetworks]]
+    name = "linkedin"
+    url = "http://www.linkedin.com/in/alexanderfortin"
+    weight = 4
+
+  [[menu.socialnetworks]]
+    name = "reddit"
+    url = "https://www.reddit.com/user/AlexanderFortin"
+    weight = 4
+
+  [[menu.socialnetworks]]
+    name = "instagram"
+    url = "https://www.instagram.com/al3xfor/"
+    weight = 5
+
+  [[menu.socialnetworks]]
+    name = "flickr"
+    url = "https://www.flickr.com/photos/ali3n0/"
+    weight = 5
+
+  [[menu.socialnetworks]]
+    name = "facebook"
+    url = "https://www.facebook.com/alexander.fortin.9"
+    weight = 10
+
+  [[menu.jamstack]]
+    name = "Website Source Code"
+    url = "https://github.com/shaftoe/personal-website"
+    weight = 1
+
+  [[menu.jamstack]]
+    name = "Made with Hugo"
+    url = "https://gohugo.io/"
+    weight = 2
+
+  [[menu.jamstack]]
+    name = "Comments by Staticman"
+    url = "https://staticman.net/"
+    weight = 3
+
+  [[menu.jamstack]]
+    name = "Fonts by Google"
+    url = "https://fonts.google.com/"
+    weight = 4
+
+  [[menu.jamstack]]
+    name = "Icons by Font Awesome"
+    url = "https://fontawesome.com/"
+    weight = 4
+
+  [[menu.jamstack]]
+    name = "Build automation in Node.js"
+    url = "https://github.com/shaftoe/personal-website/tree/master/lib"
+    weight = 5
+
+  [[menu.jamstack]]
+    name = "Built, hosted and distributed by Netlify"
+    url = "https://www.netlify.com/"
+    weight = 6
+
+[taxonomies]
+  tag = "tags"

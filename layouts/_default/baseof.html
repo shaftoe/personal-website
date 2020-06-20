@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{- if eq hugo.Environment "production" }}
+    <meta name="robots" content="index, follow">
+    {{- else -}}
+    <meta name="robots" content="noindex, nofollow">
+    {{- end -}}
+
+    <meta name="description" content="{{ .Param "description" }}">
+
+    {{ range (slice "fontawesome" "normalize") }}
+    {{ $cssFile := printf "css/%s.css" . }}
+    {{- with resources.Get $cssFile | minify -}}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
+    {{- end -}}
+    {{- end -}}
+
+    {{- with resources.Get "scss/main.scss" | toCSS | minify -}}
+    <style>{{ .Content | safeCSS }}</style>
+    {{- end -}}
+
+    {{- $scssFile := printf "scss/%s.scss" .Page.Kind -}}
+    {{- with resources.Get $scssFile -}}
+    {{- $css := . | toCSS | minify -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" type="text/css">
+    {{- end -}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    {{- partial "google_font" (dict "fontFamily" "Roboto") -}}
+
+    {{- block "head" . }}{{ end -}}
+</head>
+
+<body id="top">
+    <nav class="site">
+        <ul>
+            {{- $currentPage := . -}}
+            {{- range .Site.Menus.main -}}
+
+            <li>
+                {{- $url := .URL -}}
+                {{- $class := "sidebar-nav-item" -}}
+
+                {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
+                    {{- $class = (printf "%s active" $class) -}}
+                {{- end -}}
+
+                {{- if eq .Name "RSS" -}}
+                    {{- $class = (printf "%s rss" $class) -}}
+
+                    {{- if eq $currentPage.Kind "page" }}
+                        {{- $url = $currentPage.Parent.Params.feed }}
+                    {{ else }}
+                        {{- $url = $.Param "feed" -}}
+                    {{- end -}}
+                {{- end -}}
+
+                <a
+                    class="{{ $class }}"
+                    href="{{ $url }}"
+                    {{- with .Title }}title="{{ . }}"{{ end -}}
+                >
+                    {{- .Name -}}
+                </a>
+            </li>
+
+            {{- end -}}
+        </ul>
+    </nav>
+
+    {{ block "header" . }}{{ end }}
+
+    <main>{{ block "main" . }}{{ end }}</main>
+
+    <aside class="scroll_to_top">
+        <a
+            href="#top"
+            title="Scroll to top"
+        >
+            <i class="fas fa-hand-point-up"></i>
+        </a>
+    </aside>
+
+    {{- partial "footer" . -}}
+
+    {{- range (append "main.js" .Params.scripts) -}}
+    {{- partial "script" . }}
+    {{- end -}}
+
+</body>
+
+</html>

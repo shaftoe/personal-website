@@ -1,0 +1,223 @@
+@import 'variables';
+@import 'section';
+@import 'article';
+@import 'tag_list';
+@import 'keyframes';
+
+div.social ul > li {
+  margin: 0 10px 15px;
+}
+
+.claim > h2 > a:last-child {
+  text-decoration: none;
+}
+
+.claim > h3 > a:hover {
+  text-decoration: none;
+  color: $color-secondary;
+}
+
+div.index {
+  display: grid;
+  margin: 3rem 1.2rem;
+}
+
+.row {
+  background-color: $color-bkg-light;
+}
+
+div.hero {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.claim {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  color: $color-text;
+
+  h1,
+  h2,
+  h3 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    line-height: 1.7rem;
+  }
+
+  h2,
+  h3 {
+    padding-top: 1.5rem;
+  }
+
+  h1 > em:first-child {
+    display: inline-block;
+    font-style: normal;
+    animation: flip 1s ease-in-out 1 2s;
+  }
+
+  h1 > strong {
+    padding-left: 0.5rem;
+    line-height: 2rem;
+    word-spacing: -0.5rem;
+    font-size: 1.4rem;
+    font-family: 'Press Start 2P', monospace;
+    font-weight: normal;
+  }
+
+  h1 > strong::after {
+    content: '_';
+    animation: blink 1s step-start 6 4s;
+  }
+
+  h2 {
+    > a:not(:last-child) {
+      text-decoration: none;
+      color: $color-main;
+    }
+
+    > a:not(:last-child)::before {
+      content: '#';
+    }
+
+    > a:not(:last-child):hover {
+      color: $color-secondary;
+    }
+  }
+}
+
+div.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+
+  span {
+    color: $color-text;
+    margin-top: 1rem;
+    font-style: italic;
+    font-size: 1.5rem;
+  }
+
+  .fa-hand-point-up {
+    padding-left: 0.2rem;
+    animation: bump 0.5s ease-out 5 10s;
+  }
+}
+
+div.social ul {
+  max-width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+div.index_content {
+  margin-bottom: 3rem;
+}
+
+div.index_content.row_2 {
+  gap: 6rem;
+}
+
+.small_only {
+  display: initial;
+}
+
+iframe {
+  border: 0;
+  width: 100%;
+}
+
+.fa-3x {
+  font-size: 2.5rem;
+}
+
+.hide {
+  visibility: hidden;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+div.media {
+  position: relative;
+  width: 100%;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  .site {
+    margin: 0 5rem;
+  }
+
+  header.site {
+    height: 100vh;
+  }
+
+  footer.site {
+    margin: 0;
+  }
+
+  div.social {
+    margin-top: initial;
+  }
+
+  div.claim {
+    h1,
+    h2,
+    h3 {
+      font-size: 2rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  div.index {
+    grid-template-rows: unset;
+    grid-template-columns: 2fr 1fr;
+    max-width: 1000px;
+    margin: initial;
+
+    h1 {
+      align-self: center;
+    }
+  }
+
+  div.index_content {
+    display: grid;
+  }
+
+  div.index_content.row_1 {
+    gap: 3rem;
+    grid-template-columns: 24% 44% 24%;
+    grid-template-rows: 1fr;
+
+    // in desktop mode we move the first section in the middle
+    .col_1 {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    span.invisible {
+      display: none;
+    }
+  }
+
+  div.index_content.row_2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,26 @@
+@import 'variables';
+@import 'blog_title';
+@import 'tag_list';
+
+h1 {
+  text-align: center;
+  color: $color-text;
+  margin-bottom: 3rem;
+}
+
+main > h1 {
+  text-transform: uppercase;
+}
+
+section {
+  margin: 0 auto 3rem;
+  max-width: 600px;
+}
+
+header {
+  margin: initial;
+}
+
+body {
+  max-width: 54rem;
+}

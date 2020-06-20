@@ -1,0 +1,7 @@
+<h3 class="tag_list">Categories</h3>
+
+<ul class="tag_list">
+    {{ range .Site.Taxonomies.tags.ByCount }}
+    {{ partial "tag" .Term }}
+    {{ end }}
+</ul>

@@ -1,0 +1,41 @@
+nav.site {
+  font-size: 1.3rem;
+
+  > ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  > ul > li {
+    padding-top: 1rem;
+    display: inline-block;
+  }
+
+  > ul > li + li {
+    padding-left: 1rem;
+  }
+
+  .rss {
+    visibility: hidden;
+  }
+
+  .rss::before {
+    visibility: visible;
+    position: relative;
+    left: 1rem;
+    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 600;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    content: '\f09e';
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  nav.site > ul {
+    display: initial;
+  }
+}

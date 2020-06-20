@@ -1,0 +1,36 @@
+@import 'variables';
+
+header.site {
+  height: unset;
+  margin: initial;
+}
+
+.page_not_found {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+}
+
+main {
+  padding-top: 1rem;
+}
+
+footer.site {
+  border-radius: initial;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+}

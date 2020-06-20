@@ -1,0 +1,47 @@
+{{- $section := .section -}}
+{{- $article := .article -}}
+{{- $url := or $article.Params.src_url $article.RelPermalink -}}
+
+<article>
+
+    {{- with $article.Title -}}
+    <header>
+        <h2>
+            <a href="{{ $url }}">{{ $article.Title }}</a>
+        </h2>
+    </header>
+    {{- end -}}
+
+    <div class="content">
+        {{- if isset $article.Params "description" -}}
+        {{ $article.Params.description -}}
+        {{- else if isset $section.Params "truncate" -}}
+        {{ $article.Content | truncate $section.Params.truncate -}}
+        {{- else if (eq $section.Kind "term") -}}
+        {{ $article.Content | truncate 400 -}}
+        {{- else -}}
+        {{ $article.Content -}}
+        {{- end -}}
+    </div>
+
+    <footer>
+
+        <a
+            href="{{ $url }}"
+            {{ if isset $article.Params "src_url" }}class="extlink"{{ end -}}
+        >
+            {{- partial "date" $article.Date -}}
+            {{- if not (isset $section.Params "src_url") -}} - Read more&#8230;{{ end -}}
+        </a>
+
+        {{- with $article.Params.tags -}}
+        <ul class="tag_list">
+            {{- range $article.Params.tags -}}
+                {{- partial "tag" . -}}
+            {{- end -}}
+        </ul>
+        {{- end -}}
+
+    </footer>
+
+</article>

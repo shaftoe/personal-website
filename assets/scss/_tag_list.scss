@@ -1,0 +1,32 @@
+h3.tag_list {
+  color: $color-main;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+h4.tag_list {
+  text-transform: uppercase;
+}
+
+ul.tag_list li a {
+  color: $color-main;
+  background-color: $color-bkg-light;
+}
+
+ul.tag_list li a:hover {
+  color: $color-bkg-dark;
+  background-color: $color-main;
+}
+
+ul.tag_list {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+ul.tag_list li {
+  padding: 0.5rem;
+}

@@ -1,0 +1,21 @@
+/2016/02/23/sonos-spreaker* /blog/sonos-spreaker
+/2017/05/30/sslnotifyme* /blog/sslnotifyme
+/2017/02/28/lastversion* /blog/lastversion
+/2018/07/21/moving-to-jekyll-and-firebase* /blog/moving-to-jekyll-and-firebase
+/2018/07/25/lambda-api-custom-domain-tutorial* /blog/lambda-api-custom-domain-tutorial
+/2020/04/03/replace-p2k-with-serverless-app* /blog/replace-p2k-with-serverless-app
+/2020/04/27/fix-router-with-raspberry-node-puppeteer* /blog/fix-router-with-raspberry-node-puppeteer
+/2020/05/07/setup-blog-feed-as-lambda-trigger* /blog/setup-blog-feed-as-lambda-trigger
+/2020/05/30/add-pagespeed-check-with-serverless* /blog/add-pagespeed-check-with-serverless
+/2020/05/14/centralise-linux-email-delivery* /blog/centralise-linux-email-delivery
+/2020/02/04/migrating-from-terraform-to-cdk* /blog/migrating-from-terraform-to-cdk
+/2020/02/27/lambda-reports-with-destinations* /blog/lambda-reports-with-destinations
+/2020/02/17/serverless-publish-to-multiple-social-media* /blog/serverless-publish-to-multiple-social-media
+/2020/02/25/manage-aws-lambda-invocations-cdk* /blog/manage-aws-lambda-invocations-cdk
+/2020/01/29/my-quest-for-identity-in-software-engineering* /blog/my-quest-for-identity-in-software-engineering
+/2020/01/31/updating-curriculum-with-web-tech* /blog/updating-curriculum-with-web-tech
+/2020/06/17/js-simple-mix-player* /blog/js-simple-mix-player
+/2020/07/23/free-whois-monitoring-with-serverless-on-aws.html /blog/free-whois-monitoring-with-serverless-on-aws
+/feed.xml /blog/index.xml
+/index.xml /blog/index.xml
+/* /404.html 404

@@ -1,0 +1,29 @@
+{{ $socialNetworks := . }}
+<ul class="social-icons">
+    {{ range . }}
+    {{ $menu_entry := . }}
+    {{ $title := printf "Follow me on %s" (.Name | humanize) }}
+    <li>
+        <a
+            href="{{ .URL }}"
+            title="{{ $title }}"
+            aria-label="{{ $title }}"
+        >
+            <span class="hide">{{ $title }}</span>
+            <i class="fab fa-{{ $menu_entry.Name }} fa-3x"></i>
+        </a>
+    </li>
+    {{ end }}
+
+    {{- $title := "Send me an email" -}}
+    <li>
+        <a
+            href="/contact"
+            title="{{ $title }}"
+            aria-label="Go to Contact page"
+        >
+            <span class="hide">{{ $title }}</span>
+            <i class="fas fa-at fa-3x"></i>
+        </a>
+    </li>
+</ul>
