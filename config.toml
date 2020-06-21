@@ -37,25 +37,30 @@ title = "Al3x"
 
   [[menu.socialnetworks]]
     name = "twitter"
-    url = "https://twitter.com/alexanderfortin"
+    url = "https://www.twitter.com/alexanderfortin"
     weight = 5
+
+  [[menu.socialnetworks]]
+    name = "goodreads"
+    url = "https://www.goodreads.com/user/show/20133803-alexander"
+    weight = 6
 
   [[menu.socialnetworks]]
     name = "linkedin"
     url = "http://www.linkedin.com/in/alexanderfortin"
-    weight = 6
+    weight = 7
 
   [[menu.socialnetworks]]
     name = "reddit"
-    url = "https://reddit.com/FIXME"
-    weight = 7
+    url = "https://www.reddit.com/user/AlexanderFortin"
+    weight = 8
 
   [[menu.socialnetworks]]
     name = "instagram"
     url = "https://www.instagram.com/al3xfor/"
-    weight = 8
+    weight = 9
 
   [[menu.socialnetworks]]
     name = "facebook"
     url = "https://www.facebook.com/alexander.fortin.9"
-    weight = 9
+    weight = 10
