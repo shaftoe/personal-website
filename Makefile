@@ -1,5 +1,7 @@
 include defaults.mk
 
+export MASTODON_ACCOUNT_ID := 36187
+
 server:
 	@hugo server
 
