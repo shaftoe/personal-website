@@ -7,14 +7,11 @@ title = "Al3x"
   [[menu.main]]
     identifier = "home"
     name = "home"
-    pre = ""
     url = "/"
     weight = -110
 
   [[menu.main]]
     name = "contact"
-    post = "<span class='alert'>New!</span>"
-    pre = "<i class='fa fa-road'></i>"
     url = "/contact/"
     weight = -100
 
