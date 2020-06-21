@@ -6,10 +6,13 @@ export MIXCLOUD_ACCOUNT_ID := al3xf
 server:
 	@hugo server
 
-download_mastodon:
+setup:
+	@npm install
+
+mastodon:
 	@node lib/mastodon-downloader.js
 
-download_mixcloud:
+mixcloud:
 	@node lib/mixcloud-downloader.js
 
-.PHONY: server
+.PHONY: server setup mastodon mixcloud
