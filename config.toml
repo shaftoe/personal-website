@@ -22,17 +22,17 @@ title = "Al3x"
 
   [[menu.socialnetworks]]
     name = "mixcloud"
-    url = "https://mixcloud.com/al3xf"
+    url = "https://www.mixcloud.com/al3xf"
     weight = 2
 
   [[menu.socialnetworks]]
     name = "youtube"
-    url = "https://youtube.com/channelFIXME"
+    url = "https://www.youtube.com/channel/UCb5FGNik4wXGrVGRS1x2JZw"
     weight = 3
 
   [[menu.socialnetworks]]
     name = "mastodon"
-    url = "https://FIXME"
+    url = "https://fosstodon.org/@alex/"
     weight = 4
 
   [[menu.socialnetworks]]
@@ -42,7 +42,7 @@ title = "Al3x"
 
   [[menu.socialnetworks]]
     name = "linkedin"
-    url = "https://FIXME"
+    url = "http://www.linkedin.com/in/alexanderfortin"
     weight = 6
 
   [[menu.socialnetworks]]
@@ -52,10 +52,10 @@ title = "Al3x"
 
   [[menu.socialnetworks]]
     name = "instagram"
-    url = "https://instagram.com/FIXME"
+    url = "https://www.instagram.com/al3xfor/"
     weight = 8
 
   [[menu.socialnetworks]]
     name = "facebook"
-    url = "https://facebook.com/FIXME"
+    url = "https://www.facebook.com/alexander.fortin.9"
     weight = 9

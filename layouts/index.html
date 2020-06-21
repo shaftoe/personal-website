@@ -2,7 +2,7 @@
 <h1>Some claim</h1>
 <ul>
     {{ range .Site.Menus.socialnetworks }}
-    <li><a href=""><i class="fab fa-{{ .Name }} fa-3x"></i></a></li>
+    <li><a href="{{ .URL }}"><i class="fab fa-{{ .Name }} fa-3x"></i></a></li>
     {{ end }}
 </ul>
 {{ end }}
