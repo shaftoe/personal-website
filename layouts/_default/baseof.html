@@ -10,8 +10,12 @@
     <title>{{ .Site.Title }} - {{ .Page.Title }}</title>
     {{ end }}
 
-    {{ $style := resources.Get "css/normalize.css" | resources.Minify }}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}" type="text/css">
+    {{ $normalize := resources.Get "css/normalize.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ $normalize.RelPermalink }}" type="text/css">
+
+    {{ $fontawesome := resources.Get "css/fontawesome.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ $fontawesome.RelPermalink }}" type="text/css">
+
 </head>
 <body>
     <header>
@@ -20,7 +24,17 @@
                 {{ $currentPage := . }}
                 {{ range .Site.Menus.main }}
                 <li>
-                    <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+                    {{ $class := "sidebar-nav-item" }}
+                    {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+                             {{ $class = "sidebar-nav-item active" }}
+                    {{end}}
+                    <a
+                        class="{{ $class }}"
+                        href="{{ .URL }}"
+                        title="{{ .Title }}"
+                    >
+                        {{ .Name }}
+                    </a>
                 </li>
                 {{ end }}
             </ul>

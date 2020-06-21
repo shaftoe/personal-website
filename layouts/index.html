@@ -1,11 +1,9 @@
 {{ define "header" }}
 <h1>Some claim</h1>
 <ul>
-    <li>Shiny icon</li>
-    <li>Shiny icon</li>
-    <li>Shiny icon</li>
-    <li>Shiny icon</li>
-    <li>Shiny icon</li>
+    {{ range .Site.Menus.socialnetworks }}
+    <li><a href=""><i class="fab fa-{{ .Name }} fa-3x"></i></a></li>
+    {{ end }}
 </ul>
 {{ end }}
 

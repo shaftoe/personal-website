@@ -5,15 +5,60 @@ title = "Al3x"
 [menu]
 
   [[menu.main]]
-    identifier = "about"
-    name = "about hugo"
-    pre = "<i class='fa fa-heart'></i>"
-    url = "/about/"
+    identifier = "home"
+    name = "home"
+    pre = ""
+    url = "/"
     weight = -110
 
   [[menu.main]]
-    name = "getting started"
+    name = "contact"
     post = "<span class='alert'>New!</span>"
     pre = "<i class='fa fa-road'></i>"
-    url = "/getting-started/"
+    url = "/contact/"
     weight = -100
+
+  [[menu.socialnetworks]]
+    name = "github"
+    url = "https://github.com/shaftoe"
+    weight = 1
+
+  [[menu.socialnetworks]]
+    name = "mixcloud"
+    url = "https://mixcloud.com/al3xf"
+    weight = 2
+
+  [[menu.socialnetworks]]
+    name = "youtube"
+    url = "https://youtube.com/channelFIXME"
+    weight = 3
+
+  [[menu.socialnetworks]]
+    name = "mastodon"
+    url = "https://FIXME"
+    weight = 4
+
+  [[menu.socialnetworks]]
+    name = "twitter"
+    url = "https://twitter.com/alexanderfortin"
+    weight = 5
+
+  [[menu.socialnetworks]]
+    name = "linkedin"
+    url = "https://FIXME"
+    weight = 6
+
+  [[menu.socialnetworks]]
+    name = "reddit"
+    url = "https://reddit.com/FIXME"
+    weight = 7
+
+  [[menu.socialnetworks]]
+    name = "instagram"
+    url = "https://instagram.com/FIXME"
+    weight = 8
+
+  [[menu.socialnetworks]]
+    name = "facebook"
+    url = "https://facebook.com/FIXME"
+    weight = 9
