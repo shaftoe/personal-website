@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Site.Title }} - Home</title>
-    <script src="js/mixcloud.js" defer></script>
+    {{ $style := resources.Get "css/normalize.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" type="text/css">
 </head>
 <body>
-    <head>
+    <header>
         <nav>
             <ul>
                 <li>Home</li>
@@ -17,27 +18,39 @@
             </ul>
         </nav>
         <h1>Some claim</h1>
-    </head>
+        <ul>
+            <li>Shiny icon</li>
+            <li>Shiny icon</li>
+            <li>Shiny icon</li>
+            <li>Shiny icon</li>
+            <li>Shiny icon</li>
+        </ul>
+    </header>
 
     <main>
+        {{ range .Site.Sections }}
         <section>
-            <h2><a href="/mastodon/">MicroBlog</a></h2>
-            <article>article1</article>
-            <article>article2</article>
-            <article>article3</article>
+            <h2>
+                <a href="{{ .RelPermalink }}">
+                    {{ .Title }}
+                </a>
+            </h2>
+            <ul>
+                {{ range .Pages }}
+                <li>
+                    <article>
+                        <h3>
+                            <a href="{{ .Params.src_url }}">
+                                {{ .Date }}
+                            </a>
+                        </h3>
+                        {{ .Content }}
+                    </article>
+                </li>
+                {{ end }}
+            </ul>
         </section>
-        <section>
-            <h2><a href="/tech/">TechBlog</a></h2>
-            <article>article1</article>
-            <article>article2</article>
-            <article>article3</article>
-        </section>
-        <section>
-            <h2><a href="/music/">Music Mixes</a></h2>
-            <article>article1</article>
-            <article>article2</article>
-            <article>article3</article>
-        </section>
+        {{ end }}
     </main>
 
     <footer></footer>
