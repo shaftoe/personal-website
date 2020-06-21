@@ -1,58 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }} - Home</title>
-    {{ $style := resources.Get "css/normalize.css" | resources.Minify }}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}" type="text/css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Tech</li>
-                <li>Music</li>
-                <li>Contact</li>
-            </ul>
-        </nav>
-        <h1>Some claim</h1>
+{{ define "header" }}
+<h1>Some claim</h1>
+<ul>
+    <li>Shiny icon</li>
+    <li>Shiny icon</li>
+    <li>Shiny icon</li>
+    <li>Shiny icon</li>
+    <li>Shiny icon</li>
+</ul>
+{{ end }}
+
+{{ define "main" }}
+    {{ range .Site.Sections }}
+    <section>
+        <h2>
+            <a href="{{ .RelPermalink }}">
+                {{ .Title }}
+            </a>
+        </h2>
         <ul>
-            <li>Shiny icon</li>
-            <li>Shiny icon</li>
-            <li>Shiny icon</li>
-            <li>Shiny icon</li>
-            <li>Shiny icon</li>
+            {{ range first 5 .Pages }}
+            <li>
+                <article>
+                    <h3>
+                        <a href="{{ .Params.src_url }}">
+                            {{ .Date }}
+                        </a>
+                    </h3>
+                    {{ .Content }}
+                </article>
+            </li>
+            {{ end }}
+            <li>
+                <article>
+                    <h3>
+                        <a href="{{ .Params.src_url }}">
+                            Read more...
+                        </a>
+                    </h3>
+                </article>
+            </li>
         </ul>
-    </header>
-
-    <main>
-        {{ range .Site.Sections }}
-        <section>
-            <h2>
-                <a href="{{ .RelPermalink }}">
-                    {{ .Title }}
-                </a>
-            </h2>
-            <ul>
-                {{ range .Pages }}
-                <li>
-                    <article>
-                        <h3>
-                            <a href="{{ .Params.src_url }}">
-                                {{ .Date }}
-                            </a>
-                        </h3>
-                        {{ .Content }}
-                    </article>
-                </li>
-                {{ end }}
-            </ul>
-        </section>
-        {{ end }}
-    </main>
-
-    <footer></footer>
-</body>
-</html>
+    </section>
+    {{ end }}
+{{ end }}

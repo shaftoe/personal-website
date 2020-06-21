@@ -1,10 +1,16 @@
+{{ define "main" }}
 <h1>{{ .Page.Title }}</h1>
 
 <ul>
     {{ range .Pages }}
-    <li><div>
-        <h3><a href="{{ .Params.src_url }}">{{ .Date }}</a></h3>
-        {{ .Content }}
-    </div></li>
+    <li>
+        <div>
+            <h3>
+                <a href="{{ .Params.src_url }}">{{ dateFormat "Mon, 02 Jan 2006 15:04:05 -0700" .Date }}</a>
+            </h3>
+            {{ .Content }}
+        </div>
+    </li>
     {{ end }}
 </ul>
+{{ end }}

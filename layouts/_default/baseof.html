@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{ if .IsHome }}
+    <title>{{ .Site.Title }} - Home</title>
+    {{ else }}
+    <title>{{ .Site.Title }} - {{ .Page.Title }}</title>
+    {{ end }}
+
+    {{ $style := resources.Get "css/normalize.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" type="text/css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                {{ $currentPage := . }}
+                {{ range .Site.Menus.main }}
+                <li>
+                    <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </nav>
+        {{ block "header" . }}{{ end }}
+    </header>
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+        {{ block "footer" . }}{{ end }}
+    </footer>
+</body>
+</html>
