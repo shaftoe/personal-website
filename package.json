@@ -8,8 +8,9 @@
   "license": "Apache",
   "devDependencies": {},
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.1",
     "axios": "^0.19.2",
-    "normalize.css": "^8.0.1",
-    "@fortawesome/fontawesome-free": "^5.13.1"
+    "ncu": "^0.2.1",
+    "normalize.css": "^8.0.1"
   }
 }

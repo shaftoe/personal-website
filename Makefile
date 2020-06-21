@@ -33,4 +33,8 @@ setup:
 test: build
 	@html5validator --root public/ --also-check-css
 
-.PHONY: server build clean fontawesome.css mastodon mixcloud normalize.css setup test
+upgrade:
+	@ncu -u
+	@npm install
+
+.PHONY: server build clean fontawesome.css mastodon mixcloud normalize.css setup test upgrade
