@@ -2,18 +2,21 @@ baseURL = "https://a.l3x.in/"
 languageCode = "en-us"
 title = "Al3x"
 
+[params]
+  author = "Alexander Fortin"
+  description = "Life is too short for no automation"
+
 [menu]
 
   [[menu.main]]
-    identifier = "home"
-    name = "home"
-    url = "/"
-    weight = -110
+    name = "about"
+    url = "https://cv.l3x.in/about/"
+    weight = 1
 
   [[menu.main]]
     name = "contact"
     url = "/contact/"
-    weight = -100
+    weight = 2
 
   [[menu.socialnetworks]]
     name = "github"

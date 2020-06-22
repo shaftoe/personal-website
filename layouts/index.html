@@ -1,8 +1,8 @@
 {{ define "header" }}
-<h1>Some claim</h1>
-<ul>
+<h1>{{ .Site.Param "description" }}</h1>
+<ul class="social-icons">
     {{ range .Site.Menus.socialnetworks }}
-    <li><a href="{{ .URL }}"><i class="fab fa-{{ .Name }} fa-3x"></i></a></li>
+    <li>{{ partial "fontawesome.html" . }}</a></li>
     {{ end }}
 </ul>
 {{ end }}
@@ -11,7 +11,11 @@
     {{ range .Site.Sections }}
     <section>
         <h2>
+            {{ with .Param "src_url" }}
+            <a href="{{ . }}">
+            {{ else }}
             <a href="{{ .RelPermalink }}">
+            {{ end }}
                 {{ .Title }}
             </a>
         </h2>
@@ -21,7 +25,7 @@
                 <article>
                     <h3>
                         <a href="{{ .Params.src_url }}">
-                            {{ .Date }}
+                            {{ partial "date" .Date }}
                         </a>
                     </h3>
                     {{ .Content }}
@@ -29,13 +33,9 @@
             </li>
             {{ end }}
             <li>
-                <article>
-                    <h3>
-                        <a href="{{ .Params.src_url }}">
-                            Show more...
-                        </a>
-                    </h3>
-                </article>
+                <a href="{{ .Params.src_url }}">
+                    More...
+                </a>
             </li>
         </ul>
     </section>
