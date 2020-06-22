@@ -22,27 +22,28 @@
 </head>
 
 <body>
+    <nav>
+        <ul>
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+            <li>
+                {{ $class := "sidebar-nav-item" }}
+                {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+                            {{ $class = "sidebar-nav-item active" }}
+                {{end}}
+                <a
+                    class="{{ $class }}"
+                    href="{{ .URL }}"
+                    title="{{ .Title }}"
+                >
+                    {{ .Name }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+
     <header>
-        <nav>
-            <ul>
-                {{ $currentPage := . }}
-                {{ range .Site.Menus.main }}
-                <li>
-                    {{ $class := "sidebar-nav-item" }}
-                    {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
-                             {{ $class = "sidebar-nav-item active" }}
-                    {{end}}
-                    <a
-                        class="{{ $class }}"
-                        href="{{ .URL }}"
-                        title="{{ .Title }}"
-                    >
-                        {{ .Name }}
-                    </a>
-                </li>
-                {{ end }}
-            </ul>
-        </nav>
         {{ block "header" . }}{{ end }}
     </header>
 

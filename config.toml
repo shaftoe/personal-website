@@ -31,37 +31,42 @@ title = "Al3x"
   [[menu.socialnetworks]]
     name = "youtube"
     url = "https://www.youtube.com/channel/UCb5FGNik4wXGrVGRS1x2JZw"
-    weight = 3
+    weight = 2
 
   [[menu.socialnetworks]]
     name = "mastodon"
     url = "https://fosstodon.org/@alex/"
-    weight = 4
+    weight = 3
 
   [[menu.socialnetworks]]
     name = "twitter"
     url = "https://www.twitter.com/alexanderfortin"
-    weight = 5
+    weight = 3
 
   [[menu.socialnetworks]]
     name = "goodreads"
     url = "https://www.goodreads.com/user/show/20133803-alexander"
-    weight = 6
+    weight = 4
 
   [[menu.socialnetworks]]
     name = "linkedin"
     url = "http://www.linkedin.com/in/alexanderfortin"
-    weight = 7
+    weight = 4
 
   [[menu.socialnetworks]]
     name = "reddit"
     url = "https://www.reddit.com/user/AlexanderFortin"
-    weight = 8
+    weight = 4
 
   [[menu.socialnetworks]]
     name = "instagram"
     url = "https://www.instagram.com/al3xfor/"
-    weight = 9
+    weight = 5
+
+  [[menu.socialnetworks]]
+    name = "flickr"
+    url = "https://www.flickr.com/photos/ali3n0/"
+    weight = 5
 
   [[menu.socialnetworks]]
     name = "facebook"

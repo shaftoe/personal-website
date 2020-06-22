@@ -18,18 +18,46 @@ body {
     background-color: var(--background-color);
 }
 
-header li {
+// social icons and navbar items
+header li, nav li {
     display: inline;
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover, a:visited {
+        color: var(--main-color);
+    }
 }
 
-header > h1 {
-    padding-left: 50px;
-    padding-right: 50px;
+header > {
+    h1 {
+        font-size: 50px;
+    }
+
+    ul, h1 {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
 }
 
 nav, main {
     margin-left: var(--side-pixels);
     margin-right: var(--side-pixels);
+}
+
+main {
+    margin-top: 50px;
+}
+
+section {
+    margin-top: 20px;
+}
+
+article {
+    line-height: 1.5rem;
+
 }
 
 .social-icons {
@@ -42,9 +70,9 @@ nav, main {
     }
 }
 
-main > section:nth-child(even) {
-    display: none;
-}
+// main > section:nth-child(even) {
+//     display: none;
+// }
 
 footer {
     text-align: center;
