@@ -7,7 +7,7 @@ server:
 	@hugo server
 
 build: clean mastodon mixcloud normalize.css fontawesome.css
-	@hugo
+	@hugo --cleanDestinationDir --minify
 
 clean:
 	@rm -r public/
