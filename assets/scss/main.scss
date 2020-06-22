@@ -1,10 +1,21 @@
+:root {
+    --main-color: #FF7A00;
+    --background-color: #050723;
+    --side-pixels: 20px;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
 }
 
+a {
+    color: var(--main-color);
+}
+
 body {
-    background-color: white;
+    color: var(--main-color);
+    background-color: var(--background-color);
 }
 
 header li {
@@ -14,6 +25,11 @@ header li {
 header > h1 {
     padding-left: 50px;
     padding-right: 50px;
+}
+
+nav, main {
+    margin-left: var(--side-pixels);
+    margin-right: var(--side-pixels);
 }
 
 .social-icons {
