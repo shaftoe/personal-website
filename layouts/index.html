@@ -9,35 +9,40 @@
 
 {{ define "main" }}
     {{ range .Site.Sections }}
-    <section>
-        <h2>
-            {{ with .Param "src_url" }}
-            <a href="{{ . }}">
-            {{ else }}
-            <a href="{{ .RelPermalink }}">
-            {{ end }}
-                {{ .Title }}
-            </a>
-        </h2>
-        <ul>
-            {{ range first 5 .Pages }}
-            <li>
-                <article>
-                    <h3>
-                        <a href="{{ .Params.src_url }}">
-                            {{ partial "date" .Date }}
-                        </a>
-                    </h3>
-                    {{ .Content }}
-                </article>
-            </li>
-            {{ end }}
-            <li>
-                <a href="{{ .Params.src_url }}">
-                    More...
+        {{ if isset .Params "show_in_index" }}
+        <section id="{{ anchorize .Title }}">
+            <h2>
+                {{ with .Params.src_url }}
+                <a class="extlink" href="{{ . }}">
+                {{ else }}
+                <a href="{{ .RelPermalink }}">
+                {{ end }}
+                    {{ .Title }}
                 </a>
-            </li>
-        </ul>
-    </section>
+            </h2>
+            <ul>
+                {{ $articles := $.Param "articles_in_index" }}
+                {{ range first $articles .Pages }}
+                <li>
+                    <article>
+                        {{ if isset .Parent.Params "show_ext_link" }}
+                        <small>
+                            <a href="{{ $.Param "src_url" }}">
+                                {{ partial "date" .Date }}
+                            </a>
+                        </small>
+                        {{ end }}
+                        {{ .Content }}
+                    </article>
+                </li>
+                {{ end }}
+                <li>
+                    <a href="{{ $.Param "src_url" }}">
+                        More...
+                    </a>
+                </li>
+            </ul>
+        </section>
+        {{ end }}
     {{ end }}
 {{ end }}

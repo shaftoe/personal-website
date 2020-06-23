@@ -16,6 +16,8 @@ a {
 body {
     color: var(--main-color);
     background-color: var(--background-color);
+    font-family: sans-serif;
+    font-weight: lighter;
 }
 
 // social icons and navbar items
@@ -33,12 +35,12 @@ header li, nav li {
 
 header > {
     h1 {
-        font-size: 50px;
+        font-size: 2.5rem;
     }
 
     ul, h1 {
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
 
@@ -52,12 +54,24 @@ main {
 }
 
 section {
-    margin-top: 20px;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
 }
 
 article {
     line-height: 1.5rem;
+    padding-left: 0.5rem;
+    margin-bottom: 3rem;
+    border-left: 3px solid;
+    border-color: var(--main-color);
 
+    a {
+        text-decoration: none;
+    }
+
+    small > a {
+        text-decoration: underline;
+    }
 }
 
 .social-icons {
@@ -66,12 +80,29 @@ article {
     justify-content: space-evenly;
 
     li {
-        padding: 10px;
+        padding: 15px 10px 0px 10px;
     }
 }
 
-// main > section:nth-child(even) {
-//     display: none;
+.nounderline {
+    text-decoration: none;
+}
+
+.extlink {
+    text-decoration: none;
+
+}
+
+.extlink:after {
+    padding-left: 0.5rem;
+    font-family: 'font awesome 5 free';
+    content: "\f35d";
+    font-size: 1rem;
+}
+
+// main > section:nth-child(odd) {
+//     // display: none;
+//     // background-color: lighten(#050723, 5);
 // }
 
 footer {
