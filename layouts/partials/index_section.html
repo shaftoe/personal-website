@@ -33,7 +33,15 @@
                 {{ .Content | truncate 380 }}
             {{ end }}
 
-            <a href="{{ $url }}">{{ partial "date" .Date }} - Read more...</a>
+            <a
+                href="{{ $url }}"
+                {{ if isset .Params "src_url" }}class="extlink"{{ end }}
+            >
+                {{ partial "date" .Date }}
+                {{ if (eq $section.Title "Tech Blog") }}
+                Read more...
+                {{end}}
+            </a>
 
         </article>
         {{ end }}
@@ -42,7 +50,12 @@
             href="{{ or .Params.src_url .RelPermalink }}"
             {{ if isset .Params "src_url" }}class="extlink"{{ end }}
         >
-            {{ $section.Params.read_more_text }}
+            {{ $more_text := "More..." }}
+            {{ if (eq $section.Title "Tech Blog") }}{{ $more_text = "More articles" }}{{end}}
+            {{ if (eq $section.Title "Micro Blog") }}{{ $more_text = "More posts" }}{{end}}
+            {{ if (eq $section.Title "Music Mixes") }}{{ $more_text = "More mixes" }}{{end}}
+            {{ if (eq $section.Title "Videos") }}{{ $more_text = "More videos" }}{{end}}
+            {{ $more_text }}
         </a>
 
     {{ end }}

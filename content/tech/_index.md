@@ -1,5 +1,5 @@
 ---
-title: Tech blog
+title: Tech Blog
 weight: 1
 index_row: 1
 show_title: true
