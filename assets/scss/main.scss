@@ -44,13 +44,21 @@ header > {
     }
 }
 
-nav, main {
+header > nav, main {
     margin-left: var(--side-pixels);
     margin-right: var(--side-pixels);
 }
 
 main {
     margin-top: 50px;
+}
+
+main > nav {
+    display: flex;
+
+    a {
+        width: 100%;
+    }
 }
 
 section {
@@ -82,22 +90,6 @@ article {
     li {
         padding: 15px 10px 0px 10px;
     }
-}
-
-.nounderline {
-    text-decoration: none;
-}
-
-.extlink {
-    text-decoration: none;
-
-}
-
-.extlink:after {
-    padding-left: 0.5rem;
-    font-family: 'font awesome 5 free';
-    content: "\f35d";
-    font-size: 1rem;
 }
 
 // main > section:nth-child(odd) {

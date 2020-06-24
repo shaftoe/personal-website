@@ -1,0 +1,51 @@
+{{ $sections := . }}
+<nav>
+{{ range $section_index, $section := $sections }}
+
+    {{ if isset $section.Params "index_row" }}
+    <a href="#{{ anchorize $section.Title }}"{{ if eq $section_index 0 }} class="active"{{ end }}>
+        {{ $section.Title }}
+    </a>
+    {{ end }}
+
+{{ end }}
+</nav>
+
+{{ range $section_index, $section := $sections }}
+<section id="{{ anchorize $section.Title }}">
+
+    {{ if isset $section.Params "index_row" }}
+
+        {{ range first 5 $section.Pages }}
+        {{ $url := or .Params.src_url .RelPermalink }}
+
+        <article>
+
+            {{ if $section.Params.show_title }}
+            <h3>
+                <a href="{{ $url }}">{{ .Title }}</a>
+            </h3>
+            {{ end }}
+
+            {{ with .Params.description }}
+                {{ . }}
+            {{ else }}
+                {{ .Content | truncate 380 }}
+            {{ end }}
+
+            <a href="{{ $url }}">{{ partial "date" .Date }} - Read more...</a>
+
+        </article>
+        {{ end }}
+
+        <a
+            href="{{ or .Params.src_url .RelPermalink }}"
+            {{ if isset .Params "src_url" }}class="extlink"{{ end }}
+        >
+            {{ $section.Params.read_more_text }}
+        </a>
+
+    {{ end }}
+
+</section>
+{{ end }}

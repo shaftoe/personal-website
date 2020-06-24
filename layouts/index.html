@@ -1,48 +1,24 @@
 {{ define "header" }}
-<h1>{{ .Site.Param "description" }}</h1>
-<ul class="social-icons">
-    {{ range .Site.Menus.socialnetworks }}
-    <li>{{ partial "fontawesome.html" . }}</a></li>
-    {{ end }}
-</ul>
+
+    <h1>{{ .Site.Param "description" }}</h1>
+
+    <ul class="social-icons">
+        {{ range .Site.Menus.socialnetworks }}
+        <li>{{ partial "fontawesome.html" . }}</a></li>
+        {{ end }}
+    </ul>
+
 {{ end }}
 
 {{ define "main" }}
-    {{ range .Site.Sections }}
-        {{ if isset .Params "show_in_index" }}
-        <section id="{{ anchorize .Title }}">
-            <h2>
-                {{ with .Params.src_url }}
-                <a class="extlink" href="{{ . }}">
-                {{ else }}
-                <a href="{{ .RelPermalink }}">
-                {{ end }}
-                    {{ .Title }}
-                </a>
-            </h2>
-            <ul>
-                {{ $articles := $.Param "articles_in_index" }}
-                {{ range first $articles .Pages }}
-                <li>
-                    <article>
-                        {{ if isset .Parent.Params "show_ext_link" }}
-                        <small>
-                            <a href="{{ $.Param "src_url" }}">
-                                {{ partial "date" .Date }}
-                            </a>
-                        </small>
-                        {{ end }}
-                        {{ .Content }}
-                    </article>
-                </li>
-                {{ end }}
-                <li>
-                    <a href="{{ $.Param "src_url" }}">
-                        More...
-                    </a>
-                </li>
-            </ul>
-        </section>
-        {{ end }}
-    {{ end }}
+
+    <!-- First row -->
+    {{ $sections := where .Site.Sections "Params.index_row" 1 }}
+    {{ partial "index_section" $sections }}
+
+
+    <!-- Second row -->
+    {{ $sections := where .Site.Sections "Params.index_row" 2 }}
+    {{ partial "index_section" $sections }}
+
 {{ end }}
