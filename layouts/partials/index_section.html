@@ -1,4 +1,6 @@
-{{ $sections := . }}
+{{ $context := .context }}
+{{ $sections := where $context.Site.Sections "Params.index_row" .row }}
+
 <nav>
 {{ range $section_index, $section := $sections }}
 

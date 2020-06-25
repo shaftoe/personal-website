@@ -13,12 +13,10 @@
 {{ define "main" }}
 
     <!-- First row -->
-    {{ $sections := where .Site.Sections "Params.index_row" 1 }}
-    {{ partial "index_section" $sections }}
+    {{ partial "index_section" (dict "context" . "row" 1) }}
 
 
     <!-- Second row -->
-    {{ $sections := where .Site.Sections "Params.index_row" 2 }}
-    {{ partial "index_section" $sections }}
+    {{ partial "index_section" (dict "context" . "row" 2) }}
 
 {{ end }}
