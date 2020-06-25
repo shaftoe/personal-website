@@ -5,7 +5,10 @@
 {{ range $section_index, $section := $sections }}
 
     {{ if isset $section.Params "index_row" }}
-    <a href="#{{ anchorize $section.Title }}"{{ if eq $section_index 0 }} class="selected"{{ end }}>
+    <a
+        href="#{{ anchorize $section.Title }}"
+        {{ if eq $section_index 0 }}class="selected"{{ end }}
+    >
         {{ $section.Title }}
     </a>
     {{ end }}

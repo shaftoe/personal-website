@@ -8,7 +8,19 @@
 
 {{ define "main" }}
 
-    <div class="row">{{ partial "index_row" (dict "context" . "row" 1) }}</div>
-    <div class="row">{{ partial "index_row" (dict "context" . "row" 2) }}</div>
+    {{ $context := . }}
+    {{ range $rowNumber :=  (seq 1) }}{{/*  fixme  */}}
+    <div
+        class="row"
+        id="row_{{ $rowNumber }}"
+    >
+        {{ partial "index_row" (dict "context" $context "row" $rowNumber) }}
+    </div>
+    {{end }}
+
+    {{ $js := resources.Get "js/index-tab.js" | resources.Minify }}
+    <script>
+        {{ $js.Content | safeJS }}
+    </script>
 
 {{ end }}
