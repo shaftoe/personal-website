@@ -1,0 +1,9 @@
+{{ $socialNetworks := . }}
+<ul class="social-icons">
+{{ range . }}
+    {{ $menu_entry := . }}
+    <li>
+        {{ partial "fontawesome.html" $menu_entry }}
+    </li>
+{{ end }}
+</ul>

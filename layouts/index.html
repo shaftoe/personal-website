@@ -1,22 +1,14 @@
 {{ define "header" }}
 
-    <h1>{{ .Site.Param "description" }}</h1>
+    <h1 class="claim">{{ .Site.Param "description" }}</h1>
 
-    <ul class="social-icons">
-        {{ range .Site.Menus.socialnetworks }}
-        <li>{{ partial "fontawesome.html" . }}</li>
-        {{ end }}
-    </ul>
+    {{ partial "social_icons" .Site.Menus.socialnetworks }}
 
 {{ end }}
 
 {{ define "main" }}
 
-    <!-- First row -->
-    {{ partial "index_section" (dict "context" . "row" 1) }}
-
-
-    <!-- Second row -->
-    {{ partial "index_section" (dict "context" . "row" 2) }}
+    {{ partial "index_row" (dict "context" . "row" 1) }}
+    {{ partial "index_row" (dict "context" . "row" 2) }}
 
 {{ end }}

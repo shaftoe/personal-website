@@ -18,7 +18,7 @@
 
     {{ if isset $section.Params "index_row" }}
 
-        {{ range first 5 $section.Pages }}
+        {{ range first $context.Site.Params.articles_in_index $section.Pages }}
         {{ $url := or .Params.src_url .RelPermalink }}
 
         <article>
@@ -40,9 +40,7 @@
                 {{ if isset .Params "src_url" }}class="extlink"{{ end }}
             >
                 {{ partial "date" .Date }}
-                {{ if (eq $section.Title "Tech Blog") }}
-                Read more...
-                {{end}}
+                {{ if not (isset $section.Params "src_url") }}Read more&#8230;{{end}}
             </a>
 
         </article>
@@ -52,12 +50,13 @@
             href="{{ or .Params.src_url .RelPermalink }}"
             {{ if isset .Params "src_url" }}class="extlink"{{ end }}
         >
-            {{ $more_text := "More..." }}
-            {{ if (eq $section.Title "Tech Blog") }}{{ $more_text = "More articles" }}{{end}}
-            {{ if (eq $section.Title "Micro Blog") }}{{ $more_text = "More posts" }}{{end}}
-            {{ if (eq $section.Title "Music Mixes") }}{{ $more_text = "More mixes" }}{{end}}
-            {{ if (eq $section.Title "Videos") }}{{ $more_text = "More videos" }}{{end}}
-            {{ $more_text }}
+            {{ if isset $section.Params "article_kind" }}
+                More {{ $section.Params.article_kind | pluralize }}
+            {{ else if isset $section.Params "src_url" }}
+                More {{ $section.Title | pluralize }}
+            {{ else }}
+                More articles
+            {{end}}
         </a>
 
     {{ end }}
