@@ -93,12 +93,13 @@ article {
 
 .extlink::before {
     display: inline-block;
-    font-style: normal;
     font-family: "Font Awesome 5 Free";
+    font-style: normal;
     font-variant: normal;
+    font-weight: 900;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-    content: "\f14d";
+    content: "\f35d";
 }
 
 .select-tab {
