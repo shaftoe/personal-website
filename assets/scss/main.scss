@@ -44,7 +44,7 @@ header > {
     }
 }
 
-header > nav, main {
+header > nav {
     margin-left: var(--side-pixels);
     margin-right: var(--side-pixels);
 }
@@ -62,16 +62,15 @@ main > nav {
 }
 
 section {
-    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin-bottom: 5rem;
+    line-height: 1.5rem;
 }
 
 article {
-    line-height: 1.5rem;
-    padding-left: 0.5rem;
     margin-bottom: 3rem;
-    border-left: 3px solid;
-    border-color: var(--main-color);
 
     a {
         text-decoration: none;
@@ -95,11 +94,32 @@ article {
 .extlink::before {
     display: inline-block;
     font-style: normal;
+    font-family: "Font Awesome 5 Free";
     font-variant: normal;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-    font-family: "Font Awesome 5 Free";
     content: "\f14d";
+}
+
+.select-tab {
+    text-align: center;
+
+    a {
+        font-size: x-large;
+
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        text-decoration: none;
+        background-color: var(--main-color);
+        color: var(--background-color);
+
+    }
+
+    a.selected {
+        border-top: 2px solid;
+        color: var(--main-color);
+        background-color: var(--background-color);
+    }
 }
 
 // main > section:nth-child(odd) {

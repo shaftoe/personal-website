@@ -10,6 +10,11 @@ title = "Al3x"
 [menu]
 
   [[menu.main]]
+    name = "home"
+    url = "/"
+    weight = -1
+
+  [[menu.main]]
     name = "about"
     url = "https://cv.l3x.in/about/"
     weight = 1
