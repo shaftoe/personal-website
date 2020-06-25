@@ -1,7 +1,7 @@
 :root {
     --main-color: #FF7A00;
-    --background-color: #050723;
-    --side-pixels: 20px;
+    --bkg-color-dark: #050723;
+    --bkg-color-light: #151737;
 }
 
 ul {
@@ -15,7 +15,7 @@ a {
 
 body {
     color: var(--main-color);
-    background-color: var(--background-color);
+    background-color: var(--bkg-color-dark);
     font-family: sans-serif;
     font-weight: lighter;
 }
@@ -42,30 +42,20 @@ header > {
         padding-left: 30px;
         padding-right: 30px;
     }
-}
 
-header > nav {
-    margin-left: var(--side-pixels);
-    margin-right: var(--side-pixels);
+    nav {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }
 
 main {
     margin-top: 50px;
 }
 
-main > nav {
-    display: flex;
-
-    a {
-        width: 100%;
-    }
-}
-
 section {
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 5rem;
+    padding: 1rem;
+    margin-bottom: 3rem;
     line-height: 1.5rem;
 }
 
@@ -79,6 +69,10 @@ article {
     small > a {
         text-decoration: underline;
     }
+}
+
+.row {
+    background-color: var(--bkg-color-light);
 }
 
 .social-icons {
@@ -108,23 +102,24 @@ article {
 }
 
 .select-tab {
+    display: flex;
+
     text-align: center;
 
     a {
-        font-size: x-large;
+        width: 100%;
+        font-size: xx-large;
 
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 0.3rem;
         text-decoration: none;
         background-color: var(--main-color);
-        color: var(--background-color);
-
+        color: var(--bkg-color-light);
     }
 
     a.selected {
-        border-top: 2px solid;
         color: var(--main-color);
-        background-color: var(--background-color);
+        background-color: var(--bkg-color-light);
     }
 }
 

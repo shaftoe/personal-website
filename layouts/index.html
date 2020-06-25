@@ -8,7 +8,7 @@
 
 {{ define "main" }}
 
-    {{ partial "index_row" (dict "context" . "row" 1) }}
-    {{ partial "index_row" (dict "context" . "row" 2) }}
+    <div class="row">{{ partial "index_row" (dict "context" . "row" 1) }}</div>
+    <div class="row">{{ partial "index_row" (dict "context" . "row" 2) }}</div>
 
 {{ end }}
