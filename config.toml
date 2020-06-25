@@ -5,7 +5,7 @@ title = "Al3x"
 [params]
   author = "Alexander Fortin"
   description = "Life is too short for no automation"
-  articles_in_index = 5
+  articles_in_index = 4
 
 [menu]
 
