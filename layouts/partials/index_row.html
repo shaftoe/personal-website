@@ -17,7 +17,19 @@
 </nav>
 
 {{ range $section_index, $section := $sections }}
-<section id="{{ anchorize $section.Title }}">
+<section
+    id="{{ anchorize $section.Title }}"
+    class="animated"
+>
+
+    <h2 class="noscript-only">
+        <a
+            href="{{ or .Params.src_url .RelPermalink }}"
+            {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
+        >
+            {{ $section.Title }}
+        </a>
+    </h2>
 
     {{ if isset $section.Params "index_row" }}
 

@@ -103,7 +103,6 @@ article {
 
 .select-tab {
     display: flex;
-
     text-align: center;
 
     a {
@@ -124,10 +123,14 @@ article {
     }
 }
 
-// main > section:nth-child(odd) {
-//     // display: none;
-//     // background-color: lighten(#050723, 5);
-// }
+.animated {
+    animation: fadeEffect 0.7s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 
 footer {
     text-align: center;
