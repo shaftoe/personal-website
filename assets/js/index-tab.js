@@ -26,7 +26,7 @@ window.onload = () => {
     document.querySelectorAll('.noscript-only').forEach(element => element.hidden = true)
 
     /**
-     * Add event listener for "click" event to every "tab' anchor
+     * Add event listener for "click" event to every "tab" anchor
      * and remove href to avoid unwanted scrolling
      */
     anchorGroups.forEach((group, groupIndex) => {
