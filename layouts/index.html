@@ -11,8 +11,7 @@
     {{ $context := . }}
     {{ range $rowNumber :=  (seq 1) }}{{/*  fixme  */}}
     <div
-        class="row"
-        id="row_{{ $rowNumber }}"
+        class="row_{{ $rowNumber }}"
     >
         {{ partial "index_row" (dict "context" $context "row" $rowNumber) }}
     </div>

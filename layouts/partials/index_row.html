@@ -1,13 +1,14 @@
 {{ $context := .context }}
-{{ $sections := where $context.Site.Sections "Params.index_row" .row }}
+{{ $row := .row }}
+{{ $sections := where $context.Site.Sections "Params.index_row" $row }}
 
-<nav class="select-tab">
+<nav class="select-tab row_{{ $row }}">
 {{ range $section_index, $section := $sections }}
 
     {{ if isset $section.Params "index_row" }}
     <a
         href="#{{ anchorize $section.Title }}"
-        {{ if eq $section_index 0 }}class="selected"{{ end }}
+        class="row_{{ $row }} col_{{ add $section_index 1 }}{{ if eq $section_index 0 }} selected{{ end }}"
     >
         {{ $section.Title }}
     </a>
@@ -19,7 +20,7 @@
 {{ range $section_index, $section := $sections }}
 <section
     id="{{ anchorize $section.Title }}"
-    class="animated"
+    class="animated row_{{ $row }} col_{{ add $section_index 1 }}"
 >
 
     <h2 class="noscript-only">
