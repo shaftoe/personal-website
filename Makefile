@@ -38,7 +38,6 @@ npm-install:
 setup: npm-install
 	@pip install -r requirements.txt
 
-
 test: build eslint html5validator
 
 upgrade: upgrade-node-modules npm
