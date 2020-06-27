@@ -2,7 +2,7 @@
 {{ $row := .row }}
 {{ $sections := where $context.Site.Sections "Params.index_row" $row }}
 
-<nav class="select-tab row_{{ $row }} small-only">
+<nav class="select-tab row_{{ $row }} small-only" hidden>
 {{ range $section_index, $section := $sections }}
 
     {{ if isset $section.Params "index_row" }}
@@ -11,6 +11,7 @@
                col_{{ add $section_index 1 }}
                {{ if eq $section_index 0 }}selected{{ end }}
                small-only"
+        hidden
     >
         {{ $section.Title }}
     </a>

@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 function setVisibilityAll(selector, visible = true, docRoot = document) {
     docRoot.querySelectorAll(selector).forEach(el => el.hidden = !visible)
@@ -12,14 +12,6 @@ function showSection(colNumber) {
     setVisibilityAll(`section.col_${colNumber}`, true)
 }
 
-function hideNavsAnchors() {
-    setVisibilityAll("nav.select-tab a", false)
-}
-
-function showNavsAnchors() {
-    setVisibilityAll("nav.select-tab a", true)
-}
-
 function numberFromElementClassName(element, string) {
     let num
     element.classList.forEach(cls => {
@@ -31,8 +23,8 @@ function numberFromElementClassName(element, string) {
 function clickHandler(event) {
     event.stopPropagation()
 
-    const selectedCol = numberFromElementClassName(event.srcElement, 'col')
-    const selectedRow = numberFromElementClassName(event.srcElement, 'row')
+    const selectedCol = numberFromElementClassName(event.srcElement, "col")
+    const selectedRow = numberFromElementClassName(event.srcElement, "row")
     const unselectedRow = otherColumnNumber(selectedCol)
 
     // Set selected anchor and show selected section
@@ -45,12 +37,12 @@ function clickHandler(event) {
 }
 
 function addEventListeners() {
-    document.querySelectorAll('nav.select-tab a').forEach(anchor =>
+    document.querySelectorAll("nav.select-tab a").forEach(anchor =>
         anchor.addEventListener("click", clickHandler, false))
 }
 
 function removeEventListeners() {
-    document.querySelectorAll('nav.select-tab a').forEach(anchor => {
+    document.querySelectorAll("nav.select-tab a").forEach(anchor => {
         anchor.removeEventListener("click", clickHandler, false)
     })
 }
@@ -75,30 +67,27 @@ function handleMediaQueryEvent(event) {
         setSessionActive(1)
         unsetSessionActive(2)
         hideSection(2)
-        setVisibilityAll('.large-only', false)
-        setVisibilityAll('.small-only', true)
+        setVisibilityAll(".large-only", false)
+        setVisibilityAll(".small-only", true)
     } else {
         removeEventListeners()
         showSection(1)
         showSection(2)
         unsetSessionActive(1)
         unsetSessionActive(2)
-        setVisibilityAll('.large-only', true)
-        setVisibilityAll('.small-only', false)
+        setVisibilityAll(".large-only", true)
+        setVisibilityAll(".small-only", false)
     }
+}
+
+function getMaxResponsiveWidth() {
+    const len = document.styleSheets.length,
+        sheet = document.styleSheets[len - 1] // last one is the inline CSS
+    return sheet.rules[0].cssText.match(/--responsive-max-width: (\d+px)/).pop()
 }
 
 window.onload = () => {
-    const mql = window.matchMedia("screen and (max-width: 799px)") // FIXME fetch from CSS
+    const mql = window.matchMedia(`screen and (max-width: ${getMaxResponsiveWidth()})`)
     handleMediaQueryEvent(mql)
     mql.addListener(handleMediaQueryEvent)
-}
-
-function getStyleSheet(unique_title) {
-  for (var i=0; i<document.styleSheets.length; i++) {
-    var sheet = document.styleSheets[i];
-    if (sheet.title == unique_title) {
-      return sheet;
-    }
-  }
 }
