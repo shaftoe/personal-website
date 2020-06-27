@@ -12,9 +12,15 @@ build: clean mastodon mixcloud normalize.css fontawesome.css
 clean:
 	@rm -r public/
 
+eslint:
+	@eslint assets/js/ lib/
+
 fontawesome.css:
 	@cp node_modules/@fortawesome/fontawesome-free/css/all.css assets/css/fontawesome.css
 	@rsync -a --delete node_modules/@fortawesome/fontawesome-free/webfonts/ static/webfonts/
+
+html5validator:
+	@html5validator --root public/ --also-check-css
 
 mastodon:
 	@node lib/mastodon-downloader.js
@@ -26,20 +32,18 @@ normalize.css:
 	@mkdir -p assets/css/
 	@cp node_modules/normalize.css/normalize.css assets/css/
 
-setup:
+npm-install:
 	@npm install
+
+setup: npm-install
 	@pip install -r requirements.txt
 
-eslint:
-	@eslint assets/js/ lib/
-
-html5validator:
-	@html5validator --root public/ --also-check-css
 
 test: build eslint html5validator
 
-upgrade:
-	@ncu -u
-	@npm install
+upgrade: upgrade-node-modules npm
 
-.PHONY: server build clean eslint fontawesome.css html5validator mastodon mixcloud normalize.css setup test upgrade
+upgrade-node-modules:
+	@ncu -u
+
+.PHONY: server build clean eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install setup test upgrade upgrade-node-modules
