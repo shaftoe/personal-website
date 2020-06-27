@@ -6,7 +6,9 @@ export MIXCLOUD_ACCOUNT_ID := al3xf
 server:
 	@hugo server
 
-build: clean mastodon mixcloud normalize.css fontawesome.css
+prebuild: clean mastodon mixcloud normalize.css fontawesome.css
+
+build:
 	@hugo --cleanDestinationDir --minify
 
 clean:
@@ -38,7 +40,7 @@ npm-install:
 setup: npm-install
 	@pip install -r requirements.txt
 
-test: build eslint html5validator
+test: eslint html5validator
 
 upgrade: upgrade-node-modules npm
 

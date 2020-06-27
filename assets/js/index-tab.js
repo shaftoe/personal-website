@@ -4,6 +4,13 @@ function setVisibilityAll(selector, visible = true, docRoot = document) {
     docRoot.querySelectorAll(selector).forEach(el => el.hidden = !visible)
 }
 
+function setDisplayAll(selector, visible = true, docRoot = document) {
+    docRoot.querySelectorAll(selector).forEach(el => {
+        el.style.display = visible ? "flex" : "none"
+        el.hidden = !visible
+    })
+}
+
 function hideSection(colNumber) {
     setVisibilityAll(`section.col_${colNumber}`, false)
 }
@@ -25,15 +32,14 @@ function clickHandler(event) {
 
     const selectedCol = numberFromElementClassName(event.srcElement, "col")
     const selectedRow = numberFromElementClassName(event.srcElement, "row")
-    const unselectedRow = otherColumnNumber(selectedCol)
+    const unselectedCol = flipNumber(selectedCol)
 
-    // Set selected anchor and show selected section
     event.srcElement.classList.add("selected")
-    document.querySelector(`section.col_${selectedCol}.row_${selectedRow}`).hidden = false
+    document.querySelector(`nav.select-tab a.row_${selectedRow}.col_${unselectedCol}`)
+        .classList.remove("selected")
 
-    // Hide non-selected section
-    document.querySelector(`a.row_${selectedRow}.col_${unselectedRow}`).classList.remove("selected")
-    document.querySelector(`section.row_${selectedRow}.col_${unselectedRow}`).hidden = true
+    document.querySelector(`section.row_${selectedRow}.col_${selectedCol}`).hidden = false
+    document.querySelector(`section.row_${selectedRow}.col_${unselectedCol}`).hidden = true
 }
 
 function addEventListeners() {
@@ -42,13 +48,18 @@ function addEventListeners() {
 }
 
 function removeEventListeners() {
-    document.querySelectorAll("nav.select-tab a").forEach(anchor => {
-        anchor.removeEventListener("click", clickHandler, false)
-    })
+    document.querySelectorAll("nav.select-tab a").forEach(anchor =>
+        anchor.removeEventListener("click", clickHandler, false))
 }
 
-function otherColumnNumber(columnNumber) {
-    return (Number(columnNumber) % 2) + 1
+/**
+ * Return 1 if number is 2, return 2 if number is 1
+ * @param {integer} number
+ */
+function flipNumber(number) {
+    if (number < 1 || number > 2)
+        console.error("Wrong input: must be either 1 or 2, got", number)
+    return (Number(number) % 2) + 1
 }
 
 function setSessionActive(columnNumber) {
@@ -63,26 +74,29 @@ function unsetSessionActive(columnNumber) {
 
 function handleMediaQueryEvent(event) {
     if (event.matches) {
-        addEventListeners()
+        setDisplayAll(".large-only", false)
+        setDisplayAll(".small-only", true)
         setSessionActive(1)
         unsetSessionActive(2)
         hideSection(2)
-        setVisibilityAll(".large-only", false)
-        setVisibilityAll(".small-only", true)
+        addEventListeners()
     } else {
-        removeEventListeners()
+        setDisplayAll(".small-only", false)
+        setDisplayAll(".large-only", true)
         showSection(1)
         showSection(2)
         unsetSessionActive(1)
         unsetSessionActive(2)
-        setVisibilityAll(".large-only", true)
-        setVisibilityAll(".small-only", false)
+        removeEventListeners()
     }
 }
 
+/**
+ * Get CSS --responsive-max-width variable defined in :root from latest inline CSS document
+ */
 function getMaxResponsiveWidth() {
     const len = document.styleSheets.length,
-        sheet = document.styleSheets[len - 1] // last one is the inline CSS
+        sheet = document.styleSheets[len - 1]
     return sheet.rules[0].cssText.match(/--responsive-max-width: (\d+px)/).pop()
 }
 
