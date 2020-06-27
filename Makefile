@@ -30,11 +30,16 @@ setup:
 	@npm install
 	@pip install -r requirements.txt
 
-test: build
+eslint:
+	@eslint assets/js/ lib/
+
+html5validator:
 	@html5validator --root public/ --also-check-css
+
+test: build eslint html5validator
 
 upgrade:
 	@ncu -u
 	@npm install
 
-.PHONY: server build clean fontawesome.css mastodon mixcloud normalize.css setup test upgrade
+.PHONY: server build clean eslint fontawesome.css html5validator mastodon mixcloud normalize.css setup test upgrade
