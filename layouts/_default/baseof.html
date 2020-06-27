@@ -11,14 +11,17 @@
     <title>{{ .Site.Title }} - {{ .Page.Title }}</title>
     {{ end }}
 
-    {{ $normalize := resources.Get "css/normalize.css" | resources.Minify }}
-    <link rel="stylesheet" href="{{ $normalize.RelPermalink }}" type="text/css">
+    {{ with resources.Get "css/normalize.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
+    {{ end }}
 
-    {{ $fontawesome := resources.Get "css/fontawesome.css" | resources.Minify }}
-    <link rel="stylesheet" href="{{ $fontawesome.RelPermalink }}" type="text/css">
+    {{ with resources.Get "css/fontawesome.css" | resources.Minify }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
+    {{ end }}
 
-    {{ $css := resources.Get "scss/main.scss" | resources.ToCSS | resources.Minify }}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}" type="text/css">
+    {{ with resources.Get "scss/main.scss" | toCSS | minify }}
+    <style>{{ .Content | safeCSS }}</style>
+    {{ end }}
 </head>
 
 <body>
