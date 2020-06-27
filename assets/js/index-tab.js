@@ -1,50 +1,122 @@
 'use strict'
 
-const anchorGroups = [
-        getAnchorsFromRowNumber(1),
-        getAnchorsFromRowNumber(2),
-    ],
-    sectionsGroups = [
-        getSectionsFromRowNumber(1),
-        getSectionsFromRowNumber(2),
-    ]
-
-function getAnchorsFromRowNumber(rowNumber) {
-    return document.querySelectorAll(`#row_${rowNumber} .select-tab > a`)
+function setVisibilityAll(selector, visible = true) {
+    document.querySelectorAll(selector).forEach(el => el.hidden = !visible)
 }
 
-function getSectionsFromRowNumber(rowNumber) {
-    return document.querySelectorAll(`#row_${rowNumber} section`)
+function hideSection(colNumber) {
+    setVisibilityAll(`section.col_${colNumber}`, false)
+}
+
+function showSection(colNumber) {
+    setVisibilityAll(`section.col_${colNumber}`, true)
+}
+
+function hideNavsAnchors() {
+    setVisibilityAll("nav.select-tab a", false)
+}
+
+function showNavsAnchors() {
+    setVisibilityAll("nav.select-tab a", true)
+}
+
+function columnFromElement(element) {
+    let column
+    element.classList.forEach(cls => {
+        if (cls.match(/^col_/)) column = cls.substr(4)
+    })
+    return column
+}
+
+function rowFromElement(element) {
+    let column
+    element.classList.forEach(cls => {
+        if (cls.match(/^row_/)) column = cls.substr(4)
+    })
+    return column
+}
+
+function clickHandler(event) {
+    event.stopPropagation()
+
+    const selectedCol = columnFromElement(event.srcElement)
+    const selectedRow = rowFromElement(event.srcElement)
+    const selectedSection = document.querySelector(`section.col_${selectedCol}.row_${selectedRow}`)
+
+    // Set selected anchor and show selected section
+    event.srcElement.classList.add("selected")
+    selectedSection.hidden = false
+
+    // Hide non-selected section
+    document.querySelectorAll("nav.select-tab a").forEach(anchor => {
+        if (anchor !== event.srcElement) anchor.classList.remove("selected")
+    })
+    document.querySelector(
+        `section.row_${selectedRow}.col_${otherColumnNumber(selectedCol)}`)
+        .hidden = true
+}
+
+/**
+ * Add event listener for "click" event to every "tab" anchor
+ * and remove href to avoid unwanted scrolling
+ */
+function addEventListeners() {
+    document.querySelectorAll('nav.select-tab a').forEach(anchor =>
+        anchor.addEventListener("click", clickHandler, false))
+}
+
+function removeEventListeners() {
+    document.querySelectorAll('nav.select-tab a').forEach(anchor => {
+        anchor.removeEventListener("click", clickHandler, false)
+    })
+}
+
+function otherColumnNumber(columnNumber) {
+    return (Number(columnNumber) % 2) + 1
+}
+
+function setActiveSection(columnNumber) {
+    document.querySelectorAll(`nav.select-tab a.col_${columnNumber}`)
+        .forEach(anchor => anchor.classList.add("selected"))
+}
+
+function unsetActiveSection(columnNumber) {
+    document.querySelectorAll(`nav.select-tab a.col_${columnNumber}`)
+        .forEach(anchor => anchor.classList.remove("selected"))
+}
+
+function hideLargeScreen() {
+    setVisibilityAll('.large-only', false)
+}
+
+function showLargeScreen() {
+    setVisibilityAll('.large-only', true)
+}
+
+function handleMediaQueryEvent(event) {
+    if (event.matches) {
+        addEventListeners()
+        setActiveSection(1)
+        unsetActiveSection(2)
+        hideSection(2)
+        hideLargeScreen()
+        showNavsAnchors()
+    } else {
+        removeEventListeners()
+        showSection(1)
+        showSection(2)
+        unsetActiveSection(1)
+        unsetActiveSection(2)
+        hideNavsAnchors()
+        showLargeScreen()
+    }
 }
 
 window.onload = () => {
-    /**
-     * Hide second section for each row and elements meant for browsers
-     * with disabled JS
-     */
-    sectionsGroups.forEach(sections => { if (sections[1]) sections[1].hidden = true })
-    document.querySelectorAll('.noscript-only').forEach(element => element.hidden = true)
+    // JS is enabled so let's hide all the noscript-only elements
+    // document.querySelectorAll('.noscript-only').forEach(element => element.hidden = true)
 
-    /**
-     * Add event listener for "click" event to every "tab" anchor
-     * and remove href to avoid unwanted scrolling
-     */
-    anchorGroups.forEach((group, groupIndex) => {
-        group.forEach((anchor, anchorIndex) => {
-            anchor.removeAttribute("href"); // To avoid unnecessary scrolling
-
-            anchor.addEventListener("click", event => {
-                event.stopPropagation()
-
-                // swap "selected" class
-                event.srcElement.classList.add("selected")
-                anchorGroups[groupIndex][(anchorIndex+1) % 2].classList.remove("selected")
-
-                // swap section visibility
-                sectionsGroups[groupIndex][(anchorIndex+1) % 2].hidden = true
-                sectionsGroups[groupIndex][anchorIndex % 2].hidden = false
-
-            }, false)
-        })
-    })
+    const mql = window.matchMedia("screen and (max-width: 799px)") // FIXME fetch from CSS
+    handleMediaQueryEvent(mql)
+    mql.addListener(handleMediaQueryEvent)
 }

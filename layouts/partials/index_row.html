@@ -7,7 +7,6 @@
 
     {{ if isset $section.Params "index_row" }}
     <a
-        href="#{{ anchorize $section.Title }}"
         class="row_{{ $row }} col_{{ add $section_index 1 }}{{ if eq $section_index 0 }} selected{{ end }}"
     >
         {{ $section.Title }}
@@ -19,11 +18,10 @@
 
 {{ range $section_index, $section := $sections }}
 <section
-    id="{{ anchorize $section.Title }}"
     class="animated row_{{ $row }} col_{{ add $section_index 1 }}"
 >
 
-    <h2 class="noscript-only">
+    <h2 class="large-only">
         <a
             href="{{ or .Params.src_url .RelPermalink }}"
             {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
