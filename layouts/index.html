@@ -9,9 +9,9 @@
 {{ define "main" }}
 
     {{ $context := . }}
-    {{ range $rowNumber :=  (seq 1) }}{{/*  fixme  */}}
+    {{ range $rowNumber :=  (seq 2) }}{{/*  fixme  */}}
     <div
-        class="row_{{ $rowNumber }}"
+        class="index_content row_{{ $rowNumber }}"
     >
         {{ partial "index_row" (dict "context" $context "row" $rowNumber) }}
     </div>
