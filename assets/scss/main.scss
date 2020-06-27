@@ -17,6 +17,7 @@ ul {
 a,
 a:visited,
 a:hover {
+  text-decoration: none;
   color: var(--main-color);
 }
 
@@ -37,42 +38,18 @@ body {
   background-color: var(--bkg-color-dark);
   font-family: sans-serif;
   font-weight: lighter;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 article {
   margin-bottom: 3rem;
+  line-height: 1.5rem;
+  background-color: var(--bkg-color-light);
 
   p {
     margin-bottom: 0.2rem;
   }
-}
-
-header > {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  ul,
-  h1 {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  nav {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-}
-
-main {
-  margin-top: 50px;
-}
-
-section {
-  padding: 1rem;
-  margin-bottom: 3rem;
-  line-height: 1.5rem;
-  background-color: var(--bkg-color-light);
 }
 
 footer {
@@ -83,11 +60,11 @@ footer {
   background-color: var(--bkg-color-light);
 }
 
-nav.site-nav > li {
+nav.site-nav > ul > li {
   display: inline-block;
 }
 
-header > ul.social-icons {
+ul.social-icons {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
