@@ -8,6 +8,9 @@
   "license": "Apache",
   "devDependencies": {},
   "dependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
     "@fortawesome/fontawesome-free": "^5.13.1",
     "axios": "^0.19.2",
     "ncu": "^0.2.1",

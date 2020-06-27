@@ -1,9 +1,14 @@
 {{ define "main" }}
 
-<h1>{{ .Title }}</h1>
+<header>
+    <h1>{{ .Title }}</h1>
+    <small>{{ partial "date" .Date }}</small>
+</header>
 
-<small>{{ partial "date" .Date }}</small>
 
-{{ .Content }}
+<section>
+    {{ .Content }}
+</section>
+
 
 {{ end }}
