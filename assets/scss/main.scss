@@ -60,10 +60,6 @@ footer {
   background-color: var(--bkg-color-light);
 }
 
-nav.site-nav > ul > li {
-  display: inline-block;
-}
-
 ul.social-icons {
   display: flex;
   flex-wrap: wrap;
@@ -72,6 +68,10 @@ ul.social-icons {
   > li {
     padding: 15px 10px 0 10px;
   }
+}
+
+nav.site-nav > ul > li {
+  display: inline-block;
 }
 
 .extlink {
