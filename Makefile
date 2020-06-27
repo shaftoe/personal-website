@@ -40,11 +40,14 @@ npm-install:
 setup: npm-install
 	@pip install -r requirements.txt
 
-test: eslint html5validator
+stylelint:
+	@npx stylelint assets/scss/*.scss
+
+test: eslint stylelint html5validator
 
 upgrade: upgrade-node-modules npm
 
 upgrade-node-modules:
 	@ncu -u
 
-.PHONY: server build clean eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install setup test upgrade upgrade-node-modules
+.PHONY: server build clean eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install setup stylelint test upgrade upgrade-node-modules
