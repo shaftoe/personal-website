@@ -1,167 +1,174 @@
 // XXX :root is parsed by index-tab.js and must be the 1st stanza in this file
 :root {
-    --main-color: #FF7A00;
-    --bkg-color-dark: #050723;
-    --bkg-color-light: #151737;
-    // would be nice to use --responsive-max-width in the media query but at the moment
-    // it's not supported:
-    // https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
-    --responsive-max-width: 799px;
+  --main-color: #ff7a00;
+  --bkg-color-dark: #050723;
+  --bkg-color-light: #151737;
+  // would be nice to use --responsive-max-width in the media query but at the moment
+  // it's not supported:
+  // https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
+  --responsive-max-width: 799px;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 a {
-    color: var(--main-color);
+  color: var(--main-color);
 }
 
-p, h1, h2, h3, h4 {
-    margin: 0;
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
 }
 
 blockquote {
-    font-style: italic;
+  font-style: italic;
 }
 
 body {
-    color: var(--main-color);
-    background-color: var(--bkg-color-dark);
-    font-family: sans-serif;
-    font-weight: lighter;
-}
-
-// social icons and navbar items
-header li, nav li {
-    display: inline;
-
-    a {
-        text-decoration: none;
-    }
-
-    a:hover, a:visited {
-        color: var(--main-color);
-    }
-}
-
-header > {
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    ul, h1 {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    nav {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
-main {
-    margin-top: 50px;
-}
-
-section {
-    padding: 1rem;
-    margin-bottom: 3rem;
-    line-height: 1.5rem;
-    background-color: var(--bkg-color-light);
+  color: var(--main-color);
+  background-color: var(--bkg-color-dark);
+  font-family: sans-serif;
+  font-weight: lighter;
 }
 
 article {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 
-    a {
-        text-decoration: none;
-    }
+  a {
+    text-decoration: none;
+  }
 
-    small > a {
-        text-decoration: underline;
-    }
+  small > a {
+    text-decoration: underline;
+  }
 
-    p {
-        margin-bottom: 0.2rem;
-    }
+  p {
+    margin-bottom: 0.2rem;
+  }
 }
 
+// social icons and navbar items
+header li,
+nav li {
+  display: inline;
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:visited {
+    color: var(--main-color);
+  }
+}
+
+header > {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  ul,
+  h1 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  nav {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+main {
+  margin-top: 50px;
+}
+
+section {
+  padding: 1rem;
+  margin-bottom: 3rem;
+  line-height: 1.5rem;
+  background-color: var(--bkg-color-light);
+}
 
 footer {
-    text-align: center;
+  text-align: center;
 }
 
 .row {
-    background-color: var(--bkg-color-light);
+  background-color: var(--bkg-color-light);
 }
 
 .social-icons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
-    li {
-        padding: 15px 10px 0px 10px;
-    }
+  li {
+    padding: 15px 10px 0 10px;
+  }
 }
 
 .extlink {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .extlink::after {
-    display: inline-block;
-    padding-left: 0.5rem;
-    font-family: "Font Awesome 5 Free";
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 600;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    content: "\f35d";
+  display: inline-block;
+  padding-left: 0.5rem;
+  /* stylelint-disable font-family-no-missing-generic-family-keyword */
+  font-family: "Font Awesome 5 Free";
+  /* stylelint-enable font-family-no-missing-generic-family-keyword */
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 600;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "\f35d";
 }
 
 .select-tab {
-    display: flex;
-    text-align: center;
+  display: flex;
+  text-align: center;
 
-    a {
-        width: 100%;
-        font-size: xx-large;
+  a {
+    width: 100%;
+    font-size: xx-large;
+    padding-top: 1rem;
+    padding-bottom: 0.3rem;
+    text-decoration: none;
+    background-color: var(--bkg-color-dark);
+    cursor: pointer;
+  }
 
-        padding-top: 1rem;
-        padding-bottom: 0.3rem;
-        text-decoration: none;
-        background-color: var(--bkg-color-dark);
-        cursor: pointer;
-    }
-
-    a.selected {
-        color: var(--main-color);
-        background-color: var(--bkg-color-light);
-    }
+  a.selected {
+    color: var(--main-color);
+    background-color: var(--bkg-color-light);
+  }
 }
 
 .animated {
-    animation: fadeEffect 0.7s;
+  animation: fadeEffect 0.7s;
 }
 
 @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media screen and (min-width: 800px) {
-    div.index_content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
+  div.index_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 iframe {
-    border: 0;
-    width: 100%;
+  border: 0;
+  width: 100%;
 }
