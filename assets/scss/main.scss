@@ -1,4 +1,4 @@
-// :root stanza is parsed by index-tab.js and must be defined before each other
+// XXX :root is parsed by index-tab.js and must be the 1st stanza in this file
 :root {
     --main-color: #FF7A00;
     --bkg-color-dark: #050723;
@@ -74,6 +74,11 @@ article {
     }
 }
 
+
+footer {
+    text-align: center;
+}
+
 .row {
     background-color: var(--bkg-color-light);
 }
@@ -116,7 +121,6 @@ article {
         padding-bottom: 0.3rem;
         text-decoration: none;
         background-color: var(--bkg-color-dark);
-        // color: var(--bkg-color-light);
         cursor: pointer;
     }
 
@@ -133,8 +137,4 @@ article {
 @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
-}
-
-footer {
-    text-align: center;
 }
