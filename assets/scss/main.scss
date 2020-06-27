@@ -121,9 +121,8 @@ footer {
 .extlink::after {
   display: inline-block;
   padding-left: 0.5rem;
-  /* stylelint-disable font-family-no-missing-generic-family-keyword */
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
   font-family: "Font Awesome 5 Free";
-  /* stylelint-enable font-family-no-missing-generic-family-keyword */
   font-style: normal;
   font-variant: normal;
   font-weight: 600;
