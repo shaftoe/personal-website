@@ -25,8 +25,8 @@
     class="row_{{ $row }} col_{{ add $section_index 1 }}"
 >
 
-    <header>
-        <h2 class="large-only">
+    <header class="large-only">
+        <h2>
             <a
                 href="{{ or .Params.src_url .RelPermalink }}"
                 {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}

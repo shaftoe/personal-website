@@ -109,7 +109,9 @@ body > header {
 }
 
 nav.select-tab {
-  justify-content: space-evenly;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
   a {
     width: 100%;
@@ -166,7 +168,7 @@ nav.select-tab {
     gap: 2rem;
   }
 
-  .small-only {
+  nav.select-tab.small-only {
     display: none;
   }
 
