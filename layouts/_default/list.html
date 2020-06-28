@@ -1,7 +1,9 @@
+{{ define "header" }}
+<h1>{{ .Page.Title }}</h1>
+{{ end }}
+
 {{ define "main" }}
 {{ $section := . }}
-
-<h1>{{ .Page.Title }}</h1>
 
 {{ range .Pages }}
 {{ partial "article" (dict "article" . "section" $section) }}

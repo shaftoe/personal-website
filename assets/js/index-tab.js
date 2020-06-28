@@ -4,13 +4,6 @@ function setVisibilityAll(selector, visible = true, docRoot = document) {
     docRoot.querySelectorAll(selector).forEach(el => el.hidden = !visible)
 }
 
-function setDisplayAll(selector, visible = true, docRoot = document) {
-    docRoot.querySelectorAll(selector).forEach(el => {
-        el.style.display = visible ? "flex" : "none"
-        el.hidden = !visible
-    })
-}
-
 function hideSection(colNumber) {
     setVisibilityAll(`section.col_${colNumber}`, false)
 }
@@ -74,15 +67,11 @@ function unsetSessionActive(columnNumber) {
 
 function handleMediaQueryEvent(event) {
     if (event.matches) {
-        setDisplayAll(".large-only", false)
-        setDisplayAll(".small-only", true)
         setSessionActive(1)
         unsetSessionActive(2)
         hideSection(2)
         addEventListeners()
     } else {
-        setDisplayAll(".small-only", false)
-        setDisplayAll(".large-only", true)
         showSection(1)
         showSection(2)
         unsetSessionActive(1)

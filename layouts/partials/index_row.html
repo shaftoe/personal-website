@@ -25,33 +25,37 @@
     class="row_{{ $row }} col_{{ add $section_index 1 }}"
 >
 
-    <h2 class="large-only">
-        <a
-            href="{{ or .Params.src_url .RelPermalink }}"
-            {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
-        >
-            {{ $section.Title }}
-        </a>
-    </h2>
+    <header>
+        <h2 class="large-only">
+            <a
+                href="{{ or .Params.src_url .RelPermalink }}"
+                {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
+            >
+                {{ $section.Title }}
+            </a>
+        </h2>
+    </header>
 
     {{ if isset $section.Params "index_row" }}
 
-        {{ range first $context.Site.Params.articles_in_index $section.Pages }}
-        {{ partial "article" (dict "article" . "section" $section) }}
-        {{ end }}
+    {{ range first $context.Site.Params.articles_in_index $section.Pages }}
+    {{ partial "article" (dict "article" . "section" $section) }}
+    {{ end }}
 
+    <footer>
         <a
-            href="{{ or .Params.src_url .RelPermalink }}"
-            {{ if isset .Params "src_url" }}class="extlink"{{ end }}
+        href="{{ or .Params.src_url .RelPermalink }}"
+        {{ if isset .Params "src_url" }}class="extlink"{{ end }}
         >
-            {{ if isset $section.Params "article_kind" }}
-                More {{ $section.Params.article_kind | pluralize }}
-            {{ else if isset $section.Params "src_url" }}
-                More {{ $section.Title | pluralize }}
-            {{ else }}
-                More articles
-            {{end}}
+        {{ if isset $section.Params "article_kind" }}
+            More {{ $section.Params.article_kind | pluralize }}
+        {{ else if isset $section.Params "src_url" }}
+            More {{ $section.Title | pluralize }}
+        {{ else }}
+            More articles
+        {{end}}
         </a>
+    </footer>
 
     {{ end }}
 
