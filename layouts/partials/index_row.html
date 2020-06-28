@@ -38,7 +38,7 @@
 
     {{ if isset $section.Params "index_row" }}
 
-    {{ range first $context.Site.Params.articles_in_index $section.Pages }}
+    {{ range first (.Param "listed_articles") $section.Pages }}
     {{ partial "article" (dict "article" . "section" $section) }}
     {{ end }}
 
@@ -46,6 +46,7 @@
         <a
         href="{{ or .Params.src_url .RelPermalink }}"
         {{ if isset .Params "src_url" }}class="extlink"{{ end }}
+        {{ with .Param "link_title" }}title="{{ . }}"{{ end }}
         >
         {{ if isset $section.Params "article_kind" }}
             More {{ $section.Params.article_kind | pluralize }}
