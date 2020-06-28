@@ -47,22 +47,39 @@ body {
 
 section {
   color: white;
+  background-color: var(--bkg-color-light);
+
+  > footer {
+    font-size: x-large;
+  }
 }
 
 article {
   border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 3rem;
+  border-width: 3px;
+  border-style: solid;
+  border-image:
+    linear-gradient(
+      to bottom,
+      var(--main-color),
+      rgba(0, 0, 0, 0)
+    ) 1 100%;
+  padding: 0 1rem 0;
+  margin-bottom: 2rem;
   line-height: 1.5rem;
-  background-color: var(--bkg-color-light);
 
   p {
     margin-bottom: 0.2rem;
+  }
+
+  header {
+    margin-top: 0;
   }
 }
 
 footer {
   text-align: center;
+  padding-bottom: 1rem;
 }
 
 .row {
@@ -101,6 +118,10 @@ body > header {
   }
 }
 
+div.index_content {
+  margin-bottom: 3rem;
+}
+
 .extlink {
   text-decoration: none;
 }
@@ -126,9 +147,10 @@ nav.select-tab {
   a {
     width: 100%;
     font-size: x-large;
-    padding-top: 1rem;
-    padding-bottom: 0.3rem;
+    padding: 1rem 0;
     text-decoration: none;
+    // border-top: solid 1px;
+    // border-radius: 10px;
     background-color: var(--bkg-color-dark);
     cursor: pointer;
   }
@@ -174,7 +196,7 @@ nav.select-tab {
 
   div.index_content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 5fr 3fr;
     gap: 5rem;
   }
 

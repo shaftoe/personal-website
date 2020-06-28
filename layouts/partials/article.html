@@ -5,9 +5,11 @@
 <article>
 
     {{ if $section.Params.show_title }}
-    <h3>
-        <a href="{{ $url }}">{{ $article.Title }}</a>
-    </h3>
+    <header>
+        <h3>
+            <a href="{{ $url }}">{{ $article.Title }}</a>
+        </h3>
+    </header>
     {{ end }}
 
     {{ with $article.Params.description }}
