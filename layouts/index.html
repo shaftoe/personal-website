@@ -1,8 +1,10 @@
 {{ define "header" }}
 
-    <h1 class="claim">{{ .Site.Param "description" }}</h1>
+    <div>
+        <h1 class="claim">{{ .Site.Param "description" }}</h1>
 
-    {{ partial "social_icons" .Site.Menus.socialnetworks }}
+        {{ partial "social_icons" .Site.Menus.socialnetworks }}
+    </div>
 
 {{ end }}
 

@@ -25,7 +25,8 @@ p,
 h1,
 h2,
 h3,
-h4 {
+h4,
+ul {
   margin: 0;
 }
 
@@ -66,7 +67,7 @@ ul.social-icons {
   justify-content: space-evenly;
 
   > li {
-    padding: 15px 10px 0 10px;
+    padding: 0 10px 15px 10px;
   }
 }
 
@@ -121,6 +122,21 @@ nav.site-nav > ul > li {
 }
 
 @media screen and (min-width: 800px) {
+  body > header {
+    display: flex;
+    justify-content: center;
+
+    div {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      max-width: 1000px;
+
+      h1 {
+        align-self: center;
+      }
+    }
+  }
+
   div.index_content {
     display: grid;
     grid-template-columns: 1fr 1fr;

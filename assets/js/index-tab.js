@@ -100,8 +100,9 @@ function getMaxResponsiveWidth() {
     return sheet.rules[0].cssText.match(/--responsive-max-width: (\d+px)/).pop()
 }
 
-window.onload = () => {
-    const mql = window.matchMedia(`screen and (max-width: ${getMaxResponsiveWidth()})`)
-    handleMediaQueryEvent(mql)
-    mql.addListener(handleMediaQueryEvent)
-}
+window.onload = () => document.querySelectorAll("section")
+    .forEach(section => section.classList.add("animated"))
+
+const mql = window.matchMedia(`screen and (max-width: ${getMaxResponsiveWidth()})`)
+handleMediaQueryEvent(mql)
+mql.addListener(handleMediaQueryEvent)
