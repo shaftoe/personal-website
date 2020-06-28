@@ -12,7 +12,7 @@ build:
 	@hugo --cleanDestinationDir --minify
 
 clean:
-	@rm -r public/
+	@rm -rf public/
 
 eslint:
 	@eslint assets/js/ lib/
