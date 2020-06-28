@@ -1,6 +1,7 @@
 ---
+index_row: 1
+link_title: Go to my my Tech Blog
+show_title: true
 title: Tech Blog
 weight: 1
-index_row: 1
-show_title: true
 ---
