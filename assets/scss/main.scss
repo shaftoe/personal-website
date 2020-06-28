@@ -35,6 +35,8 @@ blockquote {
 }
 
 body {
+  max-width: 1200px;
+  margin: 0 auto;
   color: var(--main-color);
   background-color: var(--bkg-color-dark);
   font-family: sans-serif;
@@ -48,6 +50,8 @@ section {
 }
 
 article {
+  border-radius: 0.5rem;
+  padding: 1rem;
   margin-bottom: 3rem;
   line-height: 1.5rem;
   background-color: var(--bkg-color-light);
@@ -66,6 +70,12 @@ footer {
 }
 
 ul.social-icons {
+  display: flex;
+  justify-content: center;
+}
+
+ul.social-icons > div {
+  max-width: 220px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -165,11 +175,19 @@ nav.select-tab {
   div.index_content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 5rem;
   }
 
   nav.select-tab.small-only {
     display: none;
+  }
+
+  header.large-only {
+    text-align: center;
+
+    a {
+      font-size: xx-large;
+    }
   }
 
   .large-only {
