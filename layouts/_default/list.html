@@ -6,9 +6,9 @@
 {{ $section := . }}
 
 <section>
-    {{ range (.Paginator 5).Pages }}
+{{- range (.Paginator 5).Pages -}}
     {{ partial "article" (dict "article" . "section" $section) }}
-    {{ end }}
+{{- end -}}
 </section>
 
 {{ template "_internal/pagination.html" . }}

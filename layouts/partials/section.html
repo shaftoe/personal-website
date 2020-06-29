@@ -13,7 +13,7 @@
                 href="{{ or $context.Params.src_url $context.RelPermalink }}"
                 {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
             >
-                {{ $section.Title }}
+                {{- $section.Title -}}
             </a>
         </h2>
     </header>
