@@ -53,9 +53,9 @@
 
     <footer>
         <small>
-            Last update: <em>{{ partial "date" now.UTC }} UTC</em>
+            Last update: <em>{{ now.UTC.Format "02 Jan 2006 15:04 UTC" }}</em>
             -
-            &copy; {{ now.Format "2006"}} {{ $.Param "author"}}
+            &copy; {{ now.Format "2006"}} {{ .Param "author"}}
         </small>
     </footer>
 
