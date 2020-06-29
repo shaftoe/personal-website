@@ -21,44 +21,5 @@
 </nav>
 
 {{ range $section_index, $section := $sections }}
-<section
-    class="row_{{ $row }} col_{{ add $section_index 1 }}"
->
-
-    <header>
-        <h2>
-            <a
-                href="{{ or .Params.src_url .RelPermalink }}"
-                {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
-            >
-                {{ $section.Title }}
-            </a>
-        </h2>
-    </header>
-
-    {{ if isset $section.Params "index_row" }}
-
-    {{ range first (.Param "listed_articles") $section.Pages }}
-    {{ partial "article" (dict "article" . "section" $section) }}
-    {{ end }}
-
-    <footer>
-        <a
-        href="{{ or .Params.src_url .RelPermalink }}"
-        {{ if isset .Params "src_url" }}class="extlink"{{ end }}
-        {{ with .Param "link_title" }}title="{{ . }}"{{ end }}
-        >
-        {{ if isset $section.Params "article_kind" }}
-            More {{ $section.Params.article_kind | pluralize }}
-        {{ else if isset $section.Params "src_url" }}
-            More {{ $section.Title | pluralize }}
-        {{ else }}
-            More articles
-        {{end}}
-        </a>
-    </footer>
-
-    {{ end }}
-
-</section>
+    {{ partial "section" (dict "context" . "row" $row "section_index" $section_index "section" $section)}}
 {{ end }}

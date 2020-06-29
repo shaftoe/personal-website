@@ -15,7 +15,7 @@
     {{ with $article.Params.description }}
         {{ . }}
     {{ else }}
-        {{ $article.Content | truncate 380 }}
+        {{ $article.Content | truncate 400 }}
     {{ end }}
 
     <footer>
