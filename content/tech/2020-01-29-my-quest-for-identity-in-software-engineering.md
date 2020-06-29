@@ -1,7 +1,7 @@
 ---
 title: "My quest for identity in Software Engineering"
 description: "A wrap up of my last 20 years as a professional in IT, along with some considerations about the current state of the art."
-categories:
+tags:
   - jamstack
   - serverless
   - software

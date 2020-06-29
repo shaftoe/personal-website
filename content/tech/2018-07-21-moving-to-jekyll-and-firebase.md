@@ -1,6 +1,6 @@
 ---
 title: Migrating the blog to Jekyll and Firebase
-categories:
+tags:
   - blog
   - bootstrap
   - firebase

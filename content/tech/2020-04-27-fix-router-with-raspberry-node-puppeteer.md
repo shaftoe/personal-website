@@ -1,6 +1,6 @@
 ---
 title: Automate router WiFi bridge setup with Raspberry Pi, Node.js, Puppeteer and Ansible
-categories:
+tags:
   - ansible
   - javascript
   - nodejs

@@ -1,7 +1,7 @@
 ---
 title: "Remaking my curriculum vitæ with modern web technologies"
 description: "For a while I wanted to manage my CV in a more flexible way. I stumbled upon a great article on CSS-Tricks that made me think I had no more excuses to procrastinate. In this article I present my solution along with some considerations."
-categories:
+tags:
   - css3
   - html5
   - hugo

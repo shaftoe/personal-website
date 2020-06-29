@@ -1,7 +1,7 @@
 ---
 title: Centralise GNU/Linux email delivery like it's 2020
 description: The technological side of Email has always occupied a bittersweet corner in my nerdy heart. In this article I dive a bit in the history of SMTP and share a simple but effective solution that I currently use to rationalise system and users' email delivery for a few of the Linux systems I manage.
-categories:
+tags:
   - ansible
   - devops
   - email

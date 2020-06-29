@@ -1,7 +1,7 @@
 ---
 title: For simple tasks plain vanilla is still my favorite flavour of JavaScript
 description: I developed a simple JS audio player for a recording studio website and put it on GitHub. In this article I share my thoughts and findings.
-categories:
+tags:
   - audio
   - howler
   - javascript

@@ -1,13 +1,15 @@
 {{ define "header" }}
-<h1>{{ .Page.Title }}</h1>
+<h1 class="center">{{ .Param "author"}}'s {{ .Page.Title }}</h1>
 {{ end }}
 
 {{ define "main" }}
 {{ $section := . }}
 
-{{ range (.Paginator 5).Pages }}
-{{ partial "article" (dict "article" . "section" $section) }}
-{{ end }}
+<section>
+    {{ range (.Paginator 5).Pages }}
+    {{ partial "article" (dict "article" . "section" $section) }}
+    {{ end }}
+</section>
 
 {{ template "_internal/pagination.html" . }}
 {{ end }}

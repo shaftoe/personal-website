@@ -1,7 +1,7 @@
 ---
 title: Automate social media status updates with AWS Lambda, SNS and CDK
 description: In the previous article I introduced AWS Cloud Developer Kit and wondered if and how to make use of code abstractions when designing IaC. Today I show you one way to extend the previous codebase and deploy a typical event driven (pub-sub) serverless application built with Lambda and SNS.
-categories:
+tags:
   - api
   - lambda
   - python

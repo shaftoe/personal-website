@@ -1,6 +1,6 @@
 ---
 title: 'Lastversion: a Go serverless proof of concept developed on OpenWhisk'
-categories:
+tags:
   - docker
   - golang
   - openwhisk

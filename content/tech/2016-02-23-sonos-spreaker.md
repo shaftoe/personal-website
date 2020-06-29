@@ -1,6 +1,6 @@
 ---
 title: Integrating Sonos with Spreaker RSS feed
-categories:
+tags:
   - fsm
   - ifttt
   - podcast

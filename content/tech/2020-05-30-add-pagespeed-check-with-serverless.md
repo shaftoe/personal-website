@@ -1,7 +1,7 @@
 ---
 title: Add free performance monitoring to your websites with Lighthouse and AWS CDK
 description: Google's Lighthouse is a powerful free resource that helps developers build performant, accessible and SEO friendly websites. Here I show one way to make use of Lighthouse to add performance monitoring for web pages using Serverless components on AWS.
-categories:
+tags:
   - aws
   - cdk
   - lighthouse

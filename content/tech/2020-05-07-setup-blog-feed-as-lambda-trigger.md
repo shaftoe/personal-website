@@ -1,7 +1,7 @@
 ---
 title: Setup Atom/RSS feed as event source for AWS Lambda invocation with CDK
 description: In a previous article I described how to develop a serverless event-driven application to automate social media updates. Now I show how to make use of RSS/Atom Feed and AWS Lambda + CDK to add the missing bit and make it 100% automated.
-categories:
+tags:
   - aws
   - lambda
   - python

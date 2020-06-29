@@ -1,6 +1,6 @@
 ---
 title:  "sslnotify.me - yet another OpenSource Serverless MVP"
-categories:
+tags:
   - aws
   - lambda
   - openwhisk
