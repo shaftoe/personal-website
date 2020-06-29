@@ -5,36 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{ if .IsHome }}
+    {{- if .IsHome -}}
     <title>{{ .Site.Title }} - Home</title>
-    {{ else }}
+    {{- else -}}
     <title>{{ .Site.Title }} - {{ .Page.Title }}</title>
-    {{ end }}
+    {{- end -}}
 
-    {{ with resources.Get "css/normalize.css" | minify }}
+    {{- with resources.Get "css/normalize.css" | minify -}}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
-    {{ end }}
+    {{- end -}}
 
-    {{ with resources.Get "css/fontawesome.css" | minify }}
+    {{- with resources.Get "css/fontawesome.css" | minify -}}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
-    {{ end }}
+    {{- end -}}
 
-    {{ with resources.Get "scss/main.scss" | toCSS | minify }}
+    {{- with resources.Get "scss/main.scss" | toCSS | minify -}}
     <style>{{ .Content | safeCSS }}</style>
-    {{ end }}
+    {{- end -}}
 </head>
 
 <body>
 
     <nav class="site-nav">
         <ul>
-            {{ $currentPage := . }}
-            {{ range .Site.Menus.main }}
+            {{- $currentPage := . -}}
+            {{- range .Site.Menus.main -}}
             <li>
                 {{- $class := "sidebar-nav-item" -}}
                 {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
                     {{- $class = "sidebar-nav-item active" -}}
-                {{end}}
+                {{- end -}}
                 <a
                     class="{{ $class }}"
                     href="{{ .URL }}"
@@ -43,7 +43,7 @@
                     {{- .Name -}}
                 </a>
             </li>
-            {{ end }}
+            {{- end -}}
         </ul>
     </nav>
 
