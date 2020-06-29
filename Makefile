@@ -6,7 +6,8 @@ export MIXCLOUD_ACCOUNT_ID := al3xf
 server:
 	@hugo server
 
-prebuild: clean setup mastodon mixcloud normalize.css fontawesome.css
+babel-install:
+	@npm install -g babel-cli
 
 build:
 	@hugo --cleanDestinationDir --minify
@@ -38,11 +39,15 @@ normalize.css:
 npm-install:
 	@npm install
 
+pip-install:
+	@pip install -r requirements.txt
+
 postbuild:
 	@rsync -a --delete node_modules/@fortawesome/fontawesome-free/webfonts/ static/webfonts/
 
-setup: npm-install
-	@pip install -r requirements.txt
+prebuild: clean setup mastodon mixcloud normalize.css fontawesome.css
+
+setup: npm-install babel-install pip-install
 
 stylelint:
 	@npx stylelint assets/scss/*.scss
@@ -54,4 +59,4 @@ upgrade: upgrade-node-modules npm
 upgrade-node-modules:
 	@ncu -u
 
-.PHONY: server build clean deploy eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install setup stylelint test upgrade upgrade-node-modules
+.PHONY: server build clean deploy eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install prebuild setup stylelint test upgrade upgrade-node-modules
