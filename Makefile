@@ -2,6 +2,8 @@ include defaults.mk
 
 export MASTODON_ACCOUNT_ID := 36187
 export MIXCLOUD_ACCOUNT_ID := al3xf
+export DEFAULT_MODULE_PATH := ./node_modules
+export MODULE_PATH := $(shell MPATH=$${NODE_MODULES_PATH:-$(DEFAULT_MODULE_PATH)}; echo $$MPATH)
 
 server:
 	@hugo server
@@ -45,7 +47,7 @@ pip-install:
 
 postbuild:
 	@mkdir -p static/webfonts
-	@rsync -a --delete node_modules/@fortawesome/fontawesome-free/webfonts/ static/webfonts/
+	@rsync -a --delete $(MODULE_PATH)/@fortawesome/fontawesome-free/webfonts/ static/webfonts/
 
 prebuild: clean mastodon mixcloud normalize.css fontawesome.css
 
