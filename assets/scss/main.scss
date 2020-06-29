@@ -169,8 +169,15 @@ ul.social-icons {
   }
 }
 
-nav.site-nav > ul > li {
-  display: inline-block;
+nav.site-nav {
+  > ul > li {
+    padding-top: 1rem;
+    display: inline-block;
+  }
+
+  > ul > li + li {
+    padding-left: 1rem;
+  }
 }
 
 div.index_content {
