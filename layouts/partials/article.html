@@ -23,7 +23,7 @@
             href="{{ $url }}"
             {{ if isset $article.Params "src_url" }}class="extlink"{{ end }}
         >
-            Posted on {{ partial "date" $article.Date }}
+            {{ partial "date" $article.Date }}
             {{ if not (isset $section.Params "src_url") }} - Read more&#8230;{{end}}
         </a>
     </footer>

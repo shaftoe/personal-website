@@ -29,7 +29,7 @@
 
     {{ $js := resources.Get "js/index-tab.js" | babel | minify }}
     <script>
-        {{ $js.Content | safeJS }}
+        {{/* $js.Content | safeJS */}}
     </script>
 
 {{ end }}

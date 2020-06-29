@@ -59,9 +59,18 @@ section {
   background-color: var(--bkg-color-light);
   border-radius: 1rem;
 
-  > footer {
-    font-size: x-large;
+  > header {
+    padding-top: 1.5rem;
+    text-align: center;
   }
+
+  > footer {
+    font-size: 1.2rem;
+  }
+}
+
+section + section {
+  margin-top: 3rem;
 }
 
 article {
@@ -78,6 +87,10 @@ article {
 
   header {
     margin-top: 0;
+  }
+
+  > footer {
+    text-align: unset;
   }
 }
 
@@ -97,6 +110,10 @@ body > header {
 
 .row {
   background-color: var(--bkg-color-light);
+}
+
+nav.select-tab.if-js-enabled {
+  display: none;
 }
 
 nav.select-tab {
@@ -186,10 +203,6 @@ div.index_content {
   display: initial;
 }
 
-.large-only {
-  display: none;
-}
-
 .animated {
   animation: fadeEffect 0.7s;
 }
@@ -205,8 +218,8 @@ div.index_content {
     justify-content: center;
 
     div {
-      grid-template-columns: 2fr 1fr;
       grid-template-rows: unset;
+      grid-template-columns: 2fr 1fr;
       max-width: 1000px;
 
       h1 {
@@ -217,24 +230,27 @@ div.index_content {
 
   div.index_content {
     display: grid;
+    gap: 4rem;
+  }
+
+  div.index_content.row_1 {
     grid-template-columns: 5fr 3fr;
-    gap: 5rem;
+  }
+
+  div.index_content.row_2 {
+    grid-template-columns: 1fr 1fr;
   }
 
   nav.select-tab.small-only {
     display: none;
   }
 
-  header.large-only {
-    text-align: center;
-
-    a {
-      font-size: xx-large;
-    }
+  section > header {
+    padding: initial;
   }
 
-  .large-only {
-    display: inherit;
+  section + section {
+    margin-top: unset;
   }
 }
 

@@ -2,7 +2,7 @@
 {{ $row := .row }}
 {{ $sections := where $context.Site.Sections "Params.index_row" $row }}
 
-<nav class="select-tab row_{{ $row }} small-only" hidden>
+<nav class="select-tab row_{{ $row }} small-only if-js-enabled" hidden>
 {{ range $section_index, $section := $sections }}
 
     {{ if isset $section.Params "index_row" }}
@@ -25,7 +25,7 @@
     class="row_{{ $row }} col_{{ add $section_index 1 }}"
 >
 
-    <header class="large-only">
+    <header>
         <h2>
             <a
                 href="{{ or .Params.src_url .RelPermalink }}"
