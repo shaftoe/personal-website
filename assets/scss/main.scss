@@ -86,7 +86,6 @@ body > header {
 
   > div {
     display: grid;
-    grid-template-rows: 1fr 1fr;
     gap: 2rem;
     margin: 0 1.2rem;
 
@@ -163,6 +162,11 @@ div.index_content {
 
 .extlink {
   text-decoration: none;
+}
+
+.center {
+  display: block;
+  text-align: center;
 }
 
 .extlink::after {
