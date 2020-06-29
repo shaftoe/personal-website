@@ -15,8 +15,8 @@ build:
 clean:
 	@rm -rf public/
 
-# deploy: prebuild build test FIXME
-deploy: prebuild build
+# deploy: prebuild build show test FIXME
+deploy: prebuild build show
 
 eslint:
 	@eslint assets/js/ lib/
@@ -51,6 +51,9 @@ setup: npm-install babel-install pip-install
 
 stylelint:
 	@npx stylelint assets/scss/*.scss
+
+show:
+	@tree public/
 
 test: eslint stylelint html5validator
 
