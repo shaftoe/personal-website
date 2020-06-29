@@ -43,7 +43,7 @@ pip-install:
 	@pip install -r requirements.txt
 
 postbuild:
-	@rsync -a --delete node_modules/@fortawesome/fontawesome-free/webfonts/ static/webfonts/
+	@rsync -a --delete node_modules/@fortawesome/fontawesome-free/webfonts/ static/webfonts
 
 prebuild: clean mastodon mixcloud normalize.css fontawesome.css
 
