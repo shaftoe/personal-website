@@ -18,10 +18,7 @@ clean:
 	@rm -rf public/
 
 # deploy: prebuild build postbuild test FIXME
-# deploy: prebuild build postbuild
-deploy:
-	which babel
-	find / -type d -iname '*fontawesome*'
+deploy: prebuild build postbuild
 
 eslint:
 	@eslint assets/js/ lib/
