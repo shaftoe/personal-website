@@ -12,7 +12,7 @@ babel-install:
 	@npm install -g babel-cli
 
 build:
-	@hugo --cleanDestinationDir --minify
+	@hugo --minify
 
 clean:
 	@rm -rf public/
