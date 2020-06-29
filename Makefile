@@ -21,7 +21,7 @@ eslint:
 	@eslint assets/js/ lib/
 
 fontawesome.css:
-	@cp node_modules/@fortawesome/fontawesome-free/css/all.css assets/css/
+	@cp node_modules/@fortawesome/fontawesome-free/css/all.css assets/css/fontawesome.css
 
 html5validator:
 	@html5validator --root public/ --also-check-css
@@ -45,7 +45,7 @@ pip-install:
 postbuild:
 	@rsync -a --delete node_modules/@fortawesome/fontawesome-free/webfonts/ static/webfonts/
 
-prebuild: clean setup mastodon mixcloud normalize.css fontawesome.css
+prebuild: clean mastodon mixcloud normalize.css fontawesome.css
 
 setup: npm-install babel-install pip-install
 
