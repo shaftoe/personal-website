@@ -11,11 +11,11 @@
     <title>{{ .Site.Title }} - {{ .Page.Title }}</title>
     {{ end }}
 
-    {{ with resources.Get "css/normalize.css" | resources.Minify }}
+    {{ with resources.Get "css/normalize.css" | minify }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
     {{ end }}
 
-    {{ with resources.Get "css/fontawesome.css" | resources.Minify }}
+    {{ with resources.Get "css/fontawesome.css" | minify }}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
     {{ end }}
 
