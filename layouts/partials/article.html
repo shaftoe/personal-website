@@ -1,30 +1,30 @@
-{{ $section := .section }}
-{{ $article := .article }}
-{{ $url := or $article.Params.src_url $article.RelPermalink }}
+{{- $section := .section -}}
+{{- $article := .article -}}
+{{- $url := or $article.Params.src_url $article.RelPermalink -}}
 
 <article>
 
-    {{ if $section.Params.show_title }}
+    {{- if $section.Params.show_title -}}
     <header>
         <h3>
             <a href="{{ $url }}">{{ $article.Title }}</a>
         </h3>
     </header>
-    {{ end }}
+    {{- end -}}
 
-    {{ with $article.Params.description }}
-        {{ . }}
-    {{ else }}
-        {{ $article.Content | truncate 400 }}
-    {{ end }}
+    {{- with $article.Params.description -}}
+    {{ . -}}
+    {{- else -}}
+    {{ $article.Content | truncate 400 -}}
+    {{- end -}}
 
     <footer>
         <a
             href="{{ $url }}"
-            {{ if isset $article.Params "src_url" }}class="extlink"{{ end }}
+            {{ if isset $article.Params "src_url" }}class="extlink"{{ end -}}
         >
-            {{ partial "date" $article.Date }}
-            {{ if not (isset $section.Params "src_url") }} - Read more&#8230;{{end}}
+            {{- partial "date" $article.Date -}}
+            {{- if not (isset $section.Params "src_url") -}} - Read more&#8230;{{ end -}}
         </a>
     </footer>
 

@@ -1,10 +1,12 @@
 {{ define "header" }}
 
-    <div class="index-header">
-        {{ .Content }}
+    <div class="index">
+        <div class="claim">
+            {{- .Content -}}
+        </div>
 
         <div>
-            {{ partial "social_icons" .Site.Menus.socialnetworks }}
+            {{- partial "social_icons" .Site.Menus.socialnetworks -}}
             <!-- FIXME use handwritten font -->
             <span class="center">
                 I'm social!

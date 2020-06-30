@@ -1,16 +1,18 @@
-{{ $row := .row }}
-{{ $section := .section }}
-{{ $section_index := .section_index }}
-{{ $context := .context }}
+{{- $row := .row -}}
+{{- $section := .section -}}
+{{- $section_index := .section_index -}}
+{{- $context := .context -}}
 
+<!-- FIXME probably context and section are the same here? -->
 <section
     class="row_{{ $row }} col_{{ add $section_index 1 }}"
+    id="{{ $section.Title | anchorize }}"
 >
 
     <header>
         <h2>
             <a
-                href="{{ or $context.Params.src_url $context.RelPermalink }}"
+                href="{{ or $section.Params.src_url $section.RelPermalink }}"
                 {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
             >
                 {{- $section.Title -}}
@@ -18,30 +20,30 @@
         </h2>
     </header>
 
-    {{ if isset $section.Params "index_row" }}
+    {{- if isset $section.Params "index_row" -}}
 
-    {{ range first ($context.Param "listed_articles") $section.Pages }}
+    {{- range first ($context.Param "listed_articles") $section.Pages -}}
     {{ partial "article" (dict "article" . "section" $section) }}
-    {{ end }}
+    {{- end -}}
 
     <footer>
         <!-- FIXME add tags list -->
 
         <a
-            href="{{ or $context.Params.src_url $context.RelPermalink }}"
-            {{ if isset .Params "src_url" }}class="extlink"{{ end }}
-            {{ with $context.Param "link_title" }}title="{{ . }}"{{ end }}
+            href="{{ or $section.Params.src_url $context.RelPermalink }}"
+            {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
+            {{ with $section.Param "link_title" }}title="{{ . }}"{{ end }}
         >
-        {{ if isset $section.Params "article_kind" }}
-            More {{ $section.Params.article_kind | pluralize }}
-        {{ else if isset $section.Params "src_url" }}
-            More {{ $section.Title | pluralize }}
-        {{ else }}
-            More articles
-        {{end}}
+        {{- if isset $section.Params "article_kind" -}}
+        More {{ $section.Params.article_kind | pluralize -}}
+        {{- else if isset $section.Params "src_url" -}}
+        More {{- $section.Title | pluralize -}}
+        {{- else -}}
+        More articles
+        {{- end -}}
         </a>
     </footer>
 
-    {{ end }}
+    {{- end -}}
 
 </section>
