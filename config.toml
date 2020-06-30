@@ -78,3 +78,6 @@ title = "Al3x"
     name = "facebook"
     url = "https://www.facebook.com/alexander.fortin.9"
     weight = 10
+
+[taxonomies]
+  genre = "genres"
