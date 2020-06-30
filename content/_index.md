@@ -6,4 +6,4 @@ Hi, I'm Alex, a Software Engineer with a passion for automation and _all the thi
 
 I like to write about that on my [tech blog](#tech-blog).
 
-I like to [micro-blog](#mastodon), make [videos](#videos) and [music mixes](#music-mixes) too.
+I like to [micro-blog](#micro-blog), make [videos](#videos) and [music mixes](#music-mixes) too.
