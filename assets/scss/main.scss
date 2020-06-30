@@ -54,6 +54,10 @@ footer {
   padding-bottom: 1rem;
 }
 
+section.list {
+  padding-top: 1rem;
+}
+
 section {
   color: white;
   background-color: var(--bkg-color-light);
@@ -104,24 +108,6 @@ div.index {
   margin: 0 1.2rem;
 }
 
-div.claim {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-
-  p {
-    font-size: 1.5rem;
-
-    a {
-      text-decoration: underline;
-    }
-  }
-
-  p + p {
-    padding-top: 1rem;
-  }
-}
-
 .row {
   background-color: var(--bkg-color-light);
 }
@@ -149,6 +135,24 @@ nav.select-tab {
   a.selected {
     color: var(--main-color);
     background-color: var(--bkg-color-light);
+  }
+}
+
+div.claim {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+
+  p {
+    font-size: 1.5rem;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  p + p {
+    padding-top: 1rem;
   }
 }
 

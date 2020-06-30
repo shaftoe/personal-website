@@ -37,7 +37,7 @@
         {{- if isset $section.Params "article_kind" -}}
         More {{ $section.Params.article_kind | pluralize -}}
         {{- else if isset $section.Params "src_url" -}}
-        More {{- $section.Title | pluralize -}}
+        More {{ $section.Title | pluralize -}}
         {{- else -}}
         More articles
         {{- end -}}
