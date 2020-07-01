@@ -104,7 +104,7 @@ header.site {
 
 div.index {
   display: grid;
-  gap: 2rem;
+  gap: 3rem;
   margin: 0 1.2rem;
 }
 
@@ -143,15 +143,17 @@ div.claim {
   flex-flow: column wrap;
   justify-content: space-between;
 
-  p {
+  h1,
+  h2 {
     font-size: 1.5rem;
+    font-weight: normal;
 
     a {
       text-decoration: underline;
     }
   }
 
-  p + p {
+  h2 {
     padding-top: 1rem;
   }
 }
@@ -171,18 +173,19 @@ ul.pagination {
   }
 }
 
-ul.social-icons {
+div.social {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
-  > div {
-    max-width: 220px;
+  ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 
     > li {
-      padding: 0 10px 15px 10px;
+      padding: 0 20px 30px;
     }
   }
 }

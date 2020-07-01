@@ -5,7 +5,7 @@
             {{- .Content -}}
         </div>
 
-        <div>
+        <div class="social">
             {{- partial "social_icons" .Site.Menus.socialnetworks -}}
             <!-- FIXME use handwritten font -->
             <span class="center">
@@ -21,7 +21,7 @@
 {{ define "main" }}
 
     {{ $context := . }}
-    {{ range $rowNumber :=  (seq 2) }}{{/*  fixme  */}}
+    {{ range $rowNumber :=  (seq 1) }}{{/*  fixme  */}}
     <div
         class="index_content row_{{ $rowNumber }}"
     >

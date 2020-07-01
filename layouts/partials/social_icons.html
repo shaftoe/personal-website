@@ -1,16 +1,14 @@
 {{ $socialNetworks := . }}
 <ul class="social-icons">
-    <div class="social-icons">
-        {{ range . }}
-        {{ $menu_entry := . }}
-        <li>
-            {{ partial "fontawesome.html" $menu_entry }}
-        </li>
-        {{ end }}
-        <li>
-            <a href="/contact" title="Contact me via email">
-                <i class="fas fa-at fa-2x"></i>
-            </a>
-        </li>
-    </div>
+    {{ range . }}
+    {{ $menu_entry := . }}
+    <li>
+        {{ partial "fontawesome.html" $menu_entry }}
+    </li>
+    {{ end }}
+    <li>
+        <a href="/contact" title="Contact me via email">
+            <i class="fas fa-at fa-2x"></i>
+        </a>
+    </li>
 </ul>
