@@ -22,6 +22,9 @@
     {{- with resources.Get "scss/main.scss" | toCSS | minify -}}
     <style>{{ .Content | safeCSS }}</style>
     {{- end -}}
+
+    <!-- FIXME move to partial -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -51,7 +54,7 @@
 
     <main>{{ block "main" . }}{{ end }}</main>
 
-    <footer>
+    <footer class="site">
         <p>
             Last update: <em>{{ now.UTC.Format "02 Jan 2006 15:04 UTC" }}</em>
         </p>
