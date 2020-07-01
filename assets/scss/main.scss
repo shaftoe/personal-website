@@ -121,23 +121,8 @@ div.index {
 }
 
 nav.select_tab {
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  a {
-    width: 100%;
-    font-size: x-large;
-    padding: 1rem 0 1.3rem;
-    text-decoration: none;
-    background-color: var(--color-bkg-dark);
-    cursor: pointer;
-  }
-
-  a.selected {
-    color: var(--color-main);
-    background-color: var(--color-bkg-light);
-  }
+  // FIXME
+  display: none;
 }
 
 div.claim {
@@ -313,10 +298,6 @@ div.index_content {
 
   div.index_content.row_2 {
     grid-template-columns: 1fr 1fr;
-  }
-
-  nav.select_tab.small-only {
-    display: none;
   }
 
   section > header {
