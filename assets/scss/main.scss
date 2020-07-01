@@ -179,6 +179,17 @@ div.claim {
     content: '_';
     animation: blink 1s step-start 0.5s 5 normal backwards;
   }
+
+  h2 {
+    > a:not(:last-child) {
+      text-decoration: none;
+      color: var(--color-secondary);
+    }
+
+    > a:not(:last-child)::before {
+      content: '#';
+    }
+  }
 }
 
 ul.pagination {
