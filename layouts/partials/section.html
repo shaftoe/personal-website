@@ -1,9 +1,7 @@
 {{- $row := .row -}}
 {{- $section := .section -}}
 {{- $section_index := .section_index -}}
-{{- $context := .context -}}
 
-<!-- FIXME probably context and section are the same here? -->
 <section
     class="row_{{ $row }} col_{{ add $section_index 1 }}"
     id="{{ $section.Title | anchorize }}"
@@ -14,6 +12,8 @@
             <a
                 href="{{ or $section.Params.src_url $section.RelPermalink }}"
                 {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
+                {{ with $section.Param "link_title" }}title="{{ . }}"{{ end }}
+
             >
                 {{- $section.Title -}}
             </a>
@@ -22,7 +22,7 @@
 
     {{- if isset $section.Params "index_row" -}}
 
-    {{- range first ($context.Param "listed_articles") $section.Pages -}}
+    {{- range first ($section.Param "listed_articles") $section.Pages -}}
     {{ partial "article" (dict "article" . "section" $section) }}
     {{- end -}}
 
@@ -30,7 +30,7 @@
         <!-- FIXME add tags list -->
 
         <a
-            href="{{ or $section.Params.src_url $context.RelPermalink }}"
+            href="{{ or $section.Params.src_url $section.RelPermalink }}"
             {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
             {{ with $section.Param "link_title" }}title="{{ . }}"{{ end }}
         >

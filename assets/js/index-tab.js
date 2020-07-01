@@ -28,7 +28,7 @@ function clickHandler(event) {
     const unselectedCol = flipNumber(selectedCol)
 
     event.srcElement.classList.add("selected")
-    document.querySelector(`nav.select-tab a.row_${selectedRow}.col_${unselectedCol}`)
+    document.querySelector(`nav.select_tab a.row_${selectedRow}.col_${unselectedCol}`)
         .classList.remove("selected")
 
     document.querySelector(`section.row_${selectedRow}.col_${selectedCol}`).hidden = false
@@ -36,12 +36,12 @@ function clickHandler(event) {
 }
 
 function addEventListeners() {
-    document.querySelectorAll("nav.select-tab a").forEach(anchor =>
+    document.querySelectorAll("nav.select_tab a").forEach(anchor =>
         anchor.addEventListener("click", clickHandler, false))
 }
 
 function removeEventListeners() {
-    document.querySelectorAll("nav.select-tab a").forEach(anchor =>
+    document.querySelectorAll("nav.select_tab a").forEach(anchor =>
         anchor.removeEventListener("click", clickHandler, false))
 }
 
@@ -56,12 +56,12 @@ function flipNumber(number) {
 }
 
 function setSessionActive(columnNumber) {
-    document.querySelectorAll(`nav.select-tab a.col_${columnNumber}`)
+    document.querySelectorAll(`nav.select_tab a.col_${columnNumber}`)
         .forEach(anchor => anchor.classList.add("selected"))
 }
 
 function unsetSessionActive(columnNumber) {
-    document.querySelectorAll(`nav.select-tab a.col_${columnNumber}`)
+    document.querySelectorAll(`nav.select_tab a.col_${columnNumber}`)
         .forEach(anchor => anchor.classList.remove("selected"))
 }
 

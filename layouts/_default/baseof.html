@@ -26,7 +26,7 @@
 
 <body>
 
-    <nav class="site-nav">
+    <nav class="sitenav">
         <ul>
             {{- $currentPage := . -}}
             {{- range .Site.Menus.main -}}
@@ -52,11 +52,22 @@
     <main>{{ block "main" . }}{{ end }}</main>
 
     <footer>
-        <small>
+        <p>
             Last update: <em>{{ now.UTC.Format "02 Jan 2006 15:04 UTC" }}</em>
-            -
-            &copy; {{ now.Format "2006"}} {{ .Param "author"}}
-        </small>
+        </p>
+
+        <p>
+            All content licensed under
+            <a
+                href="https://creativecommons.org/licenses/by-sa/4.0/"
+                title="Go to Creative Commons license page"
+            >
+                <i class="fab fa-creative-commons"></i>
+                <i class="fab fa-creative-commons-by"></i>
+                <i class="fab fa-creative-commons-sa"></i>
+            </a>
+            unless otherwise stated
+        </p>
     </footer>
 
 </body>

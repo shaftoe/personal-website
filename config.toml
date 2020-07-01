@@ -20,14 +20,15 @@ title = "Al3x"
     weight = 1
 
   [[menu.main]]
-    name = "contact"
-    url = "/contact/"
-    weight = 2
-
-  [[menu.main]]
     name = "hire me!"
     url = "/hire-me/"
     weight = 3
+
+  [[menu.main]]
+    name = "RSS"
+    class = "rss"
+    url = "/feed.xml"
+    weight = 4
 
   [[menu.socialnetworks]]
     name = "github"

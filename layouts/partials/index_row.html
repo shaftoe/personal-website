@@ -2,7 +2,7 @@
 {{ $row := .row }}
 {{ $sections := where $context.Site.Sections "Params.index_row" $row }}
 
-<nav class="select-tab row_{{ $row }} small-only if-js-enabled" hidden>
+<nav class="select_tab row_{{ $row }} small-only if-js-enabled" hidden>
 {{ range $section_index, $section := $sections }}
 
     {{ if isset $section.Params "index_row" }}
@@ -21,5 +21,5 @@
 </nav>
 
 {{ range $section_index, $section := $sections }}
-    {{ partial "section" (dict "context" . "row" $row "section_index" $section_index "section" $section)}}
+    {{ partial "section" (dict "row" $row "section_index" $section_index "section" $section)}}
 {{ end }}

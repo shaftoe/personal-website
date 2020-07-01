@@ -1,8 +1,9 @@
 // XXX :root is parsed by index-tab.js and must be the 1st stanza in this file
 :root {
-  --main-color: #ff7a00;
-  --bkg-color-dark: #050723;
-  --bkg-color-light: #151737;
+  --color-main: #ff7a00;
+  --color-secondary: #ffd900;
+  --color-bkg-dark: #050723;
+  --color-bkg-light: #151737;
   // would be nice to use --responsive-max-width in the media query but at the moment
   // it's not supported:
   // https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
@@ -15,10 +16,17 @@ ul {
 }
 
 a,
+a:active,
 a:visited,
 a:hover {
+  color: var(--color-main);
   text-decoration: none;
-  color: var(--main-color);
+}
+
+a:active,
+a:hover {
+  transition: 0.2s linear;
+  color: var(--color-secondary);
 }
 
 p,
@@ -37,8 +45,8 @@ blockquote {
 body {
   max-width: 1200px;
   margin: 0 auto;
-  color: var(--main-color);
-  background-color: var(--bkg-color-dark);
+  color: var(--color-main);
+  background-color: var(--color-bkg-dark);
   font-family: sans-serif;
   font-weight: lighter;
   padding-left: 1rem;
@@ -60,7 +68,7 @@ section.list {
 
 section {
   color: white;
-  background-color: var(--bkg-color-light);
+  background-color: var(--color-bkg-light);
   border-radius: 1rem;
 
   > header {
@@ -80,7 +88,7 @@ section + section {
 article {
   border-width: 3px;
   border-style: solid;
-  border-image: linear-gradient(to bottom, var(--main-color), rgba(0, 0, 0, 0)) 1 100%;
+  border-image: linear-gradient(to bottom, var(--color-main), rgba(0, 0, 0, 0)) 1 100%;
   padding: 0 1rem 0;
   margin-bottom: 2rem;
   line-height: 1.5rem;
@@ -109,14 +117,10 @@ div.index {
 }
 
 .row {
-  background-color: var(--bkg-color-light);
+  background-color: var(--color-bkg-light);
 }
 
-nav.select-tab.if-js-enabled {
-  display: none;
-}
-
-nav.select-tab {
+nav.select_tab {
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -126,15 +130,13 @@ nav.select-tab {
     font-size: x-large;
     padding: 1rem 0 1.3rem;
     text-decoration: none;
-    // border-top: solid 1px;
-    // border-radius: 10px;
-    background-color: var(--bkg-color-dark);
+    background-color: var(--color-bkg-dark);
     cursor: pointer;
   }
 
   a.selected {
-    color: var(--main-color);
-    background-color: var(--bkg-color-light);
+    color: var(--color-main);
+    background-color: var(--color-bkg-light);
   }
 }
 
@@ -194,7 +196,18 @@ div.social {
   }
 }
 
-nav.site-nav {
+.rss {
+  background-color: red;
+}
+
+nav.sitenav {
+  margin: 0 1rem;
+
+  > ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
   > ul > li {
     padding-top: 1rem;
     display: inline-block;
@@ -239,15 +252,32 @@ div.index_content {
   animation: fadeEffect 0.7s;
 }
 
-.bump {
-  animation: bump 8s ease-out infinite 2s;
+.fa-hand-point-up {
+  animation: bump 5s ease-out infinite 4s;
 }
 
 @keyframes bump {
   0% { transform: translateY(0); }
-  5% { transform: translateY(-50%); }
-  10% { transform: translateY(0); }
-  100% { transform: translateY(0); }
+
+  7% {
+    color: var(--color-secondary);
+    transform: translateY(-50%);
+  }
+
+  14% {
+    color: var(--color-secondary);
+    transform: translateY(0);
+  }
+
+  21% {
+    color: var(--color-secondary);
+    transform: translateY(-50%);
+  }
+
+  28% {
+    color: var(--color-main);
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeEffect {
@@ -265,6 +295,7 @@ div.index_content {
     grid-template-rows: unset;
     grid-template-columns: 2fr 1fr;
     max-width: 1000px;
+    margin: initial;
 
     h1 {
       align-self: center;
@@ -284,7 +315,7 @@ div.index_content {
     grid-template-columns: 1fr 1fr;
   }
 
-  nav.select-tab.small-only {
+  nav.select_tab.small-only {
     display: none;
   }
 
@@ -294,6 +325,14 @@ div.index_content {
 
   section + section {
     margin-top: unset;
+  }
+
+  nav.sitenav {
+    margin: initial;
+
+    > ul {
+      display: initial;
+    }
   }
 }
 
