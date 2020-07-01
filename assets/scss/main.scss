@@ -141,7 +141,7 @@ nav.select-tab {
 div.claim {
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 
   h1,
   h2 {
@@ -182,11 +182,15 @@ div.social {
   ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     > li {
-      padding: 0 20px 30px;
+      margin: 0 10px 15px;
     }
+  }
+
+  span {
+    margin-top: 1rem;
   }
 }
 
@@ -233,6 +237,17 @@ div.index_content {
 
 .animated {
   animation: fadeEffect 0.7s;
+}
+
+.bump {
+  animation: bump 8s ease-out infinite 2s;
+}
+
+@keyframes bump {
+  0% { transform: translateY(0); }
+  5% { transform: translateY(-50%); }
+  10% { transform: translateY(0); }
+  100% { transform: translateY(0); }
 }
 
 @keyframes fadeEffect {

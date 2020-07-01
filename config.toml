@@ -24,6 +24,11 @@ title = "Al3x"
     url = "/contact/"
     weight = 2
 
+  [[menu.main]]
+    name = "hire me!"
+    url = "/hire-me/"
+    weight = 3
+
   [[menu.socialnetworks]]
     name = "github"
     url = "https://github.com/shaftoe"
