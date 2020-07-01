@@ -214,7 +214,7 @@ div.social {
   justify-content: space-between;
 
   ul {
-    max-width: 300px;
+    max-width: 250px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -381,4 +381,8 @@ div.index_content {
 iframe {
   border: 0;
   width: 100%;
+}
+
+.fa-3x {
+  font-size: 2.5rem;
 }
