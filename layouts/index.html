@@ -1,4 +1,9 @@
-{{ define "header" }}
+{{- define "head" -}}
+    <!-- FIXME move to partial -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap&text=as%20Code_" rel="stylesheet">
+{{ end -}}
+
+{{- define "header" -}}
 
     <div class="index">
         <div class="claim">
@@ -16,9 +21,9 @@
 
     </div>
 
-{{ end }}
+{{- end -}}
 
-{{ define "main" }}
+{{- define "main" -}}
 
     {{ $context := . }}
     {{ range $rowNumber :=  (seq 2) }}{{/*  fixme  */}}
@@ -34,4 +39,4 @@
         {{/* $js.Content | safeJS */}}
     </script>
 
-{{ end }}
+{{- end -}}
