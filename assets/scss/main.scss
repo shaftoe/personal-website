@@ -83,6 +83,14 @@ section {
 
   > footer {
     font-size: 1.2rem;
+
+    > ul > li {
+      display: inline;
+    }
+
+    > ul > li + li {
+      padding-left: 1.5rem;
+    }
   }
 }
 
@@ -112,7 +120,7 @@ article {
 }
 
 header.site {
-  margin: 3rem;
+  margin: 3rem 0;
 }
 
 footer.site {

@@ -29,19 +29,32 @@
     <footer>
         <!-- FIXME add tags list -->
 
-        <a
-            href="{{ or $section.Params.src_url $section.RelPermalink }}"
-            {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
-            {{ with $section.Param "link_title" }}title="{{ . }}"{{ end }}
-        >
-        {{- if isset $section.Params "article_kind" -}}
-        More {{ $section.Params.article_kind | pluralize -}}
-        {{- else if isset $section.Params "src_url" -}}
-        More {{ $section.Title | pluralize -}}
-        {{- else -}}
-        More articles
-        {{- end -}}
-        </a>
+        <ul>
+            <li>
+                <a
+                    href="{{ or $section.Params.src_url $section.RelPermalink }}"
+                    {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
+                    {{ with $section.Param "link_title" }}title="{{ . }}"{{ end }}
+                >
+                {{- if isset $section.Params "article_kind" -}}
+                    More {{ $section.Params.article_kind | pluralize -}}
+                {{- else if isset $section.Params "src_url" -}}
+                    More {{ $section.Title | pluralize -}}
+                {{- else -}}
+                    More articles
+                {{- end -}}
+                </a>
+            </li>
+
+            {{- with $section.Params.feed -}}
+            <li>
+                <a href="{{ . }}" title="RSS feed">
+                    Subscribe <i class="fas fa-rss"></i>
+                </a>
+            </li>
+            {{- end -}}
+        </ul>
+
     </footer>
 
     {{- end -}}

@@ -2,6 +2,7 @@
 {{ $row := .row }}
 {{ $sections := where $context.Site.Sections "Params.index_row" $row }}
 
+{{/* FIXME */}}
 <nav class="select_tab row_{{ $row }} small-only if-js-enabled" hidden>
 {{ range $section_index, $section := $sections }}
 
