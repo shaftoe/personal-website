@@ -18,14 +18,14 @@ ul {
 
 a,
 a:active,
-a:visited,
-a:hover {
+a:visited {
   color: var(--color-main);
   text-decoration: none;
 }
 
 a:active,
 a:hover {
+  text-decoration: none;
   transition: 0.2s linear;
   color: var(--color-secondary);
 }
