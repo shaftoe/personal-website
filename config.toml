@@ -1,9 +1,11 @@
 baseURL = "https://a.l3x.in/"
 languageCode = "en-us"
 title = "Al3x"
+copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
+rssLimit = 10
 
 [params]
-  author = "Alexander Fortin"
+  author = "Alex"
   description = "Alexander Fortin's personal web site"
   listed_articles = 3
 

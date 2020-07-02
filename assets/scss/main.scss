@@ -67,16 +67,6 @@ section.list {
   padding-top: 1rem;
 }
 
-footer.site {
-  border-radius: 1rem;
-  padding: 5rem 0.5rem 1rem;
-  background: linear-gradient(0deg, var(--color-bkg-dark), var(--color-bkg-light));
-
-  p + p {
-    margin-top: 1rem;
-  }
-}
-
 section {
   color: var(--color-text);
   background-color: var(--color-bkg-light);
@@ -121,6 +111,16 @@ header.site {
   margin: 3rem 0;
 }
 
+footer.site {
+  border-radius: 1rem;
+  padding: 5rem 0.5rem 1rem;
+  background: linear-gradient(0deg, var(--color-bkg-dark), var(--color-bkg-light));
+
+  p + p {
+    margin-top: 1rem;
+  }
+}
+
 div.index {
   display: grid;
   gap: 3rem;
@@ -158,6 +158,7 @@ div.claim {
 
     a:hover {
       text-decoration: none;
+      color: var(--color-secondary);
     }
   }
 
@@ -195,6 +196,10 @@ div.claim {
     > a:not(:last-child)::before {
       content: '#';
     }
+
+    > a:not(:last-child):hover {
+      color: var(--color-secondary);
+    }
   }
 }
 
@@ -211,6 +216,10 @@ ul.pagination {
   li.active > a {
     text-decoration: underline;
   }
+}
+
+nav > ul {
+  display: flex;
 }
 
 div.social {
@@ -246,7 +255,6 @@ nav.sitenav {
   margin: 0 1rem;
 
   > ul {
-    display: flex;
     justify-content: space-between;
   }
 
@@ -298,6 +306,16 @@ div.index_content {
   padding-left: 0.2rem;
   color: var(--color-main);
   animation: bump 5s ease-out infinite 4s;
+}
+
+.paginator > ul {
+  justify-content: center;
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+
+  > li + li {
+    padding-left: 3rem;
+  }
 }
 
 @keyframes bump {

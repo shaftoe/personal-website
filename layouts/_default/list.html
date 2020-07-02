@@ -1,5 +1,13 @@
 {{ define "header" }}
-<h1 class="center">{{ .Param "author"}}'s {{ .Page.Title }}</h1>
+{{- $title := printf `%s - %s` (.Param "author") .Page.Title -}}
+<h1 class="center">
+    <a
+        href="{{ .Page.RelPermalink }}"
+        title="Go to {{ $title }} main page"
+    >
+        {{- $title -}}
+    </a>
+</h1>
 {{ end }}
 
 {{ define "main" }}
@@ -11,5 +19,25 @@
 {{- end -}}
 </section>
 
-{{ template "_internal/pagination.html" . }}
-{{ end }}
+{{- $paginator := .Paginate (where .Pages "Type" "posts") -}}
+<nav class="paginator">
+    <ul>
+        {{- if $paginator.HasPrev -}}
+        <li>
+            <a
+                href="{{ $paginator.Prev.URL }}"
+                title="Newer articles"
+            >Newer</a>
+        </li>
+        {{- end -}}
+        {{- if $paginator.HasNext -}}
+        <li>
+            <a
+                href="{{ $paginator.Next.URL }}"
+                title="Older articles"
+            >Older</a>
+        </li>
+        {{- end -}}
+    </ul>
+</nav>
+{{- end -}}

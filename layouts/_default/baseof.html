@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {{- $title := .Page.Title -}}
     {{- if .IsHome -}}
-    <title>{{ .Site.Title }} - Home</title>
-    {{- else -}}
-    <title>{{ .Site.Title }} - {{ .Page.Title }}</title>
+    {{- $title = .Site.Title -}}
     {{- end -}}
+    <title>{{ $title }}</title>
 
     {{- with resources.Get "css/normalize.css" | minify -}}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
@@ -23,13 +23,16 @@
     <style>{{ .Content | safeCSS }}</style>
     {{- end -}}
 
+    {{- with .OutputFormats.Get "rss" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{ end -}}
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     {{- block "head" . }}{{ end -}}
 </head>
 
 <body>
-
     <nav class="sitenav">
         <ul>
             {{- $currentPage := . -}}
@@ -69,7 +72,8 @@
                 <i class="fab fa-creative-commons"></i>
                 <i class="fab fa-creative-commons-by"></i>
                 <i class="fab fa-creative-commons-sa"></i>
-            </a> unless otherwise stated
+            </a>
+            unless otherwise stated
         </p>
     </footer>
 
