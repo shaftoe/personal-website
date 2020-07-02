@@ -116,6 +116,14 @@ footer.site {
   padding: 5rem 0.5rem 1rem;
   background: linear-gradient(0deg, var(--color-bkg-dark), var(--color-bkg-light));
 
+  a {
+    padding: 0 0.3rem;
+
+    > i + i {
+      padding-left: 0.2rem;
+    }
+  }
+
   p + p {
     margin-top: 1rem;
   }
