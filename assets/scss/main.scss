@@ -1,10 +1,11 @@
+$color-main: #ff7a00;
+$color-secondary: #ffd900;
+$color-text: white;
+$color-bkg-dark: #050723;
+$color-bkg-light: #151737;
+
 // XXX :root is parsed by index-tab.js and must be the 1st stanza in this file
 :root {
-  --color-main: #ff7a00;
-  --color-secondary: #ffd900;
-  --color-text: white;
-  --color-bkg-dark: #050723;
-  --color-bkg-light: #151737;
   // would be nice to use --responsive-max-width in the media query but at the moment
   // it's not supported:
   // https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
@@ -19,7 +20,7 @@ ul {
 a,
 a:active,
 a:visited {
-  color: var(--color-main);
+  color: $color-main;
   text-decoration: none;
 }
 
@@ -27,7 +28,7 @@ a:active,
 a:hover {
   text-decoration: none;
   transition: 0.2s linear;
-  color: var(--color-secondary);
+  color: $color-secondary;
 }
 
 p,
@@ -46,12 +47,15 @@ blockquote {
 body {
   max-width: 1200px;
   margin: 0 auto;
-  color: var(--color-main);
-  background-color: var(--color-bkg-dark);
+  color: $color-main;
+  background-color: $color-bkg-dark;
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;
   padding-left: 1rem;
   padding-right: 1rem;
+  // background-image: url('img/neptune.png'), linear-gradient(to bottom, black, $color-bkg-dark);
+  // background-repeat: no-repeat;
+  // background-position: top;
 }
 
 header {
@@ -68,8 +72,8 @@ section.list {
 }
 
 section {
-  color: var(--color-text);
-  background-color: var(--color-bkg-light);
+  color: $color-text;
+  background-color: $color-bkg-light;
   border-radius: 1rem;
 
   > header {
@@ -89,7 +93,7 @@ section + section {
 article {
   border-width: 3px;
   border-style: solid;
-  border-image: linear-gradient(to bottom, var(--color-main), rgba(0, 0, 0, 0)) 1 100%;
+  border-image: linear-gradient(to bottom, $color-main, rgba(0, 0, 0, 0)) 1 100%;
   padding: 0 1rem 0;
   margin-bottom: 2rem;
   line-height: 1.5rem;
@@ -108,13 +112,13 @@ article {
 }
 
 header.site {
-  margin: 3rem 0;
+  margin: 5rem 0 3rem;
 }
 
 footer.site {
   border-radius: 1rem;
   padding: 5rem 0.5rem 1rem;
-  background: linear-gradient(0deg, var(--color-bkg-dark), var(--color-bkg-light));
+  background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
 
   a {
     padding: 0 0.3rem;
@@ -136,7 +140,7 @@ div.index {
 }
 
 .row {
-  background-color: var(--color-bkg-light);
+  background-color: $color-bkg-light;
 }
 
 nav.select_tab {
@@ -148,10 +152,10 @@ div.claim {
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;
-  color: var(--color-text);
+  color: $color-text;
 
   a {
-    color: var(--color-text);
+    color: $color-text;
   }
 
   h1,
@@ -166,7 +170,7 @@ div.claim {
 
     a:hover {
       text-decoration: none;
-      color: var(--color-secondary);
+      color: $color-secondary;
     }
   }
 
@@ -198,7 +202,7 @@ div.claim {
   h2 {
     > a:not(:last-child) {
       text-decoration: none;
-      color: var(--color-main);
+      color: $color-main;
     }
 
     > a:not(:last-child)::before {
@@ -206,7 +210,7 @@ div.claim {
     }
 
     > a:not(:last-child):hover {
-      color: var(--color-secondary);
+      color: $color-secondary;
     }
   }
 }
@@ -243,7 +247,7 @@ div.social {
   }
 
   span {
-    color: var(--color-text);
+    color: $color-text;
     margin-top: 1rem;
     font-family: 'Rock Salt', cursive;
     font-size: 1.5rem;
