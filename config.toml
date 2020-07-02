@@ -28,7 +28,6 @@ rssLimit = 10
 
   [[menu.main]]
     name = "RSS"
-    class = "rss"
     url = "/feed.xml"
     weight = 4
 
