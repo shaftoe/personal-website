@@ -211,23 +211,18 @@ div.claim {
   }
 }
 
-ul.pagination {
-  text-align: center;
-  font-size: large;
-  margin-bottom: 2rem;
-
-  > li {
-    display: inline;
-    padding: 0 0.2rem;
-  }
-
-  li.active > a {
-    text-decoration: underline;
-  }
-}
-
 nav > ul {
   display: flex;
+}
+
+.paginator > ul {
+  justify-content: center;
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+
+  > li + li {
+    padding-left: 3rem;
+  }
 }
 
 div.social {
@@ -314,16 +309,6 @@ div.index_content {
   padding-left: 0.2rem;
   color: var(--color-main);
   animation: bump 5s ease-out infinite 4s;
-}
-
-.paginator > ul {
-  justify-content: center;
-  padding-bottom: 2rem;
-  font-size: 1.5rem;
-
-  > li + li {
-    padding-left: 3rem;
-  }
 }
 
 @keyframes bump {
