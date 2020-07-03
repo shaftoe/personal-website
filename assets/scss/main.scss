@@ -67,35 +67,32 @@ footer {
   padding-bottom: 1rem;
 }
 
+footer.site a {
+  padding: 0 0.3rem;
+
+  > i + i {
+    padding-left: 0.2rem;
+  }
+}
+
+div.claim a {
+  color: $color-text;
+}
+
+li.button > a {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  color: $color-bkg-dark;
+  background-color: $color-main;
+}
+
+li.button > a:hover {
+  background-color: $color-bkg-dark;
+  color: $color-secondary;
+}
+
 section.list {
   padding-top: 1rem;
-}
-
-section {
-  color: $color-text;
-  background-color: $color-bkg-light;
-  border-radius: 1rem;
-
-  > header {
-    padding-top: 1.5rem;
-    text-align: center;
-  }
-
-  > footer {
-    font-size: 1.2rem;
-
-    > ul > li {
-      display: inline;
-    }
-
-    > ul > li + li {
-      padding-left: 1.5rem;
-    }
-  }
-}
-
-section + section {
-  margin-top: 3rem;
 }
 
 article {
@@ -128,14 +125,6 @@ footer.site {
   padding: 5rem 0.5rem 1rem;
   background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
 
-  a {
-    padding: 0 0.3rem;
-
-    > i + i {
-      padding-left: 0.2rem;
-    }
-  }
-
   p + p {
     margin-top: 1rem;
   }
@@ -161,10 +150,6 @@ div.claim {
   flex-flow: column wrap;
   justify-content: space-around;
   color: $color-text;
-
-  a {
-    color: $color-text;
-  }
 
   h1,
   h2,
@@ -223,6 +208,34 @@ div.claim {
   }
 }
 
+section {
+  color: $color-text;
+  background-color: $color-bkg-light;
+  border-radius: 1rem;
+
+  > header {
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  > footer {
+    font-size: 1.2rem;
+    padding-bottom: 3rem;
+
+    > ul > li {
+      display: inline;
+    }
+
+    > ul > li + li {
+      padding-left: 1.5rem;
+    }
+  }
+}
+
+section + section {
+  margin-top: 3rem;
+}
+
 nav > ul {
   display: flex;
 }
@@ -257,7 +270,8 @@ div.social {
   span {
     color: $color-text;
     margin-top: 1rem;
-    font-family: 'Rock Salt', cursive;
+    // font-family: 'Rock Salt', cursive;
+    font-style: italic;
     font-size: 1.5rem;
   }
 
@@ -326,6 +340,24 @@ iframe {
 
 .fa-3x {
   font-size: 2.5rem;
+}
+
+.rss {
+  visibility: hidden;
+}
+
+.rss::before {
+  visibility: visible;
+  position: relative;
+  left: 1rem;
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 600;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: '\f09e';
 }
 
 @import 'keyframes', 'large';

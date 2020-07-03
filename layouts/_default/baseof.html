@@ -40,12 +40,15 @@
             <li>
                 {{- $class := "sidebar-nav-item" -}}
                 {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
-                    {{- $class = "sidebar-nav-item active" -}}
+                    {{- $class = (printf "%s active" $class) -}}
+                {{- end -}}
+                {{- if eq .Name "RSS" -}}
+                    {{- $class = (printf "%s rss" $class) -}}
                 {{- end -}}
                 <a
                     class="{{ $class }}"
                     href="{{ .URL }}"
-                    title="{{ .Title }}"
+                    {{- with .Title }}title="{{ . }}"{{ end -}}
                 >
                     {{- .Name -}}
                 </a>

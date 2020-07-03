@@ -2,25 +2,6 @@
 {{ $row := .row }}
 {{ $sections := where $context.Site.Sections "Params.index_row" $row }}
 
-{{/* FIXME */}}
-<nav class="select_tab row_{{ $row }} small-only if-js-enabled" hidden>
-{{ range $section_index, $section := $sections }}
-
-    {{ if isset $section.Params "index_row" }}
-    <a
-        class="row_{{ $row }}
-               col_{{ add $section_index 1 }}
-               {{ if eq $section_index 0 }}selected{{ end }}
-               small_only"
-        hidden
-    >
-        {{ $section.Title }}
-    </a>
-    {{ end }}
-
-{{ end }}
-</nav>
-
 {{ range $section_index, $section := $sections }}
     {{ partial "section" (dict "row" $row "section_index" $section_index "section" $section)}}
 {{ end }}

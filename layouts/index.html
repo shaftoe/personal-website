@@ -31,7 +31,7 @@
     <div
         class="index_content row_{{ $rowNumber }}"
     >
-        {{ partial "index_row" (dict "context" $context "row" $rowNumber) }}
+        {{- partial "index_row" (dict "context" $context "row" $rowNumber) -}}
     </div>
     {{end }}
 
