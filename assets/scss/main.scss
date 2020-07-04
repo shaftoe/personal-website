@@ -3,7 +3,8 @@ $color-secondary: #ffd900;
 $color-text: white;
 $color-bkg-dark: #050723;
 // $color-bkg-light: #151737;
-$color-bkg-light: rgb(29, 1, 29);
+// $color-bkg-light: rgb(29, 1, 29);
+$color-bkg-light: #230d60;
 
 // XXX :root is parsed by index-tab.js and must be the 1st stanza in this file
 :root {
@@ -54,7 +55,7 @@ li.button > a {
 
 li.button > a:hover {
   background-color: $color-bkg-light;
-  color: $color-secondary;
+  color: $color-main;
 }
 
 .claim h2 > a:last-child {
@@ -229,6 +230,7 @@ nav > ul {
 
 section {
   color: $color-text;
+  // background-color: #230d60;
   background-color: $color-bkg-light;
   filter: alpha(opacity=100);
   border-radius: 1rem;
