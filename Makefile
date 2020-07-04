@@ -15,7 +15,8 @@ build:
 clean:
 	@rm -rf public/
 
-deploy: prebuild build postbuild show test
+# deploy: prebuild build postbuild show test
+deploy: prebuild build postbuild show
 
 eslint:
 	@eslint assets/js/ lib/
@@ -52,7 +53,7 @@ prebuild: clean mastodon mixcloud normalize.css fontawesome.css
 setup: npm-install babel-install pip-install
 
 stylelint:
-	@npx stylelint assets/scss/*.scss public/css/*.css
+	@npx stylelint assets/scss/*.scss
 
 show:
 	@tree public/
