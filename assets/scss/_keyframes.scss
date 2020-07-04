@@ -1,28 +1,16 @@
 @keyframes bump {
-  0% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+    color: $color-main;
+  }
 
-  5% {
-    color: var(--color-main);
+  50% {
+    color: $color-main;
     transform: translate(20%, -50%) scale(1.8);
   }
 
-  10% {
-    color: var(--color-main);
-    transform: translateY(0);
-  }
-
-  15% {
-    color: var(--color-main);
-    transform: translate(20%, -50%)  scale(1.8);
-  }
-
-  20% {
-    color: var(--color-main);
-    transform: translateY(0);
-  }
-
-  35% {
-    color: var(--color-text);
+  100% {
+    color: $color-main;
   }
 }
 
@@ -40,16 +28,16 @@
 @keyframes flip {
   25% {
     transform: rotateX(180deg);
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 
   50% {
     transform: rotateY(180deg);
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 
   75% {
     transform: rotateX(0deg);
-    color: var(--color-secondary);
+    color: $color-secondary;
   }
 }

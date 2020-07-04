@@ -31,11 +31,8 @@ a:hover {
   color: $color-secondary;
 }
 
-li.button > a {
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  color: $color-bkg-dark;
-  background-color: $color-main;
+.claim a {
+  text-decoration: underline;
 }
 
 footer.site a {
@@ -46,19 +43,26 @@ footer.site a {
   }
 }
 
-div.claim {
-  a {
-    text-decoration: underline;
-  }
+li.button > a {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  color: $color-bkg-dark;
+  background-color: $color-main;
+}
 
-  h2 > a:last-child {
-    text-decoration: none;
-  }
+li.button > a:hover {
+  background-color: $color-bkg-light;
+  border: 1px solid;
+  color: $color-secondary;
+}
 
-  h3 a:hover {
-    text-decoration: none;
-    color: $color-secondary;
-  }
+.claim h2 > a:last-child {
+  text-decoration: none;
+}
+
+.claim h3 a:hover {
+  text-decoration: none;
+  color: $color-secondary;
 }
 
 p,
@@ -95,11 +99,6 @@ header {
 footer {
   text-align: center;
   padding-bottom: 1rem;
-}
-
-li.button > a:hover {
-  background-color: $color-bkg-dark;
-  color: $color-secondary;
 }
 
 section.list {
@@ -210,6 +209,10 @@ div.claim {
   }
 }
 
+nav > ul {
+  display: flex;
+}
+
 section {
   color: $color-text;
   background-color: $color-bkg-light;
@@ -224,22 +227,16 @@ section {
     font-size: 1.2rem;
     padding-bottom: 3rem;
 
-    > ul > li {
-      display: inline;
-    }
-
-    > ul > li + li {
-      padding-left: 1.5rem;
+    > ul {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
     }
   }
 }
 
 section + section {
   margin-top: 3rem;
-}
-
-nav > ul {
-  display: flex;
 }
 
 .paginator > ul {
@@ -279,12 +276,13 @@ div.social {
 
   .fa-hand-point-up {
     padding-left: 0.2rem;
-    animation: bump 5s ease-out 2 10s;
+    animation: bump 0.5s ease-out 5 10s;
   }
 }
 
 nav.sitenav {
   margin: 0 1rem;
+  font-size: 1.3rem;
 
   > ul {
     justify-content: space-between;

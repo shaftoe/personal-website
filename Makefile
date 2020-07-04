@@ -15,8 +15,7 @@ build:
 clean:
 	@rm -rf public/
 
-# deploy: prebuild build postbuild show test
-deploy: prebuild build postbuild show
+deploy: prebuild build postbuild show test
 
 eslint:
 	@eslint assets/js/ lib/
