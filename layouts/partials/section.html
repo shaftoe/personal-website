@@ -30,10 +30,14 @@
         <!-- FIXME add tags list -->
 
         <ul>
-            <li class="button">
+            <li>
                 <a
                     href="{{ or $section.Params.src_url $section.RelPermalink }}"
-                    {{ if isset $section.Params "src_url" }}class="extlink"{{ end }}
+                    {{ if isset $section.Params "src_url" -}}
+                    class="extlink button"
+                    {{ else }}
+                    class="button"
+                    {{ end }}
                     {{ with $section.Param "link_title" }}title="{{ . }}"{{ end }}
                 >
                 {{- if isset $section.Params "article_kind" -}}
@@ -47,8 +51,8 @@
             </li>
 
             {{- with $section.Params.feed -}}
-            <li class="button">
-                <a href="{{ . }}" title="RSS feed">
+            <li>
+                <a href="{{ . }}" class="button" title="RSS feed">
                     Subscribe <i class="fas fa-rss"></i>
                 </a>
             </li>

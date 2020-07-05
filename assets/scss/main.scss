@@ -45,7 +45,8 @@ footer.site a {
   }
 }
 
-li.button > a {
+a.button {
+  display: inline-block;
   border: 1px solid;
   padding: 0.6rem;
   border-radius: 0.5rem;
@@ -53,7 +54,7 @@ li.button > a {
   background-color: $color-main;
 }
 
-li.button > a:hover {
+a:hover.button {
   background-color: $color-bkg-light;
   color: $color-main;
 }
@@ -241,13 +242,16 @@ section {
   }
 
   > footer {
-    font-size: 1.2rem;
-    padding-bottom: 3rem;
+    display: flex;
+    justify-content: center;
 
     > ul {
+      font-size: 1.2rem;
+      padding-bottom: 3rem;
+      width: 18rem;
       display: flex;
-      justify-content: space-evenly;
       flex-wrap: wrap;
+      justify-content: space-between;
     }
   }
 }

@@ -32,18 +32,20 @@
 <nav class="paginator">
     <ul>
         {{- if $paginator.HasPrev -}}
-        <li class="button">
+        <li>
             <a
                 href="{{ $paginator.Prev.URL }}"
                 title="Newer articles"
+                class="button"
             >Newer</a>
         </li>
         {{- end -}}
         {{- if $paginator.HasNext -}}
-        <li class="button">
+        <li>
             <a
                 href="{{ $paginator.Next.URL }}"
                 title="Older articles"
+                class="button"
             >Older</a>
         </li>
         {{- end -}}
