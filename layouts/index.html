@@ -27,6 +27,15 @@
 
     </div>
 
+    <aside class="scroll_to_top">
+        <a
+            href="#top"
+            title="Scroll to top"
+        >
+            <i class="fas fa-hand-point-up"></i>
+        </a>
+    </aside>
+
 {{- end -}}
 
 {{- define "main" -}}
@@ -40,9 +49,9 @@
     </div>
     {{end }}
 
-    {{ $js := resources.Get "js/index-tab.js" | babel | minify }}
+    {{- $js := resources.Get "js/index-tab.js" | babel | minify -}}
     <script>
-        {{/* $js.Content | safeJS */}}
+        {{- $js.Content | safeJS -}}
     </script>
 
 {{- end -}}

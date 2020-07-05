@@ -89,9 +89,24 @@ function getMaxResponsiveWidth() {
     return sheet.rules[0].cssText.match(/--responsive-max-width: (\d+px)/).pop()
 }
 
-window.onload = () => document.querySelectorAll("section")
-    .forEach(section => section.classList.add("animated"))
+// window.onload = () => document.querySelectorAll("section")
+//     .forEach(section => section.classList.add("animated"))
 
-const mql = window.matchMedia(`screen and (max-width: ${getMaxResponsiveWidth()})`)
-handleMediaQueryEvent(mql)
-mql.addListener(handleMediaQueryEvent)
+// const mql = window.matchMedia(`screen and (max-width: ${getMaxResponsiveWidth()})`)
+// handleMediaQueryEvent(mql)
+// mql.addListener(handleMediaQueryEvent)
+
+//Get the button:
+const scrollToTop = document.querySelector(".scroll_to_top");
+scrollToTop.style.display = "none"
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        scrollToTop.style.display = "block"
+    } else {
+        scrollToTop.style.display = "none"
+    }
+}

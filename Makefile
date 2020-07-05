@@ -2,6 +2,7 @@ include defaults.mk
 
 export MASTODON_ACCOUNT_ID := 36187
 export MIXCLOUD_ACCOUNT_ID := al3xf
+BUILD_ENV := development
 
 server:
 	@hugo server
@@ -10,7 +11,7 @@ babel-install:
 	@npm install -g babel-cli
 
 build:
-	@hugo --cleanDestinationDir --minify
+	@hugo --cleanDestinationDir --minify --environment $(BUILD_ENV)
 
 clean:
 	@rm -rf public/
@@ -59,7 +60,7 @@ show:
 
 test: eslint stylelint html5validator
 
-upgrade: upgrade-node-modules npm
+upgrade: upgrade-node-modules npm-install
 
 upgrade-node-modules:
 	@ncu -u

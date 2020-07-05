@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {{- if eq .Hugo.Environment "production" }}
+    {{- if eq hugo.Environment "production" }}
     <meta name="ROBOTS" content="INDEX, FOLLOW">
     {{- else -}}
     <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
@@ -28,7 +28,7 @@
     {{- block "head" . }}{{ end -}}
 </head>
 
-<body>
+<body id="top">
     <nav class="sitenav">
         <ul>
             {{- $currentPage := . -}}
