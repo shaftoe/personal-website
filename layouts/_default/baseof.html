@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{/*  FIXME  */}}
+
+    {{- if eq .Hugo.Environment "production" }}
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    {{- else -}}
     <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    {{- end -}}
 
     {{- with resources.Get "css/normalize.css" | minify -}}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
