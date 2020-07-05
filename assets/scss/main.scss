@@ -93,9 +93,10 @@ body {
 }
 
 .page_not_found {
-  height: 620px;
+  height: 60vh;
   background-image: url('/img/background-404.jpg');
   background-repeat: no-repeat;
+  background-size: contain;
   background-position: top left;
   z-index: -1;
   display: flex;
@@ -103,7 +104,6 @@ body {
   align-items: center;
   font-size: 2rem;
   font-family: 'Press Start 2P', monospace;
-  border-radius: 2rem;
   text-align: center;
   padding: 1rem;
 }
