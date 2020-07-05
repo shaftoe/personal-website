@@ -4,12 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    {{- $title := .Page.Title -}}
-    {{- if .IsHome -}}
-    {{- $title = .Site.Title -}}
-    {{- end -}}
-    <title>{{ $title }}</title>
+    {{/*  FIXME  */}}
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
 
     {{- with resources.Get "css/normalize.css" | minify -}}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
@@ -22,10 +18,6 @@
     {{- with resources.Get "scss/main.scss" | toCSS | minify -}}
     <style>{{ .Content | safeCSS }}</style>
     {{- end -}}
-
-    {{- with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
-    {{ end -}}
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
@@ -45,6 +37,7 @@
                 {{- if eq .Name "RSS" -}}
                     {{- $class = (printf "%s rss" $class) -}}
                 {{- end -}}
+                {{/*  FIXME use .Params.feed instead of .URL, i.e. fetch url from front matter  */}}
                 <a
                     class="{{ $class }}"
                     href="{{ .URL }}"

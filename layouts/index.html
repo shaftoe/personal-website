@@ -1,4 +1,11 @@
 {{- define "head" -}}
+    {{- $title := .Site.Title }}
+    <title>{{ $title }}</title>
+
+    {{- with .OutputFormats.Get "rss" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{ end -}}
+
     <!-- FIXME move to partial -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap&text=as%20Code_" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap&text=I%27m+social%21" rel="stylesheet">
