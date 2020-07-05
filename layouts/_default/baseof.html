@@ -19,7 +19,7 @@
     <style>{{ .Content | safeCSS }}</style>
     {{- end -}}
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    {{- partial "google_font" (dict "fontFamily" "Roboto") -}}
 
     {{- block "head" . }}{{ end -}}
 </head>

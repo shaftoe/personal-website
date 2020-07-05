@@ -1,0 +1,9 @@
+{{- $fontFamily := .fontFamily -}}
+{{- $link := "" }}
+{{ with .text }}
+    {{- $link = (querify "family" $fontFamily "display" "swap" "text" .) | safeURL }}
+{{- else -}}
+    {{- $link = (querify "family" $fontFamily "display" "swap") | safeURL }}
+{{- end -}}
+
+<link href="https://fonts.googleapis.com/css2?{{ $link }}" rel="stylesheet">

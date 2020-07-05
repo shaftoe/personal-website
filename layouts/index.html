@@ -6,9 +6,8 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
     {{ end -}}
 
-    <!-- FIXME move to partial -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap&text=as%20Code_" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap&text=I%27m+social%21" rel="stylesheet">
+    {{ partial "google_font" (dict "fontFamily" "Press Start 2P" "text" "as Code") }}
+    {{ partial "google_font" (dict "fontFamily" "Rock Salt" "text" "I'm social") }}
 {{ end -}}
 
 {{- define "header" -}}
@@ -20,7 +19,6 @@
 
         <div class="social">
             {{- partial "social_icons" .Site.Menus.socialnetworks -}}
-            <!-- FIXME use handwritten font -->
             <span>
                 I'm social !
                 <i class="far fa-hand-point-up bump"></i>
