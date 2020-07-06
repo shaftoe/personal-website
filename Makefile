@@ -2,6 +2,7 @@ include defaults.mk
 
 export MASTODON_ACCOUNT_ID := 36187
 export MIXCLOUD_ACCOUNT_ID := al3xf
+export YOUTUBE_CHANNEL := UCb5FGNik4wXGrVGRS1x2JZw
 BUILD_ENV := development
 HOOK_FILE := .git/hooks/pre-commit
 
@@ -68,4 +69,7 @@ upgrade: upgrade-node-modules npm-install
 upgrade-node-modules:
 	@ncu -u
 
-.PHONY: server build clean deploy eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install prebuild setup stylelint test upgrade upgrade-node-modules
+youtube:
+	@node lib/youtube-downloader.js
+
+.PHONY: server build clean deploy eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install prebuild setup setup-githook stylelint test upgrade upgrade-node-modules
