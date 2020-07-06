@@ -14,9 +14,15 @@
         </a>
     </li>
     {{ end }}
+
+    {{- $text := "Contact me via email" -}}
     <li>
-        <a href="/contact" title="Contact me via email">
-            <span class="hide">Contact me via email</span>
+        <a
+            href="/contact"
+            title="{{ $text }}"
+            aria-label="{{ $text }}"
+        >
+            <span class="hide">{{ $text }}</span>
             <i class="fas fa-at fa-3x"></i>
         </a>
     </li>
