@@ -7,4 +7,10 @@ listed_articles: 5
 src_url: https://fosstodon.org/@alex/
 title: Micro Blog
 weight: 2
+_build:
+  list: true
+  render: false
+cascade:
+  _build:
+    render: false
 ---
