@@ -17,16 +17,21 @@
     <meta name="description" content="{{ .Site.Params.description }} - {{ .Page.Title }}">
     {{- end -}}
 
-    {{- with resources.Get "css/normalize.css" | minify -}}
+    {{ range (slice "fontawesome" "normalize") }}
+    {{ $cssFile := printf "css/%s.css" . }}
+    {{- with resources.Get $cssFile | minify -}}
     <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
     {{- end -}}
-
-    {{- with resources.Get "css/fontawesome.css" | minify -}}
-    <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
     {{- end -}}
 
     {{- with resources.Get "scss/main.scss" | toCSS | minify -}}
     <style>{{ .Content | safeCSS }}</style>
+    {{- end -}}
+
+    {{- $scssFile := printf "scss/%s.scss" .Page.Kind -}}
+    {{- with resources.Get $scssFile -}}
+    {{- $css := . | toCSS | minify -}}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" type="text/css">
     {{- end -}}
 
     {{- partial "google_font" (dict "fontFamily" "Roboto") -}}

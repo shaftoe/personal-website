@@ -63,6 +63,18 @@ nav.select_tab {
   display: none;
 }
 
+section footer ul li + li {
+  margin-left: 1rem;
+}
+
+.paginator > ul > li + li {
+  padding-left: 3rem;
+}
+
+div.social ul > li {
+  margin: 0 10px 15px;
+}
+
 div.claim {
   display: flex;
   flex-flow: column wrap;
@@ -138,10 +150,6 @@ section {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-
-      li + li {
-        margin-left: 1rem;
-      }
     }
 
     > ul.tag_list {
@@ -161,32 +169,11 @@ section + section {
   margin-top: 3rem;
 }
 
-.paginator > ul {
-  justify-content: center;
-  padding-bottom: 2rem;
-  font-size: 1.5rem;
-
-  > li + li {
-    padding-left: 3rem;
-  }
-}
-
 div.social {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  ul {
-    max-width: 250px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    > li {
-      margin: 0 10px 15px;
-    }
-  }
 
   span {
     color: $color-text;
@@ -200,6 +187,19 @@ div.social {
     padding-left: 0.2rem;
     animation: bump 0.5s ease-out 5 10s;
   }
+}
+
+.paginator > ul {
+  justify-content: center;
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+div.social ul {
+  max-width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 div.index_content {

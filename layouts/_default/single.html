@@ -1,10 +1,5 @@
 {{- define "head" -}}
     <title>{{ .Title }}</title>
-
-    {{- with resources.Get "scss/index.scss" | toCSS | minify -}}
-    <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
-    {{- end -}}
-
 {{- end -}}
 
 {{ define "header" }}

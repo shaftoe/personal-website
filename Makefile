@@ -3,6 +3,7 @@ include defaults.mk
 export MASTODON_ACCOUNT_ID := 36187
 export MIXCLOUD_ACCOUNT_ID := al3xf
 BUILD_ENV := development
+HOOK_FILE := .git/hooks/pre-commit
 
 server:
 	@hugo server
@@ -48,6 +49,11 @@ pip-install:
 prebuild: clean mastodon mixcloud normalize.css fontawesome.css
 
 setup: npm-install babel-install pip-install
+
+setup-githook:
+	@echo "#/bin/bash" > $(HOOK_FILE)
+	@echo "make build test clean" >> $(HOOK_FILE)
+	@chmod +x $(HOOK_FILE)
 
 stylelint:
 	@npx stylelint assets/scss/* public/css/*
