@@ -1,6 +1,7 @@
 ---
 date: 2020-06-29T13:15:03+03:00
 description: "Home Page"
+feed: /index.xml
 ---
 
 # Hi, I'm Alex, a Software Engineer with a passion for _automation_ and _all the things_ **as Code**
