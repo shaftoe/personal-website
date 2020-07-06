@@ -7,8 +7,12 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
     {{ end -}}
 
-    {{ partial "google_font" (dict "fontFamily" "Press Start 2P" "text" "as Code") }}
-    {{ partial "google_font" (dict "fontFamily" "Rock Salt" "text" "I'm social") }}
+    {{- partial "google_font" (dict "fontFamily" "Press Start 2P" "text" "as Code") }}
+    {{- partial "google_font" (dict "fontFamily" "Rock Salt" "text" "I'm social") }}
+
+    {{- range (slice "https://audio3.mixcloud.com" "https://thumbnailer.mixcloud.com" "https://yt3.ggpht.com" "https://i.ytimg.com" "https://www.youtube.com" "https://fonts.gstatic.com") -}}
+    <link rel="preconnect" href="{{ . }}">
+    {{- end -}}
 
 {{ end -}}
 
