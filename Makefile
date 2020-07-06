@@ -47,7 +47,7 @@ npm-install:
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean mastodon mixcloud normalize.css fontawesome.css
+prebuild: clean mastodon mixcloud youtube normalize.css fontawesome.css
 
 setup: npm-install babel-install pip-install
 
