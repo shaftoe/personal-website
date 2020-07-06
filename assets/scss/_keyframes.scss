@@ -1,16 +1,10 @@
 @keyframes bump {
   0% {
     transform: translateY(0);
-    color: $color-main;
   }
 
   50% {
-    color: $color-main;
     transform: translate(20%, -50%) scale(1.8);
-  }
-
-  100% {
-    color: $color-main;
   }
 }
 

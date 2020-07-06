@@ -45,17 +45,19 @@
             {{- $currentPage := . -}}
             {{- range .Site.Menus.main -}}
             <li>
+                {{- $url := .URL -}}
                 {{- $class := "sidebar-nav-item" -}}
                 {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
                     {{- $class = (printf "%s active" $class) -}}
                 {{- end -}}
                 {{- if eq .Name "RSS" -}}
+                    {{- with $currentPage.Params.feed -}}{{- $url = . -}}{{- end -}}
                     {{- $class = (printf "%s rss" $class) -}}
                 {{- end -}}
-                {{/*  FIXME use .Params.feed instead of .URL, i.e. fetch url from front matter  */}}
+
                 <a
                     class="{{ $class }}"
-                    href="{{ .URL }}"
+                    href="{{ $url }}"
                     {{- with .Title }}title="{{ . }}"{{ end -}}
                 >
                     {{- .Name -}}
