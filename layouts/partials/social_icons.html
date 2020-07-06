@@ -2,12 +2,20 @@
 <ul class="social-icons">
     {{ range . }}
     {{ $menu_entry := . }}
+    {{ $title := printf "Go to my %s account" (.Name | humanize) }}
     <li>
-        {{ partial "fontawesome.html" $menu_entry }}
+        <a
+            href="{{ .URL }}"
+            title="{{ $title }}"
+        >
+            <span class="hide">{{ $title }}</span>
+            <i class="fab fa-{{ $menu_entry.Name }} fa-3x"></i>
+        </a>
     </li>
     {{ end }}
     <li>
         <a href="/contact" title="Contact me via email">
+            <span class="hide">Contact me via email</span>
             <i class="fas fa-at fa-3x"></i>
         </a>
     </li>

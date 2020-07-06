@@ -90,6 +90,14 @@
         </p>
     </footer>
 
+    {{- $jsFile := printf "js/%s.js" .Page.Kind -}}
+    {{- with resources.Get $jsFile -}}
+    {{- $js := . | babel | minify -}}
+    <script>
+        {{- $js.Content | safeJS -}}
+    </script>
+    {{- end -}}
+
 </body>
 
 </html>
