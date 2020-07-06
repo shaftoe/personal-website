@@ -129,18 +129,29 @@ section {
   }
 
   > footer {
-    display: flex;
-    justify-content: center;
+    margin: 1rem;
 
     > ul {
+      min-width: 20rem;
       font-size: 1.2rem;
       padding-bottom: 3rem;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: center;
 
       li + li {
         margin-left: 1rem;
+      }
+    }
+
+    > ul.tag_list {
+      max-width: inherit;
+      justify-content: space-evenly;
+
+      > li {
+        margin: 0.4rem 1rem;
+        font-size: 1.3rem;
+        font-weight: bold;
       }
     }
   }
