@@ -50,7 +50,7 @@ prebuild: clean mastodon mixcloud normalize.css fontawesome.css
 setup: npm-install babel-install pip-install
 
 stylelint:
-	@npx stylelint assets/scss/*.scss
+	@npx stylelint assets/scss/* public/css/*
 
 show:
 	@tree public/

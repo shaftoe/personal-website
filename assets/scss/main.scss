@@ -1,26 +1,36 @@
-$color-main: #ff7a00;
-$color-secondary: #ffd900;
-$color-text: white;
-$color-bkg-dark: #050723;
-// $color-bkg-light: #151737;
-// $color-bkg-light: rgb(29, 1, 29);
-$color-bkg-light: #230d60;
-
-// XXX :root is parsed by index-tab.js and must be the 1st stanza in this file
-:root {
-  // would be nice to use --responsive-max-width in the media query but at the moment
-  // it's not supported:
-  // https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
-  --responsive-max-width: 799px;
-}
+@import 'variables';
 
 html {
   scroll-behavior: smooth;
 }
 
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: $color-main;
+  background: linear-gradient(to bottom, $color-bkg-light 0%, $color-bkg-dark 30%);
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+ul {
+  margin: 0;
+}
+
+blockquote {
+  font-style: italic;
 }
 
 a,
@@ -37,81 +47,6 @@ a:hover {
   color: $color-secondary;
 }
 
-.claim a {
-  text-decoration: underline;
-}
-
-footer.site a {
-  padding: 0 0.3rem;
-
-  > i + i {
-    padding-left: 0.2rem;
-  }
-}
-
-a.button {
-  display: inline-block;
-  border: 1px solid;
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  color: $color-bkg-dark;
-  background-color: $color-main;
-}
-
-a:hover.button {
-  background-color: $color-bkg-light;
-  color: $color-main;
-}
-
-.claim h2 > a:last-child {
-  text-decoration: none;
-}
-
-.claim h3 a:hover {
-  text-decoration: none;
-  color: $color-secondary;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-ul {
-  margin: 0;
-}
-
-blockquote {
-  font-style: italic;
-}
-
-body {
-  max-width: 1200px;
-  margin: 0 auto;
-  color: $color-main;
-  background: linear-gradient(to bottom, $color-bkg-light 0%, $color-bkg-dark 30%);
-  font-family: 'Roboto', sans-serif;
-  font-weight: lighter;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.page_not_found {
-  height: 60vh;
-  background-image: url('/img/background-404.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top left;
-  z-index: -1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: 2rem;
-  font-family: 'Press Start 2P', monospace;
-  text-align: center;
-  padding: 1rem;
-}
-
 header {
   margin: 1rem 0;
 }
@@ -121,194 +56,11 @@ footer {
   padding-bottom: 1rem;
 }
 
-section.list {
-  padding-top: 1rem;
-}
-
-article {
-  border-width: 3px;
-  border-style: solid;
-  border-image: linear-gradient(to bottom, $color-main, rgba(0, 0, 0, 0)) 1 100%;
-  padding: 0 1rem 0;
-  margin-bottom: 2rem;
-  line-height: 1.5rem;
-
-  p {
-    margin-bottom: 0.2rem;
-  }
-
-  header {
-    margin-top: 0;
-  }
-
-  > footer {
-    text-align: unset;
-  }
-}
-
-header.site {
-  margin: 3rem 0;
-}
-
-footer.site {
-  border-radius: 1rem;
-  padding: 5rem 0.5rem 1rem;
-  background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
-
-  p + p {
-    margin-top: 1rem;
-  }
-}
-
-div.index {
-  display: grid;
-  gap: 3rem;
-  margin: 0 1.2rem;
-}
-
-.row {
-  background-color: $color-bkg-light;
-}
-
-nav.select_tab {
-  // FIXME
-  display: none;
-}
-
-div.claim {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-around;
-  color: $color-text;
-
-  h1,
-  h2,
-  h3 {
-    font-size: 1.5rem;
-    font-weight: normal;
-  }
-
-  h2,
-  h3 {
-    padding-top: 1rem;
-  }
-
-  h1 > em:first-child {
-    display: inline-block;
-    font-style: normal;
-    animation: flip 1s ease-in-out 1 2s;
-  }
-
-  h1 > strong {
-    padding-left: 0.5rem;
-    line-height: 2rem;
-    word-spacing: -0.5rem;
-    font-size: 1.2rem;
-    font-family: 'Press Start 2P', monospace;
-    font-weight: normal;
-  }
-
-  h1 > strong::after {
-    content: '_';
-    animation: blink 1s step-start 3 4s;
-  }
-
-  h2 {
-    > a:not(:last-child) {
-      text-decoration: none;
-      color: $color-main;
-    }
-
-    > a:not(:last-child)::before {
-      content: '#';
-    }
-
-    > a:not(:last-child):hover {
-      color: $color-secondary;
-    }
-  }
-}
-
 nav > ul {
   display: flex;
 }
 
-section {
-  color: $color-text;
-  // background-color: #230d60;
-  background-color: $color-bkg-light;
-  filter: alpha(opacity=100);
-  border-radius: 1rem;
-
-  > header {
-    padding-top: 1.5rem;
-    text-align: center;
-  }
-
-  > footer {
-    display: flex;
-    justify-content: center;
-
-    > ul {
-      font-size: 1.2rem;
-      padding-bottom: 3rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-
-      li + li {
-        margin-left: 1rem;
-      }
-    }
-  }
-}
-
-section + section {
-  margin-top: 3rem;
-}
-
-.paginator > ul {
-  justify-content: center;
-  padding-bottom: 2rem;
-  font-size: 1.5rem;
-
-  > li + li {
-    padding-left: 3rem;
-  }
-}
-
-div.social {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  ul {
-    max-width: 250px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    > li {
-      margin: 0 10px 15px;
-    }
-  }
-
-  span {
-    color: $color-text;
-    margin-top: 1rem;
-    // font-family: 'Rock Salt', cursive;
-    font-style: italic;
-    font-size: 1.5rem;
-  }
-
-  .fa-hand-point-up {
-    padding-left: 0.2rem;
-    animation: bump 0.5s ease-out 5 10s;
-  }
-}
-
-nav.sitenav {
+nav.site {
   margin: 0 1rem;
   font-size: 1.3rem;
 
@@ -326,8 +78,26 @@ nav.sitenav {
   }
 }
 
-div.index_content {
-  margin-bottom: 3rem;
+header.site {
+  margin: 3rem 0;
+}
+
+footer.site {
+  border-radius: 1rem;
+  padding: 5rem 0.5rem 1rem;
+  background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
+
+  p + p {
+    margin-top: 1rem;
+  }
+}
+
+footer.site a {
+  padding: 0 0.3rem;
+
+  > i + i {
+    padding-left: 0.2rem;
+  }
 }
 
 .extlink {
@@ -350,24 +120,6 @@ div.index_content {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   content: "\f35d";
-}
-
-.small_only {
-  display: initial;
-}
-
-// FIXME
-.animated {
-  animation: fadeEffect 0.7s;
-}
-
-iframe {
-  border: 0;
-  width: 100%;
-}
-
-.fa-3x {
-  font-size: 2.5rem;
 }
 
 .rss {
@@ -403,5 +155,3 @@ iframe {
 .scroll_to_top:hover {
   opacity: 1;
 }
-
-@import 'keyframes', 'large';

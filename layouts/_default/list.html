@@ -5,6 +5,11 @@
     {{- with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
     {{ end -}}
+
+    {{- with resources.Get "scss/index.scss" | toCSS | minify -}}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" type="text/css">
+    {{- end -}}
+
 {{ end -}}
 
 {{ define "header" }}

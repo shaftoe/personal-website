@@ -1,0 +1,15 @@
+.page_not_found {
+  height: 60vh;
+  background-image: url('/img/background-404.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+  z-index: -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  padding: 1rem;
+}
