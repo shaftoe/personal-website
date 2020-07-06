@@ -252,10 +252,13 @@ section {
     > ul {
       font-size: 1.2rem;
       padding-bottom: 3rem;
-      width: 18rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+
+      li + li {
+        margin-left: 1rem;
+      }
     }
   }
 }

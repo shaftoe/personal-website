@@ -16,7 +16,7 @@ build:
 clean:
 	@rm -rf public/
 
-deploy: prebuild build postbuild show test
+deploy: prebuild build show test
 
 eslint:
 	@eslint assets/js/ lib/
@@ -44,9 +44,6 @@ npm-install:
 
 pip-install:
 	@pip install -r requirements.txt
-
-postbuild:
-	@rm -r public/mastodon public/music public/video
 
 prebuild: clean mastodon mixcloud normalize.css fontawesome.css
 

@@ -88,4 +88,4 @@ enableRobotsTXT = true
     weight = 10
 
 [taxonomies]
-  genre = "genres"
+  tag = "tags"

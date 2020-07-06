@@ -5,4 +5,10 @@ link_title: Go to my YouTube page
 src_url: https://www.youtube.com/channel/UCb5FGNik4wXGrVGRS1x2JZw
 title: Videos
 weight: 4
+_build:
+  list: true
+  render: false
+cascade:
+  _build:
+    render: false
 ---
