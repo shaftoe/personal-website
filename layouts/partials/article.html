@@ -4,7 +4,7 @@
 
 <article>
 
-    {{- if $section.Params.show_title -}}
+    {{- with $article.Title -}}
     <header>
         <h3>
             <a href="{{ $url }}">{{ $article.Title }}</a>

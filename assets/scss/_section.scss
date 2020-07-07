@@ -64,6 +64,11 @@ section + section {
   margin-top: 3rem;
 }
 
+.paginator {
+  padding: 2rem 0;
+}
+
 .paginator > ul {
   justify-content: center;
+  font-size: 1.5rem;
 }
