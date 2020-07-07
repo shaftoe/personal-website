@@ -127,6 +127,27 @@ iframe {
   height: 0;
 }
 
+div.media {
+  position: relative;
+  width: 100%;
+
+  img.mixcloud {
+    height: auto;
+    max-height: 400px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 @import 'article';
 @import 'section';
 @import 'keyframes', 'large';

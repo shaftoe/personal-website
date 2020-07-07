@@ -12,10 +12,14 @@
     </header>
     {{- end -}}
 
-    {{- with $article.Params.description -}}
-    {{ . -}}
-    {{- else -}}
+    {{- if isset $article.Params "description" -}}
+    {{ $article.Params.description -}}
+    {{- else if isset $section.Params "truncate" -}}
+    {{ $article.Content | truncate $section.Params.truncate -}}
+    {{- else if (eq $section.Kind "term") -}}
     {{ $article.Content | truncate 400 -}}
+    {{- else -}}
+    {{ $article.Content -}}
     {{- end -}}
 
     <footer>

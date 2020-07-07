@@ -6,5 +6,6 @@ listed_articles: 4
 show_title: true
 show_tags: true
 title: Tech Blog
+truncate: 400
 weight: 1
 ---

@@ -1,21 +1,16 @@
 {{- $link := printf "https://www.youtube.com/watch?v=%s" (.Get 0) -}}
 {{- $thumbnail := .Get 1 -}}
 
-<div
-    class="youtube"
-    style="position: relative; width: 100%;"
->
+<div class="media youtube">
     <a
         href="{{ $link }}"
-        title="Watch video on YouTube`"
+        title="Watch this video on YouTube`"
     >
         <img
-            style="width: 100%;"
             src="{{ $thumbnail }}"
             alt="YouTube video thumbnail"
         />
-        <i
-            style="color: black; opacity: 0.6; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="fab fa-youtube fa-4x">
-        </i>
+
+        <i class="fab fa-youtube fa-4x"></i>
     </a>
 </div>
