@@ -1,40 +1,5 @@
 @import 'variables';
 
-a.button {
-  display: inline-block;
-  border: 1px solid;
-  padding: 0.6rem;
-  border-radius: 0.5rem;
-  color: $color-bkg-dark;
-  background-color: $color-main;
-}
-
-a:hover.button {
-  background-color: $color-bkg-light;
-  color: $color-main;
-}
-
-article {
-  border-width: 3px;
-  border-style: solid;
-  border-image: linear-gradient(to bottom, $color-main, rgba(0, 0, 0, 0)) 1 100%;
-  padding: 0 1rem 0;
-  margin-bottom: 2rem;
-  line-height: 1.5rem;
-
-  p {
-    margin-bottom: 0.2rem;
-  }
-}
-
-article > header {
-  margin-top: 0;
-}
-
-article > footer {
-  text-align: unset;
-}
-
 .claim > h2 > a:last-child {
   text-decoration: none;
 }
@@ -42,10 +7,6 @@ article > footer {
 .claim > h3 > a:hover {
   text-decoration: none;
   color: $color-secondary;
-}
-
-section.list {
-  padding-top: 1rem;
 }
 
 div.index {
@@ -56,14 +17,6 @@ div.index {
 
 .row {
   background-color: $color-bkg-light;
-}
-
-section footer ul li + li {
-  margin-left: 1rem;
-}
-
-.paginator > ul > li + li {
-  padding-left: 3rem;
 }
 
 div.social ul > li {
@@ -124,46 +77,6 @@ div.claim {
   }
 }
 
-section {
-  color: $color-text;
-  background-color: $color-bkg-light;
-  filter: alpha(opacity=100);
-  border-radius: 1rem;
-
-  > header {
-    padding-top: 1.5rem;
-    text-align: center;
-  }
-
-  > footer {
-    margin: 1rem;
-
-    > ul {
-      min-width: 20rem;
-      font-size: 1.2rem;
-      padding-bottom: 3rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    > ul.tag_list {
-      max-width: inherit;
-      justify-content: space-evenly;
-
-      > li {
-        margin: 0.4rem 1rem;
-        font-size: 1.3rem;
-        font-weight: bold;
-      }
-    }
-  }
-}
-
-section + section {
-  margin-top: 3rem;
-}
-
 div.social {
   display: flex;
   flex-direction: column;
@@ -173,7 +86,6 @@ div.social {
   span {
     color: $color-text;
     margin-top: 1rem;
-    // font-family: 'Rock Salt', cursive;
     font-style: italic;
     font-size: 1.5rem;
   }
@@ -221,4 +133,6 @@ iframe {
   height: 0;
 }
 
+@import 'article';
+@import 'section';
 @import 'keyframes', 'large';

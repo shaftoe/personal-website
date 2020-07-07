@@ -3,9 +3,6 @@
 
     {{ partial "google_font" (dict "fontFamily" "Press Start 2P" "text" .Title) }}
 
-    {{- with resources.Get "scss/404.scss" | toCSS | minify -}}
-    <style>{{ .Content | safeCSS }}</style>
-    {{- end -}}
 {{ end -}}
 
 {{- define "header" -}}

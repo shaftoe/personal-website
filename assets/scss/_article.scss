@@ -1,0 +1,20 @@
+article {
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, $color-main, rgba(0, 0, 0, 0)) 1 100%;
+  padding: 0 1rem 0;
+  margin-bottom: 2rem;
+  line-height: 1.5rem;
+
+  p {
+    margin-bottom: 0.2rem;
+  }
+}
+
+article > header {
+  margin-top: 0;
+}
+
+article > footer {
+  text-align: unset;
+}
