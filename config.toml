@@ -8,7 +8,7 @@ enableRobotsTXT = true
 [params]
   author = "Alex"
   description = "Alexander Fortin's personal web site"
-  listed_articles = 1
+  listed_articles = 3
 
 [menu]
 
