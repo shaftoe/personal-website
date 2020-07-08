@@ -1,4 +1,8 @@
 @media screen and (min-width: 800px) {
+  header.site {
+    margin: 18rem 0;
+  }
+
   body > header {
     display: flex;
     justify-content: center;
