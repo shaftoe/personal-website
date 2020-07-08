@@ -1,0 +1,21 @@
+{{- $title := .Get 0 -}}
+{{- $alt := .Get 1 -}}
+{{- $fontawesomeClass := .Get 2 -}}
+
+{{- with $.Page.Resources.GetMatch "thumbnail" }}
+<div class="media">
+    <a
+        href="{{ $.Page.Params.src_url }}"
+        {{- with $title }}title="{{ . }}"{{ end -}}
+    >
+        <img
+            src="{{ .RelPermalink }}"
+            {{- with $alt }}alt="{{ . }}"{{ end -}}
+        />
+
+        {{- with $fontawesomeClass -}}
+        <i class="{{ . }}"></i>
+        {{- end -}}
+    </a>
+</div>
+{{- end -}}
