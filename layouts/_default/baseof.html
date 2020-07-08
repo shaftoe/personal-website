@@ -76,7 +76,7 @@
             Last update: <em>{{ now.UTC.Format "02 Jan 2006 15:04 UTC" }}</em>
         </p>
 
-        <p>
+        <small>
             Except where otherwise noted, content on this site is licensed under
             <a
                 href="https://creativecommons.org/licenses/by-sa/4.0/"
@@ -87,7 +87,7 @@
                 <i class="fab fa-creative-commons-sa"></i>
             </a>
             Creative Commons Attribution 4.0 International license
-        </p>
+        </small>
     </footer>
 
     {{- $jsFile := printf "js/%s.js" .Page.Kind -}}
