@@ -29,13 +29,18 @@
     <footer>
         {{- if and $section.Params.show_tags (gt $section.Site.Taxonomies.tags 0) -}}
         <ul class="tag_list">
-            {{ range $section.Site.Taxonomies.tags.ByCount }}
+            {{ range first 10 $section.Site.Taxonomies.tags.ByCount}}
             <li>
                 <a href="/tags/{{ .Term | urlize }}">
                     #{{ .Term }}
                 </a>
             </li>
             {{ end }}
+            <li>
+                <a href="/tags/">
+                    More tags...
+                </a>
+            </li>
         </ul>
         {{- end -}}
 
