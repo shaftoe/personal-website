@@ -84,13 +84,30 @@ header.site {
 }
 
 footer.site {
+  display: flex;
+  flex-wrap: wrap;
   color: white;
   border-radius: 1rem;
-  padding: 5rem 0.5rem 1rem;
+  padding: 4rem 0.5rem 1rem;
   background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
+
+  p {
+    width: 100%;
+  }
 
   p + p {
     margin-top: 1rem;
+  }
+
+  ul {
+    text-align: left;
+    width: 33%;
+    margin-bottom: 2rem;
+  }
+
+  small {
+    padding: 1rem;
+    width: 100%;
   }
 }
 
@@ -156,4 +173,8 @@ footer.site a {
 
 .scroll_to_top:hover {
   opacity: 1;
+}
+
+.active {
+  font-weight: 700;
 }

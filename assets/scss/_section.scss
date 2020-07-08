@@ -46,17 +46,6 @@ section {
       flex-wrap: wrap;
       justify-content: center;
     }
-
-    > ul.tag_list {
-      max-width: inherit;
-      justify-content: space-evenly;
-
-      > li {
-        margin: 0.4rem 1rem;
-        font-size: 1.3rem;
-        font-weight: bold;
-      }
-    }
   }
 }
 
