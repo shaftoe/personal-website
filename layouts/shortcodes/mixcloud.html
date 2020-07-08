@@ -1,18 +1,16 @@
-{{- $link := printf "https://www.mixcloud.com%s" (.Get 0) -}}
-{{- $thumbnail := .Get 1 -}}
-
-<div
-    class="media"
->
+{{- with $.Page.Resources.GetMatch "thumbnail" }}
+<div class="media">
     <a
-        href="{{ $link }}"
-        title="Listen this music mix on Mixcloud`"
+        href="{{ $.Page.Params.src_url }}"
+        title="Listen this music mix on Mixcloud"
     >
         <img
-            src="{{ $thumbnail }}"
+            src="{{ .RelPermalink }}"
             alt="Mixcloud music mix thumbnail"
             class="mixcloud"
         />
+
         <i class="fas fa-play-circle fa-4x"></i>
     </a>
 </div>
+{{- end -}}

@@ -1,16 +1,15 @@
-{{- $link := printf "https://www.youtube.com/watch?v=%s" (.Get 0) -}}
-{{- $thumbnail := .Get 1 -}}
-
-<div class="media youtube">
+{{- with $.Page.Resources.GetMatch "thumbnail" }}
+<div class="media">
     <a
-        href="{{ $link }}"
+        href="{{ $.Page.Params.src_url }}"
         title="Watch this video on YouTube`"
     >
         <img
-            src="{{ $thumbnail }}"
+            src="{{ .RelPermalink }}"
             alt="YouTube video thumbnail"
         />
 
         <i class="fab fa-youtube fa-4x"></i>
     </a>
 </div>
+{{- end -}}
