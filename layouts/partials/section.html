@@ -31,7 +31,7 @@
         <h4 class="tag_list">Popular categories</h4>
         <ul class="tag_list">
             {{ range first 10 $section.Site.Taxonomies.tags.ByCount}}
-                {{ partial "tag" . }}
+                {{ partial "tag" .Term }}
             {{ end }}
             <li class="more">
                 <a

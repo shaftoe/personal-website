@@ -2,7 +2,8 @@
     <a
         class="button"
         href="/tags/{{ . | urlize }}"
+        title="List articles tagged #{{ . }}"
     >
-        {{ .Term }}
+        {{ . }}
     </a>
 </li>

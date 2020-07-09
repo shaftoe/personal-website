@@ -37,7 +37,7 @@
             <li>
                 <a
                     href="{{ $paginator.Prev.URL }}"
-                    title="Newer articles"
+                    title="List newer articles"
                     class="button"
                 >Newer</a>
             </li>
@@ -46,7 +46,7 @@
             <li>
                 <a
                     href="{{ $paginator.Next.URL }}"
-                    title="Older articles"
+                    title="List older articles"
                     class="button"
                 >Older</a>
             </li>
@@ -61,7 +61,7 @@
 
     <ul class="tag_list">
         {{ range .Site.Taxonomies.tags.ByCount }}
-        {{ partial "tag" . }}
+        {{ partial "tag" .Term }}
         {{ end }}
     </ul>
 </aside>
