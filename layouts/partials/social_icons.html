@@ -2,7 +2,7 @@
 <ul class="social-icons">
     {{ range . }}
     {{ $menu_entry := . }}
-    {{ $title := printf "Go to my %s account" (.Name | humanize) }}
+    {{ $title := printf "Follow me on %s" (.Name | humanize) }}
     <li>
         <a
             href="{{ .URL }}"
@@ -15,7 +15,7 @@
     </li>
     {{ end }}
 
-    {{- $title := "Contact me via email" -}}
+    {{- $title := "Send me an email" -}}
     <li>
         <a
             href="/contact"
