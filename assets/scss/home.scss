@@ -4,19 +4,12 @@ header.site {
   margin: 0;
 }
 
-ul.tag_list li {
-  margin-bottom: 0.7rem;
-  padding: 0.5rem;
-  background-color: $color-main;
+ul.tag_list li a {
   border-radius: 1rem;
 }
 
 div.social ul > li {
   margin: 0 10px 15px;
-}
-
-ul.tag_list a {
-  color: $color-bkg-dark;
 }
 
 .claim > h2 > a:last-child {
@@ -29,14 +22,19 @@ ul.tag_list a {
 }
 
 ul.tag_list {
-  li:last-child {
-    background-color: inherit;
-    border: 1px solid $color-main;
+  margin: 1rem 0 3rem;
+}
 
-    a {
-      color: $color-main;
-    }
-  }
+ul.tag_list li:last-child a {
+  background-color: $color-bkg-light;
+  color: $color-main;
+  border-radius: 1rem;
+}
+
+h4.tag_list {
+  color: $color-main;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 div.index {
