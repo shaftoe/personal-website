@@ -13,20 +13,23 @@
 
 {{- define "header" -}}
 
-    <div class="index">
+    <div class="hero">
 
-        <div class="claim">
-            {{- .Content -}}
+        <div class="index">
+
+            <div class="claim">
+                {{- .Content -}}
+            </div>
+
+            <div class="social">
+                {{- partial "social_icons" .Site.Menus.socialnetworks -}}
+                <span>
+                    I'm social !
+                    <i class="far fa-hand-point-up bump"></i>
+                </span>
+            </div>
+
         </div>
-
-        <div class="social">
-            {{- partial "social_icons" .Site.Menus.socialnetworks -}}
-            <span>
-                I'm social !
-                <i class="far fa-hand-point-up bump"></i>
-            </span>
-        </div>
-
     </div>
 
     <aside class="scroll_to_top">
