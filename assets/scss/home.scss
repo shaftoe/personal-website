@@ -1,8 +1,22 @@
 @import 'variables';
 
 header.site {
-  height: 100vh;
   margin: 0;
+}
+
+ul.tag_list li {
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  background-color: $color-main;
+  border-radius: 1rem;
+}
+
+div.social ul > li {
+  margin: 0 10px 15px;
+}
+
+ul.tag_list a {
+  color: $color-bkg-dark;
 }
 
 .claim > h2 > a:last-child {
@@ -14,10 +28,21 @@ header.site {
   color: $color-secondary;
 }
 
+ul.tag_list {
+  li:last-child {
+    background-color: inherit;
+    border: 1px solid $color-main;
+
+    a {
+      color: $color-main;
+    }
+  }
+}
+
 div.index {
   display: grid;
   gap: 3rem;
-  margin: 0 1.2rem;
+  margin: 3rem 1.2rem;
 }
 
 .row {
@@ -29,10 +54,6 @@ div.hero {
   height: 100%;
   flex-direction: column;
   justify-content: center;
-}
-
-div.social ul > li {
-  margin: 0 10px 15px;
 }
 
 div.claim {

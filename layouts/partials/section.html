@@ -32,7 +32,7 @@
             {{ range first 10 $section.Site.Taxonomies.tags.ByCount}}
             <li>
                 <a href="/tags/{{ .Term | urlize }}">
-                    #{{ .Term }}
+                    {{ .Term }}
                 </a>
             </li>
             {{ end }}
