@@ -1,0 +1,20 @@
+h4.tag_list {
+  color: $color-main;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+}
+
+ul.tag_list li a {
+  border-radius: 1rem;
+}
+
+ul.tag_list {
+  display: flex;
+  margin: 1rem 0 3rem;
+}
+
+ul.tag_list li.more a {
+  background-color: $color-bkg-light;
+  color: $color-main;
+  border-radius: 1rem;
+}

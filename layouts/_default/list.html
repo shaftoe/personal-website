@@ -7,74 +7,62 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
     {{ end -}}
 
-    <style>
-        main > div {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: 2fr 5fr;
-        }
-    </style>
-
 {{ end -}}
 
 {{ define "header" }}
-{{- $title := printf `%s - %s` (.Param "author") .Page.Title -}}
-<h1 class="center">
-    <a
-        href="{{ .Page.RelPermalink }}"
-        title="Go to {{ $title }} main page"
-    >
-        {{- $title -}}
-    </a>
-</h1>
 {{ end }}
 
 {{ define "main" }}
 {{ $section := . }}
 
-<div>
+<section class="list">
+    {{- $title := printf "%s's %s" (.Param "author") .Page.Title -}}
+    <h1>
+        <a
+            href="{{ .Page.RelPermalink }}"
+            title="Go to {{ $title }} main page"
+        >
+            {{- $title -}}
+        </a>
+    </h1>
 
-    <aside class="tags">
-        <ul class="tag_list">
-            {{ range .Site.Taxonomies.tags.ByCount }}
-            <li>
-                <a href="/tags/{{ .Term | urlize }}">
-                    #{{ .Term }}
-                </a>
-            </li>
-            {{ end }}
-        </ul>
-    </aside>
-
-    <section class="list">
     {{- range (.Paginator 5).Pages -}}
         {{ partial "article" (dict "article" . "section" $section) }}
     {{- end -}}
-    </section>
 
-</div>
+    {{- $paginator := .Paginate (where .Pages "Type" "posts") -}}
+    <nav class="paginator">
+        <ul>
+            {{- if $paginator.HasPrev -}}
+            <li>
+                <a
+                    href="{{ $paginator.Prev.URL }}"
+                    title="Newer articles"
+                    class="button"
+                >Newer</a>
+            </li>
+            {{- end -}}
+            {{- if $paginator.HasNext -}}
+            <li>
+                <a
+                    href="{{ $paginator.Next.URL }}"
+                    title="Older articles"
+                    class="button"
+                >Older</a>
+            </li>
+            {{- end -}}
+        </ul>
+    </nav>
 
-{{- $paginator := .Paginate (where .Pages "Type" "posts") -}}
-<nav class="paginator">
-    <ul>
-        {{- if $paginator.HasPrev -}}
-        <li>
-            <a
-                href="{{ $paginator.Prev.URL }}"
-                title="Newer articles"
-                class="button"
-            >Newer</a>
-        </li>
-        {{- end -}}
-        {{- if $paginator.HasNext -}}
-        <li>
-            <a
-                href="{{ $paginator.Next.URL }}"
-                title="Older articles"
-                class="button"
-            >Older</a>
-        </li>
-        {{- end -}}
+</section>
+
+<aside>
+    <h4 class="tag_list">Categories</h4>
+
+    <ul class="tag_list">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        {{ partial "tag" . }}
+        {{ end }}
     </ul>
-</nav>
+</aside>
 {{- end -}}

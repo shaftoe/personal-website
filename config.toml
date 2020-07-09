@@ -6,7 +6,7 @@ rssLimit = 10
 enableRobotsTXT = true
 
 [params]
-  author = "Alex"
+  author = "Alexander Fortin"
   description = "Alexander Fortin's personal web site"
   listed_articles = 3
 

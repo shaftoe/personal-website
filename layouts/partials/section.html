@@ -31,16 +31,9 @@
         <h4 class="tag_list">Popular categories</h4>
         <ul class="tag_list">
             {{ range first 10 $section.Site.Taxonomies.tags.ByCount}}
-            <li>
-                <a
-                    class="button"
-                    href="/tags/{{ .Term | urlize }}"
-                >
-                    {{ .Term }}
-                </a>
-            </li>
+                {{ partial "tag" . }}
             {{ end }}
-            <li>
+            <li class="more">
                 <a
                     class="button"
                     href="/tags/"
