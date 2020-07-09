@@ -120,6 +120,10 @@ div.index_content {
   margin-bottom: 3rem;
 }
 
+div.index_content.row_2 {
+  gap: 6rem;
+}
+
 .small_only {
   display: initial;
 }
@@ -146,7 +150,6 @@ div.media {
 
   img {
     height: auto;
-    max-height: 400px;
     width: 100%;
   }
 

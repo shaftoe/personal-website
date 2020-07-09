@@ -2,13 +2,15 @@
 {{- $alt := .Get 1 -}}
 {{- $fontawesomeClass := .Get 2 -}}
 
-{{- with $.Page.Resources.GetMatch "thumbnail" }}
+{{- with ($.Page.Resources.GetMatch "thumbnail.*").Fill "480x360 Center" }}
 <div class="media">
     <a
         href="{{ $.Page.Params.src_url }}"
         {{- with $title }}title="{{ . }}"{{ end -}}
     >
         <img
+            width="480"
+            height="360"
             src="{{ .RelPermalink }}"
             {{- with $alt }}alt="{{ . }}"{{ end -}}
         />
