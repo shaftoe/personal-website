@@ -16,11 +16,11 @@ ul.tag_list li a:hover {
 }
 
 ul.tag_list {
+  margin: 0.5rem 0;
   font-size: 1.2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1rem 0 3rem;
 }
 
 ul.tag_list li {
