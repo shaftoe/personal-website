@@ -16,10 +16,6 @@ section.list {
   padding-top: 1rem;
 }
 
-.paginator > ul > li + li {
-  padding-left: 3rem;
-}
-
 section {
   color: $color-text;
   background: linear-gradient(to bottom, $color-bkg-light 0%, $color-bkg-dark 50%, $color-bkg-light 100%,);
@@ -38,10 +34,18 @@ section {
       padding-bottom: 3rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
       justify-content: center;
+
+      li {
+        font-size: 1.2rem;
+        padding-right: 0.5rem;
+      }
     }
   }
+}
+
+.paginator > ul > li + li {
+  padding-left: 3rem;
 }
 
 section + section {

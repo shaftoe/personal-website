@@ -3,17 +3,7 @@
 @import 'article';
 @import 'tag_list';
 @import 'large';
-
-header.site {
-  height: initial;
-  margin: unset;
-}
-
-h1 {
-  font-size: 3.5rem;
-  margin: 3rem 0 4rem;
-  text-align: right;
-}
+@import 'title';
 
 h4 {
   font-size: 2rem;

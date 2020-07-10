@@ -5,6 +5,14 @@ h4.tag_list {
 }
 
 ul.tag_list li a {
+  color: $color-main;
+  background-color: $color-bkg-light;
+  border-radius: 1rem;
+}
+
+ul.tag_list li a:hover {
+  color: $color-bkg-dark;
+  background-color: $color-main;
   border-radius: 1rem;
 }
 
@@ -12,6 +20,10 @@ ul.tag_list {
   font-size: 1.2rem;
   display: flex;
   margin: 1rem 0 3rem;
+}
+
+ul.tag_list li {
+  padding: 0.5rem;
 }
 
 ul.tag_list li.more a {

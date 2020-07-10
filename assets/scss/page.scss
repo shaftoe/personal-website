@@ -1,0 +1,11 @@
+@import 'variables';
+@import 'article';
+@import 'keyframes', 'large';
+@import 'title';
+
+article {
+  max-width: 850px;
+  margin: auto;
+  border: unset;
+  color: white;
+}

@@ -2,16 +2,12 @@
     <title>{{ .Title }}</title>
 {{- end -}}
 
-{{ define "header" }}
-<h1>{{ .Title }}</h1>
-<small>{{ partial "date" .Date }}</small>
-{{ end }}
-
-
 {{ define "main" }}
-<section>
+    <h1>{{ .Title }}</h1>
+
+    <small>{{ partial "date" .Date }}</small>
+
     <article>
         {{ .Content }}
     </article>
-</section>
 {{ end }}
