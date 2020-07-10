@@ -16,5 +16,25 @@ article > header {
 }
 
 article > footer {
+  margin: initial;
   text-align: unset;
+}
+
+article ul.tag_list {
+  margin: 1rem 0;
+  font-size: 1rem;
+
+  li a {
+    padding: unset;
+    border: none;
+  }
+
+  li a::before {
+    margin: -0.2rem;
+    content: '#';
+  }
+
+  li:first-child {
+    padding-left: initial;
+  }
 }

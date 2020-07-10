@@ -23,6 +23,15 @@
     {{- end -}}
 
     <footer>
+
+        {{- with $article.Params.tags -}}
+        <ul class="tag_list">
+            {{- range $article.Params.tags -}}
+                {{- partial "tag" . -}}
+            {{- end -}}
+        </ul>
+        {{- end -}}
+
         <a
             href="{{ $url }}"
             {{ if isset $article.Params "src_url" }}class="extlink"{{ end -}}
