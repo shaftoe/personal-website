@@ -25,13 +25,8 @@ article ul.tag_list {
   font-size: 1rem;
 
   li a {
-    padding: unset;
+    padding: 0 0.3rem;
     border: none;
-  }
-
-  li a::before {
-    margin: -0.2rem;
-    content: '#';
   }
 
   li:first-child {
