@@ -22,7 +22,7 @@ aside {
   margin-top: 4rem;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $media-min-width) {
   main {
     margin-top: 2rem;
     display: grid;

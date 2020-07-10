@@ -1,17 +1,37 @@
+@import 'variables';
+@import 'large';
+
+header.site {
+  height: unset;
+}
+
 .page_not_found {
-  height: 60vh;
-  background-image: url('/img/background-404.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top left;
-  z-index: -1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   font-size: 2rem;
   font-family: 'Press Start 2P', monospace;
   text-align: center;
-  padding: 1rem;
 }
 
-@import 'large';
+main {
+  margin-top: 4rem;
+}
+
+footer {
+  max-width: 1200px;
+  bottom: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+}
