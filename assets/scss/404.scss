@@ -24,11 +24,10 @@ main {
 }
 
 footer.site {
-  position: fixed;
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 0 1rem;
-  bottom: 0;
+  border-radius: initial;
 }
 
 img {
@@ -42,4 +41,11 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translateY(-50%);
+}
+
+@media screen and (min-width: $media-min-width) {
+  footer.site {
+    position: fixed;
+    bottom: 0;
+  }
 }

@@ -33,6 +33,13 @@ h3 {
   font-size: 1.4rem;
 }
 
+h5 {
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: initial;
+}
+
 blockquote {
   font-style: italic;
 }
@@ -87,45 +94,35 @@ footer.site {
   flex-wrap: wrap;
   color: white;
   border-radius: 1rem;
-  padding: 4rem 0.5rem 1rem;
+  padding: 1.5rem 0.5rem 1rem;
   background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
-
-  p {
-    width: 100%;
-  }
-
-  p + p {
-    margin-top: 1rem;
-  }
 
   ul {
     text-align: left;
-    width: 33%;
+    width: 12rem;
+    max-width: 12rem;
     margin-bottom: 2rem;
-  }
-
-  small {
-    padding: 1rem;
-    width: 100%;
   }
 
   div.links {
     margin: auto 1rem;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  small {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 
-    ul {
-      padding-left: 4rem;
+    span {
+      padding: 0.2rem;
     }
-  }
-}
-
-footer.site a {
-  padding: 0 0.3rem;
-
-  > i + i {
-    padding-left: 0.2rem;
   }
 }
 

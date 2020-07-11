@@ -32,6 +32,41 @@ enableRobotsTXT = true
     url = "/feed.xml"
     weight = 4
 
+  [[menu.content]]
+    name = "Tech Blog"
+    url = "/tech"
+    weight = 1
+
+  [[menu.content]]
+    name = "Micro Blog"
+    url = "https://fosstodon.org/@alex/"
+    weight = 2
+
+  [[menu.content]]
+    name = "Music Mixes"
+    url = "https://www.mixcloud.com/al3xf"
+    weight = 3
+
+  [[menu.content]]
+    name = "Videos"
+    url = "https://www.youtube.com/channel/UCb5FGNik4wXGrVGRS1x2JZw"
+    weight = 4
+
+  [[menu.content]]
+    name = "Contact"
+    url = "/contact"
+    weight = 5
+
+  [[menu.content]]
+    name = "Privacy"
+    url = "/privacy"
+    weight = 6
+
+  [[menu.content]]
+    name = "License"
+    url = "https://creativecommons.org/licenses/by-sa/4.0/"
+    weight = 6
+
   [[menu.socialnetworks]]
     name = "github"
     url = "https://github.com/shaftoe"
@@ -86,6 +121,36 @@ enableRobotsTXT = true
     name = "facebook"
     url = "https://www.facebook.com/alexander.fortin.9"
     weight = 10
+
+  [[menu.tech]]
+    name = "Website Source Code"
+    url = "/"
+    weight = 1
+
+  [[menu.tech]]
+    name = "Built with Hugo"
+    url = "https://gohugo.io/"
+    weight = 2
+
+  [[menu.tech]]
+    name = "Fonts by Google"
+    url = "https://fonts.google.com/"
+    weight = 3
+
+  [[menu.tech]]
+    name = "Icons by Font Awesome"
+    url = "https://fontawesome.com/"
+    weight = 3
+
+  [[menu.tech]]
+    name = "Build automation in Node.js"
+    url = "/FIXME"
+    weight = 4
+
+  [[menu.tech]]
+    name = "Built, hosted and distributed by Netlify"
+    url = "https://www.netlify.com/"
+    weight = 5
 
 [taxonomies]
   tag = "tags"

@@ -16,4 +16,9 @@
   nav.site > ul {
     display: initial;
   }
+
+  footer.site div.links {
+    align-items: initial;
+    flex-direction: unset;
+  }
 }
