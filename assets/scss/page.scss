@@ -3,9 +3,42 @@
 @import 'keyframes', 'large';
 @import 'title';
 
+body {
+  max-width: 54rem;
+}
+
+nav.site {
+  margin: unset;
+}
+
 article {
-  max-width: 850px;
-  margin: auto;
   border: unset;
+  padding: unset;
   color: white;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 3rem;
+    text-align: unset;
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-align: unset;
+    margin: 1rem 0 0;
+    line-height: 2.5rem;
+  }
+}
+
+header {
+  margin: 2rem 0 1rem;
+}
+
+.date {
+  display: inline-block;
+  margin-top: 1rem;
 }

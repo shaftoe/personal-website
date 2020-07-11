@@ -14,7 +14,7 @@
 
 <section class="list">
     {{- $title := printf "%s's %s" (.Param "author") .Page.Title -}}
-    <h1>
+    <h1 class="blog-title">
         <a
             href="{{ .Page.RelPermalink }}"
             title="Go to {{ $title }} main page"

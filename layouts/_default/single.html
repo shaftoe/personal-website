@@ -2,12 +2,31 @@
     <title>{{ .Title }}</title>
 {{- end -}}
 
+{{- define "header" -}}
+<header>
+    {{- $blogTitle := printf "%s's %s" (.Param "author") .Parent.Title -}}
+    <h2 class="blog-title">
+        <a
+            href="{{ .Parent.RelPermalink }}"
+            title="Go to {{ .Parent.Title }} main page"
+        >
+            {{ $blogTitle }}
+        </a>
+    </h2>
+</header>
+{{- end -}}
+
 {{ define "main" }}
-    <h1>{{ .Title }}</h1>
-
-    <small>{{ partial "date" .Date }}</small>
-
     <article>
-        {{ .Content }}
+        <h1>{{ .Title }}</h1>
+
+        <small class="date">
+            <a
+                href="{{ .RelPermalink }}"
+                title="Permanent link to this article"
+            >
+                {{ partial "date" .Date }}
+            </a>
+        </small>        {{ .Content }}
     </article>
 {{ end }}
