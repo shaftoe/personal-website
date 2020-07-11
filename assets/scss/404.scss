@@ -6,6 +6,10 @@ header.site {
   margin: initial;
 }
 
+nav.site {
+  margin: unset;
+}
+
 .page_not_found {
   display: flex;
   justify-content: flex-end;
@@ -16,11 +20,14 @@ header.site {
 }
 
 main {
-  margin-top: 4rem;
+  padding-top: 1rem;
 }
 
-footer {
+footer.site {
+  position: fixed;
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 0 1rem;
   bottom: 0;
 }
 

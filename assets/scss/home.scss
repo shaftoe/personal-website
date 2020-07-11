@@ -160,6 +160,50 @@ div.media {
   }
 }
 
+@media screen and (min-width: $media-min-width) {
+  header.site {
+    height: 100vh;
+    margin: 0 5rem;
+  }
+
+  div.claim {
+    h1,
+    h2,
+    h3 {
+      font-size: 2rem;
+      line-height: 2.3rem;
+    }
+  }
+
+  div.index {
+    grid-template-rows: unset;
+    grid-template-columns: 2fr 1fr;
+    max-width: 1000px;
+    margin: initial;
+
+    h1 {
+      align-self: center;
+    }
+  }
+
+  div.index_content {
+    display: grid;
+    gap: 4rem;
+  }
+
+  div.index_content.row_1 {
+    grid-template-columns: 5fr 3fr;
+  }
+
+  div.index_content.row_2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  nav.site {
+    margin-left: 5rem;
+  }
+}
+
 @import 'section';
 @import 'article';
 @import 'tag_list';
