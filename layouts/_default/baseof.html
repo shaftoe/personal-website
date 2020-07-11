@@ -40,36 +40,34 @@
 </head>
 
 <body id="top">
-    <header class="site">
-        <nav class="site">
-            <ul>
-                {{- $currentPage := . -}}
-                {{- range .Site.Menus.main -}}
-                <li>
-                    {{- $url := .URL -}}
-                    {{- $class := "sidebar-nav-item" -}}
-                    {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
-                        {{- $class = (printf "%s active" $class) -}}
-                    {{- end -}}
-                    {{- if eq .Name "RSS" -}}
-                        {{- with $currentPage.Params.feed -}}{{- $url = . -}}{{- end -}}
-                        {{- $class = (printf "%s rss" $class) -}}
-                    {{- end -}}
-
-                    <a
-                        class="{{ $class }}"
-                        href="{{ $url }}"
-                        {{- with .Title }}title="{{ . }}"{{ end -}}
-                    >
-                        {{- .Name -}}
-                    </a>
-                </li>
+    <nav class="site">
+        <ul>
+            {{- $currentPage := . -}}
+            {{- range .Site.Menus.main -}}
+            <li>
+                {{- $url := .URL -}}
+                {{- $class := "sidebar-nav-item" -}}
+                {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
+                    {{- $class = (printf "%s active" $class) -}}
                 {{- end -}}
-            </ul>
-        </nav>
+                {{- if eq .Name "RSS" -}}
+                    {{- with $currentPage.Params.feed -}}{{- $url = . -}}{{- end -}}
+                    {{- $class = (printf "%s rss" $class) -}}
+                {{- end -}}
 
-        {{ block "header" . }}{{ end }}
-    </header>
+                <a
+                    class="{{ $class }}"
+                    href="{{ $url }}"
+                    {{- with .Title }}title="{{ . }}"{{ end -}}
+                >
+                    {{- .Name -}}
+                </a>
+            </li>
+            {{- end -}}
+        </ul>
+    </nav>
+
+    {{ block "header" . }}{{ end }}
 
     <main>{{ block "main" . }}{{ end }}</main>
 
