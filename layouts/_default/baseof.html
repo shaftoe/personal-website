@@ -98,7 +98,7 @@
             </div>
 
             <div class="link_list">
-                <h5>Social Presence</h5>
+                <h5>Social</h5>
                 <ul>
                     {{- range .Site.Menus.socialnetworks -}}
                     <li><a href="{{ .URL }}">{{ .Name | humanize }}</a></li>
@@ -126,6 +126,7 @@
                 <a
                     href="https://creativecommons.org/licenses/by-sa/4.0/"
                     title="Go to Creative Commons license page"
+                    class="license"
                 >
                     <i class="fab fa-creative-commons"></i>
                     <i class="fab fa-creative-commons-by"></i>
@@ -136,7 +137,7 @@
         </small>
     </footer>
 
-    {{- with resources.Get "js/home.js" -}}
+    {{- with resources.Get "js/main.js" -}}
     {{- $js := . | babel | minify -}}
     <script>
         {{- $js.Content | safeJS -}}
