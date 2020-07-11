@@ -20,5 +20,9 @@
   footer.site div.links {
     align-items: initial;
     flex-direction: unset;
+
+    ul li {
+      padding: unset;
+    }
   }
 }
