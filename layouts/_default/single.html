@@ -27,6 +27,19 @@
             >
                 {{ partial "date" .Date }}
             </a>
-        </small>        {{ .Content }}
+        </small>
+
+        {{ .Content }}
+
+        <footer>
+            {{- with .Params.tags -}}
+            <ul class="tag_list">
+                {{- range . -}}
+                    {{- partial "tag" . -}}
+                {{- end -}}
+            </ul>
+            {{- end -}}
+        </footer>
+
     </article>
 {{ end }}

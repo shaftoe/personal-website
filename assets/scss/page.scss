@@ -2,6 +2,7 @@
 @import 'article';
 @import 'keyframes', 'large';
 @import 'title';
+@import 'tag_list';
 
 body {
   max-width: 54rem;
@@ -15,6 +16,7 @@ article {
   border: unset;
   padding: unset;
   color: white;
+  font-size: 1.2rem;
 
   h1,
   h2,
@@ -24,6 +26,7 @@ article {
   h6 {
     margin-top: 3rem;
     text-align: unset;
+    line-height: 1.7rem;
   }
 
   h1 {
