@@ -71,6 +71,15 @@
 
     <main>{{ block "main" . }}{{ end }}</main>
 
+    <aside class="scroll_to_top">
+        <a
+            href="#top"
+            title="Scroll to top"
+        >
+            <i class="fas fa-hand-point-up"></i>
+        </a>
+    </aside>
+
     <footer class="site">
         <div class="links">
             <div class="link_list">
@@ -127,8 +136,7 @@
         </small>
     </footer>
 
-    {{- $jsFile := printf "js/%s.js" .Page.Kind -}}
-    {{- with resources.Get $jsFile -}}
+    {{- with resources.Get "js/home.js" -}}
     {{- $js := . | babel | minify -}}
     <script>
         {{- $js.Content | safeJS -}}
