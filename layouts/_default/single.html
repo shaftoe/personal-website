@@ -7,14 +7,14 @@
 {{- define "header" -}}
 <header>
     {{- $blogTitle := printf "%s's %s" (.Param "author") .Parent.Title -}}
-    <h2 class="blog-title">
+    <h1 class="blog-title">
         <a
             href="{{ .Parent.RelPermalink }}"
             title="Go to {{ .Parent.Title }} main page"
         >
             {{ $blogTitle }}
         </a>
-    </h2>
+    </h1>
 </header>
 {{- end -}}
 

@@ -97,18 +97,6 @@ header {
   font-weight: bold;
 }
 
-.blog-title {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  margin: 1rem auto;
-  border-bottom: 2px solid;
-  border-color: $color-main;
-  padding-bottom: 2rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
 .date {
   display: inline-block;
   margin-top: 1rem;
@@ -124,5 +112,31 @@ ul.buttons {
   li {
     font-size: 1.2rem;
     padding-right: 0.5rem;
+  }
+}
+
+.blog-title {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: 3rem auto;
+  border-bottom: 2px solid;
+  border-color: $color-main;
+  padding-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+
+  a {
+    color: $color-text;
+  }
+
+  a:hover {
+    color: $color-main;
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  .blog-title {
+    font-size: 3rem;
   }
 }

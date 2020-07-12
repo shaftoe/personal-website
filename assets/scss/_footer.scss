@@ -3,7 +3,7 @@
 footer.site {
   display: flex;
   flex-wrap: wrap;
-  color: white;
+  color: $color-text;
   border-radius: 1rem;
   padding: 1.5rem 0.5rem 1rem;
   background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
