@@ -3,7 +3,7 @@ article {
   border-style: solid;
   border-image: linear-gradient(to bottom, $color-main, rgba(0, 0, 0, 0)) 1 100%;
   padding: 0 1rem 0;
-  margin-bottom: 2rem;
+  margin: 2rem auto;
   line-height: 1.5rem;
 
   p {
@@ -16,7 +16,7 @@ article > header {
 }
 
 article > footer {
-  margin: initial;
+  margin: 1rem auto;
   text-align: unset;
 }
 
