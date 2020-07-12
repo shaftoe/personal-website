@@ -114,3 +114,17 @@ ul.buttons {
     padding-right: 0.5rem;
   }
 }
+
+a.button {
+  display: inline-block;
+  border: 2px solid;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  color: $color-bkg-dark;
+  background-color: $color-main;
+}
+
+a:hover.button {
+  background-color: $color-bkg-light;
+  color: $color-main;
+}
