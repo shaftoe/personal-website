@@ -9,6 +9,7 @@ enableRobotsTXT = true
   author = "Alexander Fortin"
   description = "Alexander Fortin's personal web site"
   listed_articles = 3
+  feed = "/index.xml"
 
 [menu]
 
@@ -29,7 +30,6 @@ enableRobotsTXT = true
 
   [[menu.main]]
     name = "RSS"
-    url = "/feed.xml"
     weight = 4
 
   [[menu.content]]

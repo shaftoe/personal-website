@@ -44,15 +44,23 @@
         <ul>
             {{- $currentPage := . -}}
             {{- range .Site.Menus.main -}}
+
             <li>
                 {{- $url := .URL -}}
                 {{- $class := "sidebar-nav-item" -}}
+
                 {{- if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) -}}
                     {{- $class = (printf "%s active" $class) -}}
                 {{- end -}}
+
                 {{- if eq .Name "RSS" -}}
-                    {{- with $currentPage.Params.feed -}}{{- $url = . -}}{{- end -}}
                     {{- $class = (printf "%s rss" $class) -}}
+
+                    {{- if eq $currentPage.Kind "page" }}
+                        {{- $url = $currentPage.Parent.Params.feed }}
+                    {{ else }}
+                        {{- $url = $.Param "feed" -}}
+                    {{- end -}}
                 {{- end -}}
 
                 <a
@@ -63,6 +71,7 @@
                     {{- .Name -}}
                 </a>
             </li>
+
             {{- end -}}
         </ul>
     </nav>
