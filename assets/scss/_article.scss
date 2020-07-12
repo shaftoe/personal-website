@@ -9,26 +9,36 @@ article {
   p {
     margin-bottom: 0.2rem;
   }
-}
 
-article > header {
-  margin-top: 0;
-}
-
-article > footer {
-  margin: 1rem auto;
-  text-align: unset;
-}
-
-article ul.tag_list {
-  font-size: 1rem;
-
-  li a {
-    padding: 0.5rem;
-    border: none;
+  > header {
+    margin-top: 0;
   }
 
-  li:first-child {
-    padding-left: initial;
+  > footer {
+    margin: 1rem auto;
+    text-align: unset;
+  }
+
+  ul.tag_list {
+    font-size: 1rem;
+
+    li a {
+      padding: 0.5rem;
+      border: none;
+    }
+
+    li:first-child {
+      padding-left: initial;
+    }
+  }
+
+  blockquote {
+    font-style: italic;
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  article ul.tag_list {
+    justify-content: initial;
   }
 }

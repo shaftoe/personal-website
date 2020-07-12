@@ -6,10 +6,6 @@ header.site {
   margin: initial;
 }
 
-nav.site {
-  margin: unset;
-}
-
 .page_not_found {
   display: flex;
   justify-content: flex-end;
@@ -24,9 +20,6 @@ main {
 }
 
 footer.site {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 0 1rem;
   border-radius: initial;
 }
 
@@ -41,11 +34,4 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translateY(-50%);
-}
-
-@media screen and (min-width: $media-min-width) {
-  footer.site {
-    position: fixed;
-    bottom: 0;
-  }
 }

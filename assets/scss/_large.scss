@@ -1,31 +1,6 @@
 @import 'variables';
 
 @media screen and (min-width: $media-min-width) {
-  section > header {
-    padding: initial;
-  }
-
-  section + section {
-    margin-top: unset;
-  }
-
-  article ul.tag_list {
-    justify-content: initial;
-  }
-
-  nav.site > ul {
-    display: initial;
-  }
-
-  footer.site div.links {
-    align-items: initial;
-    flex-direction: unset;
-
-    ul li {
-      padding-top: 0.3rem;
-    }
-  }
-
   .blog-title {
     font-size: 3rem;
   }

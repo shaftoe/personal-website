@@ -3,11 +3,6 @@
 @import 'article';
 @import 'tag_list';
 @import 'large';
-@import 'title';
-
-nav.site {
-  margin-left: unset;
-}
 
 h4 {
   text-align: center;
@@ -16,10 +11,6 @@ h4 {
 ul.tag_list {
   flex-wrap: wrap;
   justify-content: center;
-}
-
-footer {
-  margin-top: 3rem;
 }
 
 aside {

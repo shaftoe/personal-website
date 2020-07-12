@@ -1,15 +1,10 @@
 @import 'variables';
 @import 'article';
 @import 'keyframes', 'large';
-@import 'title';
 @import 'tag_list';
 
 body {
   max-width: 54rem;
-}
-
-nav.site {
-  margin: unset;
 }
 
 article {
@@ -39,9 +34,4 @@ article {
 
 header {
   margin: 2rem 0 1rem;
-}
-
-.date {
-  display: inline-block;
-  margin-top: 1rem;
 }

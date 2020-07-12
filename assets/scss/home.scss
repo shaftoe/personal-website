@@ -1,8 +1,8 @@
 @import 'variables';
-
-header.site {
-  margin: 0;
-}
+@import 'section';
+@import 'article';
+@import 'tag_list';
+@import 'keyframes', 'large';
 
 div.social ul > li {
   margin: 0 10px 15px;
@@ -161,9 +161,16 @@ div.media {
 }
 
 @media screen and (min-width: $media-min-width) {
+  .site {
+    margin: 0 5rem;
+  }
+
   header.site {
     height: 100vh;
-    margin: 0 5rem;
+  }
+
+  footer.site {
+    margin: 0;
   }
 
   div.claim {
@@ -198,13 +205,4 @@ div.media {
   div.index_content.row_2 {
     grid-template-columns: 1fr 1fr;
   }
-
-  nav.site {
-    margin-left: 5rem;
-  }
 }
-
-@import 'section';
-@import 'article';
-@import 'tag_list';
-@import 'keyframes', 'large';

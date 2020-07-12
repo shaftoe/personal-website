@@ -3,6 +3,8 @@
     {{- $title := .Page.Title }}
     <title>{{ $title }}</title>
 
+    {{- partial "scss" "list" -}}
+
     {{- with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
     {{ end -}}
@@ -28,8 +30,8 @@
     {{- end -}}
 
     {{- $paginator := .Paginate (where .Pages "Type" "posts") -}}
-    <nav class="paginator">
-        <ul>
+    <nav>
+        <ul class="buttons">
             {{- if $paginator.HasPrev -}}
             <li>
                 <a
