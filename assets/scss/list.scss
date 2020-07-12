@@ -19,7 +19,6 @@ aside {
 
 @media screen and (min-width: $media-min-width) {
   main {
-    margin-top: 2rem;
     display: grid;
     gap: 5rem;
     grid-template-columns: 3fr 1fr;
