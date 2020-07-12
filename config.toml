@@ -34,7 +34,7 @@ enableRobotsTXT = true
 
   [[menu.content]]
     name = "Tech Blog"
-    url = "/tech"
+    url = "/blog"
     weight = 1
 
   [[menu.content]]
@@ -122,32 +122,32 @@ enableRobotsTXT = true
     url = "https://www.facebook.com/alexander.fortin.9"
     weight = 10
 
-  [[menu.tech]]
+  [[menu.jamstack]]
     name = "Website Source Code"
     url = "/"
     weight = 1
 
-  [[menu.tech]]
+  [[menu.jamstack]]
     name = "Built with Hugo"
     url = "https://gohugo.io/"
     weight = 2
 
-  [[menu.tech]]
+  [[menu.jamstack]]
     name = "Fonts by Google"
     url = "https://fonts.google.com/"
     weight = 3
 
-  [[menu.tech]]
+  [[menu.jamstack]]
     name = "Icons by Font Awesome"
     url = "https://fontawesome.com/"
     weight = 3
 
-  [[menu.tech]]
+  [[menu.jamstack]]
     name = "Build automation in Node.js"
     url = "/FIXME"
     weight = 4
 
-  [[menu.tech]]
+  [[menu.jamstack]]
     name = "Built, hosted and distributed by Netlify"
     url = "https://www.netlify.com/"
     weight = 5
