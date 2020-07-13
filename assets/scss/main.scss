@@ -14,6 +14,8 @@ body {
   background: linear-gradient(to bottom, $color-bkg-light 0%, $color-bkg-dark 30%);
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;
+  font-size: 1.2rem;
+  line-height: 2rem;
   padding: 0 1rem;
 }
 
@@ -110,7 +112,6 @@ ul.buttons {
   justify-content: center;
 
   li {
-    font-size: 1.2rem;
     padding-right: 0.5rem;
   }
 }

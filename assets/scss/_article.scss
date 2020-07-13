@@ -35,6 +35,11 @@ article {
   blockquote {
     font-style: italic;
   }
+
+  pre,
+  code {
+    overflow-x: scroll;
+  }
 }
 
 @media screen and (min-width: $media-min-width) {

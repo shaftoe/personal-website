@@ -22,11 +22,6 @@ footer.site {
       width: 12rem;
       max-width: 12rem;
       margin-bottom: 2rem;
-
-      li {
-        padding-top: 0.5rem;
-        font-size: 1.2rem;
-      }
     }
   }
 
@@ -50,9 +45,5 @@ footer.site {
   footer.site div.links {
     align-items: initial;
     flex-direction: unset;
-
-    ul li {
-      padding-top: 0.3rem;
-    }
   }
 }

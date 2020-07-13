@@ -7,7 +7,7 @@ BUILD_ENV := development
 HOOK_FILE := .git/hooks/pre-commit
 
 server:
-	@hugo server
+	@hugo server --disableFastRender
 
 babel-install:
 	@npm install -g babel-cli
