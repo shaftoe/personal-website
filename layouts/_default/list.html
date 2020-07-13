@@ -12,10 +12,9 @@
 {{ end -}}
 
 {{ define "main" }}
-{{ $section := . }}
+{{- $title := printf "%s's %s" (.Param "author") .Page.Title -}}
 
 <section class="list">
-    {{- $title := printf "%s's %s" (.Param "author") .Page.Title -}}
     <h1 class="blog-title">
         <a
             href="{{ .Page.RelPermalink }}"
@@ -25,43 +24,10 @@
         </a>
     </h1>
 
-    {{- range (.Paginator 5).Pages -}}
-        {{ partial "article" (dict "article" . "section" $section) }}
-    {{- end -}}
-
-    {{- $paginator := .Paginate (where .Pages "Type" "posts") -}}
-    <nav>
-        <ul class="buttons">
-            {{- if $paginator.HasPrev -}}
-            <li>
-                <a
-                    href="{{ $paginator.Prev.URL }}"
-                    title="List newer articles"
-                    class="button"
-                >Newer</a>
-            </li>
-            {{- end -}}
-            {{- if $paginator.HasNext -}}
-            <li>
-                <a
-                    href="{{ $paginator.Next.URL }}"
-                    title="List older articles"
-                    class="button"
-                >Older</a>
-            </li>
-            {{- end -}}
-        </ul>
-    </nav>
-
+    {{ partial "articles" . }}
 </section>
 
 <aside>
-    <h4 class="tag_list">Categories</h4>
-
-    <ul class="tag_list">
-        {{ range .Site.Taxonomies.tags.ByCount }}
-        {{ partial "tag" .Term }}
-        {{ end }}
-    </ul>
+    {{ partial "tag_list" . }}
 </aside>
 {{- end -}}

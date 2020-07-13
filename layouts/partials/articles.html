@@ -1,0 +1,27 @@
+{{- range (.Paginator 5).Pages -}}
+{{ partial "article" (dict "article" . "section" .Parent) }}
+{{- end -}}
+
+{{- $paginator := .Paginate (where .Pages "Type" "posts") -}}
+<nav>
+    <ul class="buttons">
+        {{- if $paginator.HasPrev -}}
+        <li>
+            <a
+                href="{{ $paginator.Prev.URL }}"
+                title="List newer articles"
+                class="button"
+            >Newer</a>
+        </li>
+        {{- end -}}
+        {{- if $paginator.HasNext -}}
+        <li>
+            <a
+                href="{{ $paginator.Next.URL }}"
+                title="List older articles"
+                class="button"
+            >Older</a>
+        </li>
+        {{- end -}}
+    </ul>
+</nav>

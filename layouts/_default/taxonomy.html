@@ -4,30 +4,37 @@
 
     <title>{{ $title }}</title>
 
-    {{- partial "scss" "list" -}}
-
     {{- with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
     {{ end -}}
 
 {{ end -}}
 
+{{- define "header" -}}
+{{-  $blogMainPage := .Site.GetPage "/blog" -}}
+{{- $blogTitle := printf "%s's %s" (.Param "author") $blogMainPage.Title -}}
+
+<header>
+    <h1 class="blog-title">
+        <a
+            href="{{ $blogMainPage.RelPermalink }}"
+            title="Go to {{ $blogMainPage.Title }} main page"
+        >
+            {{- $blogTitle -}}
+        </a>
+    </h1>
+</header>
+{{ end }}
+
 {{ define "main" }}
-{{ $blogMainPage := .Site.GetPage "/blog" }}
-{{- $title := printf "%s's %s" (.Param "author") $blogMainPage.Title -}}
-{{ $section := . }}
 
 <section class="list">
-    TAXONOMY
+    <h1>{{ .Title }} articles</h1>
+
+    {{ partial "articles" . }}
 </section>
 
 <aside>
-    <h4 class="tag_list">Categories</h4>
-
-    <ul class="tag_list">
-        {{ range .Site.Taxonomies.tags.ByCount }}
-        {{ partial "tag" .Term }}
-        {{ end }}
-    </ul>
+    {{ partial "tag_list" . }}
 </aside>
 {{- end -}}

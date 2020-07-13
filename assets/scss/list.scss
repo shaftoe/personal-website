@@ -3,28 +3,4 @@
 @import 'article';
 @import 'tag_list';
 @import 'blog_title';
-
-h4 {
-  text-align: center;
-}
-
-ul.tag_list {
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-aside {
-  margin-top: 4rem;
-}
-
-@media screen and (min-width: $media-min-width) {
-  main {
-    display: grid;
-    gap: 5rem;
-    grid-template-columns: 3fr 1fr;
-  }
-
-  aside {
-    margin-top: 12rem;
-  }
-}
+@import 'list';
