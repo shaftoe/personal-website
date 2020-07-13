@@ -1,8 +1,8 @@
 {{- define "head" -}}
-{{ $blogMainPage := .Site.GetPage "/blog" }}
-{{- $title := printf "%s's %s" (.Param "author") $blogMainPage.Title -}}
+{{- $blogMainPage := .Site.GetPage "/blog" }}
+{{- $title := $blogMainPage.Title -}}
 
-    <title>{{ $title }}</title>
+    <title>{{ $title }} - Articles in {{ .Title | humanize }} category</title>
 
     {{- with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
@@ -11,8 +11,8 @@
 {{ end -}}
 
 {{- define "header" -}}
-{{-  $blogMainPage := .Site.GetPage "/blog" -}}
-{{- $blogTitle := printf "%s's %s" (.Param "author") $blogMainPage.Title -}}
+{{- $blogMainPage := .Site.GetPage "/blog" -}}
+{{- $blogTitle := $blogMainPage.Title -}}
 
 <header>
     <h1 class="blog-title">
@@ -29,7 +29,15 @@
 {{ define "main" }}
 
 <section class="list">
-    <h1>{{ .Title | humanize }} articles</h1>
+    <h1>Articles in
+        <a
+            href="{{ .RelPermalink }}"
+            title="Permanent link to {{ .Title | humanize }} category"
+        >
+            {{ .Title | humanize }}
+        </a>
+        category
+    </h1>
 
     {{ partial "articles" . }}
 </section>

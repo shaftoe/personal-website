@@ -1,10 +1,11 @@
 {{- define "head" -}}
+{{- $title := .Param "title" }}
+{{- $description := .Param "description" }}
 
-{{- $title := .Site.Title }}
     <title>{{ $title }}</title>
 
     {{- with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $description | safeHTML }}
     {{ end -}}
 
     {{- partial "google_font" (dict "fontFamily" "Press Start 2P" "text" "as Code") }}

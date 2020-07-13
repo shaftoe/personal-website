@@ -11,11 +11,7 @@
     <meta name="robots" content="noindex, nofollow">
     {{- end -}}
 
-    {{- if isset .Page.Params "description" }}
-    <meta name="description" content="{{ .Site.Params.description }} - {{ .Page.Params.description }}">
-    {{- else -}}
-    <meta name="description" content="{{ .Site.Params.description }} - {{ .Page.Title }}">
-    {{- end -}}
+    <meta name="description" content="{{ .Param "description" }}">
 
     {{ range (slice "fontawesome" "normalize") }}
     {{ $cssFile := printf "css/%s.css" . }}

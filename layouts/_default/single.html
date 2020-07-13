@@ -1,12 +1,13 @@
 {{- define "head" -}}
-    <title>{{ .Title }}</title>
+{{- $blogTitle := .Parent.Title -}}
 
-    {{- partial "scss" "page" -}}
+    <title>{{ $blogTitle }} - {{ .Title }}</title>
+
 {{- end -}}
 
 {{- define "header" -}}
+{{- $blogTitle := .Parent.Title -}}
 <header>
-    {{- $blogTitle := printf "%s's %s" (.Param "author") .Parent.Title -}}
     <h1 class="blog-title">
         <a
             href="{{ .Parent.RelPermalink }}"
@@ -19,32 +20,32 @@
 {{- end -}}
 
 {{ define "main" }}
-    <article>
+<article>
 
-        <h1>{{ .Title }}</h1>
+    <h1>{{ .Title }}</h1>
 
-        <small class="date">
-            <a
-                href="{{ .RelPermalink }}"
-                title="Permanent link to this article"
-            >
-                {{ partial "date" .Date }}
-            </a>
-        </small>
+    <small class="date">
+        <a
+            href="{{ .RelPermalink }}"
+            title="Permanent link to this article"
+        >
+            {{ partial "date" .Date }}
+        </a>
+    </small>
 
-        <div class="content">
-            {{ .Content }}
-        </div>
+    <div class="content">
+        {{ .Content }}
+    </div>
 
-        <footer>
-            {{- with .Params.tags -}}
-            <ul class="tag_list">
-                {{- range . -}}
-                    {{- partial "tag" . -}}
-                {{- end -}}
-            </ul>
+    <footer>
+        {{- with .Params.tags -}}
+        <ul class="tag_list">
+            {{- range . -}}
+                {{- partial "tag" . -}}
             {{- end -}}
-        </footer>
+        </ul>
+        {{- end -}}
+    </footer>
 
-    </article>
+</article>
 {{ end }}

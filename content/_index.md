@@ -1,6 +1,6 @@
 ---
 date: 2020-06-29T13:15:03+03:00
-description: "Home Page"
+title: "Al3x - Home"
 feed: /index.xml
 ---
 
