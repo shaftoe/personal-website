@@ -40,6 +40,12 @@ article {
   code {
     overflow-x: scroll;
   }
+
+  div.content ul {
+    list-style-type: initial;
+    margin: 1rem auto;
+    padding-left: 2rem;
+  }
 }
 
 @media screen and (min-width: $media-min-width) {

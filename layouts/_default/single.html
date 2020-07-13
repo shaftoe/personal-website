@@ -20,6 +20,7 @@
 
 {{ define "main" }}
     <article>
+
         <h1>{{ .Title }}</h1>
 
         <small class="date">
@@ -31,7 +32,9 @@
             </a>
         </small>
 
-        {{ .Content }}
+        <div class="content">
+            {{ .Content }}
+        </div>
 
         <footer>
             {{- with .Params.tags -}}
