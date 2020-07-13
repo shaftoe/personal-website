@@ -29,7 +29,7 @@
 {{ define "main" }}
 
 <section class="list">
-    <h1>{{ .Title }} articles</h1>
+    <h1>{{ .Title | humanize }} articles</h1>
 
     {{ partial "articles" . }}
 </section>

@@ -5,12 +5,12 @@
 @import 'list';
 @import 'blog_title';
 
-h1 {
+section > h1 {
   text-align: center;
   color: $color-text;
-  margin-bottom: 3rem;
+  margin: 3rem auto;
 }
 
-section > h1 {
-  text-transform: uppercase;
+header {
+  margin: initial;
 }
