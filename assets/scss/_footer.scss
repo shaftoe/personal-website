@@ -2,6 +2,7 @@
 
 footer.site {
   display: flex;
+  line-height: initial;
   flex-wrap: wrap;
   color: $color-text;
   border-radius: 1rem;
@@ -22,6 +23,10 @@ footer.site {
       width: 12rem;
       max-width: 12rem;
       margin-bottom: 2rem;
+
+      li + li {
+        padding-top: 0.3rem;
+      }
     }
   }
 
