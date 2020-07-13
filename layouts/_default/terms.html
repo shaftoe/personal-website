@@ -1,0 +1,33 @@
+{{- define "head" -}}
+{{ $blogMainPage := .Site.GetPage "/blog" }}
+{{- $title := printf "%s's %s" (.Param "author") $blogMainPage.Title -}}
+
+    <title>{{ $title }}</title>
+
+    {{- partial "scss" "list" -}}
+
+    {{- with .OutputFormats.Get "rss" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{ end -}}
+
+{{ end -}}
+
+{{ define "main" }}
+{{ $blogMainPage := .Site.GetPage "/blog" }}
+{{- $title := printf "%s's %s" (.Param "author") $blogMainPage.Title -}}
+{{ $section := . }}
+
+<section class="list">
+    TERMS
+</section>
+
+<aside>
+    <h4 class="tag_list">Categories</h4>
+
+    <ul class="tag_list">
+        {{ range .Site.Taxonomies.tags.ByCount }}
+        {{ partial "tag" .Term }}
+        {{ end }}
+    </ul>
+</aside>
+{{- end -}}

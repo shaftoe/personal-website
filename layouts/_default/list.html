@@ -1,6 +1,6 @@
 {{- define "head" -}}
 
-    {{- $title := .Page.Title }}
+    {{- $title := printf "%s's %s" (.Param "author") .Page.Title -}}
     <title>{{ $title }}</title>
 
     {{- partial "scss" "list" -}}
