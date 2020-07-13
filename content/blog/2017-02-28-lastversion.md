@@ -5,7 +5,9 @@ tags:
   - golang
   - openwhisk
   - serverless
+date: "2017-02-28"
 ---
+
 It seems that recently every [OSS][1] tool I've [been][2] [using][3] [during][4] my working day (together with [many][5] [other][6] [cool][7] projects) is written in [Go][8], so I decided to teach myself a little bit of it having fun in the meanwhile, in the not-too-rare case I'll need to troubleshoot one of them, or simply understand better how it works. Unsurprisingly enough, the Net is full of [excellent documentation material][9] if you want to dig into Go programming without spending a single cent.
 
 Generally I choose the next pet project trying to scratch an itch I already have, for example from time to time I want to know what's the latest stable version of one of the tools I use to have available on my workstation or on my servers in a programmatic way, so I decided to try to write a web service which will spare me the time of scraping the project's homepage in search of this precious information.

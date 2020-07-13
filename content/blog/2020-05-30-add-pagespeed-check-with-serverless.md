@@ -8,6 +8,7 @@ tags:
   - monitoring
   - python
   - serverless
+date: "2020-05-30"
 ---
 
 ## The Burden of Performance

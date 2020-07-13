@@ -6,6 +6,7 @@ tags:
   - lambda
   - python
   - serverless
+date: "2020-02-17"
 ---
 
 As some of you have noticed, recently I've been blessed with some extra time and decided to take [the chance][blog-1] to finally [come up][blog-2] with some fresh [new content][blog-3] for this blog.

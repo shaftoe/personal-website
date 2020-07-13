@@ -7,6 +7,7 @@ tags:
   - email
   - linux
   - postfix
+date: "2020-05-14"
 ---
 
 > It's quicker, easier, and involves less licking

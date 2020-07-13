@@ -7,6 +7,7 @@ tags:
   - python
   - rss
   - serverless
+date: "2020-05-07"
 ---
 
 > Now everyone has a license to speak, it’s a question of who gets heard.

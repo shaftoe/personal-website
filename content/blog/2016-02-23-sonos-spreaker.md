@@ -7,6 +7,7 @@ tags:
   - python
   - rss
   - sonos
+date: "2016-02-23"
 ---
 
 Berlin winter is famous to be quite cold (ok, let's be honest, I'm a tech addict and can't help the urge of hack around from time to time) so recently I've spent some fun time tinkering a bit with this _Internet Of Things_ idea: how to make my flat a little bit more automated and have fun while adding this competely superfluous automation?

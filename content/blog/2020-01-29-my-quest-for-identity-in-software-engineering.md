@@ -5,6 +5,7 @@ tags:
   - jamstack
   - serverless
   - software
+date: "2020-01-29"
 ---
 
 > Keep walking. If I look back I am lost.

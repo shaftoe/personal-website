@@ -7,6 +7,7 @@ tags:
   - cdk
   - python
   - serverless
+date: "2020-02-25"
 ---
 
 In this brief article I showcase one way to organize AWS resources in CDK _Stacks_ and make them general purpose and easily reusable.

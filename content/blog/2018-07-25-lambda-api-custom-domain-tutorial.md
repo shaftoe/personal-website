@@ -6,6 +6,7 @@ tags:
   - aws
   - lambda
   - python
+date: "2018-07-25"
 ---
 
 Since I discovered the main concepts and benefits of Serverless applications, I'm gradually migrating the few services I run on my personal server(s) towards solutions which require no need for me to keep any (virtual) server running. The reason is simple: there are so many other interesting things to do than keeping an online system in good shape. If that's not enough, leveraging FaaS (at least for very small workloads) usually brings cheaper bills compared to traditional hosting.

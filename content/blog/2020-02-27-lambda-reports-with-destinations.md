@@ -7,6 +7,7 @@ tags:
   - lambda
   - svelte
   - web
+date: "2020-02-27"
 ---
 
 Until recently the only built-in way to programmatically react to AWS Lambda asynchronous execution (failures) was the [_dead letter queue_][aws-dead-letter] feature. This was suboptimal to say little because for example it didn't give developers any way to programmatically act upon Lambda _successes_ leaving us with only a few convoluted options like parsing _CloudWatch Logs_ events.

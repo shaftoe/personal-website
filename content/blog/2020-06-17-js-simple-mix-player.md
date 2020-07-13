@@ -6,6 +6,7 @@ tags:
   - howler
   - javascript
   - vanillajs
+date: "2020-06-17"
 ---
 
 In the last months I've been developing the habit of pushing to GitHub anything tech-related that I've been working on and might be remotely interesting to anyone else (today or in the far future, thanks to search engines). It also have the side benefit of forcing me to keep the project a bit more tidy than I might do otherwise, adding at least a decent README and maybe a [CHANGELOG][keep-a-changelog] too if I already plan to develop it any further.

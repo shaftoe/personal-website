@@ -8,6 +8,7 @@ tags:
   - kindle
   - lambda
   - mailjet
+date: "2020-04-03"
 ---
 
 > A mind needs books as a sword needs a whetstone if it is to keep its edge.

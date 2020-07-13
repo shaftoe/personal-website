@@ -8,7 +8,7 @@ tags:
   - python
   - serverless
   - terraform
-  - terraform
+date: "2020-02-04"
 ---
 
 Amazon Web Services [recently announced][announcement] a new tool meant to ease the management of AWS resources in a fully programmatic way: **AWS Cloud Development Kit** (**CDK** for short).

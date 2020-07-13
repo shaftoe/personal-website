@@ -8,6 +8,7 @@ tags:
   - jamstack
   - serverless
   - web
+date: "2020-01-31"
 ---
 
 As I wrote in my [previous blog article][previous-blog], recently I became quite hooked by the web and all that's orbiting around it.

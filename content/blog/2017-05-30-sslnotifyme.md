@@ -8,7 +8,9 @@ tags:
   - serverless
   - ssl
   - terraform
+date: "2017-05-30"
 ---
+
 After ~10 years of experience in managing servers at small and medium scales, and despite the fact that I still love _doing sysadmin stuff_ and I constantly try to learn new and better ways to approach and solve problems, there's one thing that I think I've learned very well: it's hard to get the operation part right, _very_ hard.
 
 Instead of dealing with not-so-interesting problems like patching critical security bugs or adding/removing users or troubleshooting obscure network connectivity issues, what if we could just cut to the chase and invest most of our time in what we as engineers are usually hired for, i.e. solving non-trivial problems?

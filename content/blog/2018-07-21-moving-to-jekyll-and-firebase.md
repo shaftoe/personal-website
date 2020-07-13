@@ -6,6 +6,7 @@ tags:
   - firebase
   - jekyll
   - web
+date: "2018-07-21"
 ---
 
 It's been a while since I last updated the blog, to the point I almost forgot where it was hosted...
