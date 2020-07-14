@@ -145,7 +145,7 @@ disqusShortname = "a-l3x-in"
 
   [[menu.jamstack]]
     name = "Build automation in Node.js"
-    url = "/FIXME"
+    url = "https://github.com/shaftoe/personal-website/tree/master/lib"
     weight = 4
 
   [[menu.jamstack]]
