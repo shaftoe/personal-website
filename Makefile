@@ -5,6 +5,7 @@ export MIXCLOUD_ACCOUNT_ID := al3xf
 export YOUTUBE_CHANNEL := UCb5FGNik4wXGrVGRS1x2JZw
 BUILD_ENV := development
 HOOK_FILE := .git/hooks/pre-commit
+NODE := node --unhandled-rejections=strict
 
 server:
 	@hugo server --disableFastRender
@@ -32,10 +33,10 @@ html5validator:
 	@html5validator --root public/ --also-check-css
 
 mastodon:
-	@node lib/mastodon-downloader.js
+	@$(NODE) lib/mastodon-downloader.js
 
 mixcloud:
-	@node lib/mixcloud-downloader.js
+	@$(NODE) lib/mixcloud-downloader.js
 
 normalize.css:
 	@mkdir -p assets/css/
@@ -70,6 +71,6 @@ upgrade-node-modules:
 	@ncu -u
 
 youtube:
-	@node lib/youtube-downloader.js
+	@$(NODE) lib/youtube-downloader.js
 
 .PHONY: server build clean deploy eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install prebuild setup setup-githook stylelint test upgrade upgrade-node-modules
