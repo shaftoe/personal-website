@@ -125,7 +125,7 @@ disqusShortname = "a-l3x-in"
 
   [[menu.jamstack]]
     name = "Website Source Code"
-    url = "/"
+    url = "https://github.com/shaftoe/personal-website"
     weight = 1
 
   [[menu.jamstack]]
