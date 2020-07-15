@@ -3,15 +3,13 @@
 
 {{ with (index $sectionData .File.BaseFileName) }}
 <h4>{{ len . }} comment{{ if gt (len .) 1 }}s{{ end }}</h4>
+    <ol>
     {{ range . }}
-
-        <ol>
-            <li>
-                {{ .name | htmlEscape }}: {{ .body | markdownify }} ({{ partial "date" .date }})
-            </li>
-        </ol>
-
+        <li>
+            {{ .name | htmlEscape }}: {{ .body | markdownify }} ({{ partial "date" .date }})
+        </li>
     {{- end -}}
+    </ol>
 {{- end -}}
 
 <h4>Leave a comment</h4>
