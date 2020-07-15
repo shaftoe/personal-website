@@ -11,5 +11,5 @@ comments:
   moderation: true
   name: "a.l3x.in - staticman"
   path: "data/comments/{options.entryId}"
-  pullRequestBody: "New comment to blog post /{options.entryId}\n"
+  pullRequestBody: "New comment to blog post\n"
   requiredFields: ["name", "body"]
