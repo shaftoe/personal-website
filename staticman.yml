@@ -1,6 +1,6 @@
 # Ref: https://github.com/eduardoboucas/hugo-plus-staticman/blob/master/staticman.yml
 comments:
-  allowedFields: ["name", "body"]
+  allowedFields: ["name", "body", "email"]
   branch: "master"
   commitMessage: "Add comment via Staticman"
   filename: "{@id}"
