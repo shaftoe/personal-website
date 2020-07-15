@@ -5,12 +5,22 @@
 <h4>{{ len . }} comment{{ if gt (len .) 1 }}s{{ end }}</h4>
     <ol>
     {{ range . }}
-        <li>
+    {{- $commentId := printf "comment-%s" ._id }}
+        <li id="{{ $commentId }}">
             <h5>{{ .name | htmlEscape }}</h5>
 
-            <small class="date">{{ partial "date" .date }}</small>
+            <small class="date">
+                <a
+                    href="{{ .RelPermalink }}#{{ $commentId }}"
+                    title="Permanent link to {{ .name }}'s comment"
+                >
+                    {{ partial "date" .date }}
+                </a>
+            </small>
 
-            <p>{{ .body | markdownify }}</p>
+            <div>
+                {{ .body | markdownify }}
+            </div>
         </li>
     {{- end -}}
     </ol>
