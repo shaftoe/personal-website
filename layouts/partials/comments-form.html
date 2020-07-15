@@ -1,22 +1,19 @@
-{{- $commentsFiles := readDir (printf "data/comments/%s" .Section) -}}
-{{- $comments := (index .Site.Data.comments .Section) -}}
-{{- range where $commentsFiles "Name" .File.BaseFileName -}}
-{{- $length := len (index $comments .Name) -}}
+{{- $id := printf "%s/%s" .Section .File.BaseFileName -}}
+{{- $sectionData := (index .Site.Data.comments .Section) -}}
 
-<h4>{{ $length }} comment{{ if gt $length 1 }}s{{ end }}</h4>
+{{ with (index $sectionData .File.BaseFileName) }}
+<h4>{{ len . }} comment{{ if gt (len .) 1 }}s{{ end }}</h4>
+    {{ range . }}
 
-    <ol>
-    {{- range $comm := (index $comments .Name ) -}}
-        <li>
-            {{ $comm.name | htmlEscape }}: {{ $comm.body | markdownify }} ({{ partial "date" $comm.date }})
-        </li>
+        <ol>
+            <li>
+                {{ .name | htmlEscape }}: {{ .body | markdownify }} ({{ partial "date" .date }})
+            </li>
+        </ol>
+
     {{- end -}}
-    </ol>
-
 {{- end -}}
 
-
-{{- $id := .RelPermalink | strings.TrimRight "/" | strings.TrimLeft "/" -}}
 <h4>Leave a comment</h4>
 <form method="POST" action="{{ .Param "staticmanUrl" }}">
     <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
