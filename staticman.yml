@@ -1,6 +1,6 @@
 # Ref: https://github.com/eduardoboucas/hugo-plus-staticman/blob/master/staticman.yml
 comments:
-  allowedFields: ["name", "email", "body"]
+  allowedFields: ["name", "body"]
   branch: "master"
   commitMessage: "Add comment via Staticman"
   filename: "{@id}"
@@ -12,5 +12,3 @@ comments:
   name: "a.l3x.in - staticman"
   path: "data/comments/{options.entryId}"
   requiredFields: ["name", "body"]
-  transforms:
-    email: md5
