@@ -11,6 +11,6 @@ comments:
   moderation: true
   name: "a.l3x.in - staticman"
   path: "data/comments/{options.entryId}"
-  requiredFields: ["name", body"]
+  requiredFields: ["name", "body"]
   transforms:
     email: md5
