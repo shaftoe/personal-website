@@ -2,7 +2,7 @@
 comments:
   allowedFields: ["name", "body", "email"]
   branch: "master"
-  commitMessage: "Staticman - New comment to {options.entryId}"
+  commitMessage: "Staticman - New comment to /{options.entryId}"
   filename: "{@id}"
   format: "json"
   generatedFields:
