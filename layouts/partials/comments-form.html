@@ -1,13 +1,11 @@
-{{ $comments := readDir "data/comments" }}
-{{ $comments2 := .Site.Data.comments }}
-{{ $.Scratch.Add "hasComments" 0 }}
-{{ $entryId := .File.UniqueID }}
+{{ $commentsFiles := readDir "data/comments/blog" }}
+{{ $comments := .Site.Data.comments.blog }}
 
-{{ range where $comments "Name" $entryId }}
-    {{ .Name }}
+{{ range where $commentsFiles "Name" .File.BaseFileName }}
+    <h4>Comments {{ .Name }}</h4>
 
     <ol>
-    {{ range $comm := (index $comments2 .Name ) }}
+    {{ range $comm := (index $comments .Name ) }}
         <li>
             {{ $comm.body }} - {{ $comm.date }} - {{ $comm.name }}
         </li>
