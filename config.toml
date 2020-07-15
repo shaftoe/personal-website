@@ -11,6 +11,7 @@ disqusShortname = "a-l3x-in"
   description = "Alexander Fortin's personal web site"
   listed_articles = 3
   feed = "/index.xml"
+  staticmanUrl = "https://a-l3x-in-staticman.herokuapp.com/v2/entry/shaftoe/personal-website/master/comments"
 
 [menu]
 

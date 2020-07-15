@@ -1,0 +1,8 @@
+<form method="POST" action="{{ .Param "staticmanUrl" }}">
+    <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
+    <input type="hidden" name="options[entryId]" value="{{ .File.UniqueID }}">
+    <input name="fields[name]" type="text" placeholder="Your name">
+    <input name="fields[email]" type="email" placeholder="Your email address (optional)">
+    <textarea name="fields[body]" placeholder="Your message. Feel free to use Markdown." rows="10"></textarea>
+    <input type="submit" value="Submit">
+</form>
