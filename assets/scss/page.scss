@@ -32,7 +32,6 @@ article {
   }
 
   div.comments {
-    padding: 1rem;
     border-radius: 1rem;
 
     h4 {
@@ -61,9 +60,38 @@ article {
     .date {
       color: $color-secondary;
     }
+
+    form * {
+      border: none;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+
+    textarea {
+      width: 98%;
+      margin-bottom: 1rem;
+    }
+
+    div.input {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: initial;
+
+      input {
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
   }
 }
 
 header {
   margin: initial;
+}
+
+@media screen and (min-width: $media-min-width) {
+  article div.comments div.input input:nth-child(-n+3) {
+    width: 30%;
+  }
 }
