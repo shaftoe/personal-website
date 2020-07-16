@@ -88,7 +88,7 @@ Unfortunately my assumption proved wrong early on in the process (more on this l
 
 Here the simplified diagram of the final solution:
 
-[![Architecture Diagram]({{ "/img/pocket-to-kindle-diagram.svg" }}){: .img-fluid }](/img/pocket-to-kindle-diagram.svg "Click to view it bigger")
+![Architecture Diagram](pocket-to-kindle-diagram.svg)
 
 ## Plumbing all the things
 
