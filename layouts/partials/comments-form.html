@@ -7,13 +7,14 @@
     {{ range . }}
     {{- $commentId := printf "comment-%s" ._id }}
         <li id="{{ $commentId }}">
-            {{ with .email }}
+            {{ if not (eq .email "") }}
             <img
-                src="https://www.gravatar.com/avatar/{{ . | md5 }}"
-                alt="Gravatar image for {{ . }}"
+                src="https://www.gravatar.com/avatar/{{ .email }}"
+                alt="Gravatar profile image for commenter named '{{ .name }}'"
                 class="avatar"
             >
             {{- end -}}
+
             <h5>{{ .name | htmlEscape }}</h5>
 
             <small class="date">
