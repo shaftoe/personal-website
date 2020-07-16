@@ -51,7 +51,7 @@ It might sound like something infrequent to you if you're used to live in develo
 
 In order to restore the bridge I have to manually log into the router admin interface from my laptop's browser, find the right admin web page from the unintuitive navigation bar, perform a few selects and clicks, retype the source WiFi password and, finally, click to apply and persist the configuration.
 
-![screencast of the router wifi bridge reset process]({{ "/img/router-fix.gif" }}){: .img-fluid .col}
+![screencast of the router wifi bridge reset process](router-fix.gif)
 
 The above could be classified as a *first-world problem* indeed but, as you might already know if you've been following me for a while, I'm a long time advocate of the **lazy software engineer attitude** (our motto? life is short!): automate all the tedious and boring tasks so to be able to focus on the most important ones, those that are not so easy to automate and where I believe our true value as engineers is.
 
@@ -86,7 +86,7 @@ I split the above one liner command to better explain how it works:
 1. `node /opt/routerfix/repo/fix-router.js 2>&1` executes the Node.js script which runs Chromium browser events in the background, it also combines stdin and stdout into a single stream (the `2>&1` bit)
 1. by default, crontab commands output is sent to the *UNIX* user mailbox that owns the process; piping Node.js output to `logger -t ROUTER_FIX` sends it to the *syslog* service instead (which in my case is then eventually forwarded to [Papertrail][papertrail] where I can read them comfortably from my browser as you can see from the following screenshot)
 
-![Papertrail log excerpt]({{ "/img/router-fix-papertrail.png" }}){: .img-fluid .col}
+![Papertrail log excerpt](router-fix-papertrail.png)
 
 You can find all the code involved in the solution in [this GitHub repository][code-repo] including the [Ansible playbook][ansible-tasks].
 

@@ -28,7 +28,7 @@
 
 <h4>Leave a comment</h4>
 <form method="POST" action="{{ .Param "staticmanUrl" }}">
-    <textarea name="fields[body]" placeholder="New Comment! Feel free to use Markdown." rows="10" required></textarea>
+    <textarea name="fields[body]" placeholder="New Comment! Feel free to use Markdown." rows="6" required></textarea>
     <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
     <input type="hidden" name="options[entryId]" value="{{ $id }}">
     <div class="input">
