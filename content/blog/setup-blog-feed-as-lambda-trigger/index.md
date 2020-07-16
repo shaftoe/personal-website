@@ -89,7 +89,7 @@ The above snippet is just a redacted excerpt that's supposed to give you the gen
 
 To close the **100% automation** loop there's now a new *CloudWatch Cron Event* that fires every day at 06:00 UTC and triggers `feed_poller` Lambda, so this is the updated `publish-to-social` architecture diagram:
 
-![Architecture Diagram]({{ "/img/publish-to-social-final.svg" }}){: .img-fluid }
+![Architecture Diagram][diagram]
 
 ## Feedback welcome
 
@@ -102,6 +102,7 @@ Please feel free to tell me what you think leaving a comment here or contacting 
 [cdk-publish-to-social]: <https://github.com/shaftoe/api-l3x-in/blob/0.9.0/lib/stacks/publish_to_social/__init__.py>
 [code-feedpoller]: <https://github.com/shaftoe/api-l3x-in/blob/0.9.0/lib/stacks/publish_to_social/lambda/feed_poller.py>
 [contact]: <https://a.l3x.in/contact.html>
+[diagram]: <publish-to-social-final.svg>
 [etag-headers]: <https://pythonhosted.org/feedparser/http-etag.html>
 [feedparser]: <https://pythonhosted.org/feedparser/>
 [jekyll-4]: <https://github.com/jekyll/jekyll/releases/tag/v4.0.0>
