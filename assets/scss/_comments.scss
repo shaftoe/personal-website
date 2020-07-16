@@ -15,6 +15,7 @@ div.comments {
 
   h5 {
     margin-top: initial;
+    padding-top: 0.2rem;
   }
 
   ol {
@@ -46,6 +47,7 @@ div.comments {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: initial;
+    margin-bottom: 1rem;
 
     input {
       width: 100%;
@@ -55,5 +57,10 @@ div.comments {
     input[type="submit"] {
       background-color: $color-main;
     }
+  }
+
+  small.email {
+    display: block;
+    text-align: center;
   }
 }

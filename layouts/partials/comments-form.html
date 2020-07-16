@@ -40,7 +40,8 @@
     <input type="hidden" name="options[entryId]" value="{{ $id }}">
     <div class="input">
         <input name="fields[name]" type="text" placeholder="Your name" required>
-        <input name="fields[email]" type="email" placeholder="Your email (optional)">
+        <input name="fields[email]" type="email" placeholder="Gravatar email * (optional)">
         <input type="submit" value="Post Comment">
     </div>
+    <small class="email">* email hashed with MD5, i.e. never stored nor displayed in clear text</small>
 </form>

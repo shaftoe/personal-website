@@ -13,3 +13,5 @@ comments:
   path: "data/comments/{options.entryId}"
   pullRequestBody: "New comment to blog post\n"
   requiredFields: ["name", "body"]
+  transforms:
+    email: "md5"
