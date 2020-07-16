@@ -2,6 +2,11 @@ div.comments {
   border-radius: 1rem;
   margin: 6rem auto;
 
+  img.avatar {
+    float: left;
+    padding-right: 1rem;
+  }
+
   h4 {
     font-size: 2rem;
     margin-bottom: 1rem;

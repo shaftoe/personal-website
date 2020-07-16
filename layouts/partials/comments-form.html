@@ -11,7 +11,7 @@
             <img
                 src="https://www.gravatar.com/avatar/{{ . | md5 }}"
                 alt="Gravatar image for {{ . }}"
-                style="float: left; padding-right: 1rem;"
+                class="avatar"
             >
             {{- end -}}
             <h5>{{ .name | htmlEscape }}</h5>
