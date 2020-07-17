@@ -4,7 +4,6 @@
             <h5>Content</h5>
             <ul>
                 {{- range .Site.Menus.main -}}
-                    {{/*  fixme use where to filter out RSS  */}}
                     {{- if not (eq .Name "RSS") -}}
                     <li><a href="{{ .URL }}">{{ .Name | humanize }}</a></li>
                     {{- end -}}
