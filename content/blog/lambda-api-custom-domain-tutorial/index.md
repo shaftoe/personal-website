@@ -13,13 +13,13 @@ Since I discovered the main concepts and benefits of Serverless applications, I'
 
 Even if there are quite a few nice tutorials available on how to setup common kind of Serverless projects, I can't remember one covering all the requirements I had. This time around it's also true, therefore I'll try to show here the steps I took for implementing and deploying a simple API backend using Python (v3.6), AWS Lambda, AWS API Gateway and Terraform. This simple diagram shows how the setup is supposed to look like:
 
-![Architecture Diagram]({{ "/img/aws-diagram.png" }}){: .img-fluid }
+![Architecture Diagram](aws-diagram.png)
 
 The API backend [source code for our example][gh-main-page] is the simplest one could imagine, but it should be trivial to extend it to cover more complex cases. The API Gateway Lambda integration makes use of the relatively new _proxy feature_, which means all the HTTP requests hitting the gateway endpoint (except OPTIONS, intercepted by the Gateway for serving proper CORS headers) is forwarded to the Lambda _as is_, including path and method in the metadata, so the routing logic can be extended without changing any API Gateway configuration. 
 
 Let's have a look at [the Python code in our example][gh-main-handler]: for each HTTP POST request to /contact_us, after some basic input sanitation, parse the body in search of some special attributes and, if the request is formatted as expected, send a message via the [Pushover][pushover] service:
 
-{% highlight python %}
+```python
 def lambda_handler(event, context):
     response = {
         "body": json.dumps({"message": ""}), # needs to be a valid JSON string.
@@ -51,7 +51,7 @@ def lambda_handler(event, context):
         LOG.error(msg)
 
 return response
-{% endhighlight %}
+```
 
 NOTE: when using API Gateway Lambda proxy feautre, be careful to use the [proper response format][lambda-proxy-response] as shown above at line 2, otherwise you might step into errors hard to debug.
 
@@ -74,7 +74,7 @@ I also want to expose the endpoint making use of the domain name I registered in
 
 It's a bit surprising to find that proper management of AWS resources for Lamba is missing from most of the tutorials I’ve found. I'm referring specifically to CloudWatch Logs expiration (default is no expiration) and IAM permission (default is write permission to every LogGroup in the account). What I generally want is for logs older then one week to expire automatically, and to tighten the default IAM configuration for Lambda to reduce the attack surface . The setup will cover those parts too with just a couple of more Terraform resources. Maybe this Terraform snippet from `infra/lambda.tf` better explains what I mean:
 
-{% highlight bash %}
+```bash
 # lambda.tf
 
 # Configure log retention
@@ -94,7 +94,7 @@ data "aws_iam_policy_document" "policy_for_lambda" {
     resources = ["${aws_cloudwatch_log_group.lambda-api.arn}"]
   }
 }
-{% endhighlight %}
+```
 
 ## Let's get started
 
@@ -114,12 +114,12 @@ NOTE: later on you’ll need to edit a configuration file, `config.sh`, and one 
 
 To begin with, we’ll need an SSL certificate fully managed by ACM. AWS will try to send you an email to a few addresses, like `admin@mycoolservice.com` (check out [the official documentation][aws-docs-acm-setup] for details) to be sure you own the domain. If you prefer, there’s also a DNS verification where you need to add some DNS record. Run this command to request an SSL cert for `api.mycoolservice.com` using email validation:
 
-{% highlight bash %}
+```bash
 $ aws acm request-certificate --domain-name api.mycoolservice.com --validation-method EMAIL
 {
     "CertificateArn": "arn:aws:acm:us-east-1:00000000000:certificate/484525fb-02e5-4b49-89ea-9b14f3abecf7"
 }
-{% endhighlight %}
+```
 
 At this point you should check your email from ACM and click on the verify link before proceeding.
 
@@ -127,14 +127,14 @@ At this point you should check your email from ACM and click on the verify link 
 
 I set up a GIT repository on GitHub with all that’s needed to setup this proof of concept, including the Python Lambda, the Terraform configuration and a simple deployment script. You should clone it in your working directory:
 
-{% highlight bash %}
+```bash
 $ git clone https://github.com/shaftoe/api-gateway-lambda-example
 $ cd serverless-api
-{% endhighlight %}
+```
 
 In the `serverless-api` folder there’s an example configuration file:
 
-{% highlight bash %}
+```bash
 ├── LICENSE
 ├── README.md
 ├── config.sh.example
@@ -145,13 +145,13 @@ In the `serverless-api` folder there’s an example configuration file:
 │   └── main.tf
 ├── src
 │   └── lambda.py
-{% endhighlight %}
+```
   
 Copy `config.sh.example` content into a new `config.sh` file and edit `config.sh` with your details. If you don’t have a [Pushover][pushover] account you can just leave the `$pushover*` variables empty (or unchanged, they are bogus anyway), the Lambda will fail without sending any push notification but you’ll still be able to test that everything else is working as expected.
 
 Let's have a quick look at the Terraform files in the `infra/` folder.
 
-{% highlight bash %}
+```bash
 # main.tf
 
 variable "profile_name" {
@@ -175,11 +175,11 @@ provider "aws" {
   profile = "${var.profile_name}"
 }
 
-{% endhighlight %}
+```
 
 In `main.tf` there are all the variable declarations and the AWS provider. Having them we can pass those values at runtime with `-var name=value` in our deploy script. Nothing really interesting here. Things get a bit more complex for setting up the Lambda properly:
 
-{% highlight bash %}
+```bash
 # lambda.tf
 
 resource "aws_lambda_function" "api" {
@@ -241,13 +241,13 @@ resource "aws_cloudwatch_log_group" "lambda-api" {
 }
 
 
-{% endhighlight %}
+```
 
 Beside the need to interpolate the `replace` function to avoid invalid characters when naming our AWS resources (_dot_ is not valid for Lambda names for example), it should be fairly readable. We obviously need a Lambda, a IAM role to associate with it, some IAM policies to specify what kind of privileges are needed, and a CloudWatch LogGroup to collect logs.
 
 What's left is the most complex part which is setting up API Gateway. Thankfully, [Hashicorp published a good tutorial][hashicorp-tutorial] which I basically copied verbatim. I only had to add a couple of fixes required to make CORS work in my case and the few resources needed to link the SSL certificate and expose it with my domain name:
 
-{% highlight bash %}
+```bash
 # api-gateway.tf
 
 ###############
@@ -327,15 +327,15 @@ resource "aws_api_gateway_base_path_mapping" "api" {
   domain_name = "${aws_api_gateway_domain_name.api.domain_name}"
 }
 
-{% endhighlight %}
+```
 
 ## Deploy
 
 At this point everything should be ready to be set up in AWS. You simply need to execute `build.sh` shell script:
 
-{% highlight bash %}
+```bash
 $ chmod +x build.sh && ./build.sh
-{% endhighlight %}
+```
 
 You'll be prompted by Terraform to type __yes__ to continue, that's your last chance for checking that everything shown by _Terraform plan_ looks as expected. If Terraform apply execution completes successfully, those new resources will be created in your AWS account:
 
@@ -358,7 +358,7 @@ You'll be prompted by Terraform to type __yes__ to continue, that's your last ch
 
 If everything has been created successfully, you should be able to see something like this configured in API gateway:
 
-{% highlight bash %}
+```bash
 $ aws apigateway get-domain-names
 {
     "items": [
@@ -376,16 +376,16 @@ $ aws apigateway get-domain-names
         }
     ]
 }
-{% endhighlight %}
+```
 
 NOTE: adding a custom domain to the CloudFront distribution linked to API Gateway will take some minutes (~20), so be patient if the above command doesn't show you what's expected right after Terraform execution has terminated.
 
 The `distributionDomainName` value above is the one you need to add as a DNS record for your `api.mycoolservice.com` entry. To test that this step is complete, you could run for example this CLI command and search for a similar output:
 
-{% highlight bash %}
+```bash
 $ dig +noall +answer -t CNAME api.mycoolservice.com
 api.mycoolservice.com. 77 IN	CNAME	987654abcdef.cloudfront.net.
-{% endhighlight %}
+```
 
 ## Test your new API
 
@@ -397,17 +397,17 @@ If you reached this point everythings should be set and ready to be tested end t
 
 Let's check with Curl that everything is actually in place and working as expected:
 
-{% highlight bash %}
+```bash
 $ curl -X POST https://api.mycoolservice.com/contact_us
 {"error": "JSON body is malformatted: the JSON object must be str, bytes or bytearray, not 'NoneType'"}
 
 $ curl -X POST https://api.mycoolservice.com/bogus
 {"error": "POST /bogus not allowed"}
-{% endhighlight %}
+```
 
 CORS configuration should allow requests from any origin:
 
-{% highlight bash %}
+```bash
 $ curl -I -X OPTIONS https://api.mycoolservice.com/contact_us
 HTTP/2 200
 [...]
@@ -416,14 +416,14 @@ content-length: 0
 access-control-allow-origin: *
 access-control-allow-headers: Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token
 access-control-allow-methods: DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT
-{% endhighlight %}
+```
 
 NOTE: we didn't create any setup for the root path (/), a request there will return a misleading message:
 
-{% highlight bash %}
+```bash
 $ curl -X POST https://api.mycoolservice.com/
 {"message":"Missing Authentication Token"}
-{% endhighlight %}
+```
 
 ## Deploy your own application
 
@@ -431,7 +431,7 @@ In this example we'be been using one of my personal project as template, but it'
 
 API Gateway configuration should be now setup correctly without any need to be modified, so each new `deploy.sh` execution will only update the content of the Lambda resource with the code in `src/lambda.py`. You might also want to change the environment variables provided to the Lambda: to do that you need to edit both the Terraform code (i.e. `infra/main.tf` and `infra/lambda.tf`) and the `deploy.sh` script, and replace/extend with with your data accordingly:
 
-{% highlight bash %}
+```bash
 # deploy.sh: add/remove -var lines:
 [...]
 terraform apply \
@@ -461,13 +461,13 @@ resource "aws_lambda_function" "api" {
     }
   }
 }
-{% endhighlight %}
+```
 
 ## Bring your own source
 
 This tutorial is completed, but you could go on and experiment some more with the setup just editing `src/lambda.py` and running `deploy.sh`, Terraform will notice the source file has changed and upload the new version.
 
-{% highlight bash %}
+```bash
 $ git status
 On branch master
 Your branch is up to date with 'origin/master'.
@@ -510,11 +510,11 @@ aws_lambda_function.api: Modifying...
 aws_lambda_function.api: Modifications complete after 2s
 
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
-{% endhighlight %}
+```
 
 This is an example of logs generated by a proper request, you can find them all in the CloudWatch Logs LogGroup `/aws/lambda/api-mycoolservice-com`:
 
-{% highlight bash %}
+```bash
 START RequestId: e28d6aec-8c6e-11e8-bfed-3d0ef2ff5cc0 Version: $LATEST
 [INFO] 2018-07-20T22:47:31.38Z e28d6aec-8c6e-11e8-bfed-3d0ef2ff5cc0 Received HTTP POST request for path /contact_us
 [INFO] 2018-07-20T22:47:31.38Z e28d6aec-8c6e-11e8-bfed-3d0ef2ff5cc0 Processing payload
@@ -528,13 +528,13 @@ START RequestId: e28d6aec-8c6e-11e8-bfed-3d0ef2ff5cc0 Version: $LATEST
 [INFO] 2018-07-20T22:47:31.422Z e28d6aec-8c6e-11e8-bfed-3d0ef2ff5cc0 Message delivered successfully
 END RequestId: e28d6aec-8c6e-11e8-bfed-3d0ef2ff5cc0
 REPORT RequestId: e28d6aec-8c6e-11e8-bfed-3d0ef2ff5cc0 Duration: 385.28 ms Billed Duration: 400 ms Memory Size: 128 MB Max Memory Used: 24 MB 
-{% endhighlight %}
+```
 
 ## Destroy all the things
 
 When you're done experimenting, you might want to get rid of all the AWS resources we created so far. It's as easy as replacing _apply_ with _destroy_ in `deploy.sh`:
 
-{% highlight bash%}
+```bash
 $ sed -i .orig 's/terraform apply/terraform destroy/g' deploy.sh
 
 $ bash deploy.sh
@@ -560,7 +560,7 @@ Do you really want to destroy?
   There is no undo. Only 'yes' will be accepted to confirm.
 
   Enter a value: yes
-{% endhighlight %}
+```
 
 ## Conclusion
 

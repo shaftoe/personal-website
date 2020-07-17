@@ -49,7 +49,7 @@ To define and deploy all the needed resources I leveraged one more time dear AWS
 
 Speaking of performance optimizations, a brief mention to the relatively new Python `concurrent.futures` module which is used by `pagespeed_poller` Lambda to query Pagespeed APIs in parallel and sensibly reduce the Lambda execution time (in my cases reported execution time is roughly 6 seconds):
 
-```lang=python
+```python
 from concurrent.futures import (ThreadPoolExecutor, wait)
 executor = ThreadPoolExecutor()
 results = wait([executor.submit(run_job, url) for url in GOOGLE_PAGESPEED_TARGET_URLS])
@@ -59,7 +59,7 @@ Above is a redacted excerpt of [the actual implementation][cdk-concurrent] that 
 
 A [new `/pagespeed_report` route][cdk-api-route] has been added to the *proxy Lambda* public API too in order to expose the stored DynamoDB records via an HTTP GET request that can be probed by basically any modern monitoring system:
 
-```lang=bash
+```bash
 $ curl -v https://api.l3x.in/pagespeed_report | jq '.'
 [...]
 < HTTP/2 200

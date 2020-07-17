@@ -26,7 +26,7 @@ In a [previous article][blog-1] for example I showed how to deploy a *Node.js* a
 
 And yes, by default Linux still like to talk to humans via email:
 
-![Screenshot of an email from my Raspberry Pi]({{ "/img/rasp-email-screenshot.png" }}){: .img-fluid }
+![Screenshot of an email from my Raspberry Pi](rasp-email-screenshot.png)
 
 Here above you can see how my dear *Raspberry Pi* is telling me it needs my collaboration to upgrade one of its packages ASAP. Follow me a little longer if you want to know how exactly I set it up to deliver *cron daemon* emails (actually every internal email sent via the `sendmail` and `SMTP` interfaces) to my personal mailbox, and with every email address present in the headers rewritten to be a valid one too.
 
@@ -76,7 +76,7 @@ Thankfully it's not all that grim. The bright side is that, even though just the
 
 Here a redacted copy of my current Raspberry Pi Postfix' main configuration file (`/etc/postfix/main.cf`):
 
-```lang=postfix
+```postfix
 compatibility_level = 2
 header_checks = regexp:/etc/postfix/reply_to_header
 inet_interfaces = loopback-only

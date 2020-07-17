@@ -118,7 +118,7 @@ The `api-l3x-in` project is basically a container for different applications, th
 
 Here a diagram that shows how the building blocks of `publish-to-social` are connected:
 
-[![Architecture Diagram]({{ "/img/publish-to-social.svg" }}){: .img-fluid }](https://a.l3x.in/img/publish-to-social.svg "Click to view it bigger")
+[![Architecture Diagram](publish-to-social.svg)](publish-to-social.svg "Click to zoom on the diagram")
 
 It's a simple and fairly typical _pub-sub_ (and stateless) _serverless_ application with one main Lambda _publisher_ that sends messages to an SNS topic and multiple Lambda _subscribers_ that are executed every time there's a new message in the topic.
 

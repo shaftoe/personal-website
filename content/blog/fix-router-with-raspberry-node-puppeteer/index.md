@@ -74,7 +74,7 @@ This is the tech stack needed to implement the solution:
 
 To complete the setup, I add this simple cronjob that verifies connectivity every 2 minutes and, in case of failure, runs the Node.js script:
 
-```lang=bash
+```bash
 */2 * * * * ping -nq -c 3 1.1.1.1 | grep -q " 100\% packet loss" && node /opt/routerfix/repo/fix-router.js 2>&1 | logger -t ROUTER_FIX
 ```
 

@@ -46,7 +46,7 @@ To glue all the parts together these addition were needed:
 
 The (slightly simplified) final backend architecture looks like this:
 
-[![Architecture Diagram]({{ "/img/lambda-destination-diagram.svg" }}){: .img-fluid }](/img/lambda-destination-diagram.svg "Click to view it bigger")
+[![Architecture Diagram](lambda-destination-diagram.svg)](lambda-destination-diagram.svg "Click to zoom on the diagram")
 
 ### Frontend
 

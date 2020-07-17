@@ -47,7 +47,7 @@ This might have been made even more general using something like `self.main` as 
 
 The final layout looks like this:
 
-[![Architecture Diagram]({{ "/img/split-pushover-diagram.svg" }}){: .img-fluid }](https://a.l3x.in/img/split-pushover-diagram.svg "Click to view it bigger")
+[![Architecture Diagram](split-pushover-diagram.svg)](split-pushover-diagram.svg "Click to zoom on the diagram")
 
 ## Conclusion
 

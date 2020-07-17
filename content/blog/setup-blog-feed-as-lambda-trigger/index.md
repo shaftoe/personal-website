@@ -24,7 +24,7 @@ In that article I observed that the **100% automation** goal was not met though 
 
 As a start I've thrown the `feedparser` Python module into the bunch creating a dedicated *Lambda Layer* for that. In CDK is **very convenient** to add a Lambda Function dependency via Lambda Layers: with just a bit of *configuration by convention* (keeping all the Layers content under `lib/layers/<layer_name>`) all it takes now is [a single line of code][cdk-lambda-poll-instance] when instantiating a Lambda Function in the CDK stack:
 
-```lang=python
+```python
 lambda_poll = get_lambda(
     # ...other_parameters,
     layers=[get_layer(self, "feedparser", id)],
@@ -68,7 +68,7 @@ For the records, the above automation workflow has been in place for the last fe
 
 Python `datetime` module (included in the *Python Standard Library*) comes handy when working with timestamps and time deltas, it should also deal properly with those nasty edge cases that can surface during **leap seconds/days/years** (many thanks to Gregory for ridding us of Leap **Months** at least 😆):
 
-```lang=python
+```python
 from datetime import (datetime, timedelta)
 
 def _midnightify(date: datetime) -> datetime:

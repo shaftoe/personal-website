@@ -15,7 +15,7 @@ I eventually landed on Tumblr, mainly because of the __native Markdown support__
 
 Unfortunately I never invested much of my energies in web development, partly because the infrastructure side of the IT things always looked more intriguing to me, but also because of [that feeling][css-griffin-imgur] I got all the times I tried to add some style to even the simpliest of the web interfaces:
 
-[![how CSS feels, visually explained]({{ "/img/css-peter-griffin.png" }}){: .img-fluid .col}][css-griffin-imgur]
+[![how CSS feels, visually explained](css-peter-griffin.png)][css-griffin-imgur]
 
 Thanks to the good Coursera iOS application, and following the suggestion of a web developer and good friend of mine, I decided the time has come to learn a little bit of [Bootstrap][bootstrap-docs], and I have to admit it was easier and more fun that I expected. The [grid system][bootstrap-docs-grid] is quite ingenuous and having to deal with class properties instead of editing CSS content is making the whole experience much more enjoyable. The official Bootstrap documentation is quite good, and in parallel with [this Coursera course][bootstrap-course], it was easy enough to get started. If you are also thinking of getting started with Bootstrap I suggest you to have a look at it, it's free if all you want is to browse through the content without actually shooting for the exam certification.
 
@@ -38,4 +38,4 @@ The final result is what you see right now, I hope you like it! It's very basic,
 [bootstrap-docs]: https://getbootstrap.com/
 [bootstrap-docs-grid]: https://getbootstrap.com/docs/4.1/layout/grid/
 [firebase-website]: https://firebase.google.com/
-[css-griffin-imgur]: https://imgur.com/gallery/Q3cUg29
+[css-griffin-imgur]: https://imgur.com/gallery/Q3cUg29 "Click to open the animated gif"
