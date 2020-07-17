@@ -1,14 +1,12 @@
 {{- define "head" -}}
 {{- $blogTitle := .Parent.Title -}}
-
     <title>{{ $blogTitle }} - {{ .Title }}</title>
-
-    <link rel="preconnect" href="https://x.disq.us">
 {{- end -}}
 
 {{- define "header" -}}
 {{- $blogTitle := .Parent.Title -}}
 <header>
+
     <h1 class="blog-title">
         <a
             href="{{ .Parent.RelPermalink }}"
@@ -17,6 +15,7 @@
             {{ $blogTitle }}
         </a>
     </h1>
+
 </header>
 {{- end -}}
 

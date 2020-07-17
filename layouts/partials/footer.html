@@ -1,0 +1,56 @@
+<footer class="site">
+    <div class="links">
+        <div class="link_list">
+            <h5>Content</h5>
+            <ul>
+                {{- range .Site.Menus.main -}}
+                    {{/*  fixme use where to filter out RSS  */}}
+                    {{- if not (eq .Name "RSS") -}}
+                    <li><a href="{{ .URL }}">{{ .Name | humanize }}</a></li>
+                    {{- end -}}
+                {{- end -}}
+                {{- range .Site.Menus.content -}}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                {{- end -}}
+            </ul>
+        </div>
+
+        <div class="link_list">
+            <h5>Social</h5>
+            <ul>
+                {{- range .Site.Menus.socialnetworks -}}
+                <li><a href="{{ .URL }}">{{ .Name | humanize }}</a></li>
+                {{- end -}}
+            </ul>
+        </div>
+
+        <div class="link_list">
+            <h5>Jamstack</h5>
+            <ul>
+                {{- range .Site.Menus.jamstack -}}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                {{- end -}}
+            </ul>
+        </div>
+    </div>
+
+    <small>
+        <span>
+            Last update: <em>{{ now.UTC.Format "02 Jan 2006 15:04 UTC" }}</em>
+        </span>
+
+        <span>
+            Except where otherwise noted, content on this site is licensed under
+            <a
+                href="https://creativecommons.org/licenses/by-sa/4.0/"
+                title="Go to Creative Commons license page"
+                class="license"
+            >
+                <i class="fab fa-creative-commons"></i>
+                <i class="fab fa-creative-commons-by"></i>
+                <i class="fab fa-creative-commons-sa"></i>
+            </a>
+            Creative Commons Attribution 4.0 International license
+        </span>
+    </small>
+</footer>

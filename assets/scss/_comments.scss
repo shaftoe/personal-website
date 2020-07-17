@@ -33,8 +33,12 @@ div.comments {
 
   form * {
     border: none;
-    padding: 0.5rem;
     border-radius: 0.5rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.5rem;
   }
 
   textarea {
@@ -43,24 +47,35 @@ div.comments {
   }
 
   div.input {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     padding: initial;
-    margin-bottom: 1rem;
 
     input {
-      width: 100%;
-      margin-top: 1rem;
+      height: 2rem;
+      margin-bottom: 1rem;
     }
 
     input[type="submit"] {
       background-color: $color-main;
+      height: 3rem;
     }
   }
 
-  small.email {
+  label.title {
+    font-size: 3rem;
     display: block;
     text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    margin-left: 0.5rem;
+  }
+}
+
+@media screen and (min-width: $media-min-width) {
+  div.input label {
+    padding-top: 0.8rem;
   }
 }
