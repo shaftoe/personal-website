@@ -5,6 +5,7 @@ article {
   padding: 0 1rem 0;
   margin: 2rem auto;
   line-height: 1.5rem;
+  overflow: hidden;
 
   p {
     margin-bottom: 0.2rem;
@@ -38,7 +39,7 @@ article {
 
   pre,
   code {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 
   div.content ul {
