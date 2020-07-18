@@ -66,7 +66,7 @@ Since then I could travel far and abroad, always to find a more than decent occu
 
 I met a lot of professionals on the way. Some of them brilliant and ingenuous. Some flamboyant and inspiring. Some pretentious and annoying. Many though, if not all, joined by a common passion for what we _crafted_.
 
-That multicolored _culture within the culture_, made up of uncountable people and ideas and cool new technologies and funny but [visually ugly](https://devsum-archive.s3.amazonaws.com/automate-meme.jpg) memes (...and on and on), soon became fuel for virtuous loops of **discover => learn => practice => discover** that, almost mindlessly, kept me moving ahead doing what I liked and getting a pretty good living out of it.
+That multicolored _culture within the culture_, made up of uncountable people and ideas and cool new technologies and funny but [visually ugly](automate-meme.jpg) memes (...and on and on), soon became fuel for virtuous loops of **discover => learn => practice => discover** that, almost mindlessly, kept me moving ahead doing what I liked and getting a pretty good living out of it.
 
 ## Eventually inconsistent
 
@@ -98,7 +98,7 @@ Broadband connectivity in 1999... **that** was luxury!
 
 The initial heat soon dissipated though. I started to believe I missed a key natural skill required to become a decent (web) designer, and if you see my hand writing you'd know instantly what I mean.
 
-The first attempts to set up from scratch a decently looking template for a website put me off as an impossible feat and made me wish for something... [more ergonomic](https://devsum-archive.s3.amazonaws.com/css-meme.gif).
+The first attempts to set up from scratch a decently looking template for a website put me off as an impossible feat and made me wish for something... [more ergonomic](css-meme.gif).
 
 To be truly honest with you, the main reason I gave up is because _it wasn't fun_.
 
@@ -240,7 +240,7 @@ Once the two opposed forces have stabilized, new balances emerge making room for
 
 ## SQEmpathy injection
 
-> Anyone got time for a [code review](https://devsum-archive.s3.amazonaws.com/dont-git-blame-me.jpeg 'Once you start git-blaming')?
+> Anyone got time for a [code review](dont-git-blame-me.jpeg 'Once you start git-blaming')?
 >
 > ― anonymous colleague
 
@@ -248,7 +248,7 @@ Most importantly, the need for _empathy_ is also unchanged. We might write in [c
 
 Empathy for the end user AND for the developer both should drive our efforts, and if you're reading this article there's a good chance you are one of the latter... so do yourself a favor today and remember to be empathetic to _your future self_ too.
 
-I don't refer to the kind of empathy you might feel for someone recently [_friend-zoned_](https://devsum-archive.s3.amazonaws.com/friendzoned-meme.jpg) but the kind you feel when you see a colleague struggling with something unnecessarily complex.
+I don't refer to the kind of empathy you might feel for someone recently [_friend-zoned_](friendzoned-meme.jpg) but the kind you feel when you see a colleague struggling with something unnecessarily complex.
 
 Care for user experience is an act of empathy. Why should only the _end_ user benefit from it? Software engineers are software users too and have the same right for a good experience.
 
