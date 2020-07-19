@@ -40,12 +40,12 @@
     <textarea id="comment" name="fields[body]" placeholder="Feel free to use Markdown" rows="5" required></textarea>
 
     <div class="input">
-        <input id="name" name="fields[name]" type="text" placeholder="Your name" required>
+        <input id="name" name="fields[name]" type="text" placeholder="Required" required>
         <label for="name">Your name</label>
 
-        <input id="email" name="fields[email]" type="email" placeholder="your@mail.here (optional)">
-        <label for="email">Gravatar email <small class="email">(hashed with MD5, i.e. never stored nor displayed in clear text)</small>
-        </label>
+        <input id="email" name="fields[email]" type="email" placeholder="(Optional)">
+        <label for="email">Gravatar email</label>
+
         <input id="submit" type="submit" value="Post Comment">
     </div>
     <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
