@@ -135,6 +135,11 @@ disqusShortname = "a-l3x-in"
     weight = 2
 
   [[menu.jamstack]]
+    name = "Comments by Staticman"
+    url = "https://staticman.net/"
+    weight = 2
+
+  [[menu.jamstack]]
     name = "Fonts by Google"
     url = "https://fonts.google.com/"
     weight = 3
