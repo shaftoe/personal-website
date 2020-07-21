@@ -1,0 +1,17 @@
+@import 'variables';
+
+main h2 {
+  margin: 6rem auto;
+  color: $color-text;
+  text-align: center;
+}
+
+main nav ul {
+  margin: 6rem auto;
+  display: flex;
+  justify-content: center;
+
+  li + li {
+    padding-left: 2rem;
+  }
+}

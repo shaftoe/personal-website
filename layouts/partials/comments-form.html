@@ -1,5 +1,6 @@
 {{- $id := printf "%s/%s" .Section .File.ContentBaseName -}}
 {{- $sectionData := (index .Site.Data.comments .Section) -}}
+{{- $receivedPage := .Site.GetPage "/comment-received" -}}
 
 {{ with (index $sectionData .File.ContentBaseName) }}
 <h4>{{ len . }} comment{{ if gt (len .) 1 }}s{{ end }}</h4>
@@ -49,7 +50,7 @@
         <input id="submit" type="submit" value="Post Comment">
     </div>
     <small>* hashed with MD5, i.e. never shown nor stored in plain text</small>
-    <input type="hidden" name="options[redirect]" value="{{ .Permalink }}#comment-submitted">
+    <input type="hidden" name="options[redirect]" value="{{ $receivedPage.Permalink }}">
     <input type="hidden" name="options[entryId]" value="{{ $id }}">
 
 </form>

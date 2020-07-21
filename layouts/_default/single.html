@@ -1,55 +1,38 @@
 {{- define "head" -}}
-{{- $blogTitle := .Parent.Title -}}
-    <title>{{ $blogTitle }} - {{ .Title }}</title>
-{{- end -}}
+    <title>{{ .Site.Title }} - {{ .Title }}</title>
 
-{{- define "header" -}}
-{{- $blogTitle := .Parent.Title -}}
-<header>
+    {{- with resources.Get "scss/single.scss" | toCSS | minify -}}
+    <style>{{ .Content | safeCSS }}</style>
+    {{- end -}}
+{{ end -}}
 
-    <h1 class="blog-title">
-        <a
-            href="{{ .Parent.RelPermalink }}"
-            title="Go to {{ .Parent.Title }} main page"
-        >
-            {{ $blogTitle }}
-        </a>
-    </h1>
+{{- define "main" -}}
+{{ .Content }}
 
-</header>
-{{- end -}}
+<nav>
+    <ul>
+        <li>
+            <a
+                class="button"
+                href="/"
+                title="Go to Home Page"
+            >
+                Home Page
+            </a>
+        </li>
 
-{{ define "main" }}
-<article>
-
-    <h1>{{ .Title }}</h1>
-
-    <small class="date">
-        <a
-            href="{{ .RelPermalink }}"
-            title="Permanent link to this article"
-        >
-            {{ partial "date" .Date }}
-        </a>
-    </small>
-
-    <div class="content">
-        {{ .Content }}
-    </div>
-
-    <footer>
-        {{- with .Params.tags -}}
-        <ul class="tag_list">
-            {{- range . -}}
-                {{- partial "tag" . -}}
-            {{- end -}}
-        </ul>
+        {{- with .Site.GetPage "/blog" }}
+        <li>
+            <a
+                class="button"
+                title="Go back to {{ .Title }}"
+                href="{{ .RelPermalink }}"
+            >
+                {{ .Title }}
+            </a>
+        </li>
         {{- end -}}
-    </footer>
+    </ul>
+</nav>
 
-    <div class="comments">
-        {{ partial "comments-form" . }}
-    </div>
-
-</article>
-{{ end }}
+{{- end -}}
