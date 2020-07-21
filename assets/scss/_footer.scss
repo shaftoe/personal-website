@@ -9,6 +9,13 @@ footer.site {
   padding: 1.5rem 0.5rem 1rem;
   background: linear-gradient(to top, $color-bkg-dark, $color-bkg-light);
 
+  h1 {
+    margin: 1rem 0 0.5rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-align: initial;
+  }
+
   div.links {
     margin: auto 1rem;
     width: 100%;

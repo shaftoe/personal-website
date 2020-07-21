@@ -1,7 +1,7 @@
 <footer class="site">
     <div class="links">
         <div class="link_list">
-            <h5>Content</h5>
+            <h1>Content</h1>
             <ul>
                 {{- range .Site.Menus.main -}}
                     {{- if not (eq .Name "RSS") -}}
@@ -15,7 +15,7 @@
         </div>
 
         <div class="link_list">
-            <h5>Social</h5>
+            <h1>Social</h1>
             <ul>
                 {{- range .Site.Menus.socialnetworks -}}
                 <li><a href="{{ .URL }}">{{ .Name | humanize }}</a></li>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="link_list">
-            <h5>Jamstack</h5>
+            <h1>Jamstack</h1>
             <ul>
                 {{- range .Site.Menus.jamstack -}}
                 <li><a href="{{ .URL }}">{{ .Name }}</a></li>
