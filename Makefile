@@ -1,5 +1,6 @@
 include defaults.mk
 
+export GITHUB_ACCOUNT_ID := shaftoe
 export MASTODON_ACCOUNT_ID := 36187
 export MIXCLOUD_ACCOUNT_ID := al3xf
 export YOUTUBE_CHANNEL := UCb5FGNik4wXGrVGRS1x2JZw
@@ -32,6 +33,9 @@ fontawesome.css:
 html5validator:
 	@html5validator --root public/ --also-check-css
 
+github:
+	@$(NODE) lib/github-downloader.js
+
 mastodon:
 	@$(NODE) lib/mastodon-downloader.js
 
@@ -48,7 +52,7 @@ npm-install:
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean mastodon mixcloud youtube normalize.css fontawesome.css
+prebuild: clean github mastodon mixcloud youtube normalize.css fontawesome.css
 
 setup: npm-install babel-install pip-install
 
@@ -73,4 +77,4 @@ upgrade-node-modules:
 youtube:
 	@$(NODE) lib/youtube-downloader.js
 
-.PHONY: server build clean deploy eslint fontawesome.css html5validator mastodon mixcloud normalize.css npm-install prebuild setup setup-githook stylelint test upgrade upgrade-node-modules
+.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install prebuild setup setup-githook stylelint test upgrade upgrade-node-modules
