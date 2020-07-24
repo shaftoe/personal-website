@@ -27,7 +27,7 @@ disqusShortname = "a-l3x-in"
 
   [[menu.main]]
     name = "hire me!"
-    url = "/hire-me/"
+    url = "https://www.toptal.com/resume/alexander-fortin"
     weight = 3
 
   [[menu.main]]
