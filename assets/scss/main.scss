@@ -101,14 +101,10 @@ header {
 
 ul.buttons {
   padding-bottom: 3rem;
-  margin: 2rem 1rem 0;
+  margin: 2rem 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-  li {
-    padding-right: 0.5rem;
-  }
 }
 
 a.button {
