@@ -19,7 +19,6 @@ div.social ul > li {
 
 div.index {
   display: grid;
-  gap: 3rem;
   margin: 3rem 1.2rem;
 }
 
@@ -195,11 +194,22 @@ div.media {
 
   div.index_content {
     display: grid;
-    gap: 4rem;
   }
 
   div.index_content.row_1 {
-    grid-template-columns: 3fr 2fr 2fr;
+    gap: 3rem;
+    grid-template-columns: 22% 48% 22%;
+    grid-template-rows: 1fr;
+
+    // in desktop mode we move the first section in the middle
+    .col_1 {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    span.invisible {
+      display: none;
+    }
   }
 
   div.index_content.row_2 {
