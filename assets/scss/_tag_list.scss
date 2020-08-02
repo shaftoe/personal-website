@@ -6,6 +6,10 @@ h3.tag_list {
   text-align: center;
 }
 
+h4.tag_list {
+  text-transform: uppercase;
+}
+
 ul.tag_list li a {
   color: $color-main;
   background-color: $color-bkg-light;
