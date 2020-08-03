@@ -85,11 +85,12 @@
         </a>
     </aside>
 
-    {{ partial "footer" . }}
+    {{- partial "footer" . -}}
 
-    {{- with resources.Get "js/main.js" -}}
-    {{- $js := . | babel | minify -}}
-    <script src="{{ $js.RelPermalink }}" defer></script>
+    {{- partial "script" "main.js" }}
+
+    {{- range .Params.scripts -}}
+    {{- partial "script" . }}
     {{- end -}}
 
 </body>

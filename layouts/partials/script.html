@@ -1,0 +1,5 @@
+{{- $script := printf "js/%s" . }}
+{{- with resources.Get $script -}}
+{{- $js := . | babel | minify -}}
+<script src="{{ $js.RelPermalink }}" defer></script>
+{{- end -}}

@@ -11,6 +11,9 @@ NODE := node --unhandled-rejections=strict
 server:
 	@hugo server --disableFastRender
 
+axios:
+	@cp node_modules/axios/dist/axios.js assets/js/
+
 babel-install:
 	@npm install -g babel-cli
 
@@ -23,7 +26,8 @@ clean:
 deploy: prebuild build show test
 
 eslint:
-	@eslint assets/js/ lib/
+	# FIXME use proper filtering
+	@eslint assets/js/main.js lib/
 
 fontawesome.css:
 	@cp node_modules/@fortawesome/fontawesome-free/css/all.css assets/css/fontawesome.css
@@ -52,7 +56,7 @@ npm-install:
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean github mastodon mixcloud youtube normalize.css fontawesome.css
+prebuild: clean axios github mastodon mixcloud youtube normalize.css fontawesome.css
 
 setup: npm-install babel-install pip-install
 
