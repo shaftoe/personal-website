@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" type="text/css">
     {{- end -}}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     {{- partial "google_font" (dict "fontFamily" "Roboto") -}}
 
     {{- block "head" . }}{{ end -}}
@@ -87,9 +88,7 @@
 
     {{- partial "footer" . -}}
 
-    {{- partial "script" "main.js" }}
-
-    {{- range .Params.scripts -}}
+    {{- range (append "main.js" .Params.scripts) -}}
     {{- partial "script" . }}
     {{- end -}}
 
