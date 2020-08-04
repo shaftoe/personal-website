@@ -1,5 +1,8 @@
 {{- $id := printf "%s/%s" .Section .File.ContentBaseName -}}
-{{- $sectionData := (index .Site.Data.comments .Section) -}}
+{{- $sectionData := dict -}}
+{{- if isset .Site.Data "comments" }}
+{{- $sectionData = (index .Site.Data.comments .Section) -}}
+{{- end -}}
 {{- $receivedPage := .Site.GetPage "/comment-received" -}}
 
 {{ with (index $sectionData .File.ContentBaseName) }}
