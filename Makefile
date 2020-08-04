@@ -12,7 +12,8 @@ server:
 	@hugo server --disableFastRender
 
 axios:
-	@cp node_modules/axios/dist/axios.js assets/js/
+	@mkdir -p assets/js/vendor
+	@cp node_modules/axios/dist/axios.min.js assets/js/vendor/
 
 babel-install:
 	@npm install -g babel-cli

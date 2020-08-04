@@ -1,5 +1,6 @@
 {{- $script := printf "js/%s" . }}
-{{- with resources.Get $script -}}
-{{- $js := . | babel | minify -}}
-<script src="{{ $js.RelPermalink }}" defer></script>
+{{- $js := resources.Get $script -}}
+{{- if not (hasPrefix . "vendor") }}
+{{- $js = $js | babel | minify -}}
 {{- end -}}
+<script src="{{ $js.RelPermalink }}" defer></script>

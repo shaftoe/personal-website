@@ -130,34 +130,34 @@ disqusShortname = "a-l3x-in"
     weight = 1
 
   [[menu.jamstack]]
-    name = "Built with Hugo"
+    name = "Made with Hugo"
     url = "https://gohugo.io/"
     weight = 2
 
   [[menu.jamstack]]
     name = "Comments by Staticman"
     url = "https://staticman.net/"
-    weight = 2
+    weight = 3
 
   [[menu.jamstack]]
     name = "Fonts by Google"
     url = "https://fonts.google.com/"
-    weight = 3
+    weight = 4
 
   [[menu.jamstack]]
     name = "Icons by Font Awesome"
     url = "https://fontawesome.com/"
-    weight = 3
+    weight = 4
 
   [[menu.jamstack]]
     name = "Build automation in Node.js"
     url = "https://github.com/shaftoe/personal-website/tree/master/lib"
-    weight = 4
+    weight = 5
 
   [[menu.jamstack]]
     name = "Built, hosted and distributed by Netlify"
     url = "https://www.netlify.com/"
-    weight = 5
+    weight = 6
 
 [taxonomies]
   tag = "tags"
