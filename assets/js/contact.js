@@ -21,6 +21,7 @@ function getData() {
 form.addEventListener("submit", event => {
     event.preventDefault()
     fieldset.disabled = true
+    button.innerText = "Sending..."
     axios.post("https://api.l3x.in/contact", getData()) // eslint-disable-line no-undef
         .then(() => window.location.href = "/message-received")
         .catch(error => {
