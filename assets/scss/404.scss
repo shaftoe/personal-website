@@ -16,6 +16,17 @@ header.site {
 
 main {
   padding-top: 1rem;
+
+  > div {
+    position: relative;
+
+    > h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%);
+    }
+  }
 }
 
 footer.site {
@@ -26,11 +37,4 @@ img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-main h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%);
 }
