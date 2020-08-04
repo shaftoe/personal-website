@@ -52,7 +52,7 @@ div.claim {
     padding-top: 1.5rem;
   }
 
-  h1 > em:first-child {
+  h1 > em:first-of-type {
     display: inline-block;
     font-style: normal;
     animation: flip 1s ease-in-out 1 2s;
