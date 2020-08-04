@@ -7,6 +7,8 @@ const email = form.querySelector("#inputEmail")
 const fieldset = form.querySelector("fieldset")
 const name = form.querySelector("#inputName")
 
+fieldset.disabled = false
+
 function getData() {
     return {
         description: description.value,
