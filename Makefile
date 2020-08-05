@@ -26,8 +26,7 @@ clean:
 deploy: prebuild build show test
 
 eslint:
-	# FIXME use proper filtering
-	@eslint assets/js/main.js lib/
+	@eslint assets/js/*.js lib/
 
 fontawesome.css:
 	@cp node_modules/@fortawesome/fontawesome-free/css/all.css assets/css/fontawesome.css

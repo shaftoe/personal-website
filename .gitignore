@@ -1,6 +1,6 @@
 node_modules/
 assets/css/normalize.css
-assets/js/vendor/axios.min.js
+assets/js/vendor/*
 public/
 assets/css/fontawesome.css
 static/webfonts/
