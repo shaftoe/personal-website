@@ -55,7 +55,7 @@ npm-install:
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean axios github mastodon mixcloud youtube normalize.css fontawesome.css
+prebuild: clean axios tracker github mastodon mixcloud youtube normalize.css fontawesome.css
 
 setup: npm-install babel-install pip-install
 
@@ -71,6 +71,10 @@ show:
 	@tree public/
 
 test: eslint stylelint html5validator
+
+tracker:
+	@npm install ackee-tracker
+	@cp node_modules/ackee-tracker/dist/ackee-tracker.min.js assets/js/vendor/
 
 upgrade: upgrade-node-modules npm-install
 

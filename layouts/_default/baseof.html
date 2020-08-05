@@ -92,6 +92,18 @@
     {{- partial "script" . }}
     {{- end -}}
 
+    {{- $js := resources.Get "js/vendor/ackee-tracker.min.js" -}}
+    <script src="{{ $js.RelPermalink }}"></script>
+    <script>
+        ackeeTracker.create({
+            server: "{{ .Site.Params.tracker_server }}",
+            domainId: "{{ .Site.Params.tracker_domainId }}",
+        }, {
+            ignoreLocalhost: true,
+            detailed: false
+        }).record()
+    </script>
+
 </body>
 
 </html>

@@ -12,6 +12,8 @@ disqusShortname = "a-l3x-in"
   listed_articles = 3
   feed = "/index.xml"
   staticmanUrl = "https://a-l3x-in-staticman.herokuapp.com/v2/entry/shaftoe/personal-website/master/comments"
+  tracker_server = "https://a-l3x-in-ackee.herokuapp.com"
+  tracker_domainId = "6efa5d5a-301b-4e23-b902-c5cc4837f443"
 
 [menu]
 
@@ -137,6 +139,11 @@ disqusShortname = "a-l3x-in"
   [[menu.jamstack]]
     name = "Comments by Staticman"
     url = "https://staticman.net/"
+    weight = 3
+
+  [[menu.jamstack]]
+    name = "Analytics by Ackee"
+    url = "https://ackee.electerious.com/"
     weight = 3
 
   [[menu.jamstack]]
