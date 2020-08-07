@@ -32,6 +32,27 @@ article {
     line-height: 2.5rem;
   }
 
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  h2,
+  h3 {
+    margin: 2rem 0 0.8rem;
+  }
+
+  div.content {
+    > p,
+    > ol > li,
+    > ul > li {
+      margin-top: 1.2rem;
+    }
+  }
+
   div.content img {
     margin: 2rem 0;
     width: 100%;
