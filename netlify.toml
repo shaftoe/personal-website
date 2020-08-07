@@ -11,3 +11,4 @@
 
 [context.dev.environment]
   BUILD_ENV = "development"
+  HUGO_ENV = "development"

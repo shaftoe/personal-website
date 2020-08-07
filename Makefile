@@ -8,7 +8,7 @@ HOOK_FILE := .git/hooks/pre-commit
 NODE := node --unhandled-rejections=strict
 
 server:
-	@hugo server --disableFastRender --environment development
+	@hugo server --disableFastRender --environment development --buildFuture
 
 axios:
 	@mkdir -p assets/js/vendor
@@ -18,7 +18,7 @@ babel-install:
 	@npm install -g babel-cli
 
 build:
-	@hugo --cleanDestinationDir --minify
+	@hugo --cleanDestinationDir --minify --buildFuture
 
 clean:
 	@rm -rf public/
