@@ -1,6 +1,6 @@
 baseURL = "https://a.l3x.in/"
 languageCode = "en-us"
-title = "Al3x"
+title = "Al3x' personal home page"
 copyright = "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
 rssLimit = 20
 enableRobotsTXT = true
@@ -14,6 +14,7 @@ disqusShortname = "a-l3x-in"
   staticmanUrl = "https://a-l3x-in-staticman.herokuapp.com/v2/entry/shaftoe/personal-website/master/comments"
   tracker_server = "https://a-l3x-in-ackee.herokuapp.com"
   tracker_domainId = "6efa5d5a-301b-4e23-b902-c5cc4837f443"
+  twitter_handle = "alexanderfortin"
 
 [menu]
 

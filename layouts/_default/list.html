@@ -1,7 +1,7 @@
 {{- define "head" -}}
+{{- $title := .Param "title" -}}
 
-    {{- $title := .Param "title" -}}
-    <title>{{ $title }}</title>
+    {{- partial "title" $title -}}
 
     {{- partial "scss" "list" -}}
 

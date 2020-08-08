@@ -1,9 +1,10 @@
 {{- define "head" -}}
-    <title>{{ .Site.Title }} - {{ .Title }}</title>
 
-    {{ partial "google_font" (dict "fontFamily" "Press Start 2P" "text" .Title) }}
+    {{- $title := printf "%s - %s" .Site.Title .Title -}}
+    {{- partial "title" $title -}}
+    {{- partial "google_font" (dict "fontFamily" "Press Start 2P" "text" .Title) -}}
 
-{{ end -}}
+{{- end -}}
 
 {{- define "main" -}}
 <div>

@@ -1,0 +1,22 @@
+{{- $title := .Site.Title -}}
+{{- if eq .Section "blog" -}}{{- $title = (.GetPage "/blog").Title -}}{{- end -}}
+
+<meta property="og:site_name" content="{{ $title }}" />
+<meta property="og:description" content="{{ .Param "description" }}" />
+<meta property="og:url" content="{{ .Page.Permalink }}" />
+<meta property="og:type" content="{{ if eq .Kind "page" }}article{{ else }}website{{ end }}" />
+<meta property="article:publisher" content="{{ .Site.BaseURL }}" />
+
+{{/*  <meta property="article:section" content="Coding" />  */}}
+{{/*  <meta property="article:tag" content="Coding" />  */}}
+
+{{- with $.Page.Resources.GetMatch "opengraph.png" -}}
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image" content="{{ .Permalink }}" />
+<meta property="og:image:secure_url" content="{{ .Permalink }}" />
+<meta property="twitter:image" content="{{ .Permalink }}" />
+<meta property="twitter:card" content="summary_large_image" />
+{{- end -}}
+
+<meta property="twitter:site" content="@{{ .Site.Params.twitter_handle }}" />

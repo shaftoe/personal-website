@@ -1,5 +1,5 @@
 {{- define "head" -}}
-    <title>{{ .Site.Title }} - {{ .Title }}</title>
+    {{- partial "title" (printf "%s - %s" .Site.Title .Title) -}}
 
     {{- with resources.Get "scss/single.scss" | toCSS | minify -}}
     <style>{{ .Content | safeCSS }}</style>

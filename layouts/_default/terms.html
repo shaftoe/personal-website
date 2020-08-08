@@ -1,8 +1,8 @@
 {{- define "head" -}}
 {{- $blogMainPage := .Site.GetPage "/blog" -}}
-{{- $title := $blogMainPage.Title }}
+{{- $title := $blogMainPage.Title -}}
 
-    <title>{{ $title }} - Categories</title>
+    {{- partial "title" (printf "%s - Categories" $title) -}}
 
     {{- with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
@@ -27,9 +27,6 @@
 {{ end }}
 
 {{- define "main" -}}
-{{- $blogMainPage := .Site.GetPage "/blog" -}}
-{{- $title := printf "%s's %s" (.Param "author") $blogMainPage.Title -}}
-{{- $section := . -}}
 
 <h1>Categories</h1>
 

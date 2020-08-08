@@ -1,5 +1,6 @@
 ---
 title: "Privacy Policy"
+description: "Website's Privacy Policy"
 ---
 
 ## This website doesn't displays any advertisement to the user

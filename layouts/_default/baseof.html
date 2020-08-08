@@ -33,6 +33,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     {{- partial "google_font" (dict "fontFamily" "Roboto") -}}
 
+    {{- partial "opengraph" . }}
+
     {{- block "head" . }}{{ end -}}
 </head>
 

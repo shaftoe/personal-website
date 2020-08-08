@@ -1,6 +1,5 @@
 {{- define "head" -}}
-{{- $blogTitle := .Parent.Title -}}
-    <title>{{ $blogTitle }} - {{ .Title }}</title>
+    {{- partial "title"  .Title -}}
 {{- end -}}
 
 {{- define "header" -}}
