@@ -92,6 +92,7 @@
     {{- partial "script" . }}
     {{- end -}}
 
+    {{- if eq hugo.Environment "production" }}
     {{- $js := resources.Get "js/vendor/ackee-tracker.min.js" -}}
     <script src="{{ $js.RelPermalink }}"></script>
     <script>
@@ -103,6 +104,7 @@
             detailed: false
         }).record()
     </script>
+    {{- end -}}
 
 </body>
 
