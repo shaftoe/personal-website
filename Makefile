@@ -52,10 +52,13 @@ normalize.css:
 npm-install:
 	@npm install
 
+opengraph:
+	@$(NODE) lib/open-graph.js
+
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean axios tracker github mastodon mixcloud youtube normalize.css fontawesome.css
+prebuild: clean axios tracker github mastodon mixcloud youtube normalize.css fontawesome.css opengraph
 
 setup: npm-install babel-install pip-install
 
@@ -84,4 +87,4 @@ upgrade-node-modules:
 youtube:
 	@$(NODE) lib/youtube-downloader.js
 
-.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install prebuild setup setup-githook stylelint test upgrade upgrade-node-modules
+.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install opengraph prebuild setup setup-githook stylelint test upgrade upgrade-node-modules

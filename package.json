@@ -14,6 +14,7 @@
     "ackee-tracker": "^3.3.0",
     "axios": "^0.19.2",
     "babel-eslint": "^10.1.0",
+    "canvas": "^2.6.1",
     "eslint": "^7.6.0",
     "eslint-config-strongloop": "^2.1.0",
     "fast-xml-parser": "^3.17.4",
