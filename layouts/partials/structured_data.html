@@ -1,0 +1,26 @@
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{ .Permalink }}"
+        },
+        "headline": "{{ .Title }}",
+        {{- with .Resources.GetMatch "opengraph.png" -}}
+        "image": [
+            "{{ .Permalink }}"
+        ],
+        {{- end -}}
+        "datePublished": "{{ dateFormat "2006-01-02T15:04:05-07:00" .Date }}",
+        "dateModified": "{{ dateFormat "2006-01-02T15:04:05-07:00" .Lastmod }}",
+        "author": {
+            "@type": "Person",
+            "name": "{{ .Param "author_full" }}"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "{{ .Param "author_full" }}"
+        }
+    }
+</script>
