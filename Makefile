@@ -53,7 +53,7 @@ npm-install:
 	@npm install
 
 opengraph:
-	@$(NODE) lib/open-graph.js
+	@$(NODE) lib/opengraph.js
 
 pip-install:
 	@pip install -r requirements.txt
