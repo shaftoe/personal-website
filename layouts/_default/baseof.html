@@ -12,6 +12,9 @@
     {{- end -}}
 
     <meta name="description" content="{{ .Param "description" }}">
+    {{- with .Params.tags -}}
+    <meta name="categories" content="{{ delimit . ", " }}">
+    {{- end -}}
 
     {{ range (slice "fontawesome" "normalize") }}
     {{ $cssFile := printf "css/%s.css" . }}
