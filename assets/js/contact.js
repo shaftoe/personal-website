@@ -5,7 +5,7 @@ const button = form.querySelector("button.send")
 const description = form.querySelector("#textAreaMessage")
 const email = form.querySelector("#inputEmail")
 const fieldset = form.querySelector("fieldset")
-const name = form.querySelector("#inputName")
+const inputName = form.querySelector("#inputName")
 
 fieldset.disabled = false
 
@@ -13,7 +13,7 @@ function getData() {
     return {
         description: description.value,
         email: email.value,
-        name: name.value || "<No name>",
+        name: inputName.value || "<No name>",
         source: window.location.href,
     }
 }
