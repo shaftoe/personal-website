@@ -1,4 +1,4 @@
-{{- $id := printf "%s/%s" .Section .File.ContentBaseName -}}
+{{- $baseDir := printf "data/comments/%s/%s" .Section .File.ContentBaseName -}}
 {{- $sectionData := dict -}}
 {{- if isset .Site.Data "comments" }}
 {{- $sectionData = (index .Site.Data.comments .Section) -}}
@@ -9,51 +9,52 @@
 <h4>{{ len . }} comment{{ if gt (len .) 1 }}s{{ end }}</h4>
     <ol>
     {{ range . }}
-    {{- $commentId := printf "comment-%s" ._id }}
+    {{- $commentId := printf "comment-%s" .id }}
         <li id="{{ $commentId }}">
-            {{- if not (eq .email "") -}}
+            {{- if isset .comment "email#md5" -}}
             <img
-                src="https://www.gravatar.com/avatar/{{ .email }}"
+                src="https://www.gravatar.com/avatar/{{ index .comment "email#md5" }}"
                 alt="Gravatar profile image for commenter named '{{ .name }}'"
                 class="avatar"
             >
             {{- end -}}
 
-            <h5>{{ .name | htmlEscape }}</h5>
+            <h5>{{ .comment.name | htmlEscape }}</h5>
 
             <small class="date">
                 <a
                     href="{{ .RelPermalink }}#{{ $commentId }}"
                     title="Permanent link to {{ .name }}'s comment"
                 >
-                    {{ partial "date" .date }}
-                </a>
+                {{ partial "date" .created }}
+            </a>
             </small>
 
             <div>
-                {{ .body | markdownify }}
+                {{ .comment.body | markdownify }}
             </div>
         </li>
     {{- end -}}
     </ol>
 {{- end -}}
 
-<form method="POST" action="{{ .Param "staticmanUrl" }}">
+<form method="POST" action="{{ .Param "staticCommentsUrl" }}">
 
     <label class="title" for="comment">Leave a comment</label>
-    <textarea id="comment" name="fields[body]" placeholder="Feel free to use Markdown" rows="5" required></textarea>
+    <textarea id="comment" name="comment[body]" placeholder="Feel free to use Markdown" rows="5" required></textarea>
 
     <div class="input">
-        <input id="name" name="fields[name]" type="text" placeholder="Required" required>
+        <input id="name" name="comment[name]" type="text" placeholder="Required" required>
         <label for="name">Your name</label>
 
-        <input id="email" name="fields[email]" type="email" placeholder="(Optional)">
+        <input id="email" name="comment[email#md5]" type="email" placeholder="(Optional)">
         <label for="email">Gravatar email *</label>
 
         <input id="submit" type="submit" value="Post Comment">
     </div>
     <small>* hashed with MD5, i.e. never shown nor stored in plain text</small>
-    <input type="hidden" name="options[redirect]" value="{{ $receivedPage.Permalink }}">
-    <input type="hidden" name="options[entryId]" value="{{ $id }}">
+    <input type="hidden" name="config[redirect]" value="{{ $receivedPage.Permalink }}">
+    <input type="hidden" name="config[repo]" value="{{ .Param "staticCommentsRepo" }}">
+    <input type="hidden" name="config[path]" value="{{ $baseDir }}">
 
 </form>

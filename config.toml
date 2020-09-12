@@ -12,7 +12,8 @@ disqusShortname = "a-l3x-in"
   description = "Alexander Fortin's personal web site"
   listed_articles = 3
   feed = "/index.xml"
-  staticmanUrl = "https://a-l3x-in-staticman.herokuapp.com/v2/entry/shaftoe/personal-website/master/comments"
+  staticCommentsUrl = "https://comments.l3x.in/new"
+  staticCommentsRepo = "shaftoe/personal-website"
   tracker_server = "https://a-l3x-in-ackee.herokuapp.com"
   tracker_domainId = "6efa5d5a-301b-4e23-b902-c5cc4837f443"
   twitter_handle = "alexanderfortin"
@@ -139,8 +140,8 @@ disqusShortname = "a-l3x-in"
     weight = 2
 
   [[menu.jamstack]]
-    name = "Comments by Staticman"
-    url = "https://staticman.net/"
+    name = "Comments by static-comments"
+    url = "https://github.com/shaftoe/static-comments"
     weight = 3
 
   [[menu.jamstack]]
