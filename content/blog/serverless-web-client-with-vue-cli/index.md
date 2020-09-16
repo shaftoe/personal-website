@@ -7,7 +7,7 @@ tags:
 - vue
 - mail
 - frontend
-date: 2020-08-21T10:44:55+03:00
+date: 2020-09-15T10:44:55+03:00
 ---
 
 Vue is arguably one of the most interesting web framework out there and, even though the upcoming version 3 [is not ready yet](https://isvue3readyyet.com/), is currently in _release candidate_ state so all Vue developers are encouraged to try it out and help report any bug that might still be lurking there.
