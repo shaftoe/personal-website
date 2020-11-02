@@ -12,6 +12,7 @@ disqusShortname = "a-l3x-in"
   description = "Alexander Fortin's personal web site"
   listed_articles = 3
   feed = "/index.xml"
+  staticCommentsAkismetKey = "81276ea55ef9"
   staticCommentsUrl = "https://comments.l3x.in/new"
   staticCommentsRepo = "shaftoe/personal-website"
   tracker_server = "https://a-l3x-in-ackee.herokuapp.com"

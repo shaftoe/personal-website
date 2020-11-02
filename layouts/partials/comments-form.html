@@ -56,5 +56,8 @@
     <input type="hidden" name="config[redirect]" value="{{ $receivedPage.Permalink }}">
     <input type="hidden" name="config[repo]" value="{{ .Param "staticCommentsRepo" }}">
     <input type="hidden" name="config[path]" value="{{ $baseDir }}">
+    <input type="hidden" name="akismet[blog]" value="{{ .Site.BaseURL }}">
+    <input type="hidden" name="akismet[key]" value="{{ .Param "staticCommentsAkismetKey" }}">
+    <input type="hidden" name="akismet[permalink]" value="{{ .Permalink }}">
 
 </form>
