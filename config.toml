@@ -16,7 +16,7 @@ disqusShortname = "a-l3x-in"
   staticCommentsUrl = "https://comments.l3x.in/new"
   staticCommentsRepo = "shaftoe/personal-website"
   tracker_server = "https://a-l3x-in-ackee.herokuapp.com"
-  tracker_domainId = "6efa5d5a-301b-4e23-b902-c5cc4837f443"
+  tracker_domainId = "4be511e9-11ee-4912-a5ae-ec5f53b61a10"
   twitter_handle = "alexanderfortin"
 
 [menu]
