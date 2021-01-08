@@ -6,6 +6,7 @@ tags:
   - aws
   - lambda
   - python
+  - terraform
 date: "2018-07-25"
 ---
 
