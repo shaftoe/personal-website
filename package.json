@@ -12,7 +12,7 @@
     "@babel/preset-env": "^7.15.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "ackee-tracker": "^5.1.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "babel-eslint": "^10.1.0",
     "canvas": "^2.8.0",
     "eslint": "^7.32.0",
