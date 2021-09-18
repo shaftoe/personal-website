@@ -101,13 +101,12 @@
     {{- $js := resources.Get "js/vendor/ackee-tracker.min.js" -}}
     <script src="{{ $js.RelPermalink }}"></script>
     <script>
-        ackeeTracker.create({
-            server: "{{ .Site.Params.tracker_server }}",
-            domainId: "{{ .Site.Params.tracker_domainId }}",
-        }, {
-            ignoreLocalhost: true,
-            detailed: false
-        }).record()
+        ackeeTracker
+            .create("{{ .Site.Params.tracker_server }}", {
+                detailed: false,
+                ignoreLocalhost: true
+            })
+            .record("{{ .Site.Params.tracker_domainId }}")
     </script>
     {{- end -}}
 
