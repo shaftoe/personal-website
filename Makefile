@@ -58,7 +58,7 @@ opengraph:
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean axios tracker github mastodon mixcloud youtube normalize.css fontawesome.css opengraph
+prebuild: clean setup axios tracker github mastodon mixcloud youtube normalize.css fontawesome.css opengraph
 
 setup: npm-install babel-install pip-install
 
