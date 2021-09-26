@@ -16,6 +16,8 @@
     <meta name="categories" content="{{ delimit . ", " }}">
     {{- end -}}
 
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
     {{ range (slice "fontawesome" "normalize") }}
     {{ $cssFile := printf "css/%s.css" . }}
     {{- with resources.Get $cssFile | minify -}}
