@@ -1,0 +1,9 @@
+{
+    "id": "b4c5b406-1061-42b8-962f-e606aa36ab15",
+    "created": "2021-10-12T17:10:27.239Z",
+    "comment": {
+        "body": "Nice article, I am confused however why does using .git ignore doesn't work in a multi-user environment. Wouldn't the archive be regenerated if another users pulls the repo and executes 'terraform apply'?",
+        "name": "kubitz",
+        "email#md5": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}
