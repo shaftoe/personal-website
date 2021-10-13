@@ -1,0 +1,9 @@
+{
+    "id": "b615951e-5f72-4775-9618-9e11f78e95da",
+    "created": "2021-10-13T06:38:21.166Z",
+    "comment": {
+        "body": "Hello Kubitz, thanks for the feedback and for posing me this very valid question.\r\nI'm by no means expert of the Zip algorithm and I'm not sure about the Go implementation of it (or better said, which implementation is used by Terraform). That said I believe Zip is not deterministic, i.e. the content of the output binary archive might not be exactly the same bit-by-bit even if the source files content didn't change. This project might explain it best: https://pypi.org/project/deterministic-zip/\r\nThe `.gitignore` approach you propose technically works but implies that a new Lambda deployment will be triggered each time `terraform apply` is executed on a freshly cloned repository (for example when some new Terraform user is onboarded), which is undesirable in our case but might work all right in other contexts.",
+        "name": "Alex",
+        "email#md5": "9c87c30fc453afd2d54438a99bcc9523"
+    }
+}
