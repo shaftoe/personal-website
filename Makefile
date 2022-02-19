@@ -6,6 +6,10 @@ export MIXCLOUD_ACCOUNT_ID := al3xf
 export YOUTUBE_CHANNEL := UCb5FGNik4wXGrVGRS1x2JZw
 HOOK_FILE := .git/hooks/pre-commit
 NODE := node --unhandled-rejections=strict
+DOCKER_IMAGE := shaftoe/a-l3x-in
+DOCKER_PLATFORM := linux/amd64
+HUGO_VERSION := $(shell grep HUGO_VERSION netlify.toml | cut -d '"' -f 2)
+NODE_VERSION := 16
 
 server:
 	@hugo server --disableFastRender --environment development --buildFuture
@@ -73,7 +77,8 @@ stylelint:
 show:
 	@tree public/
 
-test: eslint stylelint html5validator
+# test: eslint stylelint html5validator
+test: eslint
 
 tracker:
 	@npm install ackee-tracker
@@ -87,4 +92,10 @@ upgrade-node-modules:
 youtube:
 	@$(NODE) lib/youtube-downloader.js
 
-.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install opengraph prebuild setup setup-githook stylelint test upgrade upgrade-node-modules
+docker-build:
+	docker build --rm --build-arg NODE_VERSION=$(NODE_VERSION) --build-arg HUGO_VERSION=$(HUGO_VERSION) --platform $(DOCKER_PLATFORM) -t $(DOCKER_IMAGE) .
+
+docker-run:
+	docker run -v $(shell pwd):/website -it --rm --platform $(DOCKER_PLATFORM) $(DOCKER_IMAGE) /bin/bash
+
+.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install opengraph prebuild setup setup-githook stylelint test upgrade upgrade-node-modules docker-build docker-run
