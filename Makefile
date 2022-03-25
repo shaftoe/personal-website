@@ -2,7 +2,7 @@ include defaults.mk
 
 export GITHUB_ACCOUNT_ID := shaftoe
 export MASTODON_ACCOUNT_ID := 36187
-export MIXCLOUD_ACCOUNT_ID := al3xf
+export MIXCLOUD_ACCOUNT_ID := bakari-music
 export YOUTUBE_CHANNEL := UCb5FGNik4wXGrVGRS1x2JZw
 HOOK_FILE := .git/hooks/pre-commit
 NODE := node --unhandled-rejections=strict
