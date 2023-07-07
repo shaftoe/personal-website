@@ -19,7 +19,7 @@
     "eslint-config-strongloop": "^2.1.0",
     "fast-xml-parser": "^4.2.4",
     "normalize.css": "^8.0.1",
-    "stylelint": "^15.6.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^33.0.0"
   },
   "devDependencies": {
