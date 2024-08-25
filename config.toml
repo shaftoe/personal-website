@@ -96,8 +96,8 @@ disqusShortname = "a-l3x-in"
     weight = 3
 
   [[menu.socialnetworks]]
-    name = "twitter"
-    url = "https://www.twitter.com/alexanderfortin"
+    name = "x-twitter"
+    url = "https://x.com/alexanderfortin"
     weight = 3
 
   [[menu.socialnetworks]]
