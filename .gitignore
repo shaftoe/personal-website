@@ -7,3 +7,5 @@ static/webfonts/
 resources/
 .vscode/
 content/*/item*
+.DS_Store
+.hugo_build.lock
