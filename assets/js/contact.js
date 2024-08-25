@@ -22,7 +22,7 @@ form.addEventListener("submit", event => {
     event.preventDefault()
     fieldset.disabled = true
     button.innerText = "Sending..."
-    axios.post("https://api.l3x.in/contact", getData()) // eslint-disable-line no-undef
+    axios.post("https://api-v2.l3x.in/.netlify/functions/contact?token=01J62K2NATYJ93AD5XJYE6YEGZ", getData()) // eslint-disable-line no-undef
         .then(() => window.location.href = "/message-received")
         .catch(error => {
             const errorMessageDiv = document.createElement("div")
