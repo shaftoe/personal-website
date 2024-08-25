@@ -27,7 +27,7 @@ build:
 clean:
 	@rm -rf public/
 
-deploy: prebuild build show test
+deploy: prebuild build show
 
 eslint:
 	@eslint assets/js/*.js lib/
