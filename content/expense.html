@@ -1,0 +1,35 @@
+---
+title: "Expense"
+scripts: [vendor/axios.min.js, common.js, expense.js]
+---
+
+<noscript>
+    <header class="error">
+        Please enable JavaScript for this page to make use of this contact form
+    </header>
+</noscript>
+
+<h1>Expense form</h1>
+
+<form>
+    <fieldset disabled>
+        <label for="inputWhen">When</label>
+        <input type="text" class="form-control" id="inputWhen">
+
+        <label for="inputWhat">What</label>
+        <input type="text" class="form-control" id="inputWhat">
+
+        <label for="inputAmount">Amount</label>
+        <input type="text" class="form-control" id="inputAmount">
+
+        <label for="inputCurrencyUsd">USD</label>
+        <input type="radio" name="currency" value="USD" class="form-control" id="inputCurrencyUsd" checked>
+        <label for="inputCurrencyEur">EUR</label>
+        <input type="radio" name="currency" value="EUR" class="form-control" id="inputCurrencyEur">
+        <label for="inputCurrencyLei">LEI</label>
+        <input type="radio" name="currency" value="LEI" class="form-control" id="inputCurrencyLei">
+
+        <div></div>
+        <button type="submit" class="send">Send</button>
+    </fieldset>
+</form>

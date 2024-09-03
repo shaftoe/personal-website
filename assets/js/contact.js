@@ -6,6 +6,7 @@ const description = form.querySelector("#textAreaMessage")
 const email = form.querySelector("#inputEmail")
 const fieldset = form.querySelector("fieldset")
 const inputName = form.querySelector("#inputName")
+const url = "https://api-v2.l3x.in/.netlify/functions/contact?token="+token
 
 fieldset.disabled = false
 
@@ -18,22 +19,4 @@ function getData() {
     }
 }
 
-form.addEventListener("submit", event => {
-    event.preventDefault()
-    fieldset.disabled = true
-    button.innerText = "Sending..."
-    axios.post("https://api-v2.l3x.in/.netlify/functions/contact?token=01J62K2NATYJ93AD5XJYE6YEGZ", getData()) // eslint-disable-line no-undef
-        .then(() => window.location.href = "/message-received")
-        .catch(error => {
-            const errorMessageDiv = document.createElement("div")
-            const errorMessageHead = document.createElement("p")
-            const errorMessageErr = document.createElement("p")
-            button.innerText = "Error - Refresh this page and try again"
-            errorMessageDiv.className = "error"
-            errorMessageHead.innerText = "Some error occurred! Please try again later"
-            errorMessageErr.innerText = error
-            errorMessageDiv.appendChild(errorMessageHead)
-            errorMessageDiv.appendChild(errorMessageErr)
-            form.appendChild(errorMessageDiv)
-        })
-})
+form.addEventListener("submit", submit(fieldset, button, url, getData))

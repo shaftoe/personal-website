@@ -53,6 +53,9 @@ normalize.css:
 	@mkdir -p assets/css/
 	@cp node_modules/normalize.css/normalize.css assets/css/
 
+inject-auth-token:
+	sed -i "s|###TOKEN###|$(AUTH_TOKEN)|g" assets/js/common.js
+
 npm-install:
 	@npm install
 
@@ -63,7 +66,7 @@ pip-install:
 	@pip install -r requirements.txt
 
 # removed `github` because of missing auth
-prebuild: clean setup axios tracker mastodon mixcloud youtube normalize.css fontawesome.css opengraph
+prebuild: clean setup axios tracker mastodon mixcloud youtube normalize.css fontawesome.css opengraph inject-auth-token
 
 setup: npm-install babel-install pip-install
 
@@ -99,4 +102,4 @@ docker-build:
 docker-run:
 	docker run -v $(shell pwd):/website -it --rm --platform $(DOCKER_PLATFORM) $(DOCKER_IMAGE) /bin/bash
 
-.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install opengraph prebuild setup setup-githook stylelint test upgrade upgrade-node-modules docker-build docker-run
+.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install opengraph prebuild setup setup-githook stylelint test upgrade upgrade-node-modules docker-build docker-run inject-auth-token
