@@ -1,7 +1,6 @@
 "use strict"
 
 const today = new Date()
-const url = "https://api-v2.l3x.in/.netlify/functions/expense?token="+token
 
 const form = document.forms[0]
 const button = form.querySelector("button.send")
@@ -9,6 +8,11 @@ const fieldset = form.querySelector("fieldset")
 
 fieldset.disabled = false
 form.querySelector("#inputWhen").value = today.toISOString()
+
+function getURL() {
+    const password = form.querySelector("#inputPassword").value
+    return `https://api-v2.l3x.in/.netlify/functions/expense?token=${token}&password=${password}`
+}
 
 function getData() {
     return {
@@ -19,4 +23,4 @@ function getData() {
     }
 }
 
-form.addEventListener("submit", submit(fieldset, button, url, getData))
+form.addEventListener("submit", submit(fieldset, button, getURL, getData))

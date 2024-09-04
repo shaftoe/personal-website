@@ -19,4 +19,4 @@ function getData() {
     }
 }
 
-form.addEventListener("submit", submit(fieldset, button, url, getData))
+form.addEventListener("submit", submit(fieldset, button, () => url, getData))

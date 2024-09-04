@@ -2,12 +2,12 @@
 
 const token = "###TOKEN###"
 
-const submit = (fieldset, button, url, getData) => {
+const submit = (fieldset, button, getURL, getData) => {
     return (event) => {
         event.preventDefault()
         fieldset.disabled = true
         button.innerText = "Sending..."
-        axios.post(url, getData())
+        axios.post(getURL(), getData())
             .then(() => window.location.href = "/message-received")
             .catch(error => {
                 const errorMessageDiv = document.createElement("div")

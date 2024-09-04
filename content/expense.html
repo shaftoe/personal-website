@@ -13,6 +13,9 @@ scripts: [vendor/axios.min.js, common.js, expense.js]
 
 <form>
     <fieldset disabled>
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword">
+
         <label for="inputWhen">When</label>
         <input type="text" class="form-control" id="inputWhen">
 
@@ -22,12 +25,15 @@ scripts: [vendor/axios.min.js, common.js, expense.js]
         <label for="inputAmount">Amount</label>
         <input type="text" class="form-control" id="inputAmount">
 
-        <label for="inputCurrencyUsd">USD</label>
-        <input type="radio" name="currency" value="USD" class="form-control" id="inputCurrencyUsd" checked>
-        <label for="inputCurrencyEur">EUR</label>
-        <input type="radio" name="currency" value="EUR" class="form-control" id="inputCurrencyEur">
-        <label for="inputCurrencyLei">LEI</label>
-        <input type="radio" name="currency" value="LEI" class="form-control" id="inputCurrencyLei">
+        <div>Currency</div>
+        <div>
+            <label for="inputCurrencyUsd">USD</label>
+            <input type="radio" name="currency" value="USD" class="form-control" id="inputCurrencyUsd" checked>
+            <label for="inputCurrencyEur">EUR</label>
+            <input type="radio" name="currency" value="EUR" class="form-control" id="inputCurrencyEur">
+            <label for="inputCurrencyLei">LEI</label>
+            <input type="radio" name="currency" value="LEI" class="form-control" id="inputCurrencyLei">
+        </div>
 
         <div></div>
         <button type="submit" class="send">Send</button>
