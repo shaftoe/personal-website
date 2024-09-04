@@ -12,3 +12,8 @@
 [context.dev.environment]
   BUILD_ENV = "development"
   HUGO_ENV = "development"
+
+[[headers]]
+  for = "/expense"
+  [headers.values]
+    Basic-Auth = "alex:changeme"
