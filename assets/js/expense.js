@@ -19,7 +19,7 @@ function getData() {
         what: form.querySelector("#inputWhat").value,
         currency: form.querySelector('input[name="currency"]:checked').value,
         timestamp: form.querySelector("#inputWhen").value,
-        amount: form.querySelector("#inputAmount").value,
+        amount: Number(form.querySelector("#inputAmount").value),
     }
 }
 
