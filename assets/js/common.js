@@ -1,14 +1,16 @@
 "use strict"
 
 const token = "###TOKEN###"
+const contactEndpoint = "https://api-v2.l3x.in/.netlify/functions/contact?token="+token
+const expenseEndpoint = "https://api-v2.l3x.in/.netlify/functions/expense?token="+token
 
-const submit = (fieldset, button, getURL, getData) => {
+const submit = (fieldset, button, getURL, getData, onSuccess) => {
     return (event) => {
         event.preventDefault()
         fieldset.disabled = true
         button.innerText = "Sending..."
         axios.post(getURL(), getData())
-            .then(() => window.location.href = "/message-received")
+            .then(() => { if (onSuccess) onSuccess() })
             .catch(error => {
                 const errorMessageDiv = document.createElement("div")
                 const errorMessageHead = document.createElement("p")
@@ -22,4 +24,10 @@ const submit = (fieldset, button, getURL, getData) => {
                 form.appendChild(errorMessageDiv)
             })
     }
+}
+
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf())
+    date.setDate(date.getDate() + days)
+    return date
 }

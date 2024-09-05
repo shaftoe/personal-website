@@ -11,7 +11,7 @@ form.querySelector("#inputWhen").value = today.toISOString()
 
 function getURL() {
     const password = form.querySelector("#inputPassword").value
-    return `https://api-v2.l3x.in/.netlify/functions/expense?token=${token}&password=${password}`
+    return expenseEndpoint + `&password=${password}`
 }
 
 function getData() {
@@ -23,4 +23,7 @@ function getData() {
     }
 }
 
-form.addEventListener("submit", submit(fieldset, button, getURL, getData))
+form.addEventListener(
+    "submit",
+    submit(fieldset, button, getURL, getData, () => location.reload())
+)

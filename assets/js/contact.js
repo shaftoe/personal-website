@@ -6,7 +6,7 @@ const description = form.querySelector("#textAreaMessage")
 const email = form.querySelector("#inputEmail")
 const fieldset = form.querySelector("fieldset")
 const inputName = form.querySelector("#inputName")
-const url = "https://api-v2.l3x.in/.netlify/functions/contact?token="+token
+const redirectPath = "/message-received"
 
 fieldset.disabled = false
 
@@ -19,4 +19,7 @@ function getData() {
     }
 }
 
-form.addEventListener("submit", submit(fieldset, button, () => url, getData))
+form.addEventListener(
+    "submit",
+    submit(fieldset, button, () => contactEndpoint, getData, () => window.location.href = redirectPath)
+)

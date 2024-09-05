@@ -48,6 +48,68 @@ h4 {
   text-align: center;
 }
 
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid $color-main;
+
+  input {
+    max-width: 5rem;
+  }
+}
+
+table#header,
+table#content {
+  font-size: 1rem;
+}
+
+.nomobile {
+  display: none;
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+th {
+  text-transform: uppercase;
+  text-align: left;
+}
+
+@media screen and (min-width: $media-min-width) {
+  table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid $color-main;
+    font-size: unset;
+
+    input {
+      max-width: 7rem;
+    }
+
+    .nomobile {
+      display: table-cell;
+    }
+  }
+
+  table#header {
+    font-size: unset;
+  }
+
+  table#content {
+    font-size: unset;
+  }
+}
+
+tbody tr:nth-child(odd) {
+  background-color: $color-main;
+  color: $color-bkg-dark;
+  font-weight: bold;
+}
+
 a,
 a:active,
 a:visited {

@@ -1,0 +1,43 @@
+---
+title: "List Expenses"
+scripts: [vendor/axios.min.js, common.js, list_expenses.js]
+---
+
+<noscript>
+    <header class="error">
+        Please enable JavaScript for this page to make use of this contact form
+    </header>
+</noscript>
+
+<h1>Expenses</h1>
+
+<div id="error" hidden></div>
+
+<table id="header">
+    <thead>
+        <tr>
+            <th>
+                <label for="from">From</label>
+                <input type="text" id="from"/>
+            </th>
+            <th>
+                <label for="to">To</label>
+                <input type="text" id="to"/>
+            </th>
+            <th>
+                <label for="password">Password</label>
+                <input type="password" id="password"/>
+            </th>
+        </tr>
+    </thead>
+</table>
+
+<table id="content">
+    <thead>
+        <tr id="formhead">
+        </tr>
+    </thead>
+
+    <tbody id="formbody">
+    </tbody>
+</table>
