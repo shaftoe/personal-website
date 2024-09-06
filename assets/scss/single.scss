@@ -31,6 +31,7 @@ fieldset {
     border: 0;
     min-height: 2.5rem;
     transition: ease-in 0.2s;
+    flex-grow: 1;
   }
 
   .send:hover {
@@ -38,5 +39,16 @@ fieldset {
     background-color: $color-bkg-light;
     border: 2px solid;
     border-color: $color-main;
+  }
+
+  .list {
+    text-align: center;
+    align-self: center;
+    min-width: 50%;
+  }
+
+  .grouper {
+    display: flex;
+    justify-content: space-around;
   }
 }
