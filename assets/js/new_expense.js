@@ -5,13 +5,14 @@ const today = new Date()
 const form = document.forms[0]
 const button = form.querySelector("button.send")
 const fieldset = form.querySelector("fieldset")
+const password = form.querySelector("#inputPassword")
 
 fieldset.disabled = false
 form.querySelector("#inputWhen").value = today.toISOString()
+updateValueFromSessionStorage(password, passKey)
 
 function getURL() {
-    const password = form.querySelector("#inputPassword").value
-    return expenseEndpoint + `&password=${password}`
+    return `${expenseEndpoint}&password=${password.value}`
 }
 
 function getData() {
@@ -25,5 +26,8 @@ function getData() {
 
 form.addEventListener(
     "submit",
-    submit(fieldset, button, getURL, getData, () => location.reload())
+    submit(fieldset, button, getURL, getData, () => {
+        storeValueToSessionStorage(password, passKey)
+        location.reload()
+    })
 )

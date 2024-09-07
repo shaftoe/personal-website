@@ -1,5 +1,6 @@
 "use strict"
 
+const passKey = "pass"
 const token = "###TOKEN###"
 const contactEndpoint = "https://api-v2.l3x.in/.netlify/functions/contact?token="+token
 const expenseEndpoint = "https://api-v2.l3x.in/.netlify/functions/expense?token="+token
@@ -24,6 +25,14 @@ const submit = (fieldset, button, getURL, getData, onSuccess) => {
                 form.appendChild(errorMessageDiv)
             })
     }
+}
+
+function updateValueFromSessionStorage(element, key) {
+    if (sessionStorage.getItem(key)) element.value = sessionStorage.getItem(key)
+}
+
+function storeValueToSessionStorage(element, key) {
+    sessionStorage.setItem(key, element.value)
 }
 
 Date.prototype.addDays = function(days) {

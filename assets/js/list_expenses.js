@@ -102,6 +102,9 @@ const sendRequest = () => {
 }
 
 function run() {
+    // restore password from session
+    updateValueFromSessionStorage(password, passKey)
+
     // populate date input values
     const now = new Date()
     const firstDayOfMonth = new Date(now.getUTCFullYear(), now.getUTCMonth(), 1)
@@ -133,9 +136,14 @@ function run() {
 
     // add event listeners
     const sendOnEnter = (event) => { if (event.key === "Enter") sendRequest() }
-    password.addEventListener("keyup", sendOnEnter)
     from.addEventListener("keyup", sendOnEnter)
     to.addEventListener("keyup", sendOnEnter)
+    password.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+            storeValueToSessionStorage(password, passKey)
+            sendRequest()
+        }
+    })
 }
 
 run()
