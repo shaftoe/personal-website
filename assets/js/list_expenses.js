@@ -32,6 +32,10 @@ const populateTable = (data) => {
                     break
 
                 case "amount":
+                    td.classList.add("nomobile")
+                    td.innerText = Number(element[key]).toFixed(2)
+                    break
+
                 case "currency":
                     td.classList.add("nomobile")
                     td.innerText = element[key]
@@ -39,7 +43,7 @@ const populateTable = (data) => {
 
                 case "usd":
                     total += element.usd
-                    td.innerText = element[key]
+                    td.innerText = Number(element[key]).toFixed(2)
                     break
 
                 default:
@@ -78,7 +82,10 @@ const sendRequest = () => {
     const urlTo = new Date(to.value)
     const password = document.querySelector("#password").value
     const query = `&password=${password}&from=${urlFrom.toISOString()}&to=${urlTo.toISOString()}`
-    const url = expenseEndpoint + query
+    let url = expenseEndpoint + query
+
+    const filter = document.querySelector("#filter").value
+    if (filter) url = `${url}&filter=${filter}`
 
     axios.get(url)
         .then(response => {
@@ -138,6 +145,7 @@ function run() {
     const sendOnEnter = (event) => { if (event.key === "Enter") sendRequest() }
     from.addEventListener("keyup", sendOnEnter)
     to.addEventListener("keyup", sendOnEnter)
+    filter.addEventListener("keyup", sendOnEnter)
     password.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
             storeValueToSessionStorage(password, passKey)
