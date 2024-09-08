@@ -99,19 +99,6 @@
     {{- partial "script" . }}
     {{- end -}}
 
-    {{- if eq hugo.Environment "production" }}
-    {{- $js := resources.Get "js/vendor/ackee-tracker.min.js" -}}
-    <script src="{{ $js.RelPermalink }}"></script>
-    <script>
-        ackeeTracker
-            .create("{{ .Site.Params.tracker_server }}", {
-                detailed: false,
-                ignoreLocalhost: true
-            })
-            .record("{{ .Site.Params.tracker_domainId }}")
-    </script>
-    {{- end -}}
-
 </body>
 
 </html>
