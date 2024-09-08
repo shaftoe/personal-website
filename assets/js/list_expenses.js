@@ -8,12 +8,6 @@ const from = document.querySelector("#from")
 const to = document.querySelector("#to")
 const errorMessageDiv = document.querySelector("#error")
 
-const removeChilds = (parent) => {
-    while (parent.lastChild) {
-        parent.removeChild(parent.lastChild);
-    }
-}
-
 const populateTable = (data) => {
     removeChilds(formbody)
     let total = 0
@@ -109,8 +103,7 @@ const sendRequest = () => {
 }
 
 function run() {
-    // restore password from session
-    updateValueFromSessionStorage(password, passKey)
+    updateValueFromLocalStorage(password, passKey)
 
     // populate date input values
     const now = new Date()
@@ -142,16 +135,17 @@ function run() {
     })
 
     // add event listeners
-    const sendOnEnter = (event) => { if (event.key === "Enter") sendRequest() }
-    from.addEventListener("keyup", sendOnEnter)
-    to.addEventListener("keyup", sendOnEnter)
-    filter.addEventListener("keyup", sendOnEnter)
+    from.addEventListener("change", sendRequest)
+    to.addEventListener("change", sendRequest)
+    filter.addEventListener("keyup", (event) => { if (event.key === "Enter") sendRequest() })
     password.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
-            storeValueToSessionStorage(password, passKey)
+            storeValueToLocalStorage(password, passKey)
             sendRequest()
         }
     })
+
+    if (password.value) sendRequest()
 }
 
 run()

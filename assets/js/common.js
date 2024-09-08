@@ -27,12 +27,18 @@ const submit = (fieldset, button, getURL, getData, onSuccess) => {
     }
 }
 
-function updateValueFromSessionStorage(element, key) {
-    if (sessionStorage.getItem(key)) element.value = sessionStorage.getItem(key)
+function updateValueFromLocalStorage(element, key) {
+    if (localStorage.getItem(key)) element.value = sessionStorage.getItem(key)
 }
 
-function storeValueToSessionStorage(element, key) {
-    sessionStorage.setItem(key, element.value)
+function storeValueToLocalStorage(element, key) {
+    localStorage.setItem(key, element.value)
+}
+
+const removeChilds = (parent) => {
+    while (parent.lastChild) {
+        parent.removeChild(parent.lastChild);
+    }
 }
 
 Date.prototype.addDays = function(days) {
