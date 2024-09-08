@@ -81,14 +81,21 @@ const sendRequest = () => {
     const filter = document.querySelector("#filter").value
     if (filter) url = `${url}&filter=${filter}`
 
-    axios.get(url)
+    fetch(url)
         .then(response => {
-            populateTable(response.data)
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+
+            removeChilds(errorMessageDiv)
+
+            return response.json()
+        })
+        .then(data => {
+            populateTable(data)
             errorMessageDiv.hidden = true
         })
         .catch(error => {
-            removeChilds(errorMessageDiv)
-
             const errorMessageHead = document.createElement("p")
             const errorMessageErr = document.createElement("p")
 

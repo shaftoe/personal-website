@@ -10,8 +10,17 @@ const submit = (fieldset, button, getURL, getData, onSuccess) => {
         event.preventDefault()
         fieldset.disabled = true
         button.innerText = "Sending..."
-        axios.post(getURL(), getData())
-            .then(() => { if (onSuccess) onSuccess() })
+        fetch(getURL(), {
+                method: "POST",
+                body: JSON.stringify(getData()),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`)
+                }
+
+                if (onSuccess) onSuccess()
+            })
             .catch(error => {
                 const errorMessageDiv = document.createElement("div")
                 const errorMessageHead = document.createElement("p")
@@ -36,9 +45,7 @@ function storeValueToLocalStorage(element, key) {
 }
 
 const removeChilds = (parent) => {
-    while (parent.lastChild) {
-        parent.removeChild(parent.lastChild);
-    }
+    while (parent.lastChild) parent.removeChild(parent.lastChild)
 }
 
 Date.prototype.addDays = function(days) {
