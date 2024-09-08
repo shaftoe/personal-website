@@ -65,8 +65,7 @@ opengraph:
 pip-install:
 	@pip install -r requirements.txt
 
-# removed `github` because of missing auth
-prebuild: clean setup axios tracker mastodon mixcloud youtube normalize.css fontawesome.css opengraph inject-auth-token
+prebuild: clean setup axios tracker mastodon mixcloud youtube github normalize.css fontawesome.css opengraph inject-auth-token
 
 setup: npm-install babel-install pip-install
 
