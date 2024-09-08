@@ -14,10 +14,6 @@ NODE_VERSION := 16
 server:
 	@hugo server --disableFastRender --environment development --buildFuture
 
-axios:
-	@mkdir -p assets/js/vendor
-	@cp node_modules/axios/dist/axios.min.js assets/js/vendor/
-
 babel-install:
 	@npm install -g babel-cli
 
@@ -65,7 +61,7 @@ opengraph:
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean setup axios tracker mastodon mixcloud youtube github normalize.css fontawesome.css opengraph inject-auth-token
+prebuild: clean setup tracker mastodon mixcloud youtube github normalize.css fontawesome.css opengraph inject-auth-token
 
 setup: npm-install babel-install pip-install
 
@@ -85,6 +81,7 @@ test: eslint
 
 tracker:
 	@npm install ackee-tracker
+	@mkdir -p assets/js/vendor/
 	@cp node_modules/ackee-tracker/dist/ackee-tracker.min.js assets/js/vendor/
 
 upgrade: upgrade-node-modules npm-install
