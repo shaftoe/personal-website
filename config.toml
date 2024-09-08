@@ -16,6 +16,7 @@ disqusShortname = "a-l3x-in"
   staticCommentsUrl = "https://comments.l3x.in/new"
   staticCommentsRepo = "shaftoe/personal-website"
   twitter_handle = "alexanderfortin"
+  umami_website_id = "d2f0933f-644c-42ea-8b50-ad2766838043"
 
 [menu]
 
@@ -69,9 +70,14 @@ disqusShortname = "a-l3x-in"
     weight = 6
 
   [[menu.content]]
+    name = "Statistics"
+    url = "https://cloud.umami.is/share/9JLnEORYeXnNihO1/a.l3x.in"
+    weight = 6
+
+  [[menu.content]]
     name = "License"
     url = "https://creativecommons.org/licenses/by-sa/4.0/"
-    weight = 6
+    weight = 7
 
   [[menu.socialnetworks]]
     name = "github"
@@ -161,6 +167,11 @@ disqusShortname = "a-l3x-in"
   [[menu.jamstack]]
     name = "Built, hosted and distributed by Netlify"
     url = "https://www.netlify.com/"
+    weight = 6
+
+  [[menu.jamstack]]
+    name = "Analytics by Umami"
+    url = "https://cloud.umami.is/share/9JLnEORYeXnNihO1/a.l3x.in"
     weight = 6
 
 [taxonomies]

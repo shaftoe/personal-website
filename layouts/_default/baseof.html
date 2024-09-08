@@ -99,6 +99,9 @@
     {{- partial "script" . }}
     {{- end -}}
 
+    {{- if eq hugo.Environment "production" }}
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="{{ .Site.Params.umami_website_id }}"></script>
+    {{- end -}}
 </body>
 
 </html>
