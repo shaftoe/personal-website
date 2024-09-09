@@ -53,3 +53,7 @@ Date.prototype.addDays = function(days) {
     date.setDate(date.getDate() + days)
     return date
 }
+
+Date.prototype.dateOnly = function() {
+    return this.toISOString().split('T')[0]
+}

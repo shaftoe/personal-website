@@ -8,7 +8,7 @@ const fieldset = form.querySelector("fieldset")
 const password = form.querySelector("#inputPassword")
 
 fieldset.disabled = false
-form.querySelector("#inputWhen").value = today.toISOString()
+form.querySelector("#inputWhen").value = today.dateOnly()
 updateValueFromLocalStorage(password, passKey)
 
 function getURL() {
@@ -16,10 +16,12 @@ function getURL() {
 }
 
 function getData() {
+    const when = new Date(form.querySelector("#inputWhen").value)
+
     return {
         what: form.querySelector("#inputWhat").value,
         currency: form.querySelector('input[name="currency"]:checked').value,
-        timestamp: form.querySelector("#inputWhen").value,
+        timestamp: when,
         amount: Number(form.querySelector("#inputAmount").value),
     }
 }

@@ -117,8 +117,8 @@ function run() {
     const firstDayOfMonth = new Date(now.getUTCFullYear(), now.getUTCMonth(), 1)
     const tomorrow = now.addDays(1)
 
-    from.value = firstDayOfMonth.toISOString().split('T')[0]
-    to.value = tomorrow.toISOString().split('T')[0]
+    from.value = firstDayOfMonth.dateOnly()
+    to.value = tomorrow.dateOnly()
 
     // populate table header
     keys.forEach(key => {
