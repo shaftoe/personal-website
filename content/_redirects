@@ -18,4 +18,5 @@
 /2020/07/23/free-whois-monitoring-with-serverless-on-aws.html /blog/free-whois-monitoring-with-serverless-on-aws
 /feed.xml /blog/index.xml
 /index.xml /blog/index.xml
-/* /404.html 404
+/expenses/ /404.html
+/* /404.html
