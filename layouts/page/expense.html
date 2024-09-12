@@ -1,0 +1,56 @@
+{{- define "head" -}}
+{{- $title := .Param "title" -}}
+
+    {{- partial "title" $title -}}
+
+    {{- partial "scss" "single" -}}
+
+    {{- with .OutputFormats.Get "rss" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $title | safeHTML }}
+    {{ end -}}
+
+{{ end -}}
+
+{{ define "main" }}
+<noscript>
+    <header class="error">
+        Please enable JavaScript for this page to make use of this contact form
+    </header>
+</noscript>
+
+<h1>Expense form</h1>
+
+<form>
+    <fieldset disabled>
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword">
+
+        <label for="inputWhen">When</label>
+        <input type="date" class="form-control" id="inputWhen">
+
+        <label for="inputWhat">What</label>
+        <input type="text" class="form-control" id="inputWhat">
+
+        <label for="inputAmount">Amount</label>
+        <input type="number" step="0.01" class="form-control" id="inputAmount">
+
+        <div>Currency</div>
+        <div>
+            {{ $s := .Param "currencies"  }}
+            {{ range $index, $element := $s }}
+            <label for="inputCurrency{{ . }}">{{ . }}</label>
+            <input type="radio" name="currency" value="{{ . }}" class="form-control"
+                   id="inputCurrency{{ . }}" {{ if eq $index 0 }}checked{{ end }}>
+            {{ end }}
+        </div>
+
+        <div class="error"></div>
+        <div class="grouper">
+            <button type="submit" class="send">Send</button>
+            <a href="/expenses/list/" class="list">List</a>
+        </div>
+
+    </fieldset>
+
+</form>
+{{ end }}
