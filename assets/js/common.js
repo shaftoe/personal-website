@@ -36,11 +36,11 @@ const submit = (fieldset, button, getURL, getData, onSuccess) => {
     }
 }
 
-function updateValueFromLocalStorage(element, key) {
-    if (localStorage.getItem(key)) element.value = sessionStorage.getItem(key)
+function updateValueFromStorage(element, key) {
+    if (localStorage.getItem(key)) element.value = localStorage.getItem(key)
 }
 
-function storeValueToLocalStorage(element, key) {
+function storeValueToStorage(element, key) {
     localStorage.setItem(key, element.value)
 }
 

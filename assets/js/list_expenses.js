@@ -110,7 +110,7 @@ const sendRequest = () => {
 }
 
 function run() {
-    updateValueFromLocalStorage(password, passKey)
+    updateValueFromStorage(password, passKey)
 
     // populate date input values
     const now = new Date()
@@ -147,7 +147,7 @@ function run() {
     filter.addEventListener("keyup", (event) => { if (event.key === "Enter") sendRequest() })
     password.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
-            storeValueToLocalStorage(password, passKey)
+            storeValueToStorage(password, passKey)
             sendRequest()
         }
     })

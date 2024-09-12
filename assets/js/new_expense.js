@@ -9,7 +9,7 @@ const password = form.querySelector("#inputPassword")
 
 fieldset.disabled = false
 form.querySelector("#inputWhen").value = today.dateOnly()
-updateValueFromLocalStorage(password, passKey)
+updateValueFromStorage(password, passKey)
 
 function getURL() {
     return `${expenseEndpoint}&password=${password.value}`
@@ -29,7 +29,7 @@ function getData() {
 form.addEventListener(
     "submit",
     submit(fieldset, button, getURL, getData, () => {
-        storeValueToLocalStorage(password, passKey)
+        storeValueToStorage(password, passKey)
         location.reload()
     })
 )
