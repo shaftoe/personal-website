@@ -5,6 +5,23 @@ const token = "###TOKEN###"
 const contactEndpoint = "https://api-v2.l3x.in/.netlify/functions/contact?token="+token
 const expenseEndpoint = "https://api-v2.l3x.in/.netlify/functions/expense?token="+token
 
+function getURL() {
+    return `${expenseEndpoint}&password=${password.value}`
+}
+
+const errorHandler = (error) => {
+    const errorMessageHead = document.createElement("p")
+    const errorMessageErr = document.createElement("p")
+
+    errorMessageDiv.className = "error"
+    errorMessageHead.innerText = "Some error occurred! Please try again later"
+    errorMessageErr.innerText = error
+
+    errorMessageDiv.appendChild(errorMessageHead)
+    errorMessageDiv.appendChild(errorMessageErr)
+    errorMessageDiv.removeAttribute("hidden")
+}
+
 const submit = (fieldset, button, getURL, getData, onSuccess) => {
     return (event) => {
         event.preventDefault()
@@ -21,18 +38,7 @@ const submit = (fieldset, button, getURL, getData, onSuccess) => {
 
                 if (onSuccess) onSuccess()
             })
-            .catch(error => {
-                const errorMessageDiv = document.createElement("div")
-                const errorMessageHead = document.createElement("p")
-                const errorMessageErr = document.createElement("p")
-                button.innerText = "Error - Refresh this page and try again"
-                errorMessageDiv.className = "error"
-                errorMessageHead.innerText = "Some error occurred! Please try again later"
-                errorMessageErr.innerText = error
-                errorMessageDiv.appendChild(errorMessageHead)
-                errorMessageDiv.appendChild(errorMessageErr)
-                form.appendChild(errorMessageDiv)
-            })
+            .catch(errorHandler)
     }
 }
 

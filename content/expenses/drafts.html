@@ -1,6 +1,6 @@
 ---
-title: "List Expenses"
-scripts: [common.js, list_expenses_common.js, list_expenses.js]
+title: "List Drafts"
+scripts: [common.js, list_expenses_common.js, list_expenses_drafts.js]
 ---
 
 <noscript>
@@ -9,7 +9,7 @@ scripts: [common.js, list_expenses_common.js, list_expenses.js]
     </header>
 </noscript>
 
-<h1>Expenses | <a href="/expenses/new/">Add new</a> | <a href="/expenses/drafts/">Drafts</a></h1>
+<h1>Drafts | <a href="/expenses/list/">List</a></h1>
 
 <div id="error" hidden></div>
 
@@ -47,3 +47,7 @@ scripts: [common.js, list_expenses_common.js, list_expenses.js]
     <tbody id="formbody">
     </tbody>
 </table>
+
+<div style="display: flex; justify-content: right; padding: 1rem;">
+    <button class="button" id="send">Update</button>
+</div>
