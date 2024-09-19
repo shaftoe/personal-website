@@ -6,10 +6,14 @@ async function updateDrafts() {
     const tableRows = formbody.querySelectorAll("tr")
     let counter = 0
 
-    const promises = Array.from(tableRows).map(async (item) => {
-        return processDraftRow(item).catch(err => {
-            counter += 1
-            errorHandler(err)
+    const promises = Array.from(tableRows).map(async item => {
+        return processDraftRow(item).then(response => {
+            if (response.ok) {
+                // TODO: remove ok ID from list
+            } else {
+                response.text().then(text => errorHandler(text))
+                counter += 1
+            }
         })
     })
 
@@ -33,7 +37,10 @@ async function processDraftRow(row) {
                 break;
 
             case 1:
-                expense.when = children[i].innerText
+                let split = children[i].innerText.split("/")
+                let day = String(Number(split[0])).padStart(2, '0')
+                let month = String(Number(split[1])).padStart(2, '0')
+                expense.timestamp = `${split[2]}-${month}-${day}T00:00:00Z`
                 break;
 
             case 2:
@@ -70,11 +77,6 @@ async function processDraftRow(row) {
         method: method,
         body: JSON.stringify(expense),
     })
-        .then(response => {
-            if (!response.ok) response.text().then(text => {
-                throw new Error(text)
-            })
-        })
 }
 
 run(true)

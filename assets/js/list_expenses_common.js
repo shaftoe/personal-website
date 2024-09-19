@@ -147,6 +147,7 @@ const sendRequest = (drafts) => {
 
 function run(drafts) {
     updateValueFromStorage(password, passKey)
+    removeChilds(document.querySelector("#formhead"))
 
     // populate date input values
     const now = new Date()
