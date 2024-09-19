@@ -4,6 +4,7 @@ const passKey = "pass"
 const token = "###TOKEN###"
 const contactEndpoint = "https://api-v2.l3x.in/.netlify/functions/contact?token="+token
 const expenseEndpoint = "https://api-v2.l3x.in/.netlify/functions/expense?token="+token
+const errorMessageDiv = document.querySelector("#error")
 
 function getURL() {
     return `${expenseEndpoint}&password=${password.value}`
@@ -33,7 +34,8 @@ const submit = (fieldset, button, getURL, getData, onSuccess) => {
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`Response status: ${response.status}`)
+                    response.text().then(errorHandler)
+                    return
                 }
 
                 if (onSuccess) onSuccess()

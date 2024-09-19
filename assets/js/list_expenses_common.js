@@ -5,7 +5,6 @@ const formbody = document.querySelector("#formbody")
 const formhead = document.querySelector("#formhead")
 const from = document.querySelector("#from")
 const to = document.querySelector("#to")
-const errorMessageDiv = document.querySelector("#error")
 const send = document.querySelector("#send")
 
 const errorHandler = (error) => {
