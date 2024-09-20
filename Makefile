@@ -23,6 +23,9 @@ build:
 clean:
 	@rm -rf public/
 
+currencies:
+	@$(NODE) lib/create_currencies.js assets/js/currencies.js
+
 deploy: prebuild build show
 
 eslint:
@@ -61,7 +64,7 @@ opengraph:
 pip-install:
 	@pip install -r requirements.txt
 
-prebuild: clean setup mastodon mixcloud youtube github normalize.css fontawesome.css opengraph inject-auth-token
+prebuild: currencies clean setup mastodon mixcloud youtube github normalize.css fontawesome.css opengraph inject-auth-token
 
 setup: npm-install babel-install pip-install
 
@@ -93,4 +96,4 @@ docker-build:
 docker-run:
 	docker run -v $(shell pwd):/website -it --rm --platform $(DOCKER_PLATFORM) $(DOCKER_IMAGE) /bin/bash
 
-.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install opengraph prebuild setup setup-githook stylelint test upgrade upgrade-node-modules docker-build docker-run inject-auth-token
+.PHONY: server build clean deploy eslint fontawesome.css github html5validator mastodon mixcloud normalize.css npm-install opengraph prebuild setup setup-githook stylelint test upgrade upgrade-node-modules docker-build docker-run inject-auth-token currencies

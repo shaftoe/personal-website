@@ -54,8 +54,16 @@ const populateTable = (data, drafts) => {
 
                 case "currency":
                     if (drafts) {
-                        input.value = element[key]
-                        td.appendChild(input)
+                        const select = document.createElement("select")
+                        select.id = "currency"
+                        currencies.forEach(cur => {
+                            const option = document.createElement("option")
+                            option.value = cur
+                            option.text = cur
+                            select.appendChild(option)
+                        })
+                        select.value = element[key]
+                        td.appendChild(select)
                     } else {
                         td.innerText = element[key]
                         td.classList.add("nomobile")

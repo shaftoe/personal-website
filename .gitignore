@@ -10,3 +10,4 @@ content/*/item*
 .DS_Store
 .hugo_build.lock
 .env
+assets/js/currencies.js

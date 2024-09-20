@@ -52,7 +52,7 @@ async function processDraftRow(row) {
                 break
 
             case 4:
-                expense.currency = children[i].querySelector("input").value.toUpperCase()
+                expense.currency = children[i].querySelector("select").value.toUpperCase()
                 break
 
             case 5:

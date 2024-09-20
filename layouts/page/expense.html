@@ -43,11 +43,10 @@
             {{- $cur := index $element 0 -}}
             {{- $emoji := index $element 1 -}}
             <div style="padding-left: 1rem;">
-                <input type="radio" name="currency" value="{{ $cur }}" class="form-control"
-                id="inputCurrency{{ $cur }}" {{ if eq $index 0 }}checked{{ end }}>
+                <input type="radio" name="currency" value="{{ $cur }}" class="form-control" id="inputCurrency{{ $cur }}" {{ if eq $index 0 }}checked{{ end }}>
                 <label for="inputCurrency{{ $cur }}" style="font-size: 1.3rem;">{{ $emoji }}</label>
             </div>
-            {{- end -}}
+            {{ end }}
         </div>
 
         <div class="error"></div>

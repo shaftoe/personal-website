@@ -9,6 +9,7 @@ disqusShortname = "a-l3x-in"
 [params]
   author = "Al3x"
   author_full = "Alexander Fortin"
+  currencies = [["USD", "🇺🇸"], ["EUR", "🇪🇺"], ["DOP", "🇩🇴"], ["RON", "🇷🇴"]]
   description = "Alexander Fortin's personal web site"
   listed_articles = 3
   feed = "/index.xml"
