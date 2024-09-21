@@ -19,10 +19,7 @@ async function updateDrafts() {
 
     await Promise.all(promises)
 
-    if (counter === 0) {
-        location.reload()
-        run(true)
-    }
+    if (counter === 0) run(true)
 }
 
 async function processDraftRow(row) {

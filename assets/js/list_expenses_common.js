@@ -6,8 +6,11 @@ const formhead = document.querySelector("#formhead")
 const from = document.querySelector("#from")
 const to = document.querySelector("#to")
 const send = document.querySelector("#send")
+const spinner = document.querySelector("#spinner")
 
 const errorHandler = (error) => {
+    spinner.hidden = true
+
     const errorMessageHead = document.createElement("p")
     const errorMessageErr = document.createElement("p")
 
@@ -136,15 +139,18 @@ const sendRequest = (drafts) => {
     const filter = document.querySelector("#filter").value
     if (filter) url = `${url}&filter=${filter}`
 
+    spinner.hidden = false
+
     fetch(url)
         .then(response => {
+            spinner.hidden = true
+
             if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`);
+                throw new Error(`Response status: ${response.status}`)
+            } else {
+                removeChilds(errorMessageDiv)
+                return response.json()
             }
-
-            removeChilds(errorMessageDiv)
-
-            return response.json()
         })
         .then(data => {
             populateTable(data, drafts)
