@@ -1,6 +1,5 @@
 ---
-title:  "Setup a custom domain REST API endpoint on AWS Lambda: a step by step tutorial"
-published: true
+title: "Setup a custom domain REST API endpoint on AWS Lambda: a step by step tutorial"
 tags:
   - api
   - aws
