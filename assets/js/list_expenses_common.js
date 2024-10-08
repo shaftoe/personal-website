@@ -167,10 +167,7 @@ function run(drafts) {
     const now = new Date()
     const tomorrow = now.addDays(1)
 
-    let fromValue = now
-    if (drafts) {
-        fromValue = new Date(now.getUTCFullYear(), now.getUTCMonth(), 2)
-    }
+    let fromValue = new Date(now.getUTCFullYear(), now.getUTCMonth(), 1)
 
     from.value = fromValue.dateOnly()
     to.value = tomorrow.dateOnly()
