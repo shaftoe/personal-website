@@ -28,7 +28,7 @@ disqusShortname = "a-l3x-in"
 
   [[menu.main]]
     name = "about"
-    url = "https://cv.l3x.in/about/"
+    url = "https://cv.l3x.in/"
     weight = 1
 
   [[menu.main]]
