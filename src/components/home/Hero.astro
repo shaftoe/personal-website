@@ -1,0 +1,32 @@
+---
+import { siteConfig } from "../../config"
+---
+
+<header class="flex flex-col items-center sm:flex-row gap-8">
+  <div class="profile-reveal relative rounded-full overflow-hidden max-w-40 w-40 h-40 mb-4 z-0 shrink-0">
+    <img
+      src="/images/profile-pixel.png"
+      alt={`${siteConfig.hero.title} Profile Image (pixelated)`}
+      class="profile-pixel w-full h-full object-cover rounded-full grayscale transition-[filter,opacity] duration-500 ease-in-out z-0"
+    />
+    <img
+      src="/images/profile.png"
+      alt={`${siteConfig.hero.title} Profile Image`}
+      class="profile-clean absolute inset-0 w-full h-full object-cover rounded-full transition-opacity duration-500 ease-in-out z-10"
+      aria-hidden="true"
+      loading="lazy"
+    />
+  </div>
+  <div class="flex flex-col">
+    <h1
+      class="text-3xl sm:text-4xl font-display font-semibold opsz text-center sm:text-left"
+    >
+      {siteConfig.hero.title}
+    </h1>
+    <h2
+      class="text-center text-xl sm:text-2xl font-mono font-medium sm:text-left"
+    >
+      <span set:html={siteConfig.hero.subtitle}/>
+    </h2>
+  </div>
+</header>

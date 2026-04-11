@@ -1,0 +1,49 @@
+---
+import { ArrowUpRight } from "@lucide/astro"
+
+export type Props = {
+  url: string | { url: string; rel?: string }
+  class?: string
+  external?: boolean
+  "aria-label"?: string
+}
+
+const { url, external, class: className, "aria-label": ariaLabel } = Astro.props
+const linkData = typeof url === "string" ? { url, rel: undefined } : url
+const isExternal = external ?? linkData.url.startsWith("http")
+
+const classes = [
+  "zag-offset",
+  "underline",
+  "font-medium",
+  "flex",
+  "items-center",
+  "focus:outline-2",
+  "focus:outline-offset-2",
+  "focus:outline-zag-dark",
+  "dark:focus:outline-zag-light",
+  className,
+].filter(Boolean)
+
+const attrs: {
+  href: string
+  target: string
+  "aria-label": string | undefined
+  class: string
+  rel?: string
+} = {
+  href: linkData.url,
+  target: isExternal ? "_blank" : "_self",
+  "aria-label": ariaLabel,
+  class: classes.join(" "),
+}
+
+if (linkData.rel) {
+  attrs.rel = linkData.rel
+}
+---
+
+<a {...attrs}>
+  <slot />
+  {isExternal && <ArrowUpRight class="w-4 h-4 zag-text zag-transition" />}
+</a>

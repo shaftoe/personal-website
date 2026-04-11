@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content"
+import Section from "../components/common/Section.astro"
+import ArticleSnippet from "../components/ArticleSnippet.astro"
+import Hero from "../components/home/Hero.astro"
+import Layout from "../layouts/Layout.astro"
+import LinkListSection from "../components/home/LinkListSection.astro"
+import { siteConfig } from "../config"
+import { sortArticlesByDate } from "../lib/utils"
+import { getLatestToots } from "../lib/mastodon"
+import TootSnippet from "../components/TootSnippet.astro"
+
+// Get last maxArticles articles sorted by date (newest first)
+const allArticles = await getCollection("blog")
+const latestToots = await getLatestToots(3)
+const recentArticles = sortArticlesByDate(allArticles).slice(
+  0,
+  siteConfig.globalMeta.maxArticles,
+)
+---
+
+<Layout meta={{
+  title: siteConfig.globalMeta.title,
+  description: siteConfig.globalMeta.longDescription ?? siteConfig.globalMeta.description,
+  url: siteConfig.site.baseUrl,
+  keywords: siteConfig.globalMeta.keywords,
+}}>
+
+  <Section class="my-16">
+    <Hero />
+  </Section>
+
+  <LinkListSection title="Social" links={siteConfig.social} />
+  <LinkListSection title="Projects" links={siteConfig.personalProjects} />
+  <LinkListSection title="Code" links={siteConfig.code} />
+
+  <LinkListSection title="Latest microblog posts">
+    <ul class="my-8 space-y-12">
+      {latestToots.length === 0 ? (
+        <p>Could not load toots.</p>
+      ) : (
+        latestToots.map((toot) => (
+          <li>
+            <TootSnippet
+              content={toot.content}
+              url={toot.url}
+              timestamp={toot.createdAt}
+            />
+          </li>
+        ))
+      )}
+    </ul>
+  </LinkListSection>
+
+  <LinkListSection title={siteConfig.texts.articlesName}>
+    <ul class="my-8 space-y-12">
+      {recentArticles.length === 0 ? (
+        <p>{siteConfig.texts.noArticles}</p>
+      ) : (
+        recentArticles.map((article) => (
+          <li>
+            <ArticleSnippet
+              title={article.data.title}
+              url={`/blog/${article.data.slug}`}
+              timestamp={article.data.timestamp}
+              duration={`${article.data.readTime} min`}
+              tags={article.data.tags}
+            />
+          </li>
+        ))
+      )}
+    </ul>
+  </LinkListSection>
+</Layout>

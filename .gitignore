@@ -1,13 +1,15 @@
+# build output
+dist/
+
+# dependencies
 node_modules/
-assets/css/normalize.css
-assets/js/vendor/*
-public/
-assets/css/fontawesome.css
-static/webfonts/
-resources/
-.vscode/
-content/*/item*
-.DS_Store
-.hugo_build.lock
+
+# astro dev cache
+.astro/
+
+# environment
 .env
-assets/js/currencies.js
+.env.*
+
+!public/
+.DS_Store

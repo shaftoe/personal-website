@@ -1,0 +1,76 @@
+---
+import Section from "../components/common/Section.astro"
+import Layout from "../layouts/Layout.astro"
+import { siteConfig } from "../config"
+
+const pageTitle = "Blogroll"
+---
+
+<Layout meta={{
+  title: pageTitle,
+  description: "A curated list of blogs and technical journals I follow for inspiration and learning.",
+  url: `${siteConfig.site.baseUrl}/blogroll`,
+  keywords: ["blogroll", "links", "inspiration", "technical blogs"],
+}}>
+
+  <Section class="my-4">
+    <div class="text-center max-w-2xl mx-auto mt-8">
+      <h1 class="text-3xl sm:text-4xl font-display font-semibold mb-4">
+        {pageTitle}
+      </h1>
+      <p class="text-xl sm:text-2xl font-mono font-medium text-center mb-4">
+        A curated list of blogs and technical journals I follow for inspiration and learning.
+      </p>
+    </div>
+  </Section>
+
+  <Section class="my-6">
+    <div class="max-w-2xl mx-auto">
+      <ul class="space-y-4">
+        {Object.entries(siteConfig.blogroll).map(([title, url]) => (
+          <li>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+            >
+              <div class="flex items-center justify-between">
+                <span class="font-medium text-lg">{title}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="shrink-0 opacity-60"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </div>
+              <div class="text-sm opacity-70 mt-1 break-all">
+                {url}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <Section class="my-4">
+    <div class="text-center max-w-2xl mx-auto text-sm font-mono opacity-80">
+      <p>
+        Have a blog you'd like me to check out?
+        <a href="/contact" class="underline">Send me a message</a> and I'll take a look!
+      </p>
+    </div>
+  </Section>
+
+</Layout>

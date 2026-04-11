@@ -1,0 +1,42 @@
+---
+import Section from "../components/common/Section.astro"
+import TagList from "../components/common/TagList.astro"
+import Prose from "../components/Prose.astro"
+import type { ArticleFrontmatter } from "../lib/blog-collection"
+import { processArticleDate } from "../lib/utils"
+import { siteConfig } from "../config"
+import Layout from "./Layout.astro"
+
+type Props = { frontmatter: ArticleFrontmatter }
+
+const { frontmatter } = Astro.props
+const articleDate = processArticleDate(frontmatter.timestamp)
+---
+
+<Layout meta={{
+  title: `${frontmatter.title} • ${siteConfig.personal.name}`,
+  description: frontmatter.longDescription ?? frontmatter.description,
+  url: `${siteConfig.site.baseUrl}/blog/${frontmatter.slug}`,
+  keywords: frontmatter.tags,
+  image: frontmatter.cardImage,
+  type: "article",
+}}>
+  <Section class="pt-8">
+    <div class="flex flex-col gap-4 mt-8 mb-16">
+      <h1
+        class="text-3xl sm:text-4xl leading-normal sm:leading-normal font-display"
+      >
+        {frontmatter.title}
+      </h1>
+      <div class="flex flex-wrap justify-between items-center gap-y-3">
+        <time>{articleDate}</time>
+        <span>{frontmatter.readTime} min</span>
+        {frontmatter.tags && <TagList tags={frontmatter.tags} />}
+      </div>
+    </div>
+    <Prose>
+      <slot />
+    </Prose>
+    <p class="pt-8">~{siteConfig.personal.name}</p>
+  </Section>
+</Layout>

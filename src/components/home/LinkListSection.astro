@@ -1,0 +1,26 @@
+---
+import Section from "../common/Section.astro"
+import Anchor from "../common/Anchor.astro"
+
+export type Props = {
+  title: string
+  links?: Record<string, string | { url: string; rel?: string }>
+  class?: string
+}
+
+const { title, links, class: className } = Astro.props
+---
+
+<Section class={className}>
+  <div class="flex justify-between items-center w-full">
+    <h3 class="font-display text-lg sm:text-xl leading-loose">{title}</h3>
+    {links && (
+      <ul>
+        {Object.entries(links).map(([platform, link]) => (
+          <li><Anchor url={link} class="text-base">{platform}</Anchor></li>
+        ))}
+      </ul>
+    )}
+  </div>
+  <slot />
+</Section>

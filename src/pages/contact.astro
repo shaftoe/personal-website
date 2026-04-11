@@ -1,0 +1,81 @@
+---
+import Section from "../components/common/Section.astro"
+import Layout from "../layouts/Layout.astro"
+import { siteConfig } from "../config"
+---
+
+<Layout meta={{
+  title: `Contact me — ${siteConfig.globalMeta.title}`,
+  description: "Send me a message, I'll get back to you soon",
+  url: `${siteConfig.site.baseUrl}/contact`,
+}}>
+
+  <Section class="mt-16">
+    <h1 class="text-3xl sm:text-4xl font-display pb-8 text-center">
+      Send me a message
+    </h1>
+
+    <noscript>
+      <div class="text-center py-8 text-red-500 text-xl">
+        Please enable JavaScript to use this form.
+      </div>
+    </noscript>
+
+    <div id="success" hidden class="mb-8 rounded-lg border-2 border-zag-accent-light/50 dark:border-zag-accent-dark/50 bg-zag-accent-light/10 dark:bg-zag-accent-dark/10 p-4 text-center">
+    </div>
+
+    <div id="error" hidden class="mb-8 rounded-lg border-2 border-zag-error-light/50 dark:border-zag-error-dark/50 bg-zag-error-light/10 dark:bg-zag-error-dark/10 p-4 text-center">
+    </div>
+
+    <form class="space-y-6">
+      <fieldset disabled class="space-y-6 rounded-lg border-2 border-zag-dark/10 dark:border-zag-light/10 p-4 sm:p-6 transition-all">
+        <div class="grid grid-cols-1 sm:grid-cols-[30%_70%] gap-2 sm:gap-4 items-center">
+          <label for="inputEmail" class="font-medium text-sm sm:text-base">Email</label>
+          <input
+            type="email"
+            id="inputEmail"
+            name="email"
+            placeholder="your@email.here"
+            required
+            class="w-full rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-4 py-2 font-mono text-sm sm:text-base zag-text zag-transition placeholder:zag-muted focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-[30%_70%] gap-2 sm:gap-4 items-center">
+          <label for="inputName" class="font-medium text-sm sm:text-base">Name</label>
+          <input
+            type="text"
+            id="inputName"
+            name="name"
+            placeholder="optional"
+            class="w-full rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-4 py-2 font-mono text-sm sm:text-base zag-text zag-transition placeholder:zag-muted focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-[30%_70%] gap-2 sm:gap-4 items-start">
+          <label for="textAreaMessage" class="font-medium text-sm sm:text-base pt-2">Your message</label>
+          <textarea
+            id="textAreaMessage"
+            name="message"
+            rows="5"
+            required
+            class="w-full rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-4 py-2 font-mono text-sm sm:text-base zag-text zag-transition placeholder:zag-muted focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark resize-y"
+          ></textarea>
+        </div>
+
+      </fieldset>
+      <div class="flex justify-end pt-4">
+        <button
+          type="submit"
+          class="rounded-lg border-2 border-zag-accent-light dark:border-zag-accent-dark bg-zag-accent-light dark:bg-zag-accent-dark px-6 py-2.5 font-mono font-medium text-sm sm:text-base zag-transition cursor-pointer hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark -zag-text"
+        >
+          Send message
+        </button>
+      </div>
+    </form>
+  </Section>
+</Layout>
+
+<script>
+  import "../lib/contact.ts";
+</script>

@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content"
+import ArticleSnippet from "../../../components/ArticleSnippet.astro"
+import Section from "../../../components/common/Section.astro"
+import Layout from "../../../layouts/Layout.astro"
+import { siteConfig } from "../../../config"
+import { sortArticlesByDate } from "../../../lib/utils"
+
+export async function getStaticPaths() {
+  const articles = await getCollection("blog")
+  const tags = new Set(articles.flatMap((article) => article.data.tags ?? []))
+  return [...tags].map((tag) => ({
+    params: { tag },
+    props: {
+      tag: tag as string,
+      articles: sortArticlesByDate(
+        articles.filter((a) => a.data.tags?.includes(tag as string)),
+      ),
+    },
+  }))
+}
+
+const { tag, articles } = Astro.props
+---
+
+<Layout meta={{
+  title: `#${tag} articles • ${siteConfig.personal.name}`,
+  description: `Articles tagged with #${tag} on ${siteConfig.personal.name}'s blog`,
+  url: `${siteConfig.site.baseUrl}/blog/tags/${tag}`,
+}}>
+  <Section class="my-8">
+    <div class="flex items-center gap-4 pt-8 pb-16">
+      <h1 class="font-display text-3xl sm:text-4xl leading-loose">
+        #{tag}
+      </h1>
+    </div>
+    {articles.length > 0 ? (
+      <ul>
+        {articles.map((article) => (
+          <li>
+            <ArticleSnippet
+              title={article.data.title}
+              description={article.data.description}
+              duration={`${article.data.readTime} min`}
+              url={`/blog/${article.data.slug}`}
+              timestamp={article.data.timestamp}
+              tags={article.data.tags}
+            />
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="zag-muted">{siteConfig.texts.noArticles}</p>
+    )}
+  </Section>
+</Layout>
