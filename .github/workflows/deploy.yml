@@ -1,18 +1,16 @@
 name: Deploy
 
 on:
-  push:
-    tags:
-      - 'v*'
   schedule:
     - cron: "0 */4 * * *"
   workflow_dispatch:
 
 jobs:
-  trigger-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Netlify Build
-        run: |
-          curl -X POST -w "\nNetlify build triggered: %{http_code}\n" \
-            ${{ secrets.NETLIFY_BUILD_HOOK }}
+      - uses: actions/checkout@v6
+
+      - uses: ./.github/actions/deploy
+        with:
+          netlify-build-hook: ${{ secrets.NETLIFY_BUILD_HOOK }}
