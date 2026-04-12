@@ -1,0 +1,56 @@
+---
+import Section from "../../components/common/Section.astro"
+import Layout from "../../layouts/Layout.astro"
+import { siteConfig } from "../../config"
+import ExpensesApp from "../../components/expenses/ExpensesApp.svelte"
+---
+
+<Layout meta={{
+  title: `Expenses — ${siteConfig.globalMeta.title}`,
+  description: "Private expense tracker",
+  url: `${siteConfig.site.baseUrl}/expenses`,
+}}>
+
+  <Section class="mt-16">
+    <noscript>
+      <div class="text-center py-8 text-red-500 text-xl">
+        Please enable JavaScript to use this page.
+      </div>
+    </noscript>
+
+    <h1 class="text-3xl sm:text-4xl font-display pb-8 text-center">
+      Expenses
+    </h1>
+
+    <ExpensesApp client:load />
+  </Section>
+</Layout>
+
+<style>
+  .expenses-table th:nth-child(1) { width: 20%; }
+  .expenses-table th:nth-child(2) { width: 40%; }
+  .expenses-table th:nth-child(5) { width: 20%; }
+  .expenses-table th:nth-child(3),
+  .expenses-table th:nth-child(4) {
+    display: none;
+  }
+
+  .expenses-table :global(td) {
+    padding: 0.5rem;
+  }
+  .expenses-table :global(td:nth-child(1)) { width: 20%; }
+  .expenses-table :global(td:nth-child(2)) { width: 40%; }
+  .expenses-table :global(td:nth-child(5)) { width: 20%; }
+  .expenses-table :global(td:nth-child(3)),
+  .expenses-table :global(td:nth-child(4)) {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .expenses-table th:nth-child(3) { width: 15%; display: table-cell; }
+    .expenses-table th:nth-child(4) { width: 10%; display: table-cell; }
+    .expenses-table th:nth-child(5) { width: 15%; }
+    .expenses-table :global(td:nth-child(3)) { width: 15%; display: table-cell; }
+    .expenses-table :global(td:nth-child(4)) { width: 10%; display: table-cell; }
+    .expenses-table :global(td:nth-child(5)) { width: 15%; }
+  }
+</style>

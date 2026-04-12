@@ -5,11 +5,21 @@ export const siteConfig = {
     baseUrl: "https://a.l3x.in" as const,
   },
 
+  // NOTE: This token is embedded in the client-side bundle and is therefore public.
+  // It acts as a simple rate-limiter for the serverless functions, not a secret.
+  api: {
+    baseUrl: "https://api-v2.l3x.in/.netlify/functions" as const,
+    token: "01J62K2NATYJ93AD5XJYE6YEGZ" as const,
+  },
+
   contact: {
-    // NOTE: This token is embedded in the client-side bundle and is therefore public.
-    // It acts as a simple rate-limiter for the serverless contact function, not a secret.
-    apiUrl:
-      "https://api-v2.l3x.in/.netlify/functions/contact?token=01J62K2NATYJ93AD5XJYE6YEGZ",
+    path: "/contact" as const,
+  },
+
+  expenses: {
+    path: "/expense" as const,
+    localStorageKey: "expenses-password",
+    locale: "it-IT",
   },
 
   globalMeta: {

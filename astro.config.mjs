@@ -1,5 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 import { siteConfig } from "./src/config";
 
@@ -19,6 +20,9 @@ export default defineConfig({
     },
   },
   integrations: [
-    sitemap(),
+    svelte(),
+    sitemap({
+      filter: (page) => !page.includes("/expenses"),
+    }),
   ],
 });
