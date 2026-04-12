@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "temporal-polyfill/global"
   import {
     loadPassword,
     savePassword,
