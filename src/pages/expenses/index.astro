@@ -27,30 +27,36 @@ import ExpensesApp from "../../components/expenses/ExpensesApp.svelte"
 </Layout>
 
 <style>
+  .expenses-table {
+    table-layout: fixed;
+  }
   .expenses-table th:nth-child(1) { width: 20%; }
-  .expenses-table th:nth-child(2) { width: 40%; }
-  .expenses-table th:nth-child(5) { width: 20%; }
+  .expenses-table th:nth-child(2) { width: 45%; }
   .expenses-table th:nth-child(3),
   .expenses-table th:nth-child(4) {
     display: none;
   }
+  .expenses-table th:nth-child(5) { width: 35%; text-align: right; }
 
   .expenses-table :global(td) {
     padding: 0.5rem;
   }
   .expenses-table :global(td:nth-child(1)) { width: 20%; }
-  .expenses-table :global(td:nth-child(2)) { width: 40%; }
-  .expenses-table :global(td:nth-child(5)) { width: 20%; }
+  .expenses-table :global(td:nth-child(2)) { width: 45%; }
   .expenses-table :global(td:nth-child(3)),
   .expenses-table :global(td:nth-child(4)) {
     display: none;
   }
+  .expenses-table :global(td:nth-child(5)) { width: 35%; text-align: right; }
+
   @media (min-width: 640px) {
+    .expenses-table th:nth-child(2) { width: 30%; }
     .expenses-table th:nth-child(3) { width: 15%; display: table-cell; }
     .expenses-table th:nth-child(4) { width: 10%; display: table-cell; }
-    .expenses-table th:nth-child(5) { width: 15%; }
+    .expenses-table th:nth-child(5) { width: 25%; text-align: right; }
+    .expenses-table :global(td:nth-child(2)) { width: 30%; }
     .expenses-table :global(td:nth-child(3)) { width: 15%; display: table-cell; }
     .expenses-table :global(td:nth-child(4)) { width: 10%; display: table-cell; }
-    .expenses-table :global(td:nth-child(5)) { width: 15%; }
+    .expenses-table :global(td:nth-child(5)) { width: 25%; text-align: right; }
   }
 </style>

@@ -20,6 +20,12 @@ export const siteConfig = {
     path: "/expense" as const,
     localStorageKey: "expenses-password",
     locale: "it-IT",
+    currencies: {
+      DOP: "🇩🇴",
+      USD: "🇺🇸",
+      EUR: "🇪🇺",
+      RON: "🇷🇴",
+    } as const,
   },
 
   globalMeta: {
