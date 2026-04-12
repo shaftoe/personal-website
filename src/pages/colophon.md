@@ -19,7 +19,7 @@ keywords: ["colophon", "about this site", "tech stack"]
 
 ## Framework & Language
 
-The site is built with [Astro](https://astro.build), a modern static-site generator. Content is authored in [TypeScript](https://www.typescriptlang.org) and [Astro components](https://astro.build). The output is a fully static site — no client-side JavaScript framework, no runtime server.
+The site is built with [Astro](https://astro.build), a modern static-site generator. Content is authored in [TypeScript](https://www.typescriptlang.org) and [Astro components](https://astro.build). The output is a fully static site — no client-side JavaScript framework, no runtime server. You can find the full source code and CI/CD setup at <https://github.com/shaftoe/personal-website>.
 
 ## Styling
 

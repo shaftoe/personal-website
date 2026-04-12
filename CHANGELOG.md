@@ -7,12 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] 2026-04-12
+
+### Changed
+
+- add GH repo link to /colophon
+
 ## [1.0.2] 2026-04-12
+
+### Added
+
+- add dependabot flow
 
 ### Changed
 
 - use markdown for /colophon content
-- add dependabot flow
 
 ## [1.0.1] 2026-04-12
 
