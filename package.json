@@ -8,13 +8,14 @@
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "lint": "biome check .",
     "lint:fix": "biome check --fix .",
     "format": "biome format .",
     "format:fix": "biome format --fix .",
     "validate": "bun run lint && bun run format && bun run check",
     "blog-posts": "bun run scripts/blog-posts.ts",
+    "changelog": "bun run scripts/changelog.ts",
     "release": "semantic-release"
   },
   "dependencies": {
