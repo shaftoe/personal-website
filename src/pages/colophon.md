@@ -44,7 +44,9 @@ Blog posts live as Markdown files with YAML frontmatter, managed through Astro's
 
 ## Infrastructure
 
-The site is deployed on [Netlify](https://www.netlify.com). On every push to the main branch, Netlify runs `bun run build` (with Node 24) and publishes the resulting `dist/` directory to their CDN. A [GitHub Actions workflow](https://github.com/shaftoe/personal-website/actions/workflows/scheduled-deploy.yml) runs regularly to trigger a fresh Netlify build — this keeps the homepage's Mastodon posts and blog content up to date without manual deploys.
+The site is deployed on [Netlify](https://www.netlify.com). On every push to the master branch, Netlify runs `bun run build` (with Node 24) and publishes the resulting `dist/` directory to their CDN. A [GitHub Actions workflow](https://github.com/shaftoe/personal-website/actions/workflows/scheduled-deploy.yml) runs regularly to trigger a fresh Netlify build — this keeps the homepage's Mastodon posts and blog content up to date without manual deploys.
+
+Versioning is fully automated with [semantic-release](https://semantic-release.gitbook.io). Every push to master triggers a [release workflow](https://github.com/shaftoe/personal-website/actions/workflows/release.yml) that analyzes [conventional commit](https://www.conventionalcommits.org/) messages, bumps `package.json` version, updates `CHANGELOG.md`, creates a git tag, and publishes a GitHub Release — all without manual intervention.
 
 ## Other Bits
 

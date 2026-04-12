@@ -14,7 +14,8 @@
     "format": "biome format .",
     "format:fix": "biome format --fix .",
     "validate": "bun run lint && bun run format && bun run check",
-    "blog-posts": "bun run scripts/blog-posts.ts"
+    "blog-posts": "bun run scripts/blog-posts.ts",
+    "release": "semantic-release"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
@@ -29,8 +30,11 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@biomejs/biome": "^2.4.11",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^25.6.0",
     "gray-matter": "^4.0.3",
+    "semantic-release": "^25.0.3",
     "typescript": "^6.0.2"
   }
 }
