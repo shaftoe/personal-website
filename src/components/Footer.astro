@@ -3,6 +3,7 @@ import { siteConfig } from "../config"
 
 const date = new Date()
 const year = date.getFullYear()
+const lastUpdated = date.toISOString().split("T")[0]
 ---
 
 <footer class="mt-16 mb-8">
@@ -24,5 +25,7 @@ const year = date.getFullYear()
   <p class="zag-text zag-transition mt-4 text-center text-sm font-medium">
     &copy; {year}
     {siteConfig.personal.name}
+    &nbsp;|&nbsp;
+    Last updated {lastUpdated}
   </p>
 </footer>
