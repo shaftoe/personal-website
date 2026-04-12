@@ -1,6 +1,9 @@
-name: Scheduled Deploy
+name: Deploy
 
 on:
+  push:
+    tags:
+      - 'v*'
   schedule:
     - cron: "0 */4 * * *"
   workflow_dispatch:
