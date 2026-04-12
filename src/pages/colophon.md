@@ -6,7 +6,7 @@ url: https://a.l3x.in/colophon
 keywords: ["colophon", "about this site", "tech stack"]
 ---
 
-<div class="text-center max-w-2xl mx-auto mt-8 mb-8">
+<div class="px-4 text-center max-w-2xl mx-auto mt-8 mb-8">
   <h1 class="text-3xl sm:text-4xl font-display font-semibold mb-4">
     Colophon
   </h1>
@@ -15,7 +15,7 @@ keywords: ["colophon", "about this site", "tech stack"]
   </p>
 </div>
 
-<div class="max-w-2xl mx-auto prose dark:prose-invert">
+<div class="px-4 max-w-2xl mx-auto prose dark:prose-invert">
 
 ## Framework & Language
 
