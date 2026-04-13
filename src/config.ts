@@ -155,6 +155,7 @@ export const siteConfig = {
     { label: "Contact", href: "/contact" },
     { label: "Follow", href: "/follow" },
     { label: "Policy", href: "/policy" },
+    { label: "Sitemap", href: "/sitemap" },
   ],
 }
 
