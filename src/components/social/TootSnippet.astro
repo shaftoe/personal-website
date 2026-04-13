@@ -12,7 +12,7 @@ const { content, url, timestamp } = Astro.props
 ---
 
 <article class="relative zag-text zag-transition flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
-  <div class="text-base prose prose-sm dark:prose-invert max-w-none [&_a]:zag-offset [&_a]:underline [&_a]:font-medium [&_a]:inline-flex [&_a]:items-center">
+  <div class="text-base prose prose-sm dark:prose-invert max-w-none [&_a]:zag-offset [&_a]:underline [&_a]:font-medium [&_a]:break-all break-words">
     <Fragment set:html={content} />
   </div>
   <footer class="zag-muted zag-transition flex flex-wrap gap-x-3 gap-y-1 items-center">

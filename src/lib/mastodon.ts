@@ -39,6 +39,8 @@ function sanitizeHtml(html: string): string {
     .replace(/\s+on\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]*)/gi, "")
     .replace(/href\s*=\s*["']javascript:[^"']*["']/gi, 'href="#"')
     .replace(/\sclass\s*=\s*["'][^"']*["']/gi, "") // Remove all class attributes
+    .replace(/<\/span>/gi, "")
+    .replace(/<span[^>]*>/gi, "") // Remove <span> tags (Mastodon wraps URL parts in spans)
 }
 
 /**
