@@ -2,15 +2,18 @@
 export type Props = {
   tags: string[]
   class?: string
+  microformats?: boolean
 }
 
-const { tags, class: className } = Astro.props
+const { tags, class: className, microformats = false } = Astro.props
 ---
 
 {tags.length > 0 && (
 	<ul class:list={["flex flex-wrap gap-2 list-none m-0 p-0", className]}>
 		{tags.map((tag) => (
-			<li class="text-xs bg-zag-grid px-2 py-0.5 rounded"><a href={`/blog/tags/${tag}`} class="zag-offset underline">#{tag}</a></li>
+			<li class:list={["text-xs bg-zag-grid px-2 py-0.5 rounded", microformats && "p-category"]}>
+				<a href={`/blog/tags/${tag}`} class="zag-offset underline">#{tag}</a>
+			</li>
 		))}
 	</ul>
 )}
