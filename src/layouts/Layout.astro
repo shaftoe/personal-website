@@ -34,7 +34,7 @@ const { meta } = Astro.props
       href="https://fonts.bunny.net/css?family=ibm-plex-mono:400,400i,500,500i,600,600i,700,700i"
       rel="stylesheet"
     />
-    
+
     <!-- Theme detection script - runs before page renders -->
     <script is:inline>
       const theme = (() => {
@@ -55,7 +55,23 @@ const { meta } = Astro.props
 
       window.localStorage.setItem("theme", theme);
     </script>
-    
+
+    <!-- Umami analytics - disabled in dev, disabled on /expenses when authenticated -->
+    {import.meta.env.PROD && (
+      <script is:inline data-umami-src={siteConfig.analytics.umami.src} data-umami-id={siteConfig.analytics.umami.websiteId}>
+        const skipAnalytics =
+          location.pathname === "/expenses" &&
+          !!localStorage.getItem("expenses-password");
+        if (!skipAnalytics) {
+          const s = document.createElement("script");
+          s.defer = true;
+          s.src = document.currentScript.dataset.umamiSrc;
+          s.dataset.websiteId = document.currentScript.dataset.umamiId;
+          document.head.appendChild(s);
+        }
+      </script>
+    )}
+
     <HeadMeta {...meta} />
   </head>
   <body class="zag-bg zag-text zag-transition font-mono">

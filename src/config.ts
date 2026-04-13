@@ -16,6 +16,13 @@ export const siteConfig = {
     path: "/contact" as const,
   },
 
+  analytics: {
+    umami: {
+      src: "/scripts/umami.js" as const,
+      websiteId: "d2f0933f-644c-42ea-8b50-ad2766838043" as const,
+    },
+  },
+
   expenses: {
     path: "/expense" as const,
     localStorageKey: "expenses-password",
@@ -131,6 +138,7 @@ export const siteConfig = {
     { label: "Changelog", href: "/changelog" },
     { label: "Colophon", href: "/colophon" },
     { label: "Contact", href: "/contact" },
+    { label: "Policy", href: "/policy" },
   ],
 }
 

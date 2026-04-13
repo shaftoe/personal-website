@@ -24,3 +24,15 @@ updates:
     open-pull-requests-limit: 10
     commit-message:
       prefix: "actions"
+
+  # Track umami tracker updates (rebuild with `bun run build:tracker`)
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "umami"
