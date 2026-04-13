@@ -22,7 +22,7 @@ const SECTION_ORDER = [
   "Removed",
   "Fixed",
   "Security",
-];
+]
 
 const TYPE_MAP = {
   feat: "Added",
@@ -32,7 +32,7 @@ const TYPE_MAP = {
   revert: "Removed",
   docs: "Changed",
   style: "Changed",
-};
+}
 
 const mainTemplate = `{{> header}}
 
@@ -47,13 +47,13 @@ const mainTemplate = `{{> header}}
 
 {{/each}}
 {{> footer}}
-`;
+`
 
 const headerPartial = `## [{{version}}] {{date}}
-`;
+`
 
 const commitPartial = `- {{#if subject}}{{subject}}{{else}}{{header}}{{/if}}
-`;
+`
 
 const footerPartial = `{{#if noteGroups}}
 {{#each noteGroups}}
@@ -64,7 +64,7 @@ const footerPartial = `{{#if noteGroups}}
 {{/each}}
 {{/each}}
 {{/if}}
-`;
+`
 
 export default () => ({
   writer: {
@@ -74,27 +74,27 @@ export default () => ({
     footerPartial,
 
     transform(commit, context) {
-      const section = TYPE_MAP[commit.type];
-      if (!section) return undefined;
+      const section = TYPE_MAP[commit.type]
+      if (!section) return undefined
 
-      let { subject } = commit;
+      let { subject } = commit
       if (
         typeof subject === "string" &&
         context.host &&
         context.owner &&
         context.repository
       ) {
-        const url = `${context.host}/${context.owner}/${context.repository}/issues/`;
+        const url = `${context.host}/${context.owner}/${context.repository}/issues/`
         subject = subject.replace(
           /#(\d+)/g,
           (_, issue) => `[#${issue}](${url}${issue})`,
-        );
+        )
       }
 
       return {
         type: section,
         subject: subject || commit.header,
-      };
+      }
     },
 
     groupBy: "type",
@@ -102,4 +102,4 @@ export default () => ({
       SECTION_ORDER.indexOf(a.title) - SECTION_ORDER.indexOf(b.title),
     commitsSort: ["scope", "subject"],
   },
-});
+})
