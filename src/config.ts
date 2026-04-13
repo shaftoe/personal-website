@@ -132,12 +132,28 @@ export const siteConfig = {
     Lobsters: "https://lobste.rs/",
   },
 
+  follow: {
+    feeds: {
+      "Blog RSS Feed": {
+        description: "All published blog articles.",
+        url: "/rss.xml",
+        type: "RSS" as const,
+      },
+      "Mastodon Feed": {
+        description: "My public posts on Mastodon (fosstodon.org/@alex).",
+        url: "https://fosstodon.org/@alex.rss",
+        type: "RSS" as const,
+      },
+    },
+  },
+
   splashPages: [
     { label: "Blog", href: "/blog" },
     { label: "Blogroll", href: "/blogroll" },
     { label: "Changelog", href: "/changelog" },
     { label: "Colophon", href: "/colophon" },
     { label: "Contact", href: "/contact" },
+    { label: "Follow", href: "/follow" },
     { label: "Policy", href: "/policy" },
   ],
 }
