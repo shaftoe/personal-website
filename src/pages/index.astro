@@ -1,14 +1,14 @@
 ---
 import { getCollection } from "astro:content"
-import Section from "../components/common/Section.astro"
-import ArticleSnippet from "../components/ArticleSnippet.astro"
+import Section from "../components/base/Section.astro"
+import ArticleSnippet from "../components/blog/ArticleSnippet.astro"
 import Hero from "../components/home/Hero.astro"
 import Layout from "../layouts/Layout.astro"
 import LinkListSection from "../components/home/LinkListSection.astro"
 import { siteConfig } from "../config"
 import { sortArticlesByDate } from "../lib/utils"
 import { getLatestToots } from "../lib/mastodon"
-import TootSnippet from "../components/TootSnippet.astro"
+import TootSnippet from "../components/social/TootSnippet.astro"
 
 // Get last maxArticles articles sorted by date (newest first)
 const allArticles = await getCollection("blog")
