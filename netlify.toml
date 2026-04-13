@@ -7,5 +7,5 @@
 
 [[redirects]]
   from = "/sitemap"
-  to = "/sitemap-index.xml"
+  to = "https://a.l3x.in/sitemap-index.xml"
   status = 301
