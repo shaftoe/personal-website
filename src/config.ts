@@ -1,4 +1,4 @@
-// Site-wide configuration — import this directly in components/layouts.
+// Site-wide configuration - import this directly in components/layouts.
 
 export const siteConfig = {
   site: {
@@ -63,6 +63,7 @@ export const siteConfig = {
     },
     Contact: "/contact",
     Blogroll: "/blogroll",
+    Postroll: "/postroll",
     Follow: "/follow",
   },
 
@@ -123,9 +124,9 @@ export const siteConfig = {
   blogroll: {
     "Schneier on Security": "https://www.schneier.com/",
     "Geoff Blair": "https://www.geoffblair.com/",
-    "Simon Willison’s Weblog": "https://simonwillison.net/",
+    "Simon Willison's Weblog": "https://simonwillison.net/",
     Lobsters: "https://lobste.rs/",
-  },
+  } as const,
 
   follow: {
     feeds: {
@@ -150,6 +151,7 @@ export const siteConfig = {
     { label: "Contact", href: "/contact" },
     { label: "Follow", href: "/follow" },
     { label: "Policy", href: "/policy" },
+    { label: "Postroll", href: "/postroll" },
     { label: "Sitemap", href: "/sitemap" },
   ],
 }
