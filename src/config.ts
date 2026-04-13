@@ -37,7 +37,13 @@ export const siteConfig = {
 
   globalMeta: {
     title: "Alexander Fortin's personal home page",
+    name: "Alexander Fortin",
     description: "Alexander Fortin's personal web site",
+    hero: {
+      subtitle:
+        "I'm a Software Engineer passionate about automation and all the things as Code",
+      image: "/images/profile.png",
+    },
     longDescription:
       "Software Engineer with a passion for automation and all the things as Code. Writing about Serverless, Jamstack, Cloud Computing and more.",
     keywords: [
@@ -98,17 +104,6 @@ export const siteConfig = {
     description: "The page you are looking for does not exist.",
     longDescription:
       "The page you are looking for does not exist. Maybe it never existed.",
-  },
-
-  hero: {
-    title: "Alexander Fortin",
-    subtitle:
-      "I'm a Software Engineer passionate about automation and all the things as Code",
-    image: "/images/profile.png",
-  },
-
-  personal: {
-    name: "Alexander Fortin",
   },
 
   texts: {

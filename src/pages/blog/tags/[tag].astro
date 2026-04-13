@@ -24,8 +24,8 @@ const { tag, articles } = Astro.props
 ---
 
 <Layout meta={{
-  title: `#${tag} articles • ${siteConfig.personal.name}`,
-  description: `Articles tagged with #${tag} on ${siteConfig.personal.name}'s blog`,
+  title: `#${tag} articles • ${siteConfig.globalMeta.name}`,
+  description: `Articles tagged with #${tag} on ${siteConfig.globalMeta.name}'s blog`,
   url: `${siteConfig.site.baseUrl}/blog/tags/${tag}`,
 }}>
   <Section class="my-8">

@@ -14,7 +14,7 @@ const articleDate = processArticleDate(frontmatter.timestamp)
 ---
 
 <Layout meta={{
-  title: `${frontmatter.title} • ${siteConfig.personal.name}`,
+  title: `${frontmatter.title} • ${siteConfig.globalMeta.name}`,
   description: frontmatter.longDescription ?? frontmatter.description,
   url: `${siteConfig.site.baseUrl}/blog/${frontmatter.slug}`,
   keywords: frontmatter.tags,
@@ -44,6 +44,6 @@ const articleDate = processArticleDate(frontmatter.timestamp)
         <slot />
       </Prose>
     </div>
-    <p class="pt-8 p-author h-card">~{siteConfig.personal.name}</p>
+    <p class="pt-8 p-author h-card">~{siteConfig.globalMeta.name}</p>
   </Section>
 </Layout>
