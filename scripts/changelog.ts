@@ -100,7 +100,7 @@ async function main() {
   }
 
   const notes = await generateNotes(
-    { config: "./config/keep-a-changelog.js" },
+    { config: "./src/lib/keep-a-changelog.js" },
     {
       cwd,
       commits,

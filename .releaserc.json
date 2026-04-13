@@ -5,7 +5,7 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "config": "./config/keep-a-changelog.js"
+        "config": "./src/lib/keep-a-changelog.js"
       }
     ],
     [
