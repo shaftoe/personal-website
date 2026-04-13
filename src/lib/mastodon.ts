@@ -1,5 +1,11 @@
 import { siteConfig } from "../config"
 
+export interface PostrollEntry {
+  url: string
+  tootUrl: string
+  createdAt: Date
+}
+
 export interface Toot {
   id: string
   url: string
@@ -85,6 +91,65 @@ export async function getLatestToots(limit = 3): Promise<Toot[]> {
   } catch (error) {
     console.warn(
       `⚠️ Mastodon API fetch failed: ${error instanceof Error ? error.message : String(error)} — homepage will render without toots`,
+    )
+    return []
+  }
+}
+
+/**
+ * Extracts the first HTTP(S) URL from the HTML content of a Mastodon status.
+ * Returns null if no URL is found.
+ */
+function extractFirstUrl(html: string): string | null {
+  const match = html.match(/href="(https?:\/\/[^"]+)"/)
+  return match ? match[1] : null
+}
+
+/**
+ * Fetches all toots tagged with #postroll from the configured Mastodon account.
+ * Extracts the first URL from each toot's content and returns it as a PostrollEntry.
+ */
+export async function getPostrollEntries(): Promise<PostrollEntry[]> {
+  const params = new URLSearchParams({
+    limit: "40",
+    exclude_reblogs: "true",
+    tagged: "postroll",
+  })
+
+  const url = `${siteConfig.mastodon.instance}/api/v1/accounts/${siteConfig.mastodon.accountId}/statuses?${params}`
+
+  try {
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000)
+
+    const res = await fetch(url, { signal: controller.signal })
+    clearTimeout(timeoutId)
+
+    if (!res.ok) {
+      console.warn(
+        `⚠️ Mastodon API error: ${res.status} ${res.statusText} — postroll page will render without entries`,
+      )
+      return []
+    }
+
+    const statuses: MastodonStatus[] = await res.json()
+
+    const entries: PostrollEntry[] = []
+    for (const s of statuses) {
+      const extractedUrl = extractFirstUrl(s.content)
+      if (extractedUrl) {
+        entries.push({
+          url: extractedUrl,
+          tootUrl: s.url,
+          createdAt: new Date(s.created_at),
+        })
+      }
+    }
+
+    return entries
+  } catch (error) {
+    console.warn(
+      `⚠️ Mastodon API fetch failed: ${error instanceof Error ? error.message : String(error)} — postroll page will render without entries`,
     )
     return []
   }

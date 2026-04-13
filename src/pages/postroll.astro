@@ -1,0 +1,81 @@
+---
+import Section from "../components/base/Section.astro"
+import Layout from "../layouts/Layout.astro"
+import { siteConfig } from "../config"
+import { getPostrollEntries } from "../lib/mastodon"
+
+const pageTitle = "Postroll"
+const entries = await getPostrollEntries()
+---
+
+<Layout meta={{
+  title: pageTitle,
+  description: "Links worth sharing — collected from my Mastodon posts tagged #postroll.",
+  url: `${siteConfig.site.baseUrl}/postroll`,
+  keywords: ["postroll", "links", "bookmarks", "mastodon"],
+}}>
+
+  <Section class="my-4">
+    <div class="text-center max-w-2xl mx-auto mt-8">
+      <h1 class="text-3xl sm:text-4xl font-display font-semibold mb-4">
+        {pageTitle}
+      </h1>
+      <p class="text-xl sm:text-2xl font-mono font-medium text-center mb-4">
+        Links worth sharing — collected from my <a href={siteConfig.social.Mastodon.url} class="underline">Mastodon</a> posts tagged <code>#postroll</code>.
+      </p>
+    </div>
+  </Section>
+
+  <Section class="my-6">
+    <div class="max-w-2xl mx-auto">
+      {entries.length === 0 ? (
+        <p class="text-center opacity-70">No postroll entries found.</p>
+      ) : (
+        <ul class="space-y-4">
+          {entries.map((entry) => (
+            <li>
+              <a
+                href={entry.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="font-medium text-lg break-all">{entry.url}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="shrink-0 opacity-60 ml-4"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </div>
+                <div class="text-sm opacity-70 mt-1">
+                  <a
+                    href={entry.tootUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline"
+                    onclick="event.stopPropagation()"
+                  >
+                    source
+                  </a>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </Section>
+
+</Layout>
