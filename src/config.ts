@@ -57,7 +57,7 @@ export const siteConfig = {
     },
     Contact: "/contact",
     Blogroll: "/blogroll",
-    RSS: "/rss.xml",
+    Follow: "/follow",
   },
 
   mastodon: {
@@ -121,7 +121,7 @@ export const siteConfig = {
     home: "/",
     blog: "/blog",
     contact: "/contact",
-    rss: "/rss.xml",
+    follow: "/follow",
     cv: "https://cv.l3x.in",
   },
 
