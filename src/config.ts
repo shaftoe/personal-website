@@ -122,11 +122,13 @@ export const siteConfig = {
   },
 
   blogroll: {
-    "Study Hacks Blog": "https://calnewport.com/blog/",
-    "Simon Willison's Weblog": "https://simonwillison.net/",
-    "Schneier on Security": "https://www.schneier.com/",
-    Lobsters: "https://lobste.rs/",
     "Geoff Blair": "https://www.geoffblair.com/",
+    "Internals for Interns": "https://internals-for-interns.com/",
+    Lobsters: "https://lobste.rs/",
+    "Paged Out!": "https://pagedout.institute/",
+    "Schneier on Security": "https://www.schneier.com/",
+    "Simon Willison's Weblog": "https://simonwillison.net/",
+    "Study Hacks Blog": "https://calnewport.com/blog/",
   } as const,
 
   follow: {
