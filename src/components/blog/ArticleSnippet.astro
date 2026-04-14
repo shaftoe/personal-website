@@ -13,6 +13,15 @@ export type Props = {
 }
 
 const { title, description, url, duration, timestamp, tags } = Astro.props
+
+/**
+ * Converts a human-readable duration like "4 min" to ISO 8601 duration "PT4M".
+ */
+const durationToISO = (d: string): string => {
+  const match = d.match(/(\d+)\s*min/)
+  if (match) return `PT${match[1]}M`
+  return `PT0M`
+}
 ---
 
 <article class="h-entry relative zag-text zag-transition flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
@@ -26,7 +35,7 @@ const { title, description, url, duration, timestamp, tags } = Astro.props
   {description && <p class="p-summary">{description}</p>}
   <footer class="zag-muted zag-transition flex flex-wrap gap-x-3 gap-y-1 items-center">
     {timestamp ? <time class="dt-published" datetime={timestamp.toISOString()}>{processArticleDate(timestamp)}</time> : null}
-    {duration ? <time>{duration}</time> : null}
+    {duration ? <time datetime={durationToISO(duration)}>{duration}</time> : null}
     {tags && <TagList tags={tags} microformats={true} />}
   </footer>
 </article>
