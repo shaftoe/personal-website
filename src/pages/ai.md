@@ -9,7 +9,7 @@ subtitle: "AI-assisted development in practice."
 
 ## Pi Coding Agent
 
-I maintain [Pi](https://github.com/shaftoe/pi-coding-agent-action), an open-source GitHub Action that turns an LLM into a first-class collaborator on any repository. Pi reads issue descriptions, reviews pull requests, and pushes commits — all triggered by a simple comment on a GitHub issue or PR.
+I maintain [Pi coding agent action](https://github.com/shaftoe/pi-coding-agent-action), an open-source GitHub Action that turns an LLM into a first-class collaborator on any GitHub repository. Pi reads issue descriptions, reviews pull requests, and pushes commits — all triggered by a simple comment on a GitHub issue or PR.
 
 ## How Pi works on this website
 
@@ -30,3 +30,5 @@ Only the repository owner can trigger the agent, keeping full control over what 
 ## Philosophy
 
 I see AI coding agents as a force multiplier — not a replacement. Pi handles the mechanical parts of software development (scaffolding, refactoring, boilerplate) so I can focus on architecture, design decisions, and domain logic. Every change it produces is reviewed before it lands on `master`.
+
+I've been toying around with a few harnesses (Claude Code, Codex, OpenCode) and settled for <https://pi.dev> which follows a minimalistic approach that makes it very performant and easy to hack. It's fun, try it out and join me in the official Discord channel, I'm Al3xFor there ✌️
