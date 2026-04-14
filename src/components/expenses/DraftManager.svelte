@@ -85,9 +85,10 @@
 
   function handleBatchUpdate(): void {
     const updates: DraftExpense[] = []
-    for (const [, draft] of editedDrafts) {
+    for (const draft of drafts) {
       if (!deletedIds.has(draft.id)) {
-        updates.push(draft)
+        const edited = editedDrafts.get(draft.id)
+        updates.push(edited ?? draft)
       }
     }
     const deletes: DraftExpense[] = []
@@ -110,7 +111,7 @@
     batchUpdateDrafts(password, updates, deletes)
       .then(() => {
         saving = false
-        successMessage = `Updated ${updates.length} draft(s), deleted ${deletes.length} draft(s).`
+        successMessage = `Saved ${updates.length} draft(s) as expense(s), deleted ${deletes.length} draft(s).`
         doFetch()
       })
       .catch((err: unknown) => {
