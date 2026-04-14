@@ -147,6 +147,7 @@ export const siteConfig = {
   },
 
   splashPages: [
+    { label: "AI", href: "/ai" },
     { label: "Blog", href: "/blog" },
     { label: "Blogroll", href: "/blogroll" },
     { label: "Changelog", href: "/changelog" },
