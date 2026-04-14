@@ -13,7 +13,7 @@ I've been toying around with a few harnesses (Claude Code, Codex, OpenCode) and 
 
 ## Pi Coding Agent
 
-I maintain various [Pi extensions](https://www.npmjs.com/~alexanderfortin?activeTab=packages) and [Pi coding agent action](https://github.com/shaftoe/pi-coding-agent-action), an open-source GitHub Action that turns an LLM into a first-class collaborator on any GitHub repository. Pi reads issue descriptions, reviews pull requests, and pushes commits — all triggered by a simple comment on a GitHub issue or PR.
+I maintain various [Pi extensions](https://www.npmjs.com/~alexanderfortin?activeTab=packages) and [Pi coding agent action](https://github.com/shaftoe/pi-coding-agent-action), an open-source GitHub Action that turns any LLM model supported by Pi into a first-class collaborator on any GitHub repository. Pi agent reads issue descriptions, reviews pull requests, and pushes commits — all triggered by a simple comment on a GitHub issue or PR.
 
 ## How Pi works on this website
 
