@@ -3,12 +3,14 @@
   import {
     listDrafts,
     batchUpdateDrafts,
+    createExpense,
     startOfMonthISO,
     tomorrowISO,
+    todayISO,
     formatLocaleDate,
   } from "./lib.ts"
   import { CURRENCIES } from "./lib.ts"
-  import type { DraftExpense, Currency } from "./lib.ts"
+  import type { DraftExpense, Currency, NewExpensePayload } from "./lib.ts"
   import { siteConfig } from "../../config"
 
   let { password }: { password: string } = $props()
@@ -29,12 +31,16 @@
   let editedDrafts = $state<Map<number, DraftExpense>>(new Map())
   let deletedIds = $state<Set<number>>(new Set())
 
+  // New rows not yet persisted to the server
+  let newRows: NewExpensePayload[] = $state([])
+
   function doFetch(): void {
     loading = true
     error = ""
     successMessage = ""
     editedDrafts = new Map()
     deletedIds = new Set()
+    newRows = []
     listDrafts({
       password,
       from,
@@ -83,6 +89,31 @@
     return original ? original[field] : ""
   }
 
+  function addNewRow(): void {
+    newRows = [
+      ...newRows,
+      {
+        what: "",
+        amount: 0,
+        currency: currencyKeys[0],
+        timestamp: `${todayISO()}T00:00:00Z`,
+      },
+    ]
+  }
+
+  function updateNewRowField(
+    index: number,
+    field: keyof NewExpensePayload,
+    value: string | number,
+  ): void {
+    const row = { ...newRows[index], [field]: value }
+    newRows = newRows.map((r, i) => (i === index ? row : r))
+  }
+
+  function removeNewRow(index: number): void {
+    newRows = newRows.filter((_, i) => i !== index)
+  }
+
   function handleBatchUpdate(): void {
     const updates: DraftExpense[] = []
     for (const [, draft] of editedDrafts) {
@@ -99,7 +130,15 @@
       else if (original) deletes.push(original)
     }
 
-    if (updates.length === 0 && deletes.length === 0) {
+    const validNewRows = newRows.filter(
+      (r) => r.what.trim() && r.amount > 0,
+    )
+
+    if (
+      updates.length === 0 &&
+      deletes.length === 0 &&
+      validNewRows.length === 0
+    ) {
       successMessage = "Nothing to update."
       return
     }
@@ -107,10 +146,20 @@
     saving = true
     error = ""
     successMessage = ""
-    batchUpdateDrafts(password, updates, deletes)
+
+    const promises: Promise<void>[] = []
+
+    if (updates.length > 0 || deletes.length > 0) {
+      promises.push(batchUpdateDrafts(password, updates, deletes))
+    }
+    for (const row of validNewRows) {
+      promises.push(createExpense(password, row))
+    }
+
+    Promise.all(promises)
       .then(() => {
         saving = false
-        successMessage = `Updated ${updates.length} draft(s), deleted ${deletes.length} draft(s).`
+        successMessage = `Updated ${updates.length} draft(s), deleted ${deletes.length} draft(s), added ${validNewRows.length} new draft(s).`
         doFetch()
       })
       .catch((err: unknown) => {
@@ -184,7 +233,7 @@
       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
     </svg>
   </div>
-{:else if drafts.length === 0}
+{:else if drafts.length === 0 && newRows.length === 0}
   <p class="text-center zag-muted py-8">No drafts found in this date range.</p>
 {:else}
   <div class="overflow-x-auto">
@@ -243,11 +292,67 @@
             </td>
           </tr>
         {/each}
+        {#each newRows as row, index}
+          <tr class="bg-zag-accent-light/5 dark:bg-zag-accent-dark/5">
+            <td class="py-1 px-2 zag-muted">new</td>
+            <td class="py-1 px-2">
+              <input
+                type="date"
+                value={row.timestamp.slice(0, 10)}
+                onchange={(e) => updateNewRowField(index, "timestamp", `${(e.target as HTMLInputElement).value}T00:00:00Z`)}
+                class="w-full rounded border border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-2 py-1 font-mono text-sm zag-text zag-transition focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
+              />
+            </td>
+            <td class="py-1 px-2">
+              <input
+                type="text"
+                value={row.what}
+                oninput={(e) => updateNewRowField(index, "what", (e.target as HTMLInputElement).value)}
+                placeholder="description..."
+                class="w-full rounded border border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-2 py-1 font-mono text-sm zag-text zag-transition placeholder:zag-muted focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
+              />
+            </td>
+            <td class="py-1 px-2 hidden sm:table-cell">
+              <input
+                type="number"
+                step="0.01"
+                value={row.amount || ""}
+                oninput={(e) => updateNewRowField(index, "amount", Number((e.target as HTMLInputElement).value))}
+                placeholder="0.00"
+                class="w-24 rounded border border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-2 py-1 font-mono text-sm zag-text zag-transition placeholder:zag-muted focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
+              />
+            </td>
+            <td class="py-1 px-2 hidden sm:table-cell">
+              <select
+                value={row.currency}
+                onchange={(e) => updateNewRowField(index, "currency", (e.target as HTMLSelectElement).value)}
+                class="rounded border border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-2 py-1 font-mono text-sm zag-text zag-transition focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
+              >
+                {#each currencyKeys as cur}
+                  <option value={cur}>{cur}</option>
+                {/each}
+              </select>
+            </td>
+            <td class="py-1 px-2 text-center">
+              <button
+                onclick={() => removeNewRow(index)}
+                class="h-4 w-4 cursor-pointer text-zag-error-light dark:text-zag-error-dark hover:opacity-80"
+                aria-label="Remove row"
+              >✕</button>
+            </td>
+          </tr>
+        {/each}
       </tbody>
     </table>
   </div>
 
-  <div class="flex justify-end pt-4">
+  <div class="flex justify-between pt-4">
+    <button
+      onclick={addNewRow}
+      class="rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-6 py-2.5 font-mono font-medium text-sm sm:text-base zag-text zag-transition cursor-pointer hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
+    >
+      + Add Row
+    </button>
     <button
       onclick={handleBatchUpdate}
       class="rounded-lg border-2 border-zag-accent-light dark:border-zag-accent-dark bg-zag-accent-light dark:bg-zag-accent-dark px-6 py-2.5 font-mono font-medium text-sm sm:text-base zag-transition cursor-pointer hover:opacity-80 focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
