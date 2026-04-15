@@ -22,4 +22,5 @@ Here are all the slash pages available on this site:
 | [/policy](/policy) | Privacy policy for this website. |
 | [/postroll](/postroll) | Links worth sharing, collected from Mastodon. |
 | [/rss.xml](/rss.xml) | RSS feed for the blog. |
+| [/slashes](/slashes) | An index of all the slash pages on this website. |
 | [/sitemap](/sitemap) | Sitemap index for search engines. |
