@@ -129,6 +129,7 @@ export const siteConfig = {
     "Schneier on Security": "https://www.schneier.com/",
     "Simon Willison's Weblog": "https://simonwillison.net/",
     "Study Hacks Blog": "https://calnewport.com/blog/",
+    "Vilson Vieira": "https://void.cc/",
   } as const,
 
   follow: {
