@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.13.0] - 2026-04-15
+
+### Added
+
+- link footer version to changelog anchor (#276)
+
 ## [1.12.1] - 2026-04-15
 
 ### Fixed
@@ -175,7 +181,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.12.1...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.13.0...HEAD
+[1.13.0]: https://github.com/shaftoe/personal-website/compare/v1.12.1...v1.13.0
 [1.12.1]: https://github.com/shaftoe/personal-website/compare/v1.12.0...v1.12.1
 [1.12.0]: https://github.com/shaftoe/personal-website/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/shaftoe/personal-website/compare/v1.10.1...v1.11.0
