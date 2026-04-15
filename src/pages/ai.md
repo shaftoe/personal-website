@@ -17,7 +17,7 @@ Ultimately only humans are supposed to take the full responsibility on how these
 
 ## Pi Coding Agent
 
-I've been toying around with a few AI coding agents harnesses (Claude Code, Codex, OpenCode) and settled for [Pi](https://pi.dev) which follows a minimalistic approach that makes it very performant and easy to hack. It's fun! try it out and join the community at the official Discord channel, I'm **Al3xFor** there ✌️
+I've been toying around with a few AI coding agents harnesses (Cursor, Claude Code, Codex, OpenCode) and settled for [Pi](https://pi.dev) which follows a minimalistic approach that makes it very performant and easy to hack. It's fun! try it out and join the community at the official Discord channel, I'm **Al3xFor** there ✌️
 
 I also maintain various [Pi extensions](https://www.npmjs.com/~alexanderfortin?activeTab=packages) and [Pi coding agent action](https://github.com/shaftoe/pi-coding-agent-action), an open-source GitHub Action that turns any LLM model supported by Pi into a first-class collaborator on any GitHub repository. Pi agent reads issue descriptions, reviews pull requests, and pushes commits — all triggered by a simple comment on a GitHub issue or PR.
 
