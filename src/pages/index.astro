@@ -22,7 +22,7 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
 <Layout meta={{
   title: siteConfig.globalMeta.title,
   description: siteConfig.globalMeta.longDescription ?? siteConfig.globalMeta.description,
-  url: siteConfig.globalMeta.baseUrl,
+  url: Astro.url.href,
   keywords: siteConfig.globalMeta.keywords,
 }}>
 

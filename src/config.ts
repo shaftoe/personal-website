@@ -12,7 +12,6 @@ const blogroll = {
 // Site-wide configuration - import this directly in components/layouts.
 export const siteConfig = {
   globalMeta: {
-    baseUrl: "https://a.l3x.in" as const,
     title: "Alexander Fortin's personal home page",
     name: "Alexander Fortin",
     description: "Alexander Fortin's personal web site",

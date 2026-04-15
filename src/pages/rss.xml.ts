@@ -11,7 +11,8 @@ export const GET: APIRoute = async (context) => {
     title: siteConfig.blogMeta.title,
     description:
       siteConfig.blogMeta.longDescription ?? siteConfig.blogMeta.description,
-    site: context.site ?? siteConfig.globalMeta.baseUrl,
+    // biome-ignore lint/style/noNonNullAssertion: site is always set in astro.config.mjs
+    site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.timestamp,

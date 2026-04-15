@@ -2,7 +2,6 @@
 layout: ../layouts/ProseLayout.astro
 title: Privacy Policy
 description: "Website's Privacy Policy"
-url: https://a.l3x.in/policy
 keywords: ["privacy", "policy", "analytics", "umami"]
 ---
 

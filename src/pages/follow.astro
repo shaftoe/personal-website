@@ -10,7 +10,7 @@ const feeds = siteConfig.follow.feeds
 <Layout meta={{
   title: `${pageTitle} — ${siteConfig.globalMeta.title}`,
   description: "RSS and Atom feeds to follow this site.",
-  url: `${siteConfig.globalMeta.baseUrl}/follow`,
+  url: Astro.url.href,
   keywords: ["follow", "rss", "atom", "feeds", "subscribe"],
 }}>
 

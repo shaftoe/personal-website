@@ -39,6 +39,4 @@ export const blogSchema = z
 
 export type BlogEntry = z.infer<typeof blogSchema>
 
-export type ArticleFrontmatter = CollectionEntry<"blog">["data"] & {
-  url: string
-}
+export type ArticleFrontmatter = CollectionEntry<"blog">["data"]
