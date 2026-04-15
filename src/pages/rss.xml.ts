@@ -11,7 +11,7 @@ export const GET: APIRoute = async (context) => {
     title: siteConfig.blogMeta.title,
     description:
       siteConfig.blogMeta.longDescription ?? siteConfig.blogMeta.description,
-    site: context.site ?? siteConfig.site.baseUrl,
+    site: context.site ?? siteConfig.globalMeta.baseUrl,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.timestamp,

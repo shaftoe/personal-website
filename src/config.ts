@@ -11,41 +11,8 @@ const blogroll = {
 
 // Site-wide configuration - import this directly in components/layouts.
 export const siteConfig = {
-  site: {
-    baseUrl: "https://a.l3x.in" as const,
-  },
-
-  // NOTE: This token is embedded in the client-side bundle and is therefore public.
-  // It acts as a simple rate-limiter for the serverless functions, not a secret.
-  api: {
-    baseUrl: "https://api-v2.l3x.in/.netlify/functions" as const,
-    token: "01J62K2NATYJ93AD5XJYE6YEGZ" as const,
-  },
-
-  contact: {
-    path: "/contact" as const,
-  },
-
-  analytics: {
-    umami: {
-      src: "/scripts/umami.js" as const,
-      websiteId: "d2f0933f-644c-42ea-8b50-ad2766838043" as const,
-    },
-  },
-
-  expenses: {
-    path: "/expense" as const,
-    localStorageKey: "expenses-password",
-    locale: "it-IT",
-    currencies: {
-      DOP: "🇩🇴",
-      USD: "🇺🇸",
-      EUR: "🇪🇺",
-      RON: "🇷🇴",
-    } as const,
-  },
-
   globalMeta: {
+    baseUrl: "https://a.l3x.in" as const,
     title: "Alexander Fortin's personal home page",
     name: "Alexander Fortin",
     description: "Alexander Fortin's personal web site",
@@ -64,6 +31,32 @@ export const siteConfig = {
       "automation",
     ],
     maxArticles: 3,
+  },
+
+  // NOTE: This token is embedded in the client-side bundle and is therefore public.
+  // It acts as a simple rate-limiter for the serverless functions, not a secret.
+  api: {
+    baseUrl: "https://api-v2.l3x.in/.netlify/functions" as const,
+    token: "01J62K2NATYJ93AD5XJYE6YEGZ" as const,
+  },
+
+  analytics: {
+    umami: {
+      src: "/scripts/umami.js" as const,
+      websiteId: "d2f0933f-644c-42ea-8b50-ad2766838043" as const,
+    },
+  },
+
+  expenses: {
+    path: "/expense" as const,
+    localStorageKey: "expenses-password" as const,
+    locale: "it-IT" as const,
+    currencies: {
+      DOP: "🇩🇴",
+      USD: "🇺🇸",
+      EUR: "🇪🇺",
+      RON: "🇷🇴",
+    } as const,
   },
 
   social: {
@@ -102,6 +95,7 @@ export const siteConfig = {
     longDescription:
       "Tech articles about Serverless architectures, AWS CDK, Terraform, DevOps, Jamstack and Cloud Computing.",
     keywords: [
+      "coding agents",
       "serverless",
       "cloud computing",
       "devops",
@@ -158,8 +152,8 @@ export const siteConfig = {
     { label: "Follow", href: "/follow" },
     { label: "Policy", href: "/policy" },
     { label: "Postroll", href: "/postroll" },
-    { label: "Slashes", href: "/slashes" },
     { label: "Sitemap", href: "/sitemap" },
+    { label: "Slashes", href: "/slashes" },
   ],
 }
 

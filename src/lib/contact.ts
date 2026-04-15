@@ -21,7 +21,7 @@ function showError(
 }
 
 function initContactForm(): void {
-  const contactEndpoint = `${siteConfig.api.baseUrl}${siteConfig.contact.path}?token=${siteConfig.api.token}`
+  const contactEndpoint = `${siteConfig.api.baseUrl}/contact?token=${siteConfig.api.token}`
 
   const form = document.querySelector("form")
   const successDiv = document.getElementById("success")
