@@ -2,6 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
+import ogImages from "./src/integrations/og-images";
 import { siteConfig } from "./src/config";
 
 // https://astro.build/config
@@ -24,5 +25,6 @@ export default defineConfig({
     sitemap({
       filter: (page) => !page.includes("/expenses"),
     }),
+    ogImages(),
   ],
 });

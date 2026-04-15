@@ -19,12 +19,20 @@ const {
   type = "website",
 } = Astro.props
 
-const ogImage = image
-  ? new URL(image, siteConfig.globalMeta.baseUrl).toString()
-  : new URL(
-      siteConfig.globalMeta.defaultOgImage,
-      siteConfig.globalMeta.baseUrl,
-    ).toString()
+/**
+ * Auto-derive OG image path from the page's URL.
+ * Convention: / → home.png, /blog → blog.png, /blog/tags/aws → blog--tags--aws.png
+ */
+function deriveOgImagePath(pageUrl: string): string {
+  const pathname = pageUrl.includes("://")
+    ? new URL(pageUrl).pathname.replace(/\/$/, "") || "/"
+    : pageUrl.replace(/\/$/, "") || "/"
+  const slug =
+    pathname === "/" ? "home" : pathname.replace(/^\//, "").replace(/\//g, "--")
+  return `/images/og/${slug}.png`
+}
+
+const ogImage = image ?? deriveOgImagePath(url)
 ---
 
 <title>{title}</title>

@@ -21,9 +21,7 @@ export const siteConfig = {
         "I'm a Software Engineer passionate about automation and all the things as Code",
       image: "/images/profile.png",
     },
-    defaultOgImage: "/images/og/default.png" as const,
-    blogOgImage: "/images/og/blog.png" as const,
-    notFoundOgImage: "/images/og/not-found.png" as const,
+
     longDescription:
       "Software Engineer with a passion for automation and all the things as Code. Writing about Serverless, Jamstack, Cloud Computing and more.",
     keywords: [
