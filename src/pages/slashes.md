@@ -7,8 +7,6 @@ keywords: ["slashes", "slash pages", "indieweb", "site map"]
 subtitle: "All the slash pages on this site."
 ---
 
-Slash pages are common pages you can add to your website, usually with a standard, root-level slug like `/now`, `/about`, or `/uses`. They tend to describe the individual behind the site and are distinguishing characteristics of the [IndieWeb](https://indieweb.org/). The concept was coined independently by both [Caleb Hearth](https://calebhearth.com/) and [Shellsharks](https://shellsharks.com). Learn more at [slashpages.net](https://slashpages.net/).
-
 Here are all the slash pages available on this site:
 
 | Slash | Description |
