@@ -18,6 +18,15 @@ const {
   image,
   type = "website",
 } = Astro.props
+
+// Derive a social image from the page URL when none is provided
+const pathSegment =
+  url
+    .replace(siteConfig.globalMeta.baseUrl, "")
+    .replace(/^\/+/, "")
+    .replace(/\/+$/, "") || "default"
+const socialImage =
+  image ?? `${siteConfig.globalMeta.baseUrl}/og/${pathSegment}.svg`
 ---
 
 <title>{title}</title>
@@ -31,6 +40,8 @@ const {
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 {keywords && <meta name="keywords" content={keywords.join(", ")} />}
-{image && <meta property="og:image" content={image} />}
-{image && <meta name="twitter:image" content={image} />}
+<meta property="og:image" content={socialImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content={socialImage} />
 <link rel="canonical" href={url} />

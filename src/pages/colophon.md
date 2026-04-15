@@ -50,7 +50,9 @@ Web analytics are powered by [Umami](https://umami.is), a simple, fast, privacy-
 
 Generated HTML is validated against the [W3C Markup Validator](https://validator.w3.org/) to ensure standards compliance. Known framework-level exceptions (Astro module script placement, `astro-island` inline styles) are tracked separately.
 
-## Other Bits
+## Social Images
+
+Every page includes an [Open Graph](https://ogp.me) image (1200×630) generated at build time as an inline SVG. The banners use the same **Press Start 2P** pixel font embedded as base64 so they render correctly on all social platforms without external font requests. Images are produced by a build-time Astro endpoint at `/og/[…slug].svg` and automatically referenced in `<meta>` tags via the `HeadMeta` component.
 
 - **[/ai](/ai)** — a page about how AI coding agents are used in this project.
 - **[/slashes](/slashes)** — an index of all slash pages on this site, inspired by [slashpages.net](https://slashpages.net/).
@@ -59,3 +61,5 @@ Generated HTML is validated against the [W3C Markup Validator](https://validator
 - **Icons** provided by [@lucide/astro](https://lucide.dev).
 - **Dark mode** respects the user's system preference and can be toggled manually; the choice is persisted in `localStorage`.
 - **[/expenses](/expenses)** — a private, password-protected expense tracker backed by a serverless API. Built as a [Svelte](https://svelte.dev) 5 SPA island embedded in the Astro page via `client:load`, with reactive state using Svelte runes (`$state`, `$derived`, `$effect`).
+
+## Other Bits
