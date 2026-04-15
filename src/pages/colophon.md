@@ -29,6 +29,8 @@ Blog posts live as Markdown files with YAML frontmatter, managed through Astro's
 - **[Bun](https://bun.sh)** — JavaScript runtime and package manager.
 - **[Biome](https://biomejs.dev)** — fast linter and formatter, replacing ESLint + Prettier.
 - **[Astro](https://astro.build) · Check** — static type analysis for `.astro` files.
+- **[Vitest](https://vitest.dev)** — unit tests and integration tests.
+- **[Nu HTML Validator](https://validator.github.io/validator/)** (vnu-jar) — validates all generated HTML pages against the W3C spec.
 - **[Netlify](https://www.netlify.com)** — hosting and continuous deployment.
 
 ## Infrastructure
@@ -47,7 +49,7 @@ Web analytics are powered by [Umami](https://umami.is), a simple, fast, privacy-
 
 ## HTML Validation
 
-Generated HTML is validated against the [W3C Markup Validator](https://validator.w3.org/) to ensure standards compliance. Known framework-level exceptions (Astro module script placement, `astro-island` inline styles) are tracked separately.
+Generated HTML is validated against the [W3C Markup Validator](https://validator.github.io/validator/) ([vnu-jar](https://www.npmjs.com/package/vnu-jar)) to ensure standards compliance. Every page produced by the build is checked automatically as part of the test suite. Known framework-level exceptions (Astro module script placement after `</html>`, `astro-island` inline styles, heading hierarchy in blog snippet cards) are suppressed with documented justifications.
 
 ## Social Images
 
