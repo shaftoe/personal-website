@@ -50,6 +50,10 @@ Web analytics are powered by [Umami](https://umami.is), a simple, fast, privacy-
 
 Generated HTML is validated against the [W3C Markup Validator](https://validator.w3.org/) to ensure standards compliance. Known framework-level exceptions (Astro module script placement, `astro-island` inline styles) are tracked separately.
 
+## Social Images
+
+Open Graph and Twitter Card images are generated at build time as PNGs using [Sharp](https://sharp.pixelplumbing.com/) (which leverages librsvg for SVG rendering). Each image is a 1200×630 terminal-style banner using the **Press Start 2P** pixel font, with a dark background, traffic-light window chrome, and green accent colors matching the site's theme. Three variants are generated: a default banner for the homepage and general pages, a blog-specific banner, and a 404 page banner. The images are referenced via `og:image` and `twitter:image` meta tags in the `<head>` of every page.
+
 ## Other Bits
 
 - **[/ai](/ai)** — a page about how AI coding agents are used in this project.

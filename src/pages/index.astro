@@ -24,6 +24,7 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
   description: siteConfig.globalMeta.longDescription ?? siteConfig.globalMeta.description,
   url: siteConfig.globalMeta.baseUrl,
   keywords: siteConfig.globalMeta.keywords,
+  image: siteConfig.globalMeta.defaultOgImage,
 }}>
 
   <Section class="my-16">

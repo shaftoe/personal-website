@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev --open",
-    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "generate:og": "bun run scripts/generate-og-images.ts",
+    "build": "bun run generate:og && ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
@@ -13,7 +14,7 @@
     "lint:fix": "biome check --fix src scripts",
     "format": "biome format src scripts",
     "format:fix": "biome format --fix src scripts",
-    "validate": "bun run lint && bun run format && bun run check",
+    "validate": "bun run generate:og && bun run lint && bun run format && bun run check",
     "build:tracker": "sed \"s|__COLLECT_API_HOST__|https://cloud.umami.is|g; s|__COLLECT_API_ENDPOINT__|/api/send|g\" umami/src/tracker/index.js > public/scripts/umami.js",
     "blog-posts": "bun run scripts/blog-posts.ts",
     "changelog": "bun run scripts/changelog.ts",
@@ -42,6 +43,7 @@
     "@types/node": "^25.6.0",
     "gray-matter": "^4.0.3",
     "semantic-release": "^25.0.3",
+    "sharp": "^0.34.5",
     "typescript": "^6.0.2"
   }
 }
