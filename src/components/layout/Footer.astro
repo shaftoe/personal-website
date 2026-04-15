@@ -1,9 +1,11 @@
 ---
 import { siteConfig } from "../../config"
 
+import packageJson from "../../../package.json"
+
 const date = new Date()
 const year = date.getFullYear()
-const lastUpdated = date.toISOString().split("T")[0]
+const version = packageJson.version
 ---
 
 <footer class="mt-16 mb-8">
@@ -25,6 +27,6 @@ const lastUpdated = date.toISOString().split("T")[0]
   <p class="zag-text zag-transition mt-4 text-center text-sm font-medium flex justify-center items-center gap-x-2 flex-col sm:flex-row">
     <span>&copy; {year} {siteConfig.globalMeta.name}</span>
     <span class="hidden sm:inline" aria-hidden="true">|</span>
-    <span>Last updated {lastUpdated}</span>
+    <span>v{version}</span>
   </p>
 </footer>
