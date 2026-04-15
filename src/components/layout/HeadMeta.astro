@@ -25,8 +25,7 @@ const pathSegment =
     .replace(siteConfig.globalMeta.baseUrl, "")
     .replace(/^\/+/, "")
     .replace(/\/+$/, "") || "default"
-const socialImage =
-  image ?? `${siteConfig.globalMeta.baseUrl}/og/${pathSegment}.svg`
+const socialImage = image ?? `/og/${pathSegment}.svg`
 ---
 
 <title>{title}</title>
