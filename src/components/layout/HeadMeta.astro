@@ -18,6 +18,13 @@ const {
   image,
   type = "website",
 } = Astro.props
+
+const ogImage = image
+  ? new URL(image, siteConfig.globalMeta.baseUrl).toString()
+  : new URL(
+      siteConfig.globalMeta.defaultOgImage,
+      siteConfig.globalMeta.baseUrl,
+    ).toString()
 ---
 
 <title>{title}</title>
@@ -27,10 +34,10 @@ const {
 <meta property="og:url" content={url} />
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content={siteConfig.globalMeta.name} />
+<meta property="og:image" content={ogImage} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
 {keywords && <meta name="keywords" content={keywords.join(", ")} />}
-{image && <meta property="og:image" content={image} />}
-{image && <meta name="twitter:image" content={image} />}
 <link rel="canonical" href={url} />
