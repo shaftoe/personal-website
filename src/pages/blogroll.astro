@@ -27,7 +27,7 @@ const pageTitle = "Blogroll"
   <Section class="my-6">
     <div class="max-w-2xl mx-auto">
       <ul class="space-y-4">
-        {Object.entries(siteConfig.blogroll).map(([title, url]) => (
+        {Object.entries(siteConfig.blogroll).sort(() => Math.random() - 0.5).map(([title, url]) => (
           <li>
             <a
               href={url}

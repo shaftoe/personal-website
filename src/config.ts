@@ -1,5 +1,15 @@
-// Site-wide configuration - import this directly in components/layouts.
+const blogroll = {
+  "Geoff Blair": "https://www.geoffblair.com/",
+  "Internals for Interns": "https://internals-for-interns.com/",
+  Lobsters: "https://lobste.rs/",
+  "Paged Out!": "https://pagedout.institute/",
+  "Schneier on Security": "https://www.schneier.com/",
+  "Simon Willison's Weblog": "https://simonwillison.net/",
+  "Study Hacks Blog": "https://calnewport.com/blog/",
+  "Vilson Vieira": "https://void.cc/",
+} as const
 
+// Site-wide configuration - import this directly in components/layouts.
 export const siteConfig = {
   site: {
     baseUrl: "https://a.l3x.in" as const,
@@ -121,16 +131,7 @@ export const siteConfig = {
     cv: "https://cv.l3x.in",
   },
 
-  blogroll: {
-    "Geoff Blair": "https://www.geoffblair.com/",
-    "Internals for Interns": "https://internals-for-interns.com/",
-    Lobsters: "https://lobste.rs/",
-    "Paged Out!": "https://pagedout.institute/",
-    "Schneier on Security": "https://www.schneier.com/",
-    "Simon Willison's Weblog": "https://simonwillison.net/",
-    "Study Hacks Blog": "https://calnewport.com/blog/",
-    "Vilson Vieira": "https://void.cc/",
-  } as const,
+  blogroll,
 
   follow: {
     feeds: {
