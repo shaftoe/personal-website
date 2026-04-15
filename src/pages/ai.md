@@ -13,7 +13,7 @@ I acknowledge the risks posed by AI development, especially in environmental ter
 
 That said I consider myself a realist and I believe AI/LLMs/coding agents are just a tool as many others that came before, all morally questionable in their own specific ways.
 
-Ultimately only humans are supposed take the full responsibility on how these tools are going to be used and deployed.
+Ultimately only humans are supposed to take the full responsibility on how these tools are going to be used and deployed.
 
 ## Pi Coding Agent
 
