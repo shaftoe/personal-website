@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.16.0] - 2026-04-15
+
+### Added
+
+- improve og images generation
+
+### Changed
+
+- **deps**: upgrade
+
 ## [1.15.0] - 2026-04-15
 
 ### Added
@@ -197,7 +207,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.15.0...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.16.0...HEAD
+[1.16.0]: https://github.com/shaftoe/personal-website/compare/v1.15.0...v1.16.0
 [1.15.0]: https://github.com/shaftoe/personal-website/compare/v1.14.0...v1.15.0
 [1.14.0]: https://github.com/shaftoe/personal-website/compare/v1.13.0...v1.14.0
 [1.13.0]: https://github.com/shaftoe/personal-website/compare/v1.12.1...v1.13.0
