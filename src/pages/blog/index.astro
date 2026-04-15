@@ -12,7 +12,7 @@ const articles = sortArticlesByDate(await getCollection("blog"))
 <Layout meta={{
   title: siteConfig.blogMeta.title,
   description: siteConfig.blogMeta.longDescription ?? siteConfig.blogMeta.description,
-  url: `${siteConfig.globalMeta.baseUrl}/blog`,
+  url: Astro.url.href,
   keywords: siteConfig.blogMeta.keywords,
 }}>
 

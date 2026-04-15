@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import Section from "../components/base/Section.astro"
-import { siteConfig } from "../config"
 import { getChangelogContent } from "../lib/changelog"
 
 // Read CHANGELOG.md at build time
@@ -11,7 +10,7 @@ const meta = {
   title: "Changelog",
   description:
     "Project changelog and version history for Alexander Fortin's personal website",
-  url: `${siteConfig.globalMeta.baseUrl}/changelog`,
+  url: Astro.url.href,
   keywords: ["changelog", "version history", "updates", "changes"],
 }
 ---

@@ -11,7 +11,7 @@ const entries = await getPostrollEntries()
 <Layout meta={{
   title: pageTitle,
   description: "Links worth sharing — collected from my Mastodon posts tagged #postroll.",
-  url: `${siteConfig.globalMeta.baseUrl}/postroll`,
+  url: Astro.url.href,
   keywords: ["postroll", "links", "bookmarks", "mastodon"],
 }}>
 

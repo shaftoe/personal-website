@@ -16,14 +16,14 @@ const articleDate = processArticleDate(frontmatter.timestamp)
 <Layout meta={{
   title: `${frontmatter.title} • ${siteConfig.globalMeta.name}`,
   description: frontmatter.longDescription ?? frontmatter.description,
-  url: `${siteConfig.globalMeta.baseUrl}/blog/${frontmatter.slug}`,
+  url: Astro.url.href,
   keywords: frontmatter.tags,
   image: frontmatter.cardImage,
   type: "article",
 }}>
   <Section class="pt-8 h-entry">
-    <a class="u-url hidden" href={frontmatter.url} aria-hidden="true"></a>
-    <data class="p-uid hidden" value={frontmatter.url} aria-hidden="true"></data>
+    <a class="u-url hidden" href={Astro.url.href} aria-hidden="true"></a>
+    <data class="p-uid hidden" value={Astro.url.href} aria-hidden="true"></data>
     {frontmatter.description && (
       <data class="p-summary hidden" value={frontmatter.description} aria-hidden="true"></data>
     )}

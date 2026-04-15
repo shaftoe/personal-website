@@ -12,7 +12,6 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
 import { fileURLToPath } from "node:url"
 import sharp from "sharp"
-import { siteConfig } from "../config"
 
 // ---------------------------------------------------------------------------
 // SVG template (same visual as the old script, extracted here for reuse)
@@ -23,6 +22,7 @@ interface OgImageOptions {
   subtitle?: string
   tags?: string
   url: string
+  siteHost: string
 }
 
 function escapeXml(str: string): string {
@@ -52,10 +52,7 @@ function wrapText(text: string, maxCharsPerLine: number): string[] {
 }
 
 function createSvg(opts: OgImageOptions): string {
-  const { title, subtitle, tags, url } = opts
-
-  // Extract just the host for the terminal title bar
-  const siteHost = siteConfig.globalMeta.baseUrl.replace(/^https?:\/\//, "")
+  const { title, subtitle, tags, url, siteHost } = opts
 
   const titleLines = wrapText(title, 22)
   const titleBlock = titleLines
@@ -65,28 +62,8 @@ function createSvg(opts: OgImageOptions): string {
     )
     .join("\n    ")
 
-  const subtitleStartY = 220 + titleLines.length * 56 + 30
-  const subtitleLines = subtitle ? wrapText(subtitle, 56) : []
-  const subtitleBlock = subtitleLines
-    .map(
-      (line, i) =>
-        `<text x="90" y="${subtitleStartY + i * 26}" font-family="'Press Start 2P', 'Courier New', monospace" font-size="16" fill="#a3a3a3">${escapeXml(line)}</text>`,
-    )
-    .join("\n    ")
-
-  const afterSubtitleY =
-    subtitleLines.length > 0
-      ? subtitleStartY + subtitleLines.length * 26 + 14
-      : subtitleStartY
-  const tagsY = afterSubtitleY
-  const tagsLines = tags ? wrapText(tags, 75) : []
-  const tagsBlock = tagsLines
-    .map(
-      (line, i) =>
-        `<text x="90" y="${tagsY + i * 20}" font-family="'Press Start 2P', 'Courier New', monospace" font-size="12" fill="#525252">${escapeXml(line)}</text>`,
-    )
-    .join("\n    ")
-
+  const subtitleY = 220 + titleLines.length * 56 + 30
+  const tagsY = subtitleY + 40
   const urlY = 540
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
@@ -128,9 +105,17 @@ function createSvg(opts: OgImageOptions): string {
   <!-- Title -->
   ${titleBlock}
 
-  ${subtitleBlock}
+  ${
+    subtitle
+      ? `<text x="90" y="${subtitleY}" font-family="'Press Start 2P', 'Courier New', monospace" font-size="16" fill="#a3a3a3">${escapeXml(subtitle)}</text>`
+      : ""
+  }
 
-  ${tagsBlock}
+  ${
+    tags
+      ? `<text x="90" y="${tagsY}" font-family="'Press Start 2P', 'Courier New', monospace" font-size="12" fill="#525252">${escapeXml(tags)}</text>`
+      : ""
+  }
 
   <!-- Bottom bar -->
   <line x1="70" y1="510" x2="1130" y2="510" stroke="#333" stroke-width="1"/>
@@ -214,10 +199,16 @@ function decodeHtmlEntities(str: string): string {
 // ---------------------------------------------------------------------------
 
 export default function ogImagesIntegration() {
+  let siteUrl: string | undefined
+
   return {
     name: "og-images",
 
     hooks: {
+      "astro:config:done": ({ config }: { config: { site?: URL } }) => {
+        siteUrl = config.site?.toString().replace(/\/$/, "")
+      },
+
       "astro:build:done": async ({
         dir,
         pages,
@@ -284,7 +275,7 @@ export default function ogImagesIntegration() {
           const filename = `${slug}.png`
 
           // Build a display URL for the SVG — strip protocol, show host + path
-          const baseUrl = siteConfig.globalMeta.baseUrl
+          const baseUrl = siteUrl ?? ""
           const displayUrl = meta.canonical.startsWith("http")
             ? meta.canonical
             : `${baseUrl}${meta.canonical}`
@@ -292,11 +283,14 @@ export default function ogImagesIntegration() {
             .replace(/^https?:\/\//, "")
             .replace(/\/$/, "")
 
+          const siteHost = (siteUrl ?? "").replace(/^https?:\/\//, "")
+
           const svg = createSvg({
             title: meta.title,
             subtitle: meta.description,
             tags: meta.keywords,
             url: displayHost,
+            siteHost,
           })
 
           const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer()

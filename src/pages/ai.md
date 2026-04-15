@@ -2,7 +2,6 @@
 layout: ../layouts/ProseLayout.astro
 title: AI
 description: How I use AI and coding agents in my projects — including this very website.
-url: https://a.l3x.in/ai
 keywords: ["ai", "coding agent", "pi", "automation", "llm"]
 subtitle: "AI-assisted development in practice."
 ---

@@ -2,7 +2,6 @@
 layout: ../layouts/ProseLayout.astro
 title: Slashes
 description: An index of all the slash pages on this website, inspired by slashpages.net.
-url: https://a.l3x.in/slashes
 keywords: ["slashes", "slash pages", "indieweb", "site map"]
 subtitle: "All the slash pages on this site."
 ---
