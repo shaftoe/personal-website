@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from "bun:test"
 
 // The sanitizeHtml and extractFirstUrl helpers in src/lib/mastodon.ts are
 // module-scoped (not exported). We duplicate the pure logic here so we can

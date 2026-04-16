@@ -13,9 +13,9 @@
     "lint:fix": "biome check --fix src scripts",
     "format": "biome format src scripts",
     "format:fix": "biome format --fix src scripts",
-    "test": "vitest run",
-    "test:unit": "vitest run tests/utils.test.ts tests/blog-collection.test.ts tests/mastodon-helpers.test.ts",
-    "test:html": "vitest run tests/html-validation.test.ts",
+    "test": "bun test tests/*.test.ts",
+    "test:unit": "bun test tests/utils.test.ts tests/blog-collection.test.ts tests/mastodon-helpers.test.ts",
+    "test:html": "bun test tests/html-validation.test.ts",
     "validate": "bun run lint && bun run format && bun run check",
     "build:tracker": "sed \"s|__COLLECT_API_HOST__|https://cloud.umami.is|g; s|__COLLECT_API_ENDPOINT__|/api/send|g\" umami/src/tracker/index.js > public/scripts/umami.js",
     "blog-posts": "bun run scripts/blog-posts.ts",
@@ -42,12 +42,12 @@
     "@biomejs/biome": "^2.4.12",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@types/bun": "^1.3.12",
     "@types/node": "^25.6.0",
     "gray-matter": "^4.0.3",
     "semantic-release": "^25.0.3",
     "sharp": "^0.34.5",
     "typescript": "^6.0.2",
-    "vitest": "^4.1.4",
     "vnu-jar": "^26.4.11"
   }
 }

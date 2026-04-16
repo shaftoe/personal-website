@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from "bun:test"
 import { execSync } from "node:child_process"
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs"
 import { join, relative } from "node:path"
@@ -185,7 +185,7 @@ describe("Build output — HTML validation", () => {
               `  Line ${e.lastLine ?? "?"}: ${e.message}${e.extract ? ` (near "...${e.extract}...")` : ""}`,
           )
           .join("\n")
-        expect.fail(
+        throw new Error(
           `HTML validation errors in ${relativePath}:\n${errorMessages}`,
         )
       }
