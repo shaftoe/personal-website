@@ -1,0 +1,48 @@
+---
+import Anchor from "../components/base/Anchor.astro"
+import Prose from "../components/base/Prose.astro"
+import Section from "../components/base/Section.astro"
+import Layout from "../layouts/Layout.astro"
+import { siteConfig } from "../config"
+---
+
+<Layout meta={{
+  title: "Slashes",
+  description: "An index of all the slash pages on this website, inspired by slashpages.net.",
+  url: Astro.url.href,
+  keywords: ["slashes", "slash pages", "indieweb", "site map"],
+}}>
+  <Section class="my-16">
+    <div class="text-center max-w-2xl mx-auto">
+      <h1 class="text-3xl sm:text-4xl font-display font-semibold mb-4">Slashes</h1>
+      <p class="text-xl sm:text-2xl font-mono font-medium text-center">
+        All the slash pages on this site.
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <Prose>
+      <p>Here are all the <Anchor url="https://slashpages.net/">slash pages</Anchor> currently available on this site:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Slash</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {siteConfig.slashPages.map(({ label, description }) => {
+            const href = `/${label}`
+            return (
+            <tr class="border-transparent">
+              <td><a class="no-underline" href={href}>/{label}</a></td>
+              <td class="font-mono">{description}</td>
+            </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </Prose>
+  </Section>
+</Layout>

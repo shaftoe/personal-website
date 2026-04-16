@@ -143,19 +143,33 @@ export const siteConfig = {
     },
   },
 
-  splashPages: [
-    { label: "AI", href: "/ai" },
-    { label: "Blog", href: "/blog" },
-    { label: "Blogroll", href: "/blogroll" },
-    { label: "Changelog", href: "/changelog" },
-    { label: "Colophon", href: "/colophon" },
-    { label: "Contact", href: "/contact" },
-    { label: "Follow", href: "/follow" },
-    { label: "Policy", href: "/policy" },
-    { label: "Postroll", href: "/postroll" },
-    { label: "Sitemap", href: "/sitemap" },
-    { label: "Slashes", href: "/slashes" },
-  ],
+  slashPages: [
+    {
+      label: "ai",
+      description: "How I use AI and coding agents in my projects.",
+    },
+    {
+      label: "blogroll",
+      description: "Blogs and technical journals I follow.",
+    },
+    {
+      label: "changelog",
+      description: "Version history and release notes for this website.",
+    },
+    { label: "colophon", description: "How this website is built." },
+    { label: "contact", description: "Get in touch with me." },
+    { label: "follow", description: "RSS feeds to subscribe to my content." },
+    {
+      label: "postroll",
+      description: "Links worth sharing, collected from Mastodon.",
+    },
+    {
+      label: "slashes",
+      description:
+        "An index of all the slash pages on this website (this page).",
+    },
+    { label: "sitemap", description: "Sitemap index for search engines." },
+  ] as const,
 }
 
 // Type definition for site config
