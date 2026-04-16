@@ -40,6 +40,7 @@
   "devDependencies": {
     "@alexanderfortin/semantic-release-keep-a-changelog": "^0.1.4",
     "@astrojs/check": "^0.9.8",
+    "@astrojs/ts-plugin": "^1.10.7",
     "@biomejs/biome": "^2.4.12",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",

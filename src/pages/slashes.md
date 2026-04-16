@@ -17,5 +17,5 @@ Here are all the [slash pages](https://slashpages.net/) currently available on t
 | [/contact](/contact) | Get in touch with me. |
 | [/follow](/follow) | RSS feeds to subscribe to my content. |
 | [/postroll](/postroll) | Links worth sharing, collected from Mastodon. |
-| [/slashes](/slashes) | An index of all the slash pages on this website. |
+| [/slashes](/slashes) | An index of all the slash pages on this website (this page). |
 | [/sitemap](/sitemap) | Sitemap index for search engines. |
