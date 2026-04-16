@@ -163,12 +163,12 @@ export const siteConfig = {
       label: "postroll",
       description: "Links worth sharing, collected from Mastodon.",
     },
+    { label: "sitemap", description: "Sitemap index for search engines." },
     {
       label: "slashes",
       description:
         "An index of all the slash pages on this website (this page).",
     },
-    { label: "sitemap", description: "Sitemap index for search engines." },
   ] as const,
 }
 

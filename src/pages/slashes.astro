@@ -32,7 +32,7 @@ import { siteConfig } from "../config"
           </tr>
         </thead>
         <tbody>
-          {siteConfig.slashPages.map(({ label, description }) => {
+          {[...siteConfig.slashPages].sort((a, b) => a.label.localeCompare(b.label)).map(({ label, description }) => {
             const href = `/${label}`
             return (
             <tr class="border-transparent">
