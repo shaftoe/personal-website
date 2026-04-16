@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.17.0] - 2026-04-16
+
+### Added
+
+- add unit tests suite (#284)
+
+### Changed
+
+- remove siteConfig.globalMeta.baseUrl in favor of Astro.url (#281)
+
 ## [1.16.1] - 2026-04-15
 
 ### Fixed
@@ -213,7 +223,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.16.1...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.17.0...HEAD
+[1.17.0]: https://github.com/shaftoe/personal-website/compare/v1.16.1...v1.17.0
 [1.16.1]: https://github.com/shaftoe/personal-website/compare/v1.16.0...v1.16.1
 [1.16.0]: https://github.com/shaftoe/personal-website/compare/v1.15.0...v1.16.0
 [1.15.0]: https://github.com/shaftoe/personal-website/compare/v1.14.0...v1.15.0
