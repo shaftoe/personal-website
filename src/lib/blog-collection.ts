@@ -1,9 +1,21 @@
 import type { CollectionEntry } from "astro:content"
 import { z } from "astro/zod"
+import { Temporal } from "temporal-polyfill"
+
+/**
+ * Converts a Date (as provided by Astro's content loader) to a Temporal.Instant.
+ */
+function dateToInstant(d: Date): Temporal.Instant {
+  return Temporal.Instant.fromEpochMilliseconds(d.getTime())
+}
 
 /**
  * Blog collection schema + transform — shared between the Astro content
  * config and standalone CLI scripts.
+ *
+ * NOTE: Astro's content loader does NOT apply zod transforms at runtime.
+ * The transform below is used by CLI scripts. In Astro pages/components,
+ * use `toInstant()` from utils.ts to convert the Date to Temporal.Instant.
  */
 export const blogSchema = z
   .object({
@@ -18,7 +30,8 @@ export const blogSchema = z
     date: z.coerce.date().optional(),
   })
   .transform((data) => {
-    const timestamp = data.timestamp ?? data.date ?? new Date()
+    const source = data.timestamp ?? data.date
+    const instant = source ? dateToInstant(source) : Temporal.Now.instant()
     const slug =
       data.slug ??
       data.title
@@ -33,7 +46,7 @@ export const blogSchema = z
       cardImage: data.cardImage,
       tags: data.tags,
       readTime: data.readTime,
-      timestamp: timestamp instanceof Date ? timestamp : new Date(timestamp),
+      timestamp: instant,
     }
   })
 

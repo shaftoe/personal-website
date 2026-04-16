@@ -1,0 +1,16 @@
+name: Scheduled Deploy
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */4 * * *"
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
+  deploy:
+    needs: test
+    uses: ./.github/workflows/deploy.yml
+    secrets:
+      netlify-build-hook: ${{ secrets.NETLIFY_BUILD_HOOK }}

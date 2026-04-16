@@ -1,16 +1,17 @@
+import { Temporal } from "temporal-polyfill"
 import { siteConfig } from "../config"
 
 export interface PostrollEntry {
   url: string
   tootUrl: string
-  createdAt: Date
+  createdAt: Temporal.Instant
 }
 
 export interface Toot {
   id: string
   url: string
   content: string
-  createdAt: Date
+  createdAt: Temporal.Instant
   favouritesCount: number
   reblogsCount: number
   repliesCount: number
@@ -131,7 +132,7 @@ export async function getLatestToots(limit = 3): Promise<Toot[]> {
           id: s.id,
           url: s.url,
           content: sanitizeHtml(s.content),
-          createdAt: new Date(s.created_at),
+          createdAt: Temporal.Instant.from(s.created_at),
           favouritesCount: s.favourites_count,
           reblogsCount: s.reblogs_count,
           repliesCount: s.replies_count,
@@ -172,7 +173,7 @@ export async function getPostrollEntries(): Promise<PostrollEntry[]> {
           entries.push({
             url: extractedUrl,
             tootUrl: s.url,
-            createdAt: new Date(s.created_at),
+            createdAt: Temporal.Instant.from(s.created_at),
           })
         }
       }

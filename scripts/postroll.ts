@@ -27,7 +27,7 @@ async function main() {
     for (const entry of entries) {
       console.log(`  ${entry.url}`)
       console.log(`    source: ${entry.tootUrl}`)
-      console.log(`    date:   ${entry.createdAt.toISOString().slice(0, 10)}`)
+      console.log(`    date:   ${entry.createdAt.toString().slice(0, 10)}`)
       console.log()
     }
   }

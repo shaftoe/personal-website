@@ -2,7 +2,7 @@ import { getCollection } from "astro:content"
 import rss from "@astrojs/rss"
 import type { APIRoute } from "astro"
 import { siteConfig } from "../config"
-import { sortArticlesByDate } from "../lib/utils"
+import { sortArticlesByDate, toInstant } from "../lib/utils"
 
 export const GET: APIRoute = async (context) => {
   const posts = sortArticlesByDate(await getCollection("blog"))
@@ -15,7 +15,7 @@ export const GET: APIRoute = async (context) => {
     site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
-      pubDate: post.data.timestamp,
+      pubDate: new Date(toInstant(post.data.timestamp).epochMilliseconds),
       description: post.data.description,
       link: `/blog/${post.data.slug}/`,
     })),

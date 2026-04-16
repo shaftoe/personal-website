@@ -37,7 +37,7 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
   <LinkListSection title="Latest microblog posts">
     <ul class="my-8 space-y-12">
       {latestToots.length === 0 ? (
-        <p>Could not load toots.</p>
+        <li><p>Could not load toots.</p></li>
       ) : (
         latestToots.map((toot) => (
           <li>
@@ -55,7 +55,7 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
   <LinkListSection title={siteConfig.texts.articlesName}>
     <ul class="my-8 space-y-12">
       {recentArticles.length === 0 ? (
-        <p>{siteConfig.texts.noArticles}</p>
+        <li><p>{siteConfig.texts.noArticles}</p></li>
       ) : (
         recentArticles.map((article) => (
           <li>

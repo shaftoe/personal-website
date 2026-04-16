@@ -71,7 +71,7 @@ function main() {
       const readTime = entry.readTime ? ` · ${entry.readTime} min` : ""
       console.log(`  ${entry.title}`)
       console.log(`    slug: ${entry.slug}${tags}${readTime}`)
-      console.log(`    date: ${entry.timestamp.toISOString().slice(0, 10)}`)
+      console.log(`    date: ${entry.timestamp.toString().slice(0, 10)}`)
       if (entry.description) {
         console.log(`    desc: ${entry.description}`)
       }

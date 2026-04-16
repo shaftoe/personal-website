@@ -7,4 +7,6 @@ pre-commit:
     lint:
       run: bun run validate
     build:
-      run: bun run build
+      run: bun run clean && bun run build
+    test:
+      run: bun run test
