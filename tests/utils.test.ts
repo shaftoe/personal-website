@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest"
+import { Temporal } from "temporal-polyfill"
 import {
   getShortDescription,
   processArticleDate,
@@ -40,22 +41,22 @@ describe("getShortDescription", () => {
 })
 
 describe("processArticleDate", () => {
-  it("formats a date as 'Mon Day, Year'", () => {
-    const date = new Date("2026-04-15T12:00:00Z")
-    const result = processArticleDate(date)
-    expect(result).toBe("Apr 15, 2026")
+  it("formats a date as YYYY-MM-DD", () => {
+    const instant = Temporal.Instant.from("2026-04-15T12:00:00Z")
+    const result = processArticleDate(instant)
+    expect(result).toBe("2026-04-15")
   })
 
   it("formats January 1 correctly", () => {
-    const date = new Date("2025-01-01T00:00:00Z")
-    const result = processArticleDate(date)
-    expect(result).toBe("Jan 1, 2025")
+    const instant = Temporal.Instant.from("2025-01-01T00:00:00Z")
+    const result = processArticleDate(instant)
+    expect(result).toBe("2025-01-01")
   })
 
   it("formats December 31 correctly", () => {
-    const date = new Date("2025-12-31T23:59:59Z")
-    const result = processArticleDate(date)
-    expect(result).toBe("Dec 31, 2025")
+    const instant = Temporal.Instant.from("2025-12-31T23:59:59Z")
+    const result = processArticleDate(instant)
+    expect(result).toBe("2025-12-31")
   })
 })
 
@@ -63,7 +64,7 @@ describe("sortArticlesByDate", () => {
   // Minimal mock satisfying the shape expected by sortArticlesByDate
   function makeArticle(
     title: string,
-    timestamp: Date,
+    timestamp: Temporal.Instant,
   ): CollectionEntry<"blog"> {
     return {
       id: title,
@@ -85,9 +86,9 @@ describe("sortArticlesByDate", () => {
 
   it("sorts articles newest first", () => {
     const articles = [
-      makeArticle("old", new Date("2020-01-01")),
-      makeArticle("new", new Date("2026-01-01")),
-      makeArticle("mid", new Date("2023-01-01")),
+      makeArticle("old", Temporal.Instant.from("2020-01-01T00:00:00Z")),
+      makeArticle("new", Temporal.Instant.from("2026-01-01T00:00:00Z")),
+      makeArticle("mid", Temporal.Instant.from("2023-01-01T00:00:00Z")),
     ]
 
     const sorted = sortArticlesByDate(articles)
@@ -98,8 +99,8 @@ describe("sortArticlesByDate", () => {
 
   it("does not mutate the original array", () => {
     const articles = [
-      makeArticle("old", new Date("2020-01-01")),
-      makeArticle("new", new Date("2026-01-01")),
+      makeArticle("old", Temporal.Instant.from("2020-01-01T00:00:00Z")),
+      makeArticle("new", Temporal.Instant.from("2026-01-01T00:00:00Z")),
     ]
 
     const originalOrder = articles.map((a) => a.data.title)

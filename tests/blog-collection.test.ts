@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest"
+import { Temporal } from "temporal-polyfill"
 import { blogSchema } from "../src/lib/blog-collection"
 
 describe("blogSchema transform", () => {
@@ -40,23 +41,22 @@ describe("blogSchema transform", () => {
   it("uses provided timestamp", () => {
     const date = new Date("2024-06-15")
     const result = blogSchema.parse({ title: "Test", timestamp: date })
-    expect(result.timestamp).toEqual(date)
+    // Result is a Temporal.Instant at UTC midnight for that date
+    expect(result.timestamp.toString()).toBe("2024-06-15T00:00:00Z")
   })
 
   it("falls back to date when timestamp is missing", () => {
     const date = new Date("2023-03-10")
     const result = blogSchema.parse({ title: "Test", date: date.toISOString() })
-    expect(result.timestamp.getFullYear()).toBe(2023)
-    expect(result.timestamp.getMonth()).toBe(2) // March = 2
-    expect(result.timestamp.getDate()).toBe(10)
+    expect(result.timestamp.toString()).toBe("2023-03-10T00:00:00Z")
   })
 
   it("falls back to now when both timestamp and date are missing", () => {
-    const before = Date.now()
+    const before = Temporal.Now.instant()
     const result = blogSchema.parse({ title: "Test" })
-    const after = Date.now()
-    expect(result.timestamp.getTime()).toBeGreaterThanOrEqual(before)
-    expect(result.timestamp.getTime()).toBeLessThanOrEqual(after)
+    const after = Temporal.Now.instant()
+    expect(Temporal.Instant.compare(result.timestamp, before)).toBeGreaterThanOrEqual(0)
+    expect(Temporal.Instant.compare(after, result.timestamp)).toBeGreaterThanOrEqual(0)
   })
 
   it("preserves optional fields when provided", () => {

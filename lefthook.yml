@@ -6,5 +6,7 @@ pre-commit:
       stage_fixed: true
     lint:
       run: bun run validate
+    test:
+      run: bun run test
     build:
       run: bun run build

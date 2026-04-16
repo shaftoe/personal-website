@@ -1,5 +1,5 @@
 ---
-import { processArticleDate } from "../../lib/utils"
+import { toInstant, processArticleDate } from "../../lib/utils"
 import Anchor from "../base/Anchor.astro"
 import TagList from "./TagList.astro"
 
@@ -8,11 +8,20 @@ export type Props = {
   url: string
   description?: string
   duration?: string
-  timestamp?: Date
+  // Astro provides Date at runtime; toInstant normalises to Temporal.Instant
+  timestamp?: unknown
   tags?: string[]
 }
 
-const { title, description, url, duration, timestamp, tags } = Astro.props
+const {
+  title,
+  description,
+  url,
+  duration,
+  timestamp: rawTimestamp,
+  tags,
+} = Astro.props
+const timestamp = rawTimestamp ? toInstant(rawTimestamp) : undefined
 
 /**
  * Converts a human-readable duration like "4 min" to ISO 8601 duration "PT4M".
@@ -34,7 +43,7 @@ const durationToISO = (d: string): string => {
   </h3>
   {description && <p class="p-summary">{description}</p>}
   <footer class="zag-muted zag-transition flex flex-wrap gap-x-3 gap-y-1 items-center">
-    {timestamp ? <time class="dt-published" datetime={timestamp.toISOString()}>{processArticleDate(timestamp)}</time> : null}
+    {timestamp ? <time class="dt-published" datetime={timestamp.toString()}>{processArticleDate(timestamp)}</time> : null}
     {duration ? <time datetime={durationToISO(duration)}>{duration}</time> : null}
     {tags && <TagList tags={tags} microformats={true} />}
   </footer>

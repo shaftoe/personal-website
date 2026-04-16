@@ -1,14 +1,15 @@
 ---
-import { processArticleDate } from "../../lib/utils"
+import { toInstant, processArticleDate } from "../../lib/utils"
 import Anchor from "../base/Anchor.astro"
 
 export type Props = {
   content: string
   url: string
-  timestamp: Date
+  timestamp: unknown
 }
 
-const { content, url, timestamp } = Astro.props
+const { content, url, timestamp: rawTimestamp } = Astro.props
+const timestamp = toInstant(rawTimestamp)
 ---
 
 <article class="relative zag-text zag-transition flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
@@ -16,7 +17,7 @@ const { content, url, timestamp } = Astro.props
     <Fragment set:html={content} />
   </div>
   <footer class="zag-muted zag-transition flex flex-wrap gap-x-3 gap-y-1 items-center">
-    {timestamp ? <time datetime={timestamp.toISOString()}>{processArticleDate(timestamp)}</time> : null}
+    {timestamp ? <time datetime={timestamp.toString()}>{processArticleDate(timestamp)}</time> : null}
     <Anchor url={url} class="text-sm">View on Mastodon</Anchor>
   </footer>
 </article>
