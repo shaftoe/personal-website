@@ -92,14 +92,6 @@ const SUPPRESSED_MESSAGES: {
     reason: "Astro framework: astro-island inline styles",
   },
   {
-    // Blog article snippets use h3 inside article elements that appear after
-    // the page's h1. This is a structural design choice in the ArticleSnippet
-    // component — the heading hierarchy within each article card is correct.
-    pattern:
-      /The heading \u201ch3\u201d .+ follows the heading \u201ch1\u201d .+ skipping \d+ heading level/,
-    reason: "Blog snippet cards use h3 for article titles after page h1",
-  },
-  {
     // The validator warns about trailing slashes on void elements like <br/>.
     // This comes from Markdown rendering (marked) and is harmless.
     pattern:

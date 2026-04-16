@@ -36,11 +36,11 @@ const durationToISO = (d: string): string => {
 <article class="h-entry relative zag-text zag-transition flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
   <a class="u-url hidden" href={url} aria-hidden="true"></a>
   {description && <data class="p-summary hidden" value={description} aria-hidden="true"></data>}
-  <h3 class="text-xl p-name">
+  <h2 class="text-xl p-name">
     <Anchor url={url}>
       {title}
     </Anchor>
-  </h3>
+  </h2>
   {description && <p class="p-summary">{description}</p>}
   <footer class="zag-muted zag-transition flex flex-wrap gap-x-3 gap-y-1 items-center">
     {timestamp ? <time class="dt-published" datetime={timestamp.toString()}>{processArticleDate(timestamp)}</time> : null}
