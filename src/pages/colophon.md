@@ -16,7 +16,7 @@ Theme forked from [zaggonaut](https://github.com/RATIU5/zaggonaut). All styling 
 
 ## Fonts
 
-- **IBM Plex Mono** — the primary body font, loaded from [Bunny Fonts](https://fonts.bunny.net).
+- **IBM Plex Mono** — the primary body font, loaded from [Fontsource](https://fontsource.org) CDN.
 - **Press Start 2P** — the display/heading font (pixel art style), loaded from [Fontsource](https://fontsource.org) CDN.
 - **Literata Variable** — a variable serif font for reading, also from Fontsource.
 
