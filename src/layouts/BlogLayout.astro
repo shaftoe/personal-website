@@ -16,7 +16,7 @@ const articleDate = processArticleDate(timestamp)
 
 <Layout meta={{
   title: `${frontmatter.title} • ${siteConfig.globalMeta.name}`,
-  description: frontmatter.longDescription ?? frontmatter.description,
+  description: frontmatter.longDescription ?? frontmatter.description ?? "",
   url: Astro.url.href,
   keywords: frontmatter.tags,
   image: frontmatter.cardImage,

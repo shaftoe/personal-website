@@ -70,8 +70,21 @@ function main() {
       const tags = entry.tags?.length ? ` [${entry.tags.join(", ")}]` : ""
       const readTime = entry.readTime ? ` · ${entry.readTime} min` : ""
       console.log(`  ${entry.title}`)
-      console.log(`    slug: ${entry.slug}${tags}${readTime}`)
-      console.log(`    date: ${entry.timestamp.toString().slice(0, 10)}`)
+      console.log(
+        `    slug: ${
+          entry.slug ??
+          entry.title
+            .toLowerCase()
+            .replace(/\s+/g, "-")
+            .replace(/[^\w-]/g, "")
+        }${tags}${readTime}`,
+      )
+      const dateStr = entry.timestamp
+        ? entry.timestamp.toISOString().slice(0, 10)
+        : entry.date
+          ? entry.date.toISOString().slice(0, 10)
+          : "unknown"
+      console.log(`    date: ${dateStr}`)
       if (entry.description) {
         console.log(`    desc: ${entry.description}`)
       }

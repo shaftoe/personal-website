@@ -1,54 +1,28 @@
 import type { CollectionEntry } from "astro:content"
 import { z } from "astro/zod"
-import { Temporal } from "temporal-polyfill"
 
 /**
- * Converts a Date (as provided by Astro's content loader) to a Temporal.Instant.
- */
-function dateToInstant(d: Date): Temporal.Instant {
-  return Temporal.Instant.fromEpochMilliseconds(d.getTime())
-}
-
-/**
- * Blog collection schema + transform — shared between the Astro content
- * config and standalone CLI scripts.
+ * Blog collection schema — validates frontmatter fields from markdown posts.
  *
- * NOTE: Astro's content loader does NOT apply zod transforms at runtime.
- * The transform below is used by CLI scripts. In Astro pages/components,
- * use `toInstant()` from utils.ts to convert the Date to Temporal.Instant.
+ * Do NOT use zod transforms here. Transforms run during `astro sync` and the
+ * resulting data is serialised with `devalue` into `.astro/data-store.json`.
+ * If the transform produces objects that devalue cannot revive in the Vite
+ * runtime (e.g. Temporal.Instant), the dev server will silently fail to load
+ * the collection. Instead, keep the schema output as plain JSON-compatible
+ * values and convert to Temporal.Instant at render time via `toInstant()` in
+ * utils.ts.
  */
-export const blogSchema = z
-  .object({
-    title: z.string(),
-    slug: z.string().optional(),
-    description: z.string().optional(),
-    longDescription: z.string().optional(),
-    cardImage: z.url().optional(),
-    tags: z.array(z.string()).optional(),
-    readTime: z.number().optional(),
-    timestamp: z.date().optional(),
-    date: z.coerce.date().optional(),
-  })
-  .transform((data) => {
-    const source = data.timestamp ?? data.date
-    const instant = source ? dateToInstant(source) : Temporal.Now.instant()
-    const slug =
-      data.slug ??
-      data.title
-        .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/[^\w-]/g, "")
-    return {
-      title: data.title,
-      slug,
-      description: data.description ?? "",
-      longDescription: data.longDescription,
-      cardImage: data.cardImage,
-      tags: data.tags,
-      readTime: data.readTime,
-      timestamp: instant,
-    }
-  })
+export const blogSchema = z.object({
+  title: z.string(),
+  slug: z.string().optional(),
+  description: z.string().optional(),
+  longDescription: z.string().optional(),
+  cardImage: z.url().optional(),
+  tags: z.array(z.string()).optional(),
+  readTime: z.number().optional(),
+  timestamp: z.date().optional(),
+  date: z.coerce.date().optional(),
+})
 
 export type BlogEntry = z.infer<typeof blogSchema>
 
