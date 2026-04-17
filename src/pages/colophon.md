@@ -60,6 +60,7 @@ This site tries to follows [IndieWeb](https://indieweb.org) principles and be a 
 - **RSS feed** — A full blog feed at [/rss.xml](/rss.xml) ensures content is syndication-friendly and subscribable from any RSS reader.
 - **Blogroll** — The [/blogroll](/blogroll) page follows the tradition of linking to other personal websites and independent blogs.
 - **Postroll** — The [/postroll](/postroll) page curates link recommendations, a pattern aligned with the IndieWeb ethos of sharing discovery.
+- **TIL** — The [/til](/til) page collects short "Today I Learned" entries from [Mastodon](https://fosstodon.org/@alex) posts tagged `#til`, acting as a microblog-style knowledge log — a form of [personal wiki](https://indieweb.org/personal_wiki) native to the IndieWeb.
 - **Canonical URLs** — Every page includes a `<link rel="canonical">` tag for unambiguous permalink identity.
 - **Semantic HTML** — Proper use of `<article>`, `<nav>`, `<main>`, `<time>` (with `datetime` attributes), and other semantic elements ensures structural clarity for parsers and assistive technology.
 - **Open Graph & Twitter Cards** — Rich `og:*` and `twitter:*` meta tags provide accurate social previews when content is shared.
