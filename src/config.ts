@@ -66,9 +66,6 @@ export const siteConfig = {
       rel: "me",
     },
     Contact: "/contact",
-    Blogroll: "/blogroll",
-    Postroll: "/postroll",
-    TIL: "/til",
     Follow: "/follow",
   },
 
