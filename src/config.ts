@@ -68,6 +68,7 @@ export const siteConfig = {
     Contact: "/contact",
     Blogroll: "/blogroll",
     Postroll: "/postroll",
+    TIL: "/til",
     Follow: "/follow",
   },
 
@@ -164,6 +165,10 @@ export const siteConfig = {
       description: "Links worth sharing, collected from Mastodon.",
     },
     { label: "sitemap", description: "Sitemap index for search engines." },
+    {
+      label: "til",
+      description: "Today I Learned — short things I learn day to day.",
+    },
     {
       label: "slashes",
       description:

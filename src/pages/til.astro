@@ -1,0 +1,50 @@
+---
+import Section from "../components/base/Section.astro"
+import Layout from "../layouts/Layout.astro"
+import TootSnippet from "../components/social/TootSnippet.astro"
+import { siteConfig } from "../config"
+import { getTilToots } from "../lib/mastodon"
+
+const pageTitle = "TIL"
+const entries = await getTilToots()
+---
+
+<Layout meta={{
+  title: pageTitle,
+  description: "Today I Learned — short things I learn day to day, collected from my Mastodon posts tagged #til.",
+  url: Astro.url.href,
+  keywords: ["til", "today i learned", "mastodon", "microblog"],
+}}>
+
+  <Section class="my-4">
+    <div class="text-center max-w-2xl mx-auto mt-8">
+      <h1 class="text-3xl sm:text-4xl font-display font-semibold mb-4">
+        {pageTitle}
+      </h1>
+      <p class="text-xl sm:text-2xl font-mono font-medium text-center mb-4">
+        Today I Learned — short things I learn day to day, collected from my <a href={siteConfig.social.Mastodon.url} class="underline">Mastodon</a> posts tagged <code>#til</code>.
+      </p>
+    </div>
+  </Section>
+
+  <Section class="my-6">
+    <div class="max-w-2xl mx-auto">
+      {entries.length === 0 ? (
+        <p class="text-center opacity-70">No TIL entries found.</p>
+      ) : (
+        <ul class="space-y-12">
+          {entries.map((entry) => (
+            <li>
+              <TootSnippet
+                content={entry.content}
+                url={entry.url}
+                timestamp={entry.createdAt}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </Section>
+
+</Layout>

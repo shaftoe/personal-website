@@ -43,6 +43,10 @@ When a new version tag is created, a [deploy workflow](https://github.com/shafto
 
 The [/postroll](/postroll) page is dynamically generated at build time by querying the [Mastodon](https://fosstodon.org/@alex) API for posts tagged `#postroll`. Each toot's content is parsed to extract the first URL, which is then displayed as a link card. This keeps the page automatically synced with new postroll entries every time the site rebuilds.
 
+## TIL
+
+The [/til](/til) page is dynamically generated at build time by querying the [Mastodon](https://fosstodon.org/@alex) API for posts tagged `#til`. Each toot is displayed in full using the same snippet component as the homepage microblog section. This keeps the page automatically synced with new TIL entries every time the site rebuilds.
+
 ## Analytics
 
 Web analytics are powered by [Umami](https://umami.is), a simple, fast, privacy-focused, open-source alternative to Google Analytics. It gives total control over the data and does not violate the privacy of visitors. The tracking script is built from source and served self-hosted — see the [Privacy Policy](/policy) for details. It is loaded conditionally and skipped on the expenses page when the user is authenticated.
