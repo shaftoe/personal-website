@@ -184,3 +184,37 @@ export async function getPostrollEntries(): Promise<PostrollEntry[]> {
 
   return entries
 }
+
+/**
+ * Fetches all toots tagged with #til (Today I Learned) from the configured Mastodon account.
+ * Returns full toot content for display on the /til page.
+ * Paginates through all available results using the Mastodon Link header.
+ */
+export async function getTilToots(): Promise<Toot[]> {
+  const toots: Toot[] = []
+
+  await paginateAccountStatuses(
+    {
+      limit: "40",
+      exclude_reblogs: "true",
+      tagged: "til",
+    },
+    (statuses) => {
+      for (const s of statuses) {
+        toots.push({
+          id: s.id,
+          url: s.url,
+          content: sanitizeHtml(s.content),
+          createdAt: Temporal.Instant.from(s.created_at),
+          favouritesCount: s.favourites_count,
+          reblogsCount: s.reblogs_count,
+          repliesCount: s.replies_count,
+        })
+      }
+      return true // keep paginating
+    },
+    `returning ${toots.length} til toots fetched so far`,
+  )
+
+  return toots
+}
