@@ -1,6 +1,7 @@
 <script lang="ts">
   import { listExpenses, formatLocaleDate } from "./lib.ts"
   import type { Expense } from "./lib.ts"
+  import FilterForm from "./FilterForm.svelte"
 
   let { password }: { password: string } = $props()
 
@@ -70,43 +71,14 @@
   </div>
 {/if}
 
-<div class="space-y-4 mb-8">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div class="grid grid-cols-[30%_70%] gap-2 items-center">
-      <label for="list-from" class="font-medium text-sm sm:text-base">From</label>
-      <input
-        type="date"
-        id="list-from"
-        bind:value={from}
-        onchange={doFetch}
-        class="w-full rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-4 py-2 font-mono text-sm sm:text-base zag-text zag-transition focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
-      />
-    </div>
-    <div class="grid grid-cols-[30%_70%] gap-2 items-center">
-      <label for="list-to" class="font-medium text-sm sm:text-base">To</label>
-      <input
-        type="date"
-        id="list-to"
-        bind:value={to}
-        onchange={doFetch}
-        class="w-full rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-4 py-2 font-mono text-sm sm:text-base zag-text zag-transition focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
-      />
-    </div>
-  </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div class="grid grid-cols-[30%_70%] gap-2 items-center">
-      <label for="list-filter" class="font-medium text-sm sm:text-base">Filter</label>
-      <input
-        type="text"
-        id="list-filter"
-        bind:value={filter}
-        onkeydown={handleFilterKeydown}
-        placeholder="description filter..."
-        class="w-full rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 bg-transparent px-4 py-2 font-mono text-sm sm:text-base zag-text zag-transition placeholder:zag-muted focus:outline-2 focus:outline-offset-2 focus:outline-zag-accent-light dark:focus:outline-zag-accent-dark"
-      />
-    </div>
-  </div>
-</div>
+<FilterForm
+  prefix="list"
+  bind:from
+  bind:to
+  bind:filter
+  onchange={doFetch}
+  onfilterkeydown={handleFilterKeydown}
+/>
 
 {#if loading}
   <div class="flex justify-center py-8">
