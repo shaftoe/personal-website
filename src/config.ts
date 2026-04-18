@@ -1,4 +1,5 @@
 const blogroll = {
+  "Redowan's Reflections": "https://rednafi.com/",
   "Geoff Blair": "https://www.geoffblair.com/",
   "Internals for Interns": "https://internals-for-interns.com/",
   Lobsters: "https://lobste.rs/",
