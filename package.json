@@ -31,14 +31,14 @@
     "@lucide/astro": "^1.8.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.1.7",
-    "marked": "^18.0.0",
+    "astro": "^6.1.8",
+    "marked": "^18.0.2",
     "svelte": "^5.55.4",
     "tailwindcss": "^4.2.2",
     "temporal-polyfill": "^0.3.2"
   },
   "devDependencies": {
-    "@alexanderfortin/semantic-release-keep-a-changelog": "^0.1.4",
+    "@alexanderfortin/semantic-release-keep-a-changelog": "^0.2.0",
     "@astrojs/check": "^0.9.8",
     "@astrojs/ts-plugin": "^1.10.7",
     "@biomejs/biome": "^2.4.12",
@@ -49,7 +49,7 @@
     "gray-matter": "^4.0.3",
     "semantic-release": "^25.0.3",
     "sharp": "^0.34.5",
-    "typescript": "^6.0.2",
-    "vnu-jar": "^26.4.11"
+    "typescript": "^6.0.3",
+    "vnu-jar": "^26.4.16"
   }
 }
