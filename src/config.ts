@@ -77,7 +77,8 @@ export const siteConfig = {
 
   personalProjects: {
     Runvoy: "https://runvoy.site",
-    "Save to Ink": "https://saveto.ink/",
+    "Save to Ink": "https://saveto.ink",
+    "Awesome Pi": "https://awesome-pi.site",
   },
 
   code: {
