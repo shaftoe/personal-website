@@ -30,8 +30,8 @@
       return
     }
     const parsedAmount = Number(amount)
-    if (!amount || isNaN(parsedAmount) || parsedAmount <= 0) {
-      error = "Please enter a valid amount."
+    if (!amount || isNaN(parsedAmount) || parsedAmount === 0 || Object.is(parsedAmount, -0)) {
+      error = "Please enter a valid amount (non-zero)."
       return
     }
 
