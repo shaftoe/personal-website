@@ -54,10 +54,10 @@ export const siteConfig = {
     localStorageKey: "expenses-password" as const,
     locale: "it-IT" as const,
     currencies: {
-      DOP: "🇩🇴",
+      RON: "🇷🇴",
       USD: "🇺🇸",
       EUR: "🇪🇺",
-      RON: "🇷🇴",
+      DOP: "🇩🇴",
     } as const,
   },
 
