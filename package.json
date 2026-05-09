@@ -30,11 +30,11 @@
     "@astrojs/svelte": "8.1.0",
     "@lucide/astro": "1.14.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "4.2.4",
+    "@tailwindcss/vite": "4.3.0",
     "astro": "6.3.1",
     "marked": "18.0.3",
     "svelte": "5.55.5",
-    "tailwindcss": "4.2.4",
+    "tailwindcss": "4.3.0",
     "temporal-polyfill": "^0.3.2"
   },
   "devDependencies": {
