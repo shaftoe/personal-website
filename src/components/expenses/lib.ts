@@ -21,6 +21,7 @@ export interface DraftExpense {
 }
 
 export const CURRENCIES = siteConfig.expenses.currencies
+export const DEFAULT_CURRENCY = siteConfig.expenses.defaultCurrency as Currency
 export type Currency = keyof typeof CURRENCIES
 
 export interface ExpensesResponse {

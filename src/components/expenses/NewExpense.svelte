@@ -4,6 +4,7 @@
     createExpense,
     todayISO,
     CURRENCIES,
+    DEFAULT_CURRENCY,
   } from "./lib.ts"
   import type { Currency } from "./lib.ts"
 
@@ -13,7 +14,7 @@
 
   let what = $state("")
   let amount = $state("")
-  let currency: Currency = $state(currencyKeys[0])
+  let currency: Currency = $state(DEFAULT_CURRENCY)
   let when = $state(todayISO())
 
   let submitting = $state(false)
