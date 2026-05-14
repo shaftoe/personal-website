@@ -27,11 +27,11 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/svelte": "8.1.0",
+    "@astrojs/svelte": "8.1.1",
     "@lucide/astro": "1.14.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "4.3.0",
-    "astro": "6.3.1",
+    "astro": "6.3.2",
     "marked": "18.0.3",
     "svelte": "5.55.5",
     "tailwindcss": "4.3.0",
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@alexanderfortin/semantic-release-keep-a-changelog": "0.2.1",
     "@astrojs/check": "0.9.9",
-    "@astrojs/ts-plugin": "^1.10.7",
+    "@astrojs/ts-plugin": "1.10.8",
     "@biomejs/biome": "2.4.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -50,6 +50,6 @@
     "semantic-release": "^25.0.3",
     "sharp": "^0.34.5",
     "typescript": "^6.0.3",
-    "vnu-jar": "26.5.12"
+    "vnu-jar": "26.5.13"
   }
 }
