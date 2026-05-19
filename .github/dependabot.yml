@@ -2,18 +2,6 @@
 version: 2
 
 updates:
-  - package-ecosystem: "bun"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "America/New_York"
-    open-pull-requests-limit: 10
-    commit-message:
-      prefix: "deps"
-
-  # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -23,7 +11,7 @@ updates:
       timezone: "America/New_York"
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "actions"
+      prefix: "ci(actions)"
 
   # Track umami tracker updates (rebuild with `bun run build:tracker`)
   - package-ecosystem: "gitsubmodule"
@@ -35,4 +23,4 @@ updates:
       timezone: "America/New_York"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: "umami"
+      prefix: "deps(umami)"
