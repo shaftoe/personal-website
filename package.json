@@ -31,7 +31,7 @@
     "@lucide/astro": "1.16.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "4.3.0",
-    "astro": "6.3.6",
+    "astro": "6.3.5",
     "marked": "18.0.4",
     "svelte": "5.55.9",
     "tailwindcss": "4.3.0",
