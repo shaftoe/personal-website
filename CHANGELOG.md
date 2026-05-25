@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.19.4] - 2026-05-25
+
+### Changed
+
+- **deps**: bump svelte from 5.55.5 to 5.55.7 (#319)
+- **deps**: pin back astro to circumvent regression
+- **deps**: update dependencies (#317)
+- **deps**: update dependencies (#318)
+- **deps**: update dependencies (#320)
+- **deps**: update dependencies (#321)
+- **deps**: update dependencies (#326)
+- **deps**: update dependencies (#327)
+- **deps**: update dependencies (#328)
+
+### Fixed
+
+- add workaround to Astro runtime bug
+
 ## [1.19.3] - 2026-05-11
 
 ### Changed
@@ -289,7 +307,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.19.3...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.19.4...HEAD
+[1.19.4]: https://github.com/shaftoe/personal-website/compare/v1.19.3...v1.19.4
 [1.19.3]: https://github.com/shaftoe/personal-website/compare/v1.19.2...v1.19.3
 [1.19.2]: https://github.com/shaftoe/personal-website/compare/v1.19.1...v1.19.2
 [1.19.1]: https://github.com/shaftoe/personal-website/compare/v1.19.0...v1.19.1
