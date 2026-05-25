@@ -4,6 +4,7 @@ import svelte from "@astrojs/svelte";
 import { defineConfig } from "astro/config";
 import { siteConfig } from "./src/config";
 import ogImages from "./src/integrations/og-images";
+import stripEmptySrcset from "./src/integrations/strip-empty-srcset";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,5 +27,6 @@ export default defineConfig({
       filter: (page) => !page.includes("/expenses"),
     }),
     ogImages(),
+    stripEmptySrcset(),
   ],
 });

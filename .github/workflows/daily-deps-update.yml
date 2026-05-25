@@ -13,4 +13,4 @@ jobs:
   update-deps:
     uses: shaftoe/update-bun-dependencies-action/.github/workflows/update-bun-dependencies.yml@v1
     with:
-      post-update-run: "bun run test && bun run build"
+      post-update-run: "bun run build && bun run test"
