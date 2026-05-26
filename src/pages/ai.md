@@ -22,6 +22,7 @@ Currently I maintain various Open Source projects related to the Pi ecosystem:
 
 - [Pi coding agent action](https://github.com/shaftoe/pi-coding-agent-action), an open-source GitHub Action that turns any LLM model supported by Pi into a first-class collaborator on any GitHub repository. Pi agent reads issue descriptions, reviews pull requests, and pushes commits — all triggered by a simple comment on a GitHub issue or PR.
 - [Awesome Pi coding agent](https://awesome-pi.site), a curated, auto-discovered directory of resources for the Pi coding agent ecosystem. Updated daily.
+- [Sbx Template Pi](https://github.com/shaftoe/sbx-template-pi), a Docker Sandbox template image for Pi coding agent.
 - a bunch of other Pi extensions [I publish to NPM](https://www.npmjs.com/~alexanderfortin?activeTab=packages)
 
 Pi is fun! [try it out](https://pi.dev) and join the community at the official Discord channel, I'm **Al3xFor** there ✌️
