@@ -33,12 +33,12 @@
     "@tailwindcss/vite": "4.3.0",
     "astro": "6.4.2",
     "marked": "18.0.4",
-    "svelte": "5.55.10",
+    "svelte": "5.56.0",
     "tailwindcss": "4.3.0",
     "temporal-polyfill": "^0.3.2"
   },
   "devDependencies": {
-    "@alexanderfortin/semantic-release-keep-a-changelog": "^0.2.2",
+    "@alexanderfortin/semantic-release-keep-a-changelog": "0.2.3",
     "@astrojs/check": "0.9.9",
     "@astrojs/ts-plugin": "1.10.9",
     "@biomejs/biome": "2.4.16",
@@ -50,6 +50,6 @@
     "semantic-release": "^25.0.3",
     "sharp": "^0.34.5",
     "typescript": "^6.0.3",
-    "vnu-jar": "^26.5.22"
+    "vnu-jar": "26.5.29"
   }
 }
