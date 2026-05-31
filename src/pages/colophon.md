@@ -51,6 +51,12 @@ Generated HTML is validated against the [W3C Markup Validator](https://validator
 
 Open Graph and Twitter Card images are generated at build time as PNGs using [Sharp](https://sharp.pixelplumbing.com/) (which leverages librsvg for SVG rendering). Each image is a 1200×630 terminal-style banner using the **Press Start 2P** pixel font, with a dark background, traffic-light window chrome, and green accent colors matching the site's theme. Three variants are generated: a default banner for the homepage and general pages, a blog-specific banner, and a 404 page banner. The images are referenced via `og:image` and `twitter:image` meta tags in the `<head>` of every page.
 
+## Performance & SEO
+
+- **Preconnect to font CDN** — A `<link rel="preconnect">` hint for `cdn.jsdelivr.net` eliminates DNS and TCP latency on first font load.
+- **Theme color & color-scheme** — `<meta name="theme-color">` and `<meta name="color-scheme">` meta tags eliminate the white flash for dark-mode users and tint the browser chrome to match.
+- **Sitemap link in head** — A `<link rel="sitemap">` tag in every page's `<head>` helps crawlers discover the sitemap without parsing `robots.txt`.
+
 ## IndieWeb Compatibility
 
 This site tries to follows [IndieWeb](https://indieweb.org) principles and be a good citizen of the independent web:
