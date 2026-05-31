@@ -1,0 +1,3 @@
+Contact: https://a.l3x.in/contact
+Preferred-Languages: en
+Canonical: https://a.l3x.in/.well-known/security.txt
