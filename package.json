@@ -33,12 +33,12 @@
     "@tailwindcss/vite": "4.3.0",
     "astro": "6.4.2",
     "marked": "18.0.4",
-    "svelte": "5.56.0",
+    "svelte": "^5.56.1",
     "tailwindcss": "4.3.0",
     "temporal-polyfill": "^0.3.2"
   },
   "devDependencies": {
-    "@alexanderfortin/semantic-release-keep-a-changelog": "0.2.3",
+    "@alexanderfortin/semantic-release-keep-a-changelog": "^0.3.0",
     "@astrojs/check": "0.9.9",
     "@astrojs/ts-plugin": "1.10.9",
     "@biomejs/biome": "2.4.16",
