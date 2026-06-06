@@ -138,6 +138,7 @@ describe("Build output — HTML validation", () => {
     "ai/index.html",
     "slashes/index.html",
     "expenses/index.html",
+    "usage/index.html",
   ]
 
   for (const page of criticalPages) {
