@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.21.0] - 2026-06-06
+
+### Added
+
+- add /usage page showing live LLM account usage (#343)
+
+### Changed
+
+- **deps**: update dependencies (#337)
+- **deps**: update dependencies (#338)
+- **deps**: update dependencies (#339)
+- **deps**: update dependencies (#340)
+- **deps**: update dependencies (#341)
+
 ## [1.20.0] - 2026-05-31
 
 ### Added
@@ -320,7 +334,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.20.0...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.21.0...HEAD
+[1.21.0]: https://github.com/shaftoe/personal-website/compare/v1.20.0...v1.21.0
 [1.20.0]: https://github.com/shaftoe/personal-website/compare/v1.19.4...v1.20.0
 [1.19.4]: https://github.com/shaftoe/personal-website/compare/v1.19.3...v1.19.4
 [1.19.3]: https://github.com/shaftoe/personal-website/compare/v1.19.2...v1.19.3
