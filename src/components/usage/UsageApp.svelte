@@ -95,29 +95,31 @@
     {#each data.services as svc (svc.service)}
       {@const isPercent = typeof svc.percentage === "number"}
       {@const isBalance = typeof svc.balance === "number"}
+      {@const showPercent = isPercent || (!isPercent && !isBalance)}
+      {@const pctValue = isPercent ? svc.percentage : 0}
       {@const high = isHighUsage(svc)}
       <div class="rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 p-4 sm:p-5">
         <div class="mb-3 flex items-baseline justify-between gap-4">
           <h2 class="text-lg sm:text-xl font-semibold">{svc.service}</h2>
-          {#if isPercent}
+          {#if showPercent}
             <span class="font-mono text-base sm:text-lg {high ? "text-zag-error-light dark:text-zag-error-dark" : ""}">
-              {svc.percentage}%
+              {pctValue}%
             </span>
           {/if}
         </div>
 
-        {#if isPercent}
+        {#if showPercent}
           <div
             class="h-3 rounded-full bg-zag-dark/10 dark:bg-zag-light/10 overflow-hidden"
             role="progressbar"
-            aria-valuenow={svc.percentage}
+            aria-valuenow={pctValue}
             aria-valuemin="0"
             aria-valuemax="100"
             aria-label={`${svc.service} usage`}
           >
             <div
               class="h-full rounded-full zag-transition {high ? "bg-zag-error-light dark:bg-zag-error-dark" : "bg-zag-accent-light dark:bg-zag-accent-dark"}"
-              style={`width: ${percentWidth(svc)}%`}
+              style={`width: ${percentWidth({ ...svc, percentage: pctValue })}%`}
             ></div>
           </div>
           {#if svc.reset_at}

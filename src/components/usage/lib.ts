@@ -7,6 +7,8 @@ import { siteConfig } from "../../config"
 /** A single LLM service usage entry. */
 export interface UsageService {
   service: string
+  /** Billing model: `"sub"` for subscription, `"top_up"` for prepaid credit. */
+  kind: "sub" | "top_up"
   /** Quota consumed, as a percentage (0–100), for rate-limited services. */
   percentage?: number
   /** Remaining credit balance, for prepaid/pay-as-you-go services. */
