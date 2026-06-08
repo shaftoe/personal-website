@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.21.1] - 2026-06-08
+
+### Changed
+
+- **deps**: update dependencies (#344)
+- **deps**: update dependencies (#345)
+
+### Fixed
+
+- **usage**: add support for kind
+
 ## [1.21.0] - 2026-06-06
 
 ### Added
@@ -334,7 +345,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.21.0...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.21.1...HEAD
+[1.21.1]: https://github.com/shaftoe/personal-website/compare/v1.21.0...v1.21.1
 [1.21.0]: https://github.com/shaftoe/personal-website/compare/v1.20.0...v1.21.0
 [1.20.0]: https://github.com/shaftoe/personal-website/compare/v1.19.4...v1.20.0
 [1.19.4]: https://github.com/shaftoe/personal-website/compare/v1.19.3...v1.19.4
