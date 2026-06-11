@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.21.2] - 2026-06-11
+
+### Changed
+
+- **deps**: update dependencies (#346)
+- **deps**: update dependencies (#347)
+- **deps**: update dependencies (#348)
+
+### Fixed
+
+- resolve sharp types via tsconfig paths (fixes CI ts(7016) error) (#350)
+
 ## [1.21.1] - 2026-06-08
 
 ### Changed
@@ -345,7 +357,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.21.1...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.21.2...HEAD
+[1.21.2]: https://github.com/shaftoe/personal-website/compare/v1.21.1...v1.21.2
 [1.21.1]: https://github.com/shaftoe/personal-website/compare/v1.21.0...v1.21.1
 [1.21.0]: https://github.com/shaftoe/personal-website/compare/v1.20.0...v1.21.0
 [1.20.0]: https://github.com/shaftoe/personal-website/compare/v1.19.4...v1.20.0
