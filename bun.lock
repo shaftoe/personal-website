@@ -30,7 +30,7 @@
         "semantic-release": "^25.0.5",
         "sharp": "^0.35.2",
         "typescript": "^6.0.3",
-        "vnu-jar": "^26.6.14",
+        "vnu-jar": "^26.6.20",
       },
     },
   },
@@ -1359,7 +1359,7 @@
 
     "vitefu": ["vitefu@1.1.3", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0" }, "optionalPeers": ["vite"] }, "sha512-ub4okH7Z5KLjb6hDyjqrGXqWtWvoYdU3IGm/NorpgHncKoLTCfRIbvlhBm7r0YstIaQRYlp4yEbFqDcKSzXSSg=="],
 
-    "vnu-jar": ["vnu-jar@26.6.14", "", { "bin": { "vnu": "vnu-jar.js" } }, "sha512-7Pe43Z2DFtER6Rv6+TGfqsxUlulTX3I0WNJkPTUVDzl4ryF2CONjOOb2yKga9Z996fAY5TXJ1uRDof21E/49Yg=="],
+    "vnu-jar": ["vnu-jar@26.6.20", "", { "bin": { "vnu": "vnu-jar.js" } }, "sha512-8aYFuZQjhK5gDHblgIKKVUWAmLpT68fQcJ+pvC/3pS+beCh2l4CQzfIfns2B8QdQoM5zWly6JFM2Qw+dFfTZ+g=="],
 
     "volar-service-css": ["volar-service-css@0.0.70", "", { "dependencies": { "vscode-css-languageservice": "^6.3.0", "vscode-languageserver-textdocument": "^1.0.11", "vscode-uri": "^3.0.8" }, "peerDependencies": { "@volar/language-service": "~2.4.0" }, "optionalPeers": ["@volar/language-service"] }, "sha512-K1qyOvBpE3rzdAv3e4/6Rv5yizrYPy5R/ne3IWCAzLBuMO4qBMV3kSqWzj6KUVe6S0AnN6wxF7cRkiaKfYMYJw=="],
 
