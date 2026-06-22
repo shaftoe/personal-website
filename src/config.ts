@@ -88,7 +88,14 @@ export const siteConfig = {
       url: "https://github.com/shaftoe",
       rel: "me",
     },
-    NPM: "https://www.npmjs.com/settings/alexanderfortin/packages",
+    NPM: {
+      // Public user profile — the NPM analog of a GitHub profile.
+      // Used by the homepage "Code" section and the JSON-LD Person `sameAs`.
+      url: "https://www.npmjs.com/~alexanderfortin",
+      // Public packages list — used by the /ai page.
+      packages: "https://www.npmjs.com/~alexanderfortin?activeTab=packages",
+      rel: "me",
+    },
   },
 
   blogMeta: {

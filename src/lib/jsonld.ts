@@ -18,7 +18,7 @@ const baseUrl = siteConfig.globalMeta.baseUrl
 const sameAs = [
   siteConfig.social.Mastodon.url,
   siteConfig.code.GitHub.url,
-  siteConfig.code.NPM,
+  siteConfig.code.NPM.url,
 ].filter(Boolean)
 
 /**
