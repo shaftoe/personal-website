@@ -57,6 +57,15 @@ Open Graph and Twitter Card images are generated at build time as PNGs using [Sh
 - **Theme color & color-scheme** — `<meta name="theme-color">` and `<meta name="color-scheme">` meta tags eliminate the white flash for dark-mode users and tint the browser chrome to match.
 - **Sitemap link in head** — A `<link rel="sitemap">` tag in every page's `<head>` helps crawlers discover the sitemap without parsing `robots.txt`.
 
+## Structured Data (JSON-LD)
+
+The site emits [JSON-LD](https://schema.org/) structured data to help search engines understand its content and enable rich results:
+
+- **`Person` + `WebSite`** on the homepage — a `@graph` block gives search engines a machine-readable identity (name, avatar, job title, social profiles via `sameAs`) and identifies the site root. The Person node is referenced by `@id` throughout, so authorship data is defined once and linked, not duplicated.
+- **`BlogPosting`** on every article page — includes headline, description, publish date, keywords, and an `author`/`publisher` back-reference to the homepage Person node. This makes posts eligible for Google rich results.
+
+The schemas are built by `src/lib/jsonld.ts` from `siteConfig` (the same single source of truth used everywhere else) and rendered via a small `JsonLd.astro` component using Astro's `set:html` directive — no third-party dependency required.
+
 ## IndieWeb Compatibility
 
 This site tries to follows [IndieWeb](https://indieweb.org) principles and be a good citizen of the independent web:

@@ -6,9 +6,11 @@ import Hero from "../components/home/Hero.astro"
 import Layout from "../layouts/Layout.astro"
 import LinkListSection from "../components/home/LinkListSection.astro"
 import { siteConfig } from "../config"
+import { homepageGraph } from "../lib/jsonld"
 import { sortArticlesByDate } from "../lib/utils"
 import { getLatestToots } from "../lib/mastodon"
 import TootSnippet from "../components/social/TootSnippet.astro"
+import JsonLd from "../components/layout/JsonLd.astro"
 
 // Get last maxArticles articles sorted by date (newest first)
 const allArticles = await getCollection("blog")
@@ -25,6 +27,7 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
   url: Astro.url.href,
   keywords: siteConfig.globalMeta.keywords,
 }}>
+  <JsonLd data={homepageGraph} slot="head" />
 
   <Section class="my-16">
     <Hero />

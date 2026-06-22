@@ -73,6 +73,7 @@ const { meta } = Astro.props
     )}
 
     <HeadMeta {...meta} />
+    <slot name="head" />
   </head>
   <body class="zag-bg zag-text zag-transition font-mono">
     <Header />
