@@ -2,9 +2,11 @@
 import Section from "../components/base/Section.astro"
 import TagList from "../components/blog/TagList.astro"
 import Prose from "../components/base/Prose.astro"
+import JsonLd from "../components/layout/JsonLd.astro"
 import type { ArticleFrontmatter } from "../lib/blog-collection"
 import { toInstant, processArticleDate } from "../lib/utils"
 import { siteConfig } from "../config"
+import { blogPostingSchema } from "../lib/jsonld"
 import Layout from "./Layout.astro"
 
 type Props = { frontmatter: ArticleFrontmatter }
@@ -22,6 +24,7 @@ const articleDate = processArticleDate(timestamp)
   image: frontmatter.cardImage,
   type: "article",
 }}>
+  <JsonLd data={blogPostingSchema(frontmatter, Astro.url.href)} slot="head" />
   <Section class="pt-8 h-entry">
     <a class="u-url hidden" href={Astro.url.href} aria-hidden="true"></a>
     <data class="p-uid hidden" value={Astro.url.href} aria-hidden="true"></data>

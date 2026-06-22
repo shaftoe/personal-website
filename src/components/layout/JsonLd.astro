@@ -1,0 +1,20 @@
+---
+/**
+ * Renders a JSON-LD `<script type="application/ld+json">` block.
+ *
+ * Usage:
+ *   <JsonLd data={homepageGraph} />
+ *   <JsonLd data={blogPostingSchema(frontmatter, url)} />
+ *
+ * The `<` character is Unicode-escaped to prevent `</script>` injection from
+ * user-supplied content (a standard JSON-LD safety measure).
+ */
+export type Props = {
+  data: Record<string, unknown> | Record<string, unknown>[]
+}
+
+const { data } = Astro.props
+const json = JSON.stringify(data).replace(/</g, "\\u003c")
+---
+
+<script is:inline type="application/ld+json" set:html={json} />
