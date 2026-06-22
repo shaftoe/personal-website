@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.22.0] - 2026-06-22
+
+### Added
+
+- add JSON-LD structured data (Person, WebSite, BlogPosting) (#364)
+
+### Changed
+
+- **ai**: mention /usage page on the /ai slash page (#357)
+- **deps**: update dependencies (#351)
+- **deps**: update dependencies (#352)
+- **deps**: update dependencies (#353)
+- **deps**: update dependencies (#358)
+- **deps**: update dependencies (#359)
+- **deps**: update dependencies (#360)
+- **deps**: update dependencies (#361)
+- **deps**: update dependencies (#362)
+
 ## [1.21.2] - 2026-06-11
 
 ### Changed
@@ -357,7 +375,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.21.2...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.22.0...HEAD
+[1.22.0]: https://github.com/shaftoe/personal-website/compare/v1.21.2...v1.22.0
 [1.21.2]: https://github.com/shaftoe/personal-website/compare/v1.21.1...v1.21.2
 [1.21.1]: https://github.com/shaftoe/personal-website/compare/v1.21.0...v1.21.1
 [1.21.0]: https://github.com/shaftoe/personal-website/compare/v1.20.0...v1.21.0
