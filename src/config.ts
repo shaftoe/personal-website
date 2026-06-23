@@ -77,9 +77,10 @@ export const siteConfig = {
   },
 
   personalProjects: {
-    Runvoy: "https://runvoy.site",
-    "Save to Ink": "https://saveto.ink",
     "Awesome Pi": "https://awesome-pi.site",
+    "Pi GitHub action": "https://github.com/shaftoe/pi-coding-agent-action",
+    "Save to Ink": "https://saveto.ink",
+    Runvoy: "https://runvoy.site",
   },
 
   code: {
