@@ -8,6 +8,7 @@ const blogroll = {
   "Simon Willison's Weblog": "https://simonwillison.net/",
   "Study Hacks Blog": "https://calnewport.com/blog/",
   "Vilson Vieira": "https://void.cc/",
+  "Yan Cui": "https://theburningmonk.com/posts/",
 } as const
 
 // Site-wide configuration - import this directly in components/layouts.
