@@ -86,6 +86,10 @@ export const siteConfig = {
 
   code: {
     Blog: "/blog",
+    "My Forge": {
+      url: "https://forge.l3x.in/alex",
+      rel: "me",
+    },
     GitHub: {
       url: "https://github.com/shaftoe",
       rel: "me",
