@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.23.0] - 2026-06-26
+
+### Added
+
+- add "My Forge" me link to the Code section (#371)
+
+### Changed
+
+- **deps**: update dependencies (#366)
+- **deps**: update dependencies (#367)
+- **deps**: update dependencies (#368)
+- **deps**: update dependencies (#369)
+
 ## [1.22.0] - 2026-06-22
 
 ### Added
@@ -375,7 +388,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.22.0...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.23.0...HEAD
+[1.23.0]: https://github.com/shaftoe/personal-website/compare/v1.22.0...v1.23.0
 [1.22.0]: https://github.com/shaftoe/personal-website/compare/v1.21.2...v1.22.0
 [1.21.2]: https://github.com/shaftoe/personal-website/compare/v1.21.1...v1.21.2
 [1.21.1]: https://github.com/shaftoe/personal-website/compare/v1.21.0...v1.21.1
