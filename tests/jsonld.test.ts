@@ -25,7 +25,7 @@ describe("personSchema", () => {
   })
 
   it("includes social profiles in sameAs", () => {
-    expect(personSchema.sameAs).toContain(siteConfig.social.Mastodon.url)
+    expect(personSchema.sameAs).toContain(siteConfig.social.Bluesky.url)
     expect(personSchema.sameAs).toContain(siteConfig.code.GitHub.url)
     expect(personSchema.sameAs).toContain(siteConfig.code.NPM.url)
   })
