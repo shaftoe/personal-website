@@ -16,7 +16,6 @@ const baseUrl = siteConfig.globalMeta.baseUrl
 
 /** Social/profile URLs for the `sameAs` property (identity proofing). */
 const sameAs = [
-  siteConfig.social.Mastodon.url,
   siteConfig.social.Bluesky.url,
   siteConfig.code["My Forge"].url,
   siteConfig.code.GitHub.url,

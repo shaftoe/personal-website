@@ -64,10 +64,6 @@ export const siteConfig = {
   },
 
   social: {
-    Mastodon: {
-      url: "https://fosstodon.org/@alex",
-      rel: "me",
-    },
     Bluesky: {
       url: "https://bsky.app/profile/social.l3x.in",
       rel: "me",
@@ -151,11 +147,6 @@ export const siteConfig = {
       "Blog RSS Feed": {
         description: "All published blog articles.",
         url: "/rss.xml",
-        type: "RSS" as const,
-      },
-      "Mastodon Feed": {
-        description: "My public posts on Mastodon (fosstodon.org/@alex).",
-        url: "https://fosstodon.org/@alex.rss",
         type: "RSS" as const,
       },
     },

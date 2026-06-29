@@ -162,9 +162,9 @@ export function renderRichText(text: string, facets: Facet[] = []): string {
 }
 
 /**
- * Extracts the first URL from a post, mirroring the old Mastodon behaviour of
- * taking the first HTTP(S) link in the content. Prefers link facets (ordered
- * by their position in the text) and falls back to an external card embed.
+ * Extracts the first URL from a post by taking the first HTTP(S) link in the
+ * content. Prefers link facets (ordered by their position in the text) and
+ * falls back to an external card embed.
  */
 export function extractFirstUrl(
   facets: Facet[] = [],

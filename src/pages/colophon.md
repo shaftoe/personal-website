@@ -71,7 +71,7 @@ The schemas are built by `src/lib/jsonld.ts` from `siteConfig` (the same single 
 This site tries to follows [IndieWeb](https://indieweb.org) principles and be a good citizen of the independent web:
 
 - **Microformats2** — Blog posts and article snippets are marked up with [microformats2](https://microformats.org/wiki/microformats2) classes (`h-entry`, `h-card`, `p-name`, `e-content`, `p-summary`, `dt-published`, `u-url`, `p-uid`, `p-category`, `p-author`). This makes the content machine-readable and consumable by IndieWeb tools, readers, and search engines.
-- **`rel="me"` links** — Profile links to [Mastodon](https://fosstodon.org/@alex), [Bluesky](https://bsky.app/profile/social.l3x.in), [my Forge](https://forge.l3x.in/alex), and [GitHub](https://github.com/shaftoe) include `rel="me"`, enabling [IndieAuth](https://indieauth.com/) identity verification and cross-site identity proof.
+- **`rel="me"` links** — Profile links to [Bluesky](https://bsky.app/profile/social.l3x.in), [my Forge](https://forge.l3x.in/alex), and [GitHub](https://github.com/shaftoe) include `rel="me"`, enabling [IndieAuth](https://indieauth.com/) identity verification and cross-site identity proof.
 - **RSS feed** — A full blog feed at [/rss.xml](/rss.xml) ensures content is syndication-friendly and subscribable from any RSS reader.
 - **Blogroll** — The [/blogroll](/blogroll) page follows the tradition of linking to other personal websites and independent blogs.
 - **Postroll** — The [/postroll](/postroll) page curates link recommendations, a pattern aligned with the IndieWeb ethos of sharing discovery.
