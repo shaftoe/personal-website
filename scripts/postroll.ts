@@ -1,12 +1,12 @@
 /**
  * CLI script — fetches and displays postroll entries using the same
- * Mastodon API logic used at build time.
+ * ATproto / Bluesky API logic used at build time.
  *
  * Usage:
  *   bun run postroll
  *   bun run postroll --json
  */
-import { getPostrollEntries } from "../src/lib/mastodon"
+import { getPostrollEntries } from "../src/lib/atproto"
 
 async function main() {
   const json = process.argv.includes("--json")
@@ -26,7 +26,7 @@ async function main() {
 
     for (const entry of entries) {
       console.log(`  ${entry.url}`)
-      console.log(`    source: ${entry.tootUrl}`)
+      console.log(`    source: ${entry.postUrl}`)
       console.log(`    date:   ${entry.createdAt.toString().slice(0, 10)}`)
       console.log()
     }

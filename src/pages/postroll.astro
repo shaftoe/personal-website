@@ -2,7 +2,7 @@
 import Section from "../components/base/Section.astro"
 import Layout from "../layouts/Layout.astro"
 import { siteConfig } from "../config"
-import { getPostrollEntries } from "../lib/mastodon"
+import { getPostrollEntries } from "../lib/atproto"
 
 const pageTitle = "Postroll"
 const entries = await getPostrollEntries()
@@ -10,9 +10,9 @@ const entries = await getPostrollEntries()
 
 <Layout meta={{
   title: pageTitle,
-  description: "Links worth sharing — collected from my Mastodon posts tagged #postroll.",
+  description: "Links worth sharing — collected from my Bluesky posts tagged #postroll.",
   url: Astro.url.href,
-  keywords: ["postroll", "links", "bookmarks", "mastodon"],
+  keywords: ["postroll", "links", "bookmarks", "bluesky", "atproto"],
 }}>
 
   <Section class="my-4">
@@ -21,7 +21,7 @@ const entries = await getPostrollEntries()
         {pageTitle}
       </h1>
       <p class="text-xl sm:text-2xl font-mono font-medium text-center mb-4">
-        Links worth sharing — collected from my <a href={siteConfig.social.Mastodon.url} class="underline">Mastodon</a> posts tagged <code>#postroll</code>.
+        Links worth sharing — collected from my <a href={siteConfig.social.Bluesky.url} class="underline">Bluesky</a> posts tagged <code>#postroll</code>.
       </p>
     </div>
   </Section>

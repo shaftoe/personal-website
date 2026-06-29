@@ -76,9 +76,12 @@ export const siteConfig = {
     Follow: "/follow",
   },
 
-  mastodon: {
-    instance: "https://fosstodon.org",
-    accountId: 36187,
+  // ATproto / Bluesky identity — the source for build-time microblogging
+  // content (latest posts, /postroll, /til). Hosted on a self-hosted PDS.
+  atproto: {
+    handle: "social.l3x.in" as const,
+    pds: "https://social.l3x.in" as const,
+    appview: "https://public.api.bsky.app" as const,
   },
 
   personalProjects: {
@@ -176,7 +179,7 @@ export const siteConfig = {
     { label: "follow", description: "RSS feeds to subscribe to my content." },
     {
       label: "postroll",
-      description: "Links worth sharing, collected from Mastodon.",
+      description: "Links worth sharing, collected from Bluesky.",
     },
     { label: "sitemap", description: "Sitemap index for search engines." },
     {

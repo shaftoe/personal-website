@@ -18,6 +18,6 @@ const timestamp = toInstant(rawTimestamp)
   </div>
   <footer class="zag-muted zag-transition flex flex-wrap gap-x-3 gap-y-1 items-center">
     {timestamp ? <time datetime={timestamp.toString()}>{processArticleDate(timestamp)}</time> : null}
-    <Anchor url={url} class="text-sm">View on Mastodon</Anchor>
+    <Anchor url={url} class="text-sm">View on Bluesky</Anchor>
   </footer>
 </article>

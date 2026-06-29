@@ -1,19 +1,19 @@
 ---
 import Section from "../components/base/Section.astro"
 import Layout from "../layouts/Layout.astro"
-import TootSnippet from "../components/social/TootSnippet.astro"
+import PostSnippet from "../components/social/PostSnippet.astro"
 import { siteConfig } from "../config"
-import { getTilToots } from "../lib/mastodon"
+import { getTilPosts } from "../lib/atproto"
 
 const pageTitle = "TIL"
-const entries = await getTilToots()
+const entries = await getTilPosts()
 ---
 
 <Layout meta={{
   title: pageTitle,
-  description: "Today I Learned — short things I learn day to day, collected from my Mastodon posts tagged #til.",
+  description: "Today I Learned — short things I learn day to day, collected from my Bluesky posts tagged #til.",
   url: Astro.url.href,
-  keywords: ["til", "today i learned", "mastodon", "microblog"],
+  keywords: ["til", "today i learned", "bluesky", "atproto", "microblog"],
 }}>
 
   <Section class="my-4">
@@ -22,7 +22,7 @@ const entries = await getTilToots()
         {pageTitle}
       </h1>
       <p class="text-xl sm:text-2xl font-mono font-medium text-center mb-4">
-        Today I Learned — short things I learn day to day, collected from my <a href={siteConfig.social.Mastodon.url} class="underline">Mastodon</a> posts tagged <code>#til</code>.
+        Today I Learned — short things I learn day to day, collected from my <a href={siteConfig.social.Bluesky.url} class="underline">Bluesky</a> posts tagged <code>#til</code>.
       </p>
     </div>
   </Section>
@@ -35,7 +35,7 @@ const entries = await getTilToots()
         <ul class="space-y-12">
           {entries.map((entry) => (
             <li>
-              <TootSnippet
+              <PostSnippet
                 content={entry.content}
                 url={entry.url}
                 timestamp={entry.createdAt}

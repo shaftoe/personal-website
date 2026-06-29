@@ -37,7 +37,7 @@ Blog posts live as Markdown files with YAML frontmatter, managed through Astro's
 
 Versioning and deploys are fully automated. Every push to master triggers a [release workflow](https://github.com/shaftoe/personal-website/actions/workflows/release.yml) powered by [semantic-release](https://semantic-release.gitbook.io), which analyzes [conventional commit](https://www.conventionalcommits.org/) messages, bumps `package.json` version, updates `CHANGELOG.md`, and publishes a GitHub Release.
 
-When a new version tag is created, a [deploy workflow](https://github.com/shaftoe/personal-website/actions/workflows/deploy.yml) triggers a [Netlify](https://www.netlify.com) build that runs `bun run build` and publishes the resulting `dist/` directory to their CDN. The same workflow also runs on a schedule every four hours to keep the homepage's Mastodon posts and blog content up to date without manual intervention.
+When a new version tag is created, a [deploy workflow](https://github.com/shaftoe/personal-website/actions/workflows/deploy.yml) triggers a [Netlify](https://www.netlify.com) build that runs `bun run build` and publishes the resulting `dist/` directory to their CDN. The same workflow also runs on a schedule every four hours to keep the homepage's Bluesky posts and blog content up to date without manual intervention.
 
 ## Analytics
 
@@ -75,7 +75,7 @@ This site tries to follows [IndieWeb](https://indieweb.org) principles and be a 
 - **RSS feed** — A full blog feed at [/rss.xml](/rss.xml) ensures content is syndication-friendly and subscribable from any RSS reader.
 - **Blogroll** — The [/blogroll](/blogroll) page follows the tradition of linking to other personal websites and independent blogs.
 - **Postroll** — The [/postroll](/postroll) page curates link recommendations, a pattern aligned with the IndieWeb ethos of sharing discovery.
-- **TIL** — The [/til](/til) page collects short "Today I Learned" entries from [Mastodon](https://fosstodon.org/@alex) posts tagged `#til`, acting as a microblog-style knowledge log — a form of [personal wiki](https://indieweb.org/personal_wiki) native to the IndieWeb.
+- **TIL** — The [/til](/til) page collects short "Today I Learned" entries from [Bluesky](https://bsky.app/profile/social.l3x.in) posts tagged `#til`, acting as a microblog-style knowledge log — a form of [personal wiki](https://indieweb.org/personal_wiki) native to the IndieWeb.
 - **Canonical URLs** — Every page includes a `<link rel="canonical">` tag for unambiguous permalink identity.
 - **Semantic HTML** — Proper use of `<article>`, `<nav>`, `<main>`, `<time>` (with `datetime` attributes), and other semantic elements ensures structural clarity for parsers and assistive technology.
 - **Open Graph & Twitter Cards** — Rich `og:*` and `twitter:*` meta tags provide accurate social previews when content is shared.
