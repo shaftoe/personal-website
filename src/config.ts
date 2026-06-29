@@ -68,6 +68,10 @@ export const siteConfig = {
       url: "https://fosstodon.org/@alex",
       rel: "me",
     },
+    Bluesky: {
+      url: "https://bsky.app/profile/social.l3x.in",
+      rel: "me",
+    },
     Contact: "/contact",
     Follow: "/follow",
   },
