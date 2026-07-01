@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.25.0] - 2026-07-01
+
+### Added
+
+- **contact**: add Bluesky link to contact page (#385)
+
+### Changed
+
+- **deps**: update dependencies (#382)
+- **deps**: update dependencies (#383)
+
 ## [1.24.0] - 2026-06-29
 
 ### Added
@@ -398,7 +409,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.24.0...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.25.0...HEAD
+[1.25.0]: https://github.com/shaftoe/personal-website/compare/v1.24.0...v1.25.0
 [1.24.0]: https://github.com/shaftoe/personal-website/compare/v1.23.0...v1.24.0
 [1.23.0]: https://github.com/shaftoe/personal-website/compare/v1.22.0...v1.23.0
 [1.22.0]: https://github.com/shaftoe/personal-website/compare/v1.21.2...v1.22.0
