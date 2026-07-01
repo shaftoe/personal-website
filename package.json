@@ -25,13 +25,13 @@
     "release": "semantic-release"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.18",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "3.7.3",
     "@astrojs/svelte": "^9.0.0",
     "@lucide/astro": "^1.22.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.2",
-    "astro": "^7.0.3",
+    "astro": "^7.0.4",
     "marked": "^18.0.5",
     "svelte": "^5.56.4",
     "tailwindcss": "^4.3.2",
