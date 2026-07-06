@@ -20,6 +20,7 @@
     "validate": "bun run lint && bun run format && bun run check",
     "build:tracker": "sed \"s|__COLLECT_API_HOST__|https://cloud.umami.is|g; s|__COLLECT_API_ENDPOINT__|/api/send|g\" umami/src/tracker/index.js > public/scripts/umami.js",
     "blog-posts": "bun run scripts/blog-posts.ts",
+    "bluesky": "bun run scripts/bluesky.ts",
     "changelog": "bun run scripts/changelog.ts",
     "postroll": "bun run scripts/postroll.ts",
     "release": "semantic-release"
