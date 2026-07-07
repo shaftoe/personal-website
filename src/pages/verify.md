@@ -1,12 +1,12 @@
 ---
 layout: ../layouts/ProseLayout.astro
-title: Key
-description: My public keys for verifying identities, encrypting messages, and proving authenticity.
-keywords: ["key", "public key", "gpg", "pgp", "rsa", "encryption", "identity"]
-subtitle: "My public keys."
+title: Verify
+description: How to verify my identity, with the public keys you can use to confirm something really came from me.
+keywords: ["verify", "identity", "public key", "gpg", "pgp", "rsa", "encryption"]
+subtitle: "Verify my identity."
 ---
 
-If you need to verify something really came from me, encrypt a message meant for my eyes only, or just want to confirm an identity, you can use the keys below.
+If you need to confirm something really came from me, encrypt a message meant for my eyes only, or otherwise prove you're talking to the right person, this page collects the keys and proofs you need.
 
 ## GPG / PGP
 

@@ -167,7 +167,10 @@ export const siteConfig = {
     },
     { label: "colophon", description: "How this website is built." },
     { label: "contact", description: "Get in touch with me." },
-    { label: "key", description: "My public GPG and RSA keys." },
+    {
+      label: "verify",
+      description: "How to verify my identity and my public keys.",
+    },
     { label: "follow", description: "RSS feeds to subscribe to my content." },
     {
       label: "postroll",
