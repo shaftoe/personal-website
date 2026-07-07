@@ -12,17 +12,9 @@ If you need to verify something really came from me, encrypt a message meant for
 
 My GnuPG public key is published at <https://gpg.l3x.in/>. Use it to verify signed messages or send me encrypted email.
 
-```text
-https://gpg.l3x.in/
-```
-
 ## RSA
 
 An RSA public key is also available at <https://rsa.l3x.in/> for situations where a plain RSA keypair is more convenient than a full OpenPGP key.
-
-```text
-https://rsa.l3x.in/
-```
 
 ## Notes
 
