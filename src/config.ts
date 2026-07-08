@@ -168,9 +168,9 @@ export const siteConfig = {
     { label: "colophon", description: "How this website is built." },
     { label: "contact", description: "Get in touch with me." },
     {
-      label: "gpg",
+      label: "keys",
       description:
-        "My public GPG key for verifying identity and encrypting messages.",
+        "My public GPG and SSH keys for verifying identity and encrypting communications.",
     },
     { label: "follow", description: "RSS feeds to subscribe to my content." },
     {
