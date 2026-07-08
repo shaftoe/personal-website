@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.26.0] - 2026-07-08
+
+### Added
+
+- add /gpg slash page (#391)
+
+### Changed
+
+- **deps**: update dependencies (#386)
+- **deps**: update dependencies (#387)
+- **deps-dev**: update dependencies (#388)
+- **deps-dev**: update dependencies (#389)
+
 ## [1.25.0] - 2026-07-01
 
 ### Added
@@ -409,7 +422,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.25.0...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.26.0...HEAD
+[1.26.0]: https://github.com/shaftoe/personal-website/compare/v1.25.0...v1.26.0
 [1.25.0]: https://github.com/shaftoe/personal-website/compare/v1.24.0...v1.25.0
 [1.24.0]: https://github.com/shaftoe/personal-website/compare/v1.23.0...v1.24.0
 [1.23.0]: https://github.com/shaftoe/personal-website/compare/v1.22.0...v1.23.0
