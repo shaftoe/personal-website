@@ -72,6 +72,12 @@ export const siteConfig = {
     Follow: "/follow",
   },
 
+  // Public keys — advertised in the document head and on /keys so visitors
+  // can verify signatures and encrypt messages.
+  crypto: {
+    pgpKey: "https://gpg.l3x.in/" as const,
+  },
+
   // ATproto / Bluesky identity — the source for build-time microblogging
   // content (latest posts, /postroll, /til). Hosted on a self-hosted PDS.
   atproto: {
