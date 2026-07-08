@@ -10,7 +10,7 @@ If you need to confirm something really came from me, encrypt a message meant fo
 
 ## GPG / PGP
 
-My GnuPG public key is published at <https://gpg.l3x.in/>. Use it to verify signed messages or send me encrypted email.
+My GnuPG public key is published at <a href="https://gpg.l3x.in/" rel="me">gpg.l3x.in</a>. Use it to verify signed messages or send me encrypted email.
 
 ## Notes
 
