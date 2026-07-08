@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - move /gpg slash page to /keys and add SSH key (#392)
 
+## [1.27.0] - 2026-07-08
+
+### Added
+
+- move /gpg slash page to /keys and add SSH key (#393)
+
 ## [1.26.0] - 2026-07-08
 
 ### Added
@@ -426,7 +432,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.26.0...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.27.0...HEAD
+[1.27.0]: https://github.com/shaftoe/personal-website/compare/v1.26.0...v1.27.0
 [1.26.0]: https://github.com/shaftoe/personal-website/compare/v1.25.0...v1.26.0
 [1.25.0]: https://github.com/shaftoe/personal-website/compare/v1.24.0...v1.25.0
 [1.24.0]: https://github.com/shaftoe/personal-website/compare/v1.23.0...v1.24.0
