@@ -2,9 +2,6 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "types": ["@types/bun"],
-    "paths": {
-      "sharp": ["./node_modules/sharp/lib/index.d.ts"]
-    },
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
