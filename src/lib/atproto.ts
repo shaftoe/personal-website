@@ -35,6 +35,27 @@ export interface PostrollEntry {
   createdAt: Temporal.Instant
 }
 
+// ---- PDS response shapes (only the fields we consume) ----
+
+/** Blob reference embedded in an ATproto record (e.g. a profile avatar). */
+interface BlobRef {
+  $type: "blob"
+  ref: { $link: string }
+  mimeType: string
+  size: number
+}
+
+interface DescribeRepoResponse {
+  handle: string
+  did: string
+}
+
+interface GetRecordResponse {
+  uri: string
+  cid?: string
+  value: { avatar?: BlobRef } & Record<string, unknown>
+}
+
 // ---- ATproto response shapes (only the fields we consume) ----
 
 interface FacetFeature {
@@ -218,6 +239,38 @@ async function fetchXrpc(
 }
 
 /**
+ * `fetch` wrapper for **PDS-native** XRPC calls that **throws** on any failure
+ * (network error, non-200, abort). Used by {@link getAvatarBlob} where a
+ * missing avatar must fail the build rather than degrade silently — the
+ * opposite philosophy of {@link fetchXrpc} above.
+ */
+const PDS_FETCH_TIMEOUT = 10_000
+
+async function pdsFetch(url: string, label: string): Promise<Response> {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), PDS_FETCH_TIMEOUT)
+  try {
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: { Accept: "application/json" },
+    })
+    if (!res.ok) {
+      throw new Error(
+        `PDS request failed (${label}): ${res.status} ${res.statusText}`,
+      )
+    }
+    return res
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`PDS fetch error (${label}): ${error.message}`)
+    }
+    throw error
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
+
+/**
  * Pages through the author's feed, invoking `onPage` for each batch.
  *
  * @param onPage   Called with each page of feed items; return false to stop
@@ -283,6 +336,63 @@ function postHasTag(post: PostView, tag: string): boolean {
 }
 
 // ---- Public API ----
+
+/**
+ * Fetches the raw avatar bytes from the self-hosted PDS.
+ *
+ * Unlike the feed helpers below this does **not** degrade gracefully — if the
+ * PDS is unreachable, returns a non-200, or the profile has no avatar, it
+ * throws so that the build fails loudly (see issue #397).
+ *
+ * Flow (all against `siteConfig.atproto.pds`, zero dependency on Bluesky's
+ * central infrastructure):
+ *  1. `com.atproto.repo.describeRepo` → resolve handle to DID
+ *  2. `com.atproto.repo.getRecord`    → get the avatar blob reference
+ *  3. `com.atproto.sync.getBlob`      → download raw image bytes
+ */
+export async function getAvatarBlob(): Promise<{
+  data: ArrayBuffer
+  mimeType: string
+}> {
+  const pds = siteConfig.atproto.pds
+  const handle = siteConfig.atproto.handle
+
+  // 1. Resolve handle → DID
+  const describeRes = await pdsFetch(
+    `${pds}/xrpc/com.atproto.repo.describeRepo?${new URLSearchParams({ repo: handle })}`,
+    "resolve handle → DID",
+  )
+  const describe = (await describeRes.json()) as DescribeRepoResponse
+  if (!describe.did) {
+    throw new Error(`PDS did not return a DID for handle "${handle}"`)
+  }
+
+  // 2. Get profile record → avatar blob ref
+  const recordRes = await pdsFetch(
+    `${pds}/xrpc/com.atproto.repo.getRecord?${new URLSearchParams({
+      repo: describe.did,
+      collection: "app.bsky.actor.profile",
+      rkey: "self",
+    })}`,
+    "fetch profile record",
+  )
+  const record = (await recordRes.json()) as GetRecordResponse
+  const avatar = record.value?.avatar
+  if (!avatar?.ref?.$link) {
+    throw new Error("Profile record has no avatar blob")
+  }
+
+  // 3. Download the blob bytes
+  const blobRes = await pdsFetch(
+    `${pds}/xrpc/com.atproto.sync.getBlob?${new URLSearchParams({
+      did: describe.did,
+      cid: avatar.ref.$link,
+    })}`,
+    "download avatar blob",
+  )
+  const data = await blobRes.arrayBuffer()
+  return { data, mimeType: avatar.mimeType }
+}
 
 /**
  * Fetches the latest N original posts (no replies, no reposts) from the

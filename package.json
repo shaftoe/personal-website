@@ -23,6 +23,7 @@
     "bluesky": "bun run scripts/bluesky.ts",
     "changelog": "bun run scripts/changelog.ts",
     "postroll": "bun run scripts/postroll.ts",
+    "profile-image": "bun run scripts/profile-image.ts",
     "release": "semantic-release"
   },
   "dependencies": {

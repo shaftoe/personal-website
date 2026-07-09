@@ -21,7 +21,7 @@ export const siteConfig = {
     hero: {
       subtitle:
         "I'm a Software Engineer passionate about automation and all the things as Code",
-      image: "/images/profile.png",
+      image: "/images/profile.webp",
     },
 
     longDescription:

@@ -15,4 +15,7 @@ node_modules/
 
 # generated OG images (created at build time by scripts/generate-og-images.ts)
 public/images/og/*.png
+# generated profile picture (created locally by `bun run profile-image`)
+public/images/profile.webp
+public/images/profile-pixel.webp
 .DS_Store
