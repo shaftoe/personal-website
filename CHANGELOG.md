@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - move /gpg slash page to /keys and add SSH key (#392)
 
+### Removed
+
+- hide StepFun from the /usage LLM providers dashboard (#399)
+
 ## [1.28.0] - 2026-07-08
 
 ### Added

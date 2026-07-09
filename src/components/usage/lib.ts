@@ -27,6 +27,13 @@ export interface UsageResponse {
 // API client
 // ---------------------------------------------------------------------------
 
+/**
+ * Provider names that should be hidden from the /usage dashboard even when
+ * the upstream API still reports them. Stored lowercased and matched
+ * case-insensitively so the exclusion lives in a single, well-typed place.
+ */
+const HIDDEN_PROVIDERS: ReadonlySet<string> = new Set(["stepfun"])
+
 /** Public endpoint — no token or authentication required. */
 export async function fetchUsage(): Promise<UsageResponse> {
   const url = `${siteConfig.api.baseUrl}/usage`
@@ -34,7 +41,11 @@ export async function fetchUsage(): Promise<UsageResponse> {
   if (!response.ok) {
     throw new Error(`Request failed with status ${response.status}`)
   }
-  return response.json() as Promise<UsageResponse>
+  const payload = (await response.json()) as UsageResponse
+  payload.services = payload.services.filter(
+    (svc) => !HIDDEN_PROVIDERS.has(svc.service.toLowerCase()),
+  )
+  return payload
 }
 
 // ---------------------------------------------------------------------------
