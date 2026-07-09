@@ -21,8 +21,8 @@ import sharp from "sharp"
 import { getAvatarBlob } from "../lib/atproto"
 
 const OUTPUT_SIZE = 400
-/** Downscale target for the pixelated variant — gives ~20px blocks. */
-const PIXEL_GRID = 20
+/** Downscale target for the pixelated variant — gives ~50px blocks. */
+const PIXEL_GRID = 8
 
 export default function profileImageIntegration() {
   return {
