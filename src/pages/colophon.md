@@ -47,6 +47,10 @@ Web analytics are powered by [Umami](https://umami.is), a simple, fast, privacy-
 
 Generated HTML is validated against the [W3C Markup Validator](https://validator.github.io/validator/) ([vnu-jar](https://www.npmjs.com/package/vnu-jar)) to ensure standards compliance. Every page produced by the build is checked automatically as part of the test suite. Known framework-level exceptions (Astro module script placement after `</html>`, `astro-island` inline styles, heading hierarchy in blog snippet cards) are suppressed with documented justifications.
 
+## Profile Picture
+
+The homepage avatar is not a static asset — it is fetched at build time from the author's self-hosted [PDS](https://atproto.com/specs/pds) ([`social.l3x.in`](https://social.l3x.in)) and converted to WebP with [Sharp](https://sharp.pixelplumbing.com/). Three PDS-native XRPC calls are made (no dependency on Bluesky's central infrastructure): handle → DID resolution, profile record fetch, and blob download. If the PDS is unreachable or the profile has no avatar, the build fails rather than serving a stale image. A pixelated variant used in the Hero reveal animation is generated from the same source via nearest-neighbour downscale/upscale so the pair always stays in sync.
+
 ## Social Images
 
 Open Graph and Twitter Card images are generated at build time as PNGs using [Sharp](https://sharp.pixelplumbing.com/) (which leverages librsvg for SVG rendering). Each image is a 1200×630 terminal-style banner using the **Press Start 2P** pixel font, with a dark background, traffic-light window chrome, and green accent colors matching the site's theme. Three variants are generated: a default banner for the homepage and general pages, a blog-specific banner, and a 404 page banner. The images are referenced via `og:image` and `twitter:image` meta tags in the `<head>` of every page.
