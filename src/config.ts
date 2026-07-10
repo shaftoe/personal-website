@@ -155,6 +155,12 @@ export const siteConfig = {
         url: "/rss.xml",
         type: "RSS" as const,
       },
+      "Microblog Atom Feed": {
+        description:
+          "Latest microblog posts from my Bluesky / ATproto account.",
+        url: "/microblog.xml",
+        type: "Atom" as const,
+      },
     },
   },
 
@@ -178,7 +184,10 @@ export const siteConfig = {
       description:
         "My public GPG and SSH keys for verifying identity and encrypting communications.",
     },
-    { label: "follow", description: "RSS feeds to subscribe to my content." },
+    {
+      label: "follow",
+      description: "RSS and Atom feeds to subscribe to my content.",
+    },
     {
       label: "postroll",
       description: "Links worth sharing, collected from Bluesky.",
