@@ -214,9 +214,9 @@ describe("Build output — content checks", () => {
     expect(html).toContain("/rss.xml")
   })
 
-  it("homepage has Atom feed link", () => {
+  it("homepage has microblog RSS feed link", () => {
     const html = readFileSync(join(DIST_DIR, "index.html"), "utf-8")
-    expect(html).toContain('type="application/atom+xml"')
+    expect(html).toContain("Microblog RSS Feed")
     expect(html).toContain("/microblog.xml")
   })
 
@@ -262,13 +262,13 @@ describe("Build output — content checks", () => {
     expect(html).toContain("RSS")
   })
 
-  it("follow page lists Atom microblog feed", () => {
+  it("follow page lists microblog RSS feed", () => {
     const html = readFileSync(
       join(DIST_DIR, "follow", "index.html"),
       "utf-8",
     )
     expect(html).toContain("/microblog.xml")
-    expect(html).toContain("Atom")
+    expect(html).toContain("RSS")
   })
 
   it("all pages have <main> landmark", () => {
@@ -325,13 +325,12 @@ describe("Build output — content checks", () => {
     expect(rss).toContain("<channel>")
   })
 
-  it("microblog.xml Atom feed is generated", () => {
+  it("microblog.xml RSS feed is generated", () => {
     expect(existsSync(join(DIST_DIR, "microblog.xml"))).toBe(true)
 
-    const atom = readFileSync(join(DIST_DIR, "microblog.xml"), "utf-8")
-    expect(atom).toContain('xmlns="http://www.w3.org/2005/Atom"')
-    expect(atom).toContain("<feed")
-    expect(atom).toContain("<updated>")
-    expect(atom).toContain("<author>")
+    const microblog = readFileSync(join(DIST_DIR, "microblog.xml"), "utf-8")
+    expect(microblog).toContain("<rss")
+    expect(microblog).toContain("<channel>")
+    expect(microblog).toContain("<item>")
   })
 })

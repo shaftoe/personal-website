@@ -1,40 +1,47 @@
+import rss from "@astrojs/rss"
 import type { APIRoute } from "astro"
 import { siteConfig } from "../config"
-import { buildEntryTitle, generateAtomFeed } from "../lib/atom"
 import { getLatestPosts } from "../lib/atproto"
 
 /**
- * Atom 1.0 feed of the latest microblog posts, sourced from the author's
+ * RSS feed of the latest microblog posts, sourced from the author's
  * self-hosted ATproto PDS — the same data that powers the homepage's "Latest
- * microblog posts" section, exposed here for RSS/Atom readers.
+ * microblog posts" section, exposed here for RSS readers.
  */
 
 /** How many recent posts to include in the feed. */
 const FEED_LIMIT = 20
 
+/** Maximum number of characters used for an auto-generated item title. */
+const TITLE_MAX_LENGTH = 80
+
+/**
+ * Builds a concise title from a post's plain text by collapsing whitespace and
+ * truncating to {@link TITLE_MAX_LENGTH} characters. Microblog posts rarely
+ * have an explicit title, so this derives one from the body text.
+ */
+function buildItemTitle(text: string): string {
+  const flat = text.replace(/\s+/g, " ").trim()
+  if (!flat) return "Untitled post"
+  if (flat.length <= TITLE_MAX_LENGTH) return flat
+  return `${flat.slice(0, TITLE_MAX_LENGTH).trimEnd()}…`
+}
+
 export const GET: APIRoute = async (context) => {
   const posts = await getLatestPosts(FEED_LIMIT)
-  // biome-ignore lint/style/noNonNullAssertion: site is always set in astro.config.mjs
-  const site = context.site!
 
-  const xml = generateAtomFeed({
+  return rss({
     title: `${siteConfig.globalMeta.name}'s Microblog`,
-    subtitle:
+    description:
       "Latest microblog posts from my Bluesky / ATproto account — short thoughts, links, and updates.",
-    site: site.origin,
-    selfUrl: new URL("/microblog.xml", site).href,
-    author: { name: siteConfig.globalMeta.name, uri: site.origin },
-    entries: posts.map((post) => ({
-      id: post.url,
-      title: buildEntryTitle(post.text),
-      link: post.url,
-      published: post.createdAt,
-      updated: post.createdAt,
+    // biome-ignore lint/style/noNonNullAssertion: site is always set in astro.config.mjs
+    site: context.site!,
+    items: posts.map((post) => ({
+      title: buildItemTitle(post.text),
+      pubDate: new Date(post.createdAt.epochMilliseconds),
+      description: post.text,
       content: post.content,
+      link: post.url,
     })),
-  })
-
-  return new Response(xml, {
-    headers: { "Content-Type": "application/atom+xml; charset=utf-8" },
   })
 }
