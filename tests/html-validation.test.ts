@@ -214,6 +214,12 @@ describe("Build output — content checks", () => {
     expect(html).toContain("/rss.xml")
   })
 
+  it("homepage has microblog RSS feed link", () => {
+    const html = readFileSync(join(DIST_DIR, "index.html"), "utf-8")
+    expect(html).toContain("Microblog RSS Feed")
+    expect(html).toContain("/microblog.xml")
+  })
+
   it("404 page has meaningful content", () => {
     const html = readFileSync(join(DIST_DIR, "404.html"), "utf-8")
     expect(html).toContain("404")
@@ -253,6 +259,15 @@ describe("Build output — content checks", () => {
       "utf-8",
     )
     expect(html).toContain("/rss.xml")
+    expect(html).toContain("RSS")
+  })
+
+  it("follow page lists microblog RSS feed", () => {
+    const html = readFileSync(
+      join(DIST_DIR, "follow", "index.html"),
+      "utf-8",
+    )
+    expect(html).toContain("/microblog.xml")
     expect(html).toContain("RSS")
   })
 
@@ -308,5 +323,14 @@ describe("Build output — content checks", () => {
     const rss = readFileSync(join(DIST_DIR, "rss.xml"), "utf-8")
     expect(rss).toContain("<rss")
     expect(rss).toContain("<channel>")
+  })
+
+  it("microblog.xml RSS feed is generated", () => {
+    expect(existsSync(join(DIST_DIR, "microblog.xml"))).toBe(true)
+
+    const microblog = readFileSync(join(DIST_DIR, "microblog.xml"), "utf-8")
+    expect(microblog).toContain("<rss")
+    expect(microblog).toContain("<channel>")
+    expect(microblog).toContain("<item>")
   })
 })

@@ -155,6 +155,12 @@ export const siteConfig = {
         url: "/rss.xml",
         type: "RSS" as const,
       },
+      "Microblog RSS Feed": {
+        description:
+          "Latest microblog posts from my Bluesky / ATproto account.",
+        url: "/microblog.xml",
+        type: "RSS" as const,
+      },
     },
   },
 
