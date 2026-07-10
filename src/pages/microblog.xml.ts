@@ -1,4 +1,4 @@
-import rss from "@astrojs/rss"
+import rss, { rssSchema } from "@astrojs/rss"
 import type { APIRoute } from "astro"
 import { siteConfig } from "../config"
 import { getLatestPosts } from "../lib/atproto"
@@ -36,12 +36,18 @@ export const GET: APIRoute = async (context) => {
       "Latest microblog posts from my Bluesky / ATproto account — short thoughts, links, and updates.",
     // biome-ignore lint/style/noNonNullAssertion: site is always set in astro.config.mjs
     site: context.site!,
-    items: posts.map((post) => ({
-      title: buildItemTitle(post.text),
-      pubDate: new Date(post.createdAt.epochMilliseconds),
-      description: post.text,
-      content: post.content,
-      link: post.url,
-    })),
+    // rssSchema.parse() lets us hand off the Temporal epoch milliseconds
+    // directly — the library's zod schema accepts number | string | Date and
+    // constructs the Date itself, so our code never touches the Date
+    // constructor (per the project convention of using Temporal exclusively).
+    items: posts.map((post) =>
+      rssSchema.parse({
+        title: buildItemTitle(post.text),
+        pubDate: post.createdAt.epochMilliseconds,
+        description: post.text,
+        content: post.content,
+        link: post.url,
+      }),
+    ),
   })
 }
