@@ -1,10 +1,14 @@
 /**
- * Lightweight ATproto / Bluesky client used at build time to collect
- * microblogging content (latest posts, postroll links, TIL entries) from the
- * author's account hosted on a self-hosted PDS.
+ * Lightweight ATproto client used at build time to collect microblogging
+ * content (latest posts, postroll links, TIL entries) from the author's
+ * self-hosted PDS.
  *
- * It talks directly to the Bluesky public AppView over plain `fetch` — no SDK
- * dependency — and degrades gracefully (returns empty results) on network
+ * Every public function talks directly to the PDS via `com.atproto.repo.*`
+ * XRPC methods (no auth required for reads) — zero dependency on Bluesky's
+ * central AppView or any other network service. The sole exception is
+ * {@link getAvatarBlob}, which also uses PDS-native endpoints.
+ *
+ * All data paths degrade gracefully (return empty results) on network
  * failures so that a build never breaks because the social API is unavailable.
  */
 import { Temporal } from "temporal-polyfill"
@@ -56,7 +60,7 @@ interface GetRecordResponse {
   value: { avatar?: BlobRef } & Record<string, unknown>
 }
 
-// ---- ATproto response shapes (only the fields we consume) ----
+// ---- PDS response shapes (only the fields we consume) ----
 
 interface FacetFeature {
   $type: string
@@ -79,33 +83,27 @@ interface PostEmbedExternal {
   description?: string
 }
 
-interface PostRecord {
+/** The `value` envelope of a record from `com.atproto.repo.listRecords`. */
+interface PostRecordValue {
   text: string
   createdAt: string
   facets?: Facet[]
+  reply?: { root: { uri: string }; parent: { uri: string } }
   embed?: {
     $type: string
     external?: PostEmbedExternal
   }
 }
 
-interface PostView {
+/** A single item from a `com.atproto.repo.listRecords` response. */
+interface ListRecordsItem {
   uri: string
-  author: { handle: string }
-  record: PostRecord
-  likeCount?: number
-  repostCount?: number
-  replyCount?: number
+  cid: string
+  value: PostRecordValue
 }
 
-interface FeedViewPost {
-  post: PostView
-  /** Present when the item is a repost */
-  reason?: { $type: string }
-}
-
-interface GetAuthorFeedResponse {
-  feed: FeedViewPost[]
+interface ListRecordsResponse {
+  records: ListRecordsItem[]
   cursor?: string
 }
 
@@ -189,7 +187,7 @@ export function renderRichText(text: string, facets: Facet[] = []): string {
  */
 export function extractFirstUrl(
   facets: Facet[] = [],
-  embed?: PostRecord["embed"],
+  embed?: { $type: string; external?: PostEmbedExternal },
 ): string | null {
   const linkFacets = facets
     .filter((f) => f.features.some((feat) => feat.$type === LINK_FACET))
@@ -206,49 +204,20 @@ export function extractFirstUrl(
 
 // ---- Generic API client ----
 
-const FETCH_TIMEOUT = 8_000
-const POSTS_PER_PAGE = 100
+const PDS_TIMEOUT = 10_000
+const RECORDS_PER_PAGE = 100
 /** Safety cap so a misbehaving cursor can never cause an infinite loop. */
 const MAX_PAGES = 10
 
-async function fetchXrpc(
-  method: string,
-  params: Record<string, string>,
-  label: string,
-): Promise<unknown | null> {
-  const url = `${siteConfig.atproto.appview}/xrpc/${method}?${new URLSearchParams(params)}`
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT)
-  try {
-    const res = await fetch(url, {
-      signal: controller.signal,
-      headers: { Accept: "application/json" },
-    })
-    if (!res.ok) {
-      throw new Error(`ATproto API error: ${res.status} ${res.statusText}`)
-    }
-    return await res.json()
-  } catch (error) {
-    console.warn(
-      `⚠️ ATproto API fetch failed: ${error instanceof Error ? error.message : String(error)} — ${label}`,
-    )
-    return null
-  } finally {
-    clearTimeout(timeoutId)
-  }
-}
-
 /**
- * `fetch` wrapper for **PDS-native** XRPC calls that **throws** on any failure
- * (network error, non-200, abort). Used by {@link getAvatarBlob} where a
- * missing avatar must fail the build rather than degrade silently — the
- * opposite philosophy of {@link fetchXrpc} above.
+ * `fetch` wrapper for PDS XRPC calls. **Throws** on network errors and
+ * non-2xx responses — the public data paths (feed, postroll, TIL) wrap this
+ * in `fetchPdsRecords` which degrades gracefully; {@link getAvatarBlob} lets
+ * the throw propagate so a missing avatar fails the build.
  */
-const PDS_FETCH_TIMEOUT = 10_000
-
 async function pdsFetch(url: string, label: string): Promise<Response> {
   const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), PDS_FETCH_TIMEOUT)
+  const timeoutId = setTimeout(() => controller.abort(), PDS_TIMEOUT)
   try {
     const res = await fetch(url, {
       signal: controller.signal,
@@ -271,68 +240,101 @@ async function pdsFetch(url: string, label: string): Promise<Response> {
 }
 
 /**
- * Pages through the author's feed, invoking `onPage` for each batch.
+ * Pages through `com.atproto.repo.listRecords` on the self-hosted PDS,
+ * invoking `onPage` for each batch of records. Returns gracefully on error.
  *
- * @param onPage   Called with each page of feed items; return false to stop
- * @param label    Human-readable context used in warning messages
+ * This is the PDS-native replacement for the Bluesky AppView's
+ * `app.bsky.feed.getAuthorFeed` — no auth required, no central dependency.
  */
-async function fetchAuthorFeed(
-  onPage: (items: FeedViewPost[]) => boolean,
+async function fetchPdsRecords(
+  onPage: (items: ListRecordsItem[]) => boolean,
   label: string,
 ): Promise<void> {
+  const pds = siteConfig.atproto.pds
+  const handle = siteConfig.atproto.handle
+
+  // Resolve handle to DID first (also validates the PDS is reachable)
+  let did: string
+  try {
+    const describeRes = await pdsFetch(
+      `${pds}/xrpc/com.atproto.repo.describeRepo?${new URLSearchParams({ repo: handle })}`,
+      `${label} — resolve handle`,
+    )
+    const describe = (await describeRes.json()) as DescribeRepoResponse
+    if (!describe.did) {
+      console.warn(
+        `⚠️ PDS did not return a DID for handle "${handle}" — ${label}`,
+      )
+      return
+    }
+    did = describe.did
+  } catch {
+    console.warn(`⚠️ Could not resolve handle "${handle}" on PDS — ${label}`)
+    return
+  }
+
   let cursor: string | undefined
   for (let page = 0; page < MAX_PAGES; page++) {
     const params: Record<string, string> = {
-      actor: siteConfig.atproto.handle,
-      filter: "posts_no_replies",
-      limit: String(POSTS_PER_PAGE),
+      repo: did,
+      collection: "app.bsky.feed.post",
+      limit: String(RECORDS_PER_PAGE),
     }
     if (cursor) params.cursor = cursor
 
-    const data = await fetchXrpc("app.bsky.feed.getAuthorFeed", params, label)
-    if (!data) break
+    try {
+      const res = await pdsFetch(
+        `${pds}/xrpc/com.atproto.repo.listRecords?${new URLSearchParams(params)}`,
+        `${label} — page ${page + 1}`,
+      )
+      const data = (await res.json()) as ListRecordsResponse
 
-    const { feed, cursor: nextCursor } = data as GetAuthorFeedResponse
-    const shouldContinue = onPage(feed ?? [])
-    if (!shouldContinue) break
-    if (!nextCursor || nextCursor === cursor) break
-    cursor = nextCursor
+      const shouldContinue = onPage(data.records ?? [])
+      if (!shouldContinue) break
+      if (!data.cursor || data.cursor === cursor) break
+      cursor = data.cursor
+    } catch (error) {
+      console.warn(
+        `⚠️ Failed to fetch records from PDS: ${error instanceof Error ? error.message : String(error)} — ${label}`,
+      )
+      return
+    }
   }
 }
 
 // ---- Helpers ----
 
 /** Build the bsky.app web URL for a post from its AT URI. */
-function postWebUrl(post: PostView): string {
-  const rkey = post.uri.split("/").pop()
+function postWebUrl(uri: string): string {
+  const rkey = uri.split("/").pop()
   return `https://bsky.app/profile/${siteConfig.atproto.handle}/post/${rkey}`
 }
 
-/** True for the author's own original posts (skips reposts). */
-function isOriginalPost(item: FeedViewPost): boolean {
-  return !item.reason
-}
-
-/** Convert a raw PostView into the public MicroPost shape. */
-function toMicroPost(post: PostView): MicroPost {
-  const record = post.record
+/** Convert a `ListRecordsItem` into the public MicroPost shape. */
+function itemToMicroPost(item: ListRecordsItem): MicroPost {
+  const value = item.value
   return {
-    uri: post.uri,
-    url: postWebUrl(post),
-    text: record.text,
-    content: renderRichText(record.text, record.facets),
-    createdAt: Temporal.Instant.from(record.createdAt),
-    likeCount: post.likeCount ?? 0,
-    repostCount: post.repostCount ?? 0,
-    replyCount: post.replyCount ?? 0,
+    uri: item.uri,
+    url: postWebUrl(item.uri),
+    text: value.text,
+    content: renderRichText(value.text, value.facets),
+    createdAt: Temporal.Instant.from(value.createdAt),
+    likeCount: 0,
+    repostCount: 0,
+    replyCount: 0,
   }
 }
 
-/** Whether a post carries the given hashtag (facet tag, without the #). */
-function postHasTag(post: PostView, tag: string): boolean {
-  return (post.record.facets ?? []).some((f) =>
+/** Whether a post record carries the given hashtag (facet tag, without #). */
+function recordHasTag(value: PostRecordValue, tag: string): boolean {
+  return (value.facets ?? []).some((f) =>
     f.features.some((feat) => feat.$type === TAG_FACET && feat.tag === tag),
   )
+}
+
+/** True when the record is a top-level post (not a reply). */
+function isTopLevelPost(value: PostRecordValue): boolean {
+  return !value.reply
 }
 
 // ---- Public API ----
@@ -396,23 +398,23 @@ export async function getAvatarBlob(): Promise<{
 
 /**
  * Fetches the latest N original posts (no replies, no reposts) from the
- * configured ATproto account.
+ * author's self-hosted PDS.
  */
 export async function getLatestPosts(limit = 3): Promise<MicroPost[]> {
   const posts: MicroPost[] = []
 
-  await fetchAuthorFeed((items) => {
+  await fetchPdsRecords((items) => {
     for (const item of items) {
-      if (!isOriginalPost(item)) continue
-      posts.push(toMicroPost(item.post))
+      if (!isTopLevelPost(item.value)) continue
+      posts.push(itemToMicroPost(item))
       if (posts.length >= limit) return false
     }
     return posts.length < limit
-  }, "homepage will render without microblog posts")
+  }, "getLatestPosts — homepage will render without microblog posts")
 
   if (posts.length === 0) {
     console.warn(
-      "⚠️ ATproto returned no posts — homepage will render without microblog posts",
+      "⚠️ PDS returned no posts — homepage will render without microblog posts",
     )
   }
 
@@ -426,23 +428,23 @@ export async function getLatestPosts(limit = 3): Promise<MicroPost[]> {
 export async function getPostrollEntries(): Promise<PostrollEntry[]> {
   const entries: PostrollEntry[] = []
 
-  await fetchAuthorFeed((items) => {
+  await fetchPdsRecords((items) => {
     for (const item of items) {
-      if (!isOriginalPost(item)) continue
-      const post = item.post
-      if (!postHasTag(post, "postroll")) continue
+      const value = item.value
+      if (!isTopLevelPost(value)) continue
+      if (!recordHasTag(value, "postroll")) continue
 
-      const url = extractFirstUrl(post.record.facets, post.record.embed)
+      const url = extractFirstUrl(value.facets, value.embed)
       if (url) {
         entries.push({
           url,
-          postUrl: postWebUrl(post),
-          createdAt: Temporal.Instant.from(post.record.createdAt),
+          postUrl: postWebUrl(item.uri),
+          createdAt: Temporal.Instant.from(value.createdAt),
         })
       }
     }
     return true // keep paginating
-  }, `returning ${entries.length} postroll entries fetched so far`)
+  }, `getPostrollEntries — returning ${entries.length} entries fetched so far`)
 
   return entries
 }
@@ -453,14 +455,15 @@ export async function getPostrollEntries(): Promise<PostrollEntry[]> {
 export async function getTilPosts(): Promise<MicroPost[]> {
   const posts: MicroPost[] = []
 
-  await fetchAuthorFeed((items) => {
+  await fetchPdsRecords((items) => {
     for (const item of items) {
-      if (!isOriginalPost(item)) continue
-      if (!postHasTag(item.post, "til")) continue
-      posts.push(toMicroPost(item.post))
+      const value = item.value
+      if (!isTopLevelPost(value)) continue
+      if (!recordHasTag(value, "til")) continue
+      posts.push(itemToMicroPost(item))
     }
     return true // keep paginating
-  }, `returning ${posts.length} til posts fetched so far`)
+  }, `getTilPosts — returning ${posts.length} posts fetched so far`)
 
   return posts
 }
