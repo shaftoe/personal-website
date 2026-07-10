@@ -80,10 +80,11 @@ export const siteConfig = {
 
   // ATproto / Bluesky identity — the source for build-time microblogging
   // content (latest posts, /postroll, /til). Hosted on a self-hosted PDS.
+  // All reads go directly to the PDS via public `com.atproto.repo.*` XRPC
+  // methods — no dependency on Bluesky's central AppView.
   atproto: {
     handle: "social.l3x.in" as const,
     pds: "https://social.l3x.in" as const,
-    appview: "https://public.api.bsky.app" as const,
   },
 
   personalProjects: {
