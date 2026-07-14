@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "America/New_York",
+  "schedule": ["after 9am on monday"],
+  "semanticCommits": "enabled",
+  "semanticCommitScope": "deps",
+  "packageRules": [
+    {
+      "description": "Scope GitHub Actions updates as ci(actions) (mirrors the previous Dependabot config)",
+      "matchManagers": ["github-actions"],
+      "semanticCommitType": "ci",
+      "semanticCommitScope": "actions"
+    },
+    {
+      "description": "Scope umami submodule updates as deps(umami). After merging, rebuild the tracker with `bun run build:tracker`",
+      "matchManagers": ["git-submodules"],
+      "semanticCommitType": "deps",
+      "semanticCommitScope": "umami"
+    }
+  ]
+}
