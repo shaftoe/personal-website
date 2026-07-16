@@ -1,4 +1,92 @@
 {
-  "publication": null,
-  "documents": {}
+  "publication": {
+    "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.publication/57hibyk5tvkag",
+    "cid": "bafyreieiqwm7l26dweqaqusza4pqjeyvgunynpyutayxantmpcjxzvvsyq"
+  },
+  "documents": {
+    "add-pagespeed-check-with-serverless": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzscfekdc",
+      "cid": "bafyreia2mqtpmwni356rv6pv26tabihagbh4kbyfzpo2at7jo4jhopn3xa"
+    },
+    "centralise-linux-email-delivery": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzsigq3vt",
+      "cid": "bafyreihlflqhx4oeuupyznpb63kiibvjpmphkhhstxlrmfcqekowpiwyzy"
+    },
+    "fix-router-with-raspberry-node-puppeteer": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzsog53rh",
+      "cid": "bafyreibbnuvzkeci3qr5tmpov5ce3zeyk6oifzdjx5f7sepwlemrebzabm"
+    },
+    "free-whois-monitoring-with-serverless-on-aws": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzsu3rkec",
+      "cid": "bafyreigcqarf37a7wzsvuc3xj5mcetxmhoee7mqt4qx74igx5lkrblj7qe"
+    },
+    "js-simple-mix-player": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzt2mr2ly",
+      "cid": "bafyreihc7gw3t7mrhaodowncufq4vtxcb6ywsbatxi3jtjelby3qx7mzlm"
+    },
+    "lambda-api-custom-domain-tutorial": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztak7kfe",
+      "cid": "bafyreihp2na55svmnhiagwgipboaxhsiqc6caecnrervbbnovbysja3wya"
+    },
+    "lambda-reports-with-destinations": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzthkt32e",
+      "cid": "bafyreibmyx4qidl2ozaias3iebefxl3mm2ne4aqhzgoxk6ngck2oex2g5e"
+    },
+    "lastversion": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztmynlc5",
+      "cid": "bafyreigtc5g3i75nejeoviqp4le4wyp3igkyz65stkhp74sm75vllcfwru"
+    },
+    "manage-aws-lambda-invocations-cdk": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztskf3wx",
+      "cid": "bafyreib22uypk6des4dmyom5zqmhafukvw34t2cl4ck2rltdhtnup5gv7i"
+    },
+    "migrating-from-terraform-to-cdk": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztydwkqe",
+      "cid": "bafyreicpad3f7tyrrgj25k2fe6pvltzf7spmyvdehdfama5sonkqprcgni"
+    },
+    "mongodb-backups-with-aws-cdk": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzu5nu26g",
+      "cid": "bafyreicnqxhpdje44ni5bypmfauu4rz6ofp6mqfe7uyjsfrpfol3mrejbi"
+    },
+    "moving-to-jekyll-and-firebase": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzuk2dkbc",
+      "cid": "bafyreiaf5nyzriadxi3o2aexdrpais44hexg7xzrgn6lay7kxui6wjtdku"
+    },
+    "my-quest-for-identity-in-software-engineering": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzuoorltn",
+      "cid": "bafyreigioakk5pb7nuidp2pdze72mkt6g52ra4hjes6uyvt4lzww5nmc44"
+    },
+    "replace-p2k-with-serverless-app": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzuueg3oc",
+      "cid": "bafyreicn3zt4r5rokwdrn523nc5t4herjtu2tye7ojbhdsm2eq46jcs734"
+    },
+    "serverless-publish-to-multiple-social-media": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzv25xlmn",
+      "cid": "bafyreie7vyp6wfia3nbbqygnec75cns5j6u7qzqwfblc574gneyretxghy"
+    },
+    "serverless-web-client-with-vue-cli": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzv7vkkqp",
+      "cid": "bafyreihzwkfuudbaeppcggsg4dq53wztvmnuzcpkfkkvmjwaion34tde3a"
+    },
+    "setup-blog-feed-as-lambda-trigger": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzve6blx6",
+      "cid": "bafyreiaox3ftxadz7ppfjjo7cyorqmtv7tfahxaz47dhi5t4qhhfr66d6i"
+    },
+    "sonos-spreaker": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvj6gkqd",
+      "cid": "bafyreicx3hzaxbxhi5m7f7urfvfveio6xi2ggwthdvwcgmuwlo4c2gxtma"
+    },
+    "sslnotifyme": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvn5f2rz",
+      "cid": "bafyreiak4sbggcafciezlurdyopa3kxxdj7ndbiuqwee5szq7tg657l5si"
+    },
+    "terrafom-lambda-no-archive-in-git": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvrjz3f2",
+      "cid": "bafyreihqxq6eohnbp56xfufwn2m52i7wnctjb3g6dlzsic24zbkozrsniq"
+    },
+    "updating-curriculum-with-web-tech": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvvwn2mt",
+      "cid": "bafyreihhsnjpmqypyqx4g2xechno4pudxph7e6u2jfs7g5wovtipjjh7cm"
+    }
+  }
 }
