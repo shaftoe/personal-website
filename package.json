@@ -23,6 +23,8 @@
     "bluesky": "bun run scripts/bluesky.ts",
     "changelog": "bun run scripts/changelog.ts",
     "postroll": "bun run scripts/postroll.ts",
+    "standard:publication": "bun run scripts/standard-publication.ts",
+    "standard:documents": "bun run scripts/standard-documents.ts",
     "profile-image": "bun run scripts/profile-image.ts",
     "release": "semantic-release"
   },
