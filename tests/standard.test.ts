@@ -6,7 +6,9 @@ import {
   it,
   mock,
 } from "bun:test"
-import { readFileSync, writeFileSync } from "node:fs"
+import { createHash } from "node:crypto"
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { tmpdir } from "node:os"
 import { join } from "node:path"
 import {
   buildDocumentRecord,
@@ -398,8 +400,27 @@ describe("publicationSyncHash", () => {
 
 describe("readPublicationIcon", () => {
   it("returns null when the icon file is absent (graceful degradation)", () => {
-    // public/images/profile.webp is generated at build time, not committed,
-    // so it is absent in the test/CI environment — the reader must cope.
-    expect(readPublicationIcon()).toBeNull()
+    // public/images/profile.webp is generated at build time, so it may or may
+    // not exist when the suite runs. Probe a guaranteed-absent path instead so
+    // the graceful-degradation branch is exercised deterministically.
+    expect(readPublicationIcon(join(tmpdir(), "icon-absent.webp"))).toBeNull()
+  })
+
+  it("returns the icon bytes and a SHA-256 content hash when present", () => {
+    const dir = mkdtempSync(join(tmpdir(), "icon-"))
+    try {
+      const iconPath = join(dir, "icon.webp")
+      const data = Uint8Array.from([0x52, 0x49, 0x46, 0x46]) // "RIFF" webp magic
+      writeFileSync(iconPath, data)
+
+      const result = readPublicationIcon(iconPath)
+      expect(result).not.toBeNull()
+      expect(result?.bytes).toEqual(data)
+      expect(result?.hash).toBe(
+        createHash("sha256").update(data).digest("hex"),
+      )
+    } finally {
+      rmSync(dir, { recursive: true, force: true })
+    }
   })
 })

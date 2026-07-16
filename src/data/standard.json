@@ -1,7 +1,8 @@
 {
   "publication": {
     "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.publication/57hibyk5tvkag",
-    "cid": "bafyreieiqwm7l26dweqaqusza4pqjeyvgunynpyutayxantmpcjxzvvsyq"
+    "cid": "bafyreifscf7jm2ospq7eh35ejh4eid5hlg4fshyxsm7i2irxg62ko45hx4",
+    "hash": "ce4a09d27f8f9b114be45e2d1659c7fa81fe67466ffc57adc9fef65b92fcaf31"
   },
   "documents": {
     "add-pagespeed-check-with-serverless": {

@@ -1,9 +1,6 @@
 pre-commit:
   parallel: false
   commands:
-    # Credential-free drift check: fails when a new/edited post hasn't been
-    # re-synced into the committed standard.json sidecar, so the change can't
-    # land without its AT Protocol document record being updated.
     standard-documents:
       run: bun run standard:documents --check
     format:

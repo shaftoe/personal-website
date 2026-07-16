@@ -499,11 +499,10 @@ export function publicationIconPath(): string {
  * to {@link uploadBlob}. Returns `null` when no icon file is available, in
  * which case the publication record is published without an icon.
  */
-export function readPublicationIcon(): {
+export function readPublicationIcon(iconPath: string = publicationIconPath()): {
   bytes: Uint8Array
   hash: string
 } | null {
-  const iconPath = publicationIconPath()
   if (!existsSync(iconPath)) return null
   const bytes = readFileSync(iconPath)
   return {
