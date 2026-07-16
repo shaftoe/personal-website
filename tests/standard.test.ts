@@ -15,8 +15,11 @@ import {
   generateTid,
   getDocumentUri,
   getPublicationUri,
+  hashRecordPayload,
   markdownToPlainText,
+  publicationSyncHash,
   putRecord,
+  readPublicationIcon,
   readStandardSidecar,
   writeStandardSidecar,
 } from "../src/lib/standard"
@@ -249,6 +252,27 @@ describe("sidecar read/write", () => {
     expect(readStandardSidecar()).toEqual(data)
   })
 
+  it("persists the change-detection hash on each record ref", () => {
+    const data = {
+      publication: {
+        uri: "at://did:plc:abc/site.standard.publication/x",
+        cid: "c1",
+        hash: "deadbeef",
+      },
+      documents: {
+        "a-post": {
+          uri: "at://did:plc:abc/site.standard.document/y",
+          cid: "c2",
+          hash: "cafebabe",
+        },
+      },
+    }
+    writeStandardSidecar(data)
+    expect(readStandardSidecar()).toEqual(data)
+    expect(readStandardSidecar().publication?.hash).toBe("deadbeef")
+    expect(readStandardSidecar().documents["a-post"]?.hash).toBe("cafebabe")
+  })
+
   it("getPublicationUri / getDocumentUri read the committed sidecar", () => {
     writeStandardSidecar({
       publication: {
@@ -306,5 +330,76 @@ describe("putRecord", () => {
     } finally {
       globalThis.fetch = realFetch
     }
+  })
+})
+
+describe("hashRecordPayload", () => {
+  it("produces a 64-char hex digest", () => {
+    expect(hashRecordPayload({ a: 1 })).toMatch(/^[0-9a-f]{64}$/)
+  })
+
+  it("is deterministic for identical input", () => {
+    expect(hashRecordPayload({ a: 1, b: ["x"] })).toBe(
+      hashRecordPayload({ a: 1, b: ["x"] }),
+    )
+  })
+
+  it("is independent of object key order", () => {
+    // Two records built with the same fields in a different insertion order
+    // must hash identically — this is what lets the sync skip no-op re-writes.
+    expect(hashRecordPayload({ a: 1, b: 2, c: { d: 3 } })).toBe(
+      hashRecordPayload({ c: { d: 3 }, b: 2, a: 1 }),
+    )
+  })
+
+  it("changes when any value changes", () => {
+    expect(hashRecordPayload({ title: "A" })).not.toBe(
+      hashRecordPayload({ title: "B" }),
+    )
+    expect(hashRecordPayload({ tags: ["a", "b"] })).not.toBe(
+      hashRecordPayload({ tags: ["a", "c"] }),
+    )
+  })
+
+  it("ignores undefined-valued keys", () => {
+    expect(hashRecordPayload({ a: 1, b: undefined })).toBe(
+      hashRecordPayload({ a: 1 }),
+    )
+  })
+
+  it("hashes a realistic document record deterministically", () => {
+    const record = buildDocumentRecord({
+      site: "at://did:plc:abc/site.standard.publication/p",
+      title: "My Article",
+      description: "A summary.",
+      path: "/blog/my-article/",
+      tags: ["aws", "cdk"],
+      publishedAt: "2020-05-30T00:00:00.000Z",
+      textContent: "body text",
+    })
+    expect(hashRecordPayload(record)).toBe(hashRecordPayload(record))
+  })
+})
+
+describe("publicationSyncHash", () => {
+  it("is deterministic for the same icon hash", () => {
+    expect(publicationSyncHash("abc")).toBe(publicationSyncHash("abc"))
+  })
+
+  it("changes when the icon hash changes", () => {
+    expect(publicationSyncHash(null)).not.toBe(publicationSyncHash("abc"))
+    expect(publicationSyncHash("abc")).not.toBe(publicationSyncHash("def"))
+  })
+
+  it("produces a 64-char hex digest", () => {
+    expect(publicationSyncHash(null)).toMatch(/^[0-9a-f]{64}$/)
+  })
+})
+
+describe("readPublicationIcon", () => {
+  it("returns null when the icon file is absent (graceful degradation)", () => {
+    // public/images/profile.webp is generated at build time, not committed,
+    // so it is absent in the test/CI environment — the reader must cope.
+    expect(readPublicationIcon()).toBeNull()
   })
 })

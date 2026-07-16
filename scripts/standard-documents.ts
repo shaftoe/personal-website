@@ -13,9 +13,28 @@
  *   ATP_APP_PASSWORD=<app-password> bun run standard:documents
  *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --dry-run
  *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --slug <slug>
+ *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --force
  *
  * Requires a Bluesky **app password** via `ATP_APP_PASSWORD` and that the
  * publication record already exists (run `standard:publication` first).
+ *
+ * ## Keeping it in sync
+ *
+ * The script is **idempotent**: each post reuses a stable record key (from the
+ * sidecar, else a new TID) so re-runs update records instead of duplicating
+ * them. It also **skips unchanged posts**: every record's source is hashed and
+ * compared to the hash stored in the sidecar on the last sync, so only posts
+ * whose frontmatter or body actually changed get re-written. Pass `--force` to
+ * re-sync every post regardless (e.g. after a manual edit on the PDS).
+ *
+ * Recommended workflow:
+ *   1. After publishing a new post or editing an existing one, re-run this
+ *      script — or target just that post with `--slug <slug>`.
+ *   2. Commit `src/data/standard.json` so the next build emits the article's
+ *      `<link rel="site.standard.document">` tag.
+ *
+ * Re-running with no changes is safe and cheap (no PDS writes). See the
+ * "Standard.site Publishing" section of `src/pages/colophon.md`.
  */
 import { readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
@@ -30,6 +49,7 @@ import {
   extractRkey,
   generateTid,
   getPublicationUri,
+  hashRecordPayload,
   markdownToPlainText,
   putRecord,
   readStandardSidecar,
@@ -72,6 +92,7 @@ function readPosts(): PostFile[] {
 
 async function main() {
   const dryRun = process.argv.includes("--dry-run")
+  const force = process.argv.includes("--force")
   const slugArgIdx = process.argv.indexOf("--slug")
   const onlySlug = slugArgIdx !== -1 ? process.argv[slugArgIdx + 1] : undefined
 
@@ -93,6 +114,7 @@ async function main() {
   }
 
   if (dryRun) {
+    const sidecar = readStandardSidecar()
     console.log(
       `\nDry run — would sync ${posts.length} document record${posts.length !== 1 ? "s" : ""}:\n`,
     )
@@ -106,7 +128,13 @@ async function main() {
         publishedAt: toInstant(post.data.timestamp).toString(),
         textContent: markdownToPlainText(post.body),
       })
-      console.log(`  ${post.slug}`)
+      const existing = sidecar.documents[post.slug]
+      const state = force
+        ? "forced"
+        : existing?.uri && existing.hash === hashRecordPayload(record)
+          ? "unchanged"
+          : "changed"
+      console.log(`  ${post.slug}  (${state})`)
       console.log(JSON.stringify(record, null, 2))
       console.log()
     }
@@ -132,10 +160,11 @@ async function main() {
   )
   let created = 0
   let updated = 0
+  let skipped = 0
 
   for (const post of posts) {
-    const existing = documents[post.slug]?.uri
-    const rkey = existing ? extractRkey(existing) : generateTid()
+    const existing = documents[post.slug]
+    const rkey = existing?.uri ? extractRkey(existing.uri) : generateTid()
 
     const record = buildDocumentRecord({
       site: publicationUri,
@@ -147,24 +176,37 @@ async function main() {
       textContent: markdownToPlainText(post.body),
     })
 
-    const ref = await putRecord(session, DOCUMENT_COLLECTION, rkey, record)
-    documents[post.slug] = ref
+    // Change detection: skip the PDS write when the record's source is
+    // unchanged since the last sync (override with --force).
+    const syncHash = hashRecordPayload(record)
+    if (!force && existing?.uri && existing.hash === syncHash) {
+      skipped++
+      console.log(`  · skipped   ${post.slug}`)
+      continue
+    }
 
-    if (existing) {
+    const ref = await putRecord(session, DOCUMENT_COLLECTION, rkey, record)
+    documents[post.slug] = { ...ref, hash: syncHash }
+
+    if (existing?.uri) {
       updated++
-      console.log(`  ↻ updated  ${post.slug}`)
+      console.log(`  ↻ updated   ${post.slug}`)
     } else {
       created++
-      console.log(`  + created  ${post.slug}`)
+      console.log(`  + created   ${post.slug}`)
     }
   }
 
   writeStandardSidecar({ ...sidecar, documents })
 
-  console.log(`\n  ✓ ${created} created, ${updated} updated`)
   console.log(
-    `\n  Commit ${siteConfig.standard.sidecarPath} so the article <link> tags resolve.\n`,
+    `\n  ✓ ${created} created, ${updated} updated, ${skipped} skipped`,
   )
+  if (created + updated > 0) {
+    console.log(
+      `\n  Commit ${siteConfig.standard.sidecarPath} so the article <link> tags resolve.\n`,
+    )
+  }
 }
 
 main().catch((error) => {

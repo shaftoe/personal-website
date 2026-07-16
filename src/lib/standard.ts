@@ -23,6 +23,7 @@
  * The schema field shapes below mirror the live lexicons published by
  * `did:plc:re3ebnp5v7ffagz6rb6xfei4` (standard.site).
  */
+import { createHash } from "node:crypto"
 import { existsSync, readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
 import { siteConfig } from "../config"
@@ -39,6 +40,11 @@ export interface RecordRef {
   uri: string
   /** Content ID (CID) of the record, used for strong references. */
   cid: string
+  /**
+   * SHA-256 of the record's source at the last sync, used to skip no-op
+   * re-syncs. Absent on records written before change-tracking was introduced.
+   */
+  hash?: string
 }
 
 export interface StandardSidecar {
@@ -232,6 +238,52 @@ export function buildDocumentRecord(opts: {
   if (opts.updatedAt) record.updatedAt = opts.updatedAt
   if (opts.textContent) record.textContent = opts.textContent
   return record
+}
+
+/**
+ * Stable signature of the publication's *source* — used to skip no-op
+ * re-syncs. It covers the site-derived fields plus the icon file's own content
+ * hash, but deliberately excludes `createdAt` (set once and then reused) and
+ * the icon's PDS blob ref (content-addressed, but assigned by the PDS), so the
+ * hash only changes when the publication's actual content changes.
+ */
+export function publicationSyncHash(iconHash: string | null): string {
+  return hashRecordPayload({
+    url: siteConfig.globalMeta.baseUrl,
+    name: siteConfig.blogMeta.title,
+    description:
+      siteConfig.blogMeta.longDescription ?? siteConfig.blogMeta.description,
+    preferences: { showInDiscover: true },
+    iconHash,
+  })
+}
+
+// ---- Change detection (content hashing) ----
+
+/**
+ * Canonical JSON serialization that sorts object keys at every depth, so the
+ * output (and therefore the hash) is independent of property enumeration order.
+ */
+function stableStringify(value: unknown): string {
+  if (value === null || typeof value !== "object") return JSON.stringify(value)
+  if (Array.isArray(value)) {
+    return `[${value.map(stableStringify).join(",")}]`
+  }
+  const obj = value as Record<string, unknown>
+  const entries = Object.keys(obj)
+    .sort()
+    .filter((k) => obj[k] !== undefined)
+    .map((k) => `${JSON.stringify(k)}:${stableStringify(obj[k])}`)
+  return `{${entries.join(",")}}`
+}
+
+/**
+ * Stable SHA-256 digest of a record's source payload. Two syncs that would
+ * produce the same record yield the same hash, so the sync scripts can skip the
+ * PDS write entirely when nothing has changed (pass `--force` to override).
+ */
+export function hashRecordPayload(payload: unknown): string {
+  return createHash("sha256").update(stableStringify(payload)).digest("hex")
 }
 
 // ---- PDS read/write client ----
@@ -432,20 +484,30 @@ export async function findPublicationRecord(
   return { uri: match.uri, rkey: match.rkey, createdAt }
 }
 
+/** MIME type used when uploading the publication icon. */
+export const PUBLICATION_ICON_MIME = "image/webp"
+
+/** Absolute path to the publication icon (the committed profile image). */
+export function publicationIconPath(): string {
+  return join(process.cwd(), "public", siteConfig.globalMeta.hero.image)
+}
+
 /**
- * Loads the publication icon from disk (the committed profile image) and
- * uploads it as a blob, returning the blob reference. Returns `null` when no
- * icon file is available.
+ * Reads the publication icon from disk, returning its bytes and a SHA-256
+ * content hash. The hash feeds {@link publicationSyncHash} so a sync only
+ * re-uploads the icon when it has actually changed; the bytes are then handed
+ * to {@link uploadBlob}. Returns `null` when no icon file is available, in
+ * which case the publication record is published without an icon.
  */
-export async function uploadPublicationIcon(
-  session: Session,
-): Promise<BlobRef | null> {
-  const iconPath = join(
-    process.cwd(),
-    "public",
-    siteConfig.globalMeta.hero.image,
-  )
+export function readPublicationIcon(): {
+  bytes: Uint8Array
+  hash: string
+} | null {
+  const iconPath = publicationIconPath()
   if (!existsSync(iconPath)) return null
   const bytes = readFileSync(iconPath)
-  return uploadBlob(session, new Uint8Array(bytes), "image/webp")
+  return {
+    bytes: new Uint8Array(bytes),
+    hash: createHash("sha256").update(bytes).digest("hex"),
+  }
 }
