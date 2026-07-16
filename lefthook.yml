@@ -1,6 +1,8 @@
 pre-commit:
   parallel: false
   commands:
+    standard-documents:
+      run: bun run standard:documents --check
     format:
       run: bun run format:fix
       stage_fixed: true

@@ -70,6 +70,19 @@ The site emits [JSON-LD](https://schema.org/) structured data to help search eng
 
 The schemas are built by `src/lib/jsonld.ts` from `siteConfig` (the same single source of truth used everywhere else) and rendered via a small `JsonLd.astro` component using Astro's `set:html` directive — no third-party dependency required.
 
+## Standard.site Publishing (AT Protocol Lexicons)
+
+This blog is published to the [ATmosphere](https://atproto.com) using the community-maintained [Standard.site](https://standard.site) lexicons for long-form publishing. This extends the existing [ATproto](https://atproto.com) integration (which already powers the microblog via the self-hosted PDS at [`social.l3x.in`](https://social.l3x.in)) to the long-form articles, giving them the same cross-platform discoverability that the microblog posts already enjoy — without changing where the canonical content lives (Markdown in Git).
+
+- **`site.standard.publication`** — a single record on the PDS describing this site as a publication (base URL, name, description, icon). The domain↔record link is verified via a static [`/.well-known/site.standard.publication`](https://a.l3x.in/.well-known/site.standard.publication) endpoint that returns the publication's AT URI as plain text.
+- **`site.standard.document`** — one record per blog article (title, description, path, tags, `publishedAt`, full plain-text `textContent`), each linking back to the publication record via its `site` field. Every article page emits a `<link rel="site.standard.document">` tag pointing at its record's AT URI.
+
+Records are written to the PDS by two CLI scripts (`standard:publication` and `standard:documents`), which derive the record values from the existing `siteConfig` and post frontmatter and persist the resulting AT URIs into a committed sidecar file (`src/data/standard.json`). The static build reads that sidecar to emit the `.well-known` endpoint and the per-article `<link>` tags — so the public build needs no PDS write credentials. The core logic lives in `src/lib/standard.ts`.
+
+Both syncs are **idempotent** (records are keyed by a stable record key reused across runs) and **skip unchanged records**: each record's source is hashed and compared to the hash stored at the last sync, so re-running with no new or edited posts performs no PDS writes (a no-op publication sync needs no credentials at all). To keep the AT Protocol records in step with the canonical Markdown, the maintainer re-runs `standard:documents` after publishing or editing a post (or `--slug <slug>` for a single post) and `standard:publication` after changing the site title, description or hero image, then commits the updated `src/data/standard.json`. A `--force` flag on either script bypasses the change detection and re-publishes every record.
+
+Keeping the documents in sync is **enforced automatically**: the [lefthook](https://lefthook.dev) `pre-commit` hook runs `standard:documents --check`, a credential-free, network-free drift check that compares the committed sidecar against the current posts. When everything is in sync it reports "all good" and lets the commit through; when a new or edited post hasn't been re-synced into the sidecar it fails the commit, telling the committer to run the sync and stage `src/data/standard.json` alongside the post. (The check passes before adoption and is a no-op for commits that don't touch the blog.)
+
 ## IndieWeb Compatibility
 
 This site tries to follows [IndieWeb](https://indieweb.org) principles and be a good citizen of the independent web:

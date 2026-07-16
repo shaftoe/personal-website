@@ -87,6 +87,21 @@ export const siteConfig = {
     pds: "https://social.l3x.in" as const,
   },
 
+  // Standard.site lexicon publishing — extends the existing ATproto
+  // integration to the long-form blog. `site.standard.publication` and
+  // `site.standard.document` records are written to the self-hosted PDS by the
+  // `standard:publication` / `standard:documents` CLI scripts; their resulting
+  // AT-URIs are committed to a sidecar file (`standard.sidecarPath`) that the
+  // build reads to emit the `/.well-known/site.standard.publication` domain
+  // verification endpoint and the per-article `<link rel="site.standard.
+  // document">` tags. This makes the blog's articles discoverable across the
+  // ATmosphere without changing where the canonical content lives (Git).
+  standard: {
+    publicationCollection: "site.standard.publication" as const,
+    documentCollection: "site.standard.document" as const,
+    sidecarPath: "src/data/standard.json" as const,
+  },
+
   personalProjects: {
     "Awesome Pi": "https://awesome-pi.site",
     "Pi GitHub action": "https://github.com/shaftoe/pi-coding-agent-action",

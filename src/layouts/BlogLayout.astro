@@ -7,6 +7,7 @@ import type { ArticleFrontmatter } from "../lib/blog-collection"
 import { toInstant, processArticleDate } from "../lib/utils"
 import { siteConfig } from "../config"
 import { blogPostingSchema } from "../lib/jsonld"
+import { getDocumentUri } from "../lib/standard"
 import Layout from "./Layout.astro"
 
 type Props = { frontmatter: ArticleFrontmatter }
@@ -14,6 +15,13 @@ type Props = { frontmatter: ArticleFrontmatter }
 const { frontmatter } = Astro.props
 const timestamp = toInstant(frontmatter.timestamp)
 const articleDate = processArticleDate(timestamp)
+
+// Standard.site document AT URI for this article (from the committed
+// sidecar). Present only after `bun run standard:documents` has been run;
+// renders a discoverability <link> in the page head when available.
+const standardDocumentUri = frontmatter.slug
+  ? getDocumentUri(frontmatter.slug)
+  : null
 ---
 
 <Layout meta={{
@@ -25,6 +33,9 @@ const articleDate = processArticleDate(timestamp)
   type: "article",
 }}>
   <JsonLd data={blogPostingSchema(frontmatter, Astro.url.href)} slot="head" />
+  {standardDocumentUri && (
+    <link rel="site.standard.document" href={standardDocumentUri} slot="head" />
+  )}
   <Section class="pt-8 h-entry">
     <a class="u-url hidden" href={Astro.url.href} aria-hidden="true"></a>
     <data class="p-uid hidden" value={Astro.url.href} aria-hidden="true"></data>
