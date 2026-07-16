@@ -280,4 +280,33 @@
   .profile-reveal:active .profile-clean {
     opacity: 1;
   }
+
+  /*
+   Shareable heading anchors (output of rehype-autolink-headings).
+   The `#` is rendered inline after the heading text and kept invisible
+   until the heading is hovered or focused, so it never clutters the page
+   but remains reachable for mouse, touch and keyboard users. It always
+   reserves its space (opacity, not display) so revealing it never causes
+   layout shift.
+  */
+  .prose :is(h1, h2, h3, h4, h5, h6) .heading-anchor {
+    margin-left: 0.3em;
+    text-decoration: none;
+    opacity: 0;
+    color: var(--color-zag-accent-light);
+    :where(.dark, .dark *) & {
+      color: var(--color-zag-accent-dark);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity var(--zag-transition-duration)
+        var(--zag-transition-timing-function);
+    }
+  }
+
+  .prose :is(h1, h2, h3, h4, h5, h6):hover .heading-anchor,
+  .prose :is(h1, h2, h3, h4, h5, h6):focus-within .heading-anchor,
+  .heading-anchor:focus {
+    opacity: 1;
+  }
 }

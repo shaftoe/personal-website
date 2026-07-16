@@ -22,7 +22,7 @@ Theme forked from [zaggonaut](https://github.com/RATIU5/zaggonaut). All styling 
 
 ## Content
 
-Blog posts live as Markdown files with YAML frontmatter, managed through Astro's [content collections](https://docs.astro.build/en/guides/content-collections/). The [changelog](/changelog) is parsed directly from the project's `CHANGELOG.md` file at build time using [marked](https://github.com/markedjs/marked).
+Blog posts live as Markdown files with YAML frontmatter, managed through Astro's [content collections](https://docs.astro.build/en/guides/content-collections/). The [changelog](/changelog) is parsed directly from the project's `CHANGELOG.md` file at build time using [marked](https://github.com/markedjs/marked). All Markdown pages and articles are rendered with Astro's native **Sätteri** processor, extended with a small custom `hast` plugin that appends a shareable anchor link to every heading — so any section of a long page can be deep-linked directly (try hovering a heading on this very page).
 
 ## Tooling
 
