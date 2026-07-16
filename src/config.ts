@@ -65,7 +65,7 @@ export const siteConfig = {
 
   social: {
     Bluesky: {
-      url: "https://bsky.app/profile/social.l3x.in",
+      url: "https://bsky.app/profile/l3x.in",
       rel: "me",
     },
     Contact: "/contact",
@@ -83,7 +83,7 @@ export const siteConfig = {
   // All reads go directly to the PDS via public `com.atproto.repo.*` XRPC
   // methods — no dependency on Bluesky's central AppView.
   atproto: {
-    handle: "social.l3x.in" as const,
+    handle: "l3x.in" as const,
     pds: "https://social.l3x.in" as const,
   },
 
