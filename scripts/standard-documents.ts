@@ -105,7 +105,6 @@ async function main() {
         tags: post.data.tags,
         publishedAt: toInstant(post.data.timestamp).toString(),
         textContent: markdownToPlainText(post.body),
-        canonicalUrl: `${siteConfig.globalMeta.baseUrl}/blog/${post.slug}/`,
       })
       console.log(`  ${post.slug}`)
       console.log(JSON.stringify(record, null, 2))
@@ -146,7 +145,6 @@ async function main() {
       tags: post.data.tags,
       publishedAt: toInstant(post.data.timestamp).toString(),
       textContent: markdownToPlainText(post.body),
-      canonicalUrl: `${siteConfig.globalMeta.baseUrl}/blog/${post.slug}/`,
     })
 
     const ref = await putRecord(session, DOCUMENT_COLLECTION, rkey, record)

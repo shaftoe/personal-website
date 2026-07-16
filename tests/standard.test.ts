@@ -1,4 +1,11 @@
-import { afterEach, beforeEach, describe, expect, it } from "bun:test"
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  mock,
+} from "bun:test"
 import { readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
 import {
@@ -9,6 +16,7 @@ import {
   getDocumentUri,
   getPublicationUri,
   markdownToPlainText,
+  putRecord,
   readStandardSidecar,
   writeStandardSidecar,
 } from "../src/lib/standard"
@@ -207,12 +215,10 @@ describe("buildDocumentRecord", () => {
       description: "A short summary.",
       tags: ["aws", "cdk"],
       textContent: "plain text body",
-      canonicalUrl: "https://a.l3x.in/blog/my-article/",
     })
     expect(record.description).toBe("A short summary.")
     expect(record.tags).toEqual(["aws", "cdk"])
     expect(record.textContent).toBe("plain text body")
-    expect(record.canonicalUrl).toBe("https://a.l3x.in/blog/my-article/")
   })
 
   it("omits tags when the array is empty", () => {
@@ -260,5 +266,45 @@ describe("sidecar read/write", () => {
       "at://did:plc:abc/site.standard.document/d",
     )
     expect(getDocumentUri("missing")).toBeNull()
+  })
+})
+
+describe("putRecord", () => {
+  // The community site.standard.* lexicons are not bundled in the PDS's
+  // built-in validator store, so the request MUST be sent with
+  // `validate: false` or the PDS rejects it as an "Unknown lexicon type".
+  it("sends validate:false so the PDS skips unknown-lexicon validation", async () => {
+    const fetchMock = mock(
+      (_url: unknown, _init: RequestInit): Promise<Response> =>
+        Promise.resolve(
+          new Response(
+            JSON.stringify({
+              uri: "at://did:plc:abc/site.standard.publication/r",
+              cid: "c1",
+            }),
+            { status: 200, headers: { "Content-Type": "application/json" } },
+          ),
+        ),
+    )
+    const realFetch = globalThis.fetch
+    globalThis.fetch = fetchMock as unknown as typeof fetch
+
+    try {
+      const session = { did: "did:plc:abc", accessJwt: "jwt" }
+      await putRecord(
+        session,
+        "site.standard.publication",
+        "r",
+        buildPublicationRecord(),
+      )
+
+      expect(fetchMock).toHaveBeenCalledTimes(1)
+      const [, init] = fetchMock.mock.calls[0]
+      const body = JSON.parse(init!.body as string)
+      expect(body.validate).toBe(false)
+      expect(body.collection).toBe("site.standard.publication")
+    } finally {
+      globalThis.fetch = realFetch
+    }
   })
 })

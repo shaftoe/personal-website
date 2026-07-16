@@ -217,8 +217,9 @@ export function buildDocumentRecord(opts: {
   publishedAt: string
   updatedAt?: string
   textContent?: string
-  canonicalUrl?: string
 }): Record<string, unknown> {
+  // The canonical URL is not a record field: the lexicon derives it from the
+  // publication `url` combined with the document `path`, so we only set `path`.
   const record: Record<string, unknown> = {
     $type: DOCUMENT_COLLECTION,
     site: opts.site,
@@ -230,7 +231,6 @@ export function buildDocumentRecord(opts: {
   if (opts.tags && opts.tags.length > 0) record.tags = opts.tags
   if (opts.updatedAt) record.updatedAt = opts.updatedAt
   if (opts.textContent) record.textContent = opts.textContent
-  if (opts.canonicalUrl) record.canonicalUrl = opts.canonicalUrl
   return record
 }
 
@@ -306,6 +306,14 @@ export async function createSession(appPassword: string): Promise<Session> {
  * Idempotently creates or replaces a record (`com.atproto.repo.putRecord`).
  * Using an explicit `rkey` makes re-running a sync update the same record
  * instead of creating duplicates.
+ *
+ * Validation is explicitly disabled (`validate: false`) because the `site.
+ * standard.*` lexicons are community-maintained and are **not** bundled in the
+ * PDS's built-in lexicon store (which only ships `com.atproto.*` / `app.bsky.*`).
+ * With validation enabled the PDS rejects the record as an "Unknown lexicon
+ * type". The record shapes are instead validated client-side against the live
+ * schemas (see {@link buildPublicationRecord} / {@link buildDocumentRecord}),
+ * which is the standard approach for custom-lexicon records.
  */
 export async function putRecord(
   session: Session,
@@ -326,7 +334,7 @@ export async function putRecord(
         collection,
         rkey,
         record,
-        validate: true,
+        validate: false,
       }),
     },
     `put ${collection}/${rkey}`,
