@@ -6,87 +6,108 @@
   "documents": {
     "add-pagespeed-check-with-serverless": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzscfekdc",
-      "cid": "bafyreia2mqtpmwni356rv6pv26tabihagbh4kbyfzpo2at7jo4jhopn3xa"
+      "cid": "bafyreia2mqtpmwni356rv6pv26tabihagbh4kbyfzpo2at7jo4jhopn3xa",
+      "hash": "02ae238fd5053c5672eb5a23fde89310f58e7818a2cb24337ef8f53e107a2ad7"
     },
     "centralise-linux-email-delivery": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzsigq3vt",
-      "cid": "bafyreihlflqhx4oeuupyznpb63kiibvjpmphkhhstxlrmfcqekowpiwyzy"
+      "cid": "bafyreihlflqhx4oeuupyznpb63kiibvjpmphkhhstxlrmfcqekowpiwyzy",
+      "hash": "f28668220576a0a8953ebf3b685fe55acb5095fad22db261e43d804579ea7510"
     },
     "fix-router-with-raspberry-node-puppeteer": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzsog53rh",
-      "cid": "bafyreibbnuvzkeci3qr5tmpov5ce3zeyk6oifzdjx5f7sepwlemrebzabm"
+      "cid": "bafyreibbnuvzkeci3qr5tmpov5ce3zeyk6oifzdjx5f7sepwlemrebzabm",
+      "hash": "1047c17cce4ea04545e183a216b939bd3165759f3c5f16acfda747e63f1bae17"
     },
     "free-whois-monitoring-with-serverless-on-aws": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzsu3rkec",
-      "cid": "bafyreigcqarf37a7wzsvuc3xj5mcetxmhoee7mqt4qx74igx5lkrblj7qe"
+      "cid": "bafyreigcqarf37a7wzsvuc3xj5mcetxmhoee7mqt4qx74igx5lkrblj7qe",
+      "hash": "14ff9870a4474bee48a2f360d5ea9a575f7f76551ad559afc6628c9d79028cb0"
     },
     "js-simple-mix-player": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzt2mr2ly",
-      "cid": "bafyreihc7gw3t7mrhaodowncufq4vtxcb6ywsbatxi3jtjelby3qx7mzlm"
+      "cid": "bafyreihc7gw3t7mrhaodowncufq4vtxcb6ywsbatxi3jtjelby3qx7mzlm",
+      "hash": "a07abba3a5741b6b6fcd04f0fb8f1324d52dd48fc70c86ebf650799b37778c32"
     },
     "lambda-api-custom-domain-tutorial": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztak7kfe",
-      "cid": "bafyreihp2na55svmnhiagwgipboaxhsiqc6caecnrervbbnovbysja3wya"
+      "cid": "bafyreihp2na55svmnhiagwgipboaxhsiqc6caecnrervbbnovbysja3wya",
+      "hash": "5d6e8e22aa4a89b1ee38bdd3898c2261fb83bfeecfc7bc798c77104ddd14c46e"
     },
     "lambda-reports-with-destinations": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzthkt32e",
-      "cid": "bafyreibmyx4qidl2ozaias3iebefxl3mm2ne4aqhzgoxk6ngck2oex2g5e"
+      "cid": "bafyreibmyx4qidl2ozaias3iebefxl3mm2ne4aqhzgoxk6ngck2oex2g5e",
+      "hash": "d35150b0da80de5561abcd347598f6248234974bea4043bc8d38131bdcd34382"
     },
     "lastversion": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztmynlc5",
-      "cid": "bafyreigtc5g3i75nejeoviqp4le4wyp3igkyz65stkhp74sm75vllcfwru"
+      "cid": "bafyreigtc5g3i75nejeoviqp4le4wyp3igkyz65stkhp74sm75vllcfwru",
+      "hash": "cb9892b37bb3dc1693ce7d07eb3aa2c112b202714d372336171463a25713700b"
     },
     "manage-aws-lambda-invocations-cdk": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztskf3wx",
-      "cid": "bafyreib22uypk6des4dmyom5zqmhafukvw34t2cl4ck2rltdhtnup5gv7i"
+      "cid": "bafyreib22uypk6des4dmyom5zqmhafukvw34t2cl4ck2rltdhtnup5gv7i",
+      "hash": "5ab9cf46a3648001c3c0cfc1146cfad96abc99f264e8362aa03e300b6dde4df7"
     },
     "migrating-from-terraform-to-cdk": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibztydwkqe",
-      "cid": "bafyreicpad3f7tyrrgj25k2fe6pvltzf7spmyvdehdfama5sonkqprcgni"
+      "cid": "bafyreicpad3f7tyrrgj25k2fe6pvltzf7spmyvdehdfama5sonkqprcgni",
+      "hash": "b5e9a00bfabfed2d7d0e3821b39ce984a4e4b114e3281a1b061a6576b5114841"
     },
     "mongodb-backups-with-aws-cdk": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzu5nu26g",
-      "cid": "bafyreicnqxhpdje44ni5bypmfauu4rz6ofp6mqfe7uyjsfrpfol3mrejbi"
+      "cid": "bafyreicnqxhpdje44ni5bypmfauu4rz6ofp6mqfe7uyjsfrpfol3mrejbi",
+      "hash": "a771f20128a5cc656dd026ecd990bcaef08a143d58fb935764d4e8bd55b3cc32"
     },
     "moving-to-jekyll-and-firebase": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzuk2dkbc",
-      "cid": "bafyreiaf5nyzriadxi3o2aexdrpais44hexg7xzrgn6lay7kxui6wjtdku"
+      "cid": "bafyreiaf5nyzriadxi3o2aexdrpais44hexg7xzrgn6lay7kxui6wjtdku",
+      "hash": "8431b50ec868dcc4f1ff95ff8cf1cefce59c192a713c99b34fcf5083fe29b31b"
     },
     "my-quest-for-identity-in-software-engineering": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzuoorltn",
-      "cid": "bafyreigioakk5pb7nuidp2pdze72mkt6g52ra4hjes6uyvt4lzww5nmc44"
+      "cid": "bafyreigioakk5pb7nuidp2pdze72mkt6g52ra4hjes6uyvt4lzww5nmc44",
+      "hash": "879cb6504d4bebd9e0f0e827f1c01117e830a8fa22a80d4eb0367ce62bbdfa3a"
     },
     "replace-p2k-with-serverless-app": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzuueg3oc",
-      "cid": "bafyreicn3zt4r5rokwdrn523nc5t4herjtu2tye7ojbhdsm2eq46jcs734"
+      "cid": "bafyreicn3zt4r5rokwdrn523nc5t4herjtu2tye7ojbhdsm2eq46jcs734",
+      "hash": "fa0102c255b667a9143d30db67d53ac5359ba201950185d3a58f123ba2ec082e"
     },
     "serverless-publish-to-multiple-social-media": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzv25xlmn",
-      "cid": "bafyreie7vyp6wfia3nbbqygnec75cns5j6u7qzqwfblc574gneyretxghy"
+      "cid": "bafyreie7vyp6wfia3nbbqygnec75cns5j6u7qzqwfblc574gneyretxghy",
+      "hash": "b6ae53f2436257df36216ed28f4a25f0868b92a159bb6feff68197d9ba5b43ea"
     },
     "serverless-web-client-with-vue-cli": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzv7vkkqp",
-      "cid": "bafyreihzwkfuudbaeppcggsg4dq53wztvmnuzcpkfkkvmjwaion34tde3a"
+      "cid": "bafyreihzwkfuudbaeppcggsg4dq53wztvmnuzcpkfkkvmjwaion34tde3a",
+      "hash": "c092fdb5880c8fc3b5f5af88a3750462c2f9caff779d55a781b908192b568503"
     },
     "setup-blog-feed-as-lambda-trigger": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzve6blx6",
-      "cid": "bafyreiaox3ftxadz7ppfjjo7cyorqmtv7tfahxaz47dhi5t4qhhfr66d6i"
+      "cid": "bafyreiaox3ftxadz7ppfjjo7cyorqmtv7tfahxaz47dhi5t4qhhfr66d6i",
+      "hash": "add147514be5af291c39a49519301237806616049ca34b5b0a4b4b79a4501ef9"
     },
     "sonos-spreaker": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvj6gkqd",
-      "cid": "bafyreicx3hzaxbxhi5m7f7urfvfveio6xi2ggwthdvwcgmuwlo4c2gxtma"
+      "cid": "bafyreicx3hzaxbxhi5m7f7urfvfveio6xi2ggwthdvwcgmuwlo4c2gxtma",
+      "hash": "bc45e718f1ed35f97ff7aacf8a78945305829e6ef196e4aaf0a4526ad232f80a"
     },
     "sslnotifyme": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvn5f2rz",
-      "cid": "bafyreiak4sbggcafciezlurdyopa3kxxdj7ndbiuqwee5szq7tg657l5si"
+      "cid": "bafyreiak4sbggcafciezlurdyopa3kxxdj7ndbiuqwee5szq7tg657l5si",
+      "hash": "cf5521acb3029b915503cd087b27b99e2381011dd6c7a3a6a1f3493fabcafb9c"
     },
     "terrafom-lambda-no-archive-in-git": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvrjz3f2",
-      "cid": "bafyreihqxq6eohnbp56xfufwn2m52i7wnctjb3g6dlzsic24zbkozrsniq"
+      "cid": "bafyreihqxq6eohnbp56xfufwn2m52i7wnctjb3g6dlzsic24zbkozrsniq",
+      "hash": "7a7a6effa2557453580a745a3b454955541f27e44af37c926258bec184401a4a"
     },
     "updating-curriculum-with-web-tech": {
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvvwn2mt",
-      "cid": "bafyreihhsnjpmqypyqx4g2xechno4pudxph7e6u2jfs7g5wovtipjjh7cm"
+      "cid": "bafyreihhsnjpmqypyqx4g2xechno4pudxph7e6u2jfs7g5wovtipjjh7cm",
+      "hash": "9a5126d8c4d632d7ffc365f4c00f486b31e1435f2c1638cca3dd503441462a67"
     }
   }
 }

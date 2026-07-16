@@ -14,9 +14,20 @@
  *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --dry-run
  *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --slug <slug>
  *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --force
+ *   bun run standard:documents --check   # credential-free drift check (CI/pre-commit)
  *
- * Requires a Bluesky **app password** via `ATP_APP_PASSWORD` and that the
- * publication record already exists (run `standard:publication` first).
+ * Requires a Bluesky **app password** via `ATP_APP_PASSWORD` (except for
+ * `--dry-run`/`--check`) and that the publication record already exists
+ * (run `standard:publication` first).
+ *
+ * ## Pre-commit drift check (`--check`)
+ *
+ * `--check` compares the committed sidecar against the current posts **without
+ * credentials or network access** and exits non-zero when any record is missing
+ * (new post) or has drifted (edited post). It is wired into the lefthook
+ * `pre-commit` hook so a forgotten sidecar update blocks the commit until the
+ * committer re-syncs and stages `src/data/standard.json`. When everything is in
+ * sync it prints "all good" and exits 0.
  *
  * ## Keeping it in sync
  *
@@ -65,6 +76,19 @@ interface PostFile {
   body: string
 }
 
+/** Builds the `site.standard.document` record value for a single post. */
+function buildPostDocument(post: PostFile, publicationUri: string) {
+  return buildDocumentRecord({
+    site: publicationUri,
+    title: post.data.title,
+    description: post.data.description,
+    path: `/blog/${post.slug}/`,
+    tags: post.data.tags,
+    publishedAt: toInstant(post.data.timestamp).toString(),
+    textContent: markdownToPlainText(post.body),
+  })
+}
+
 /** Reads and validates every Markdown post, returning parsed frontmatter + body. */
 function readPosts(): PostFile[] {
   const files = readdirSync(POSTS_DIR, {
@@ -90,13 +114,67 @@ function readPosts(): PostFile[] {
     .filter((p): p is PostFile => p !== null)
 }
 
+/**
+ * Credential-free drift check: compares the committed sidecar against the
+ * current posts and exits non-zero when any document record is missing (new
+ * post) or has drifted (edited post). No PDS access, no writes — used by the
+ * pre-commit hook so a forgotten sidecar update blocks the commit.
+ */
+function runCheck(publicationUri: string, posts: PostFile[]): void {
+  const sidecar = readStandardSidecar()
+  const documents = sidecar.documents
+  const drift: string[] = []
+
+  for (const post of posts) {
+    const record = buildPostDocument(post, publicationUri)
+    const syncHash = hashRecordPayload(record)
+    const existing = documents[post.slug]
+    if (!existing?.uri) {
+      drift.push(`  + new       ${post.slug}`)
+    } else if (existing.hash !== syncHash) {
+      drift.push(`  ~ changed   ${post.slug}`)
+    }
+  }
+
+  if (drift.length === 0) {
+    console.log(
+      `\n  ✓ all good — ${siteConfig.standard.sidecarPath} is in sync with the posts` +
+        ` (${posts.length} document${posts.length !== 1 ? "s" : ""}).\n`,
+    )
+    return
+  }
+
+  console.error(
+    `\n  ✖ ${siteConfig.standard.sidecarPath} is out of sync with the posts:\n`,
+  )
+  for (const line of drift) console.error(line)
+  console.error(
+    "\n  Re-sync the records and commit the updated sidecar:\n" +
+      "    ATP_APP_PASSWORD=<app-password> bun run standard:documents\n" +
+      `    git add ${siteConfig.standard.sidecarPath}\n`,
+  )
+  process.exit(1)
+}
+
 async function main() {
+  const check = process.argv.includes("--check")
   const dryRun = process.argv.includes("--dry-run")
   const force = process.argv.includes("--force")
   const slugArgIdx = process.argv.indexOf("--slug")
   const onlySlug = slugArgIdx !== -1 ? process.argv[slugArgIdx + 1] : undefined
 
   const publicationUri = getPublicationUri()
+
+  // Before adoption (empty sidecar) there is nothing to verify or sync, so the
+  // check passes — this keeps the pre-commit hook from blocking unrelated
+  // commits on a repo that hasn't run `standard:publication` yet.
+  if (check && !publicationUri) {
+    console.log(
+      "\n  · standard.site not adopted yet — skipping document sync check.\n",
+    )
+    return
+  }
+
   if (!publicationUri) {
     console.error(
       "✖ No publication record found. Run `bun run standard:publication` first.",
@@ -113,21 +191,18 @@ async function main() {
     }
   }
 
+  if (check) {
+    runCheck(publicationUri, posts)
+    return
+  }
+
   if (dryRun) {
     const sidecar = readStandardSidecar()
     console.log(
       `\nDry run — would sync ${posts.length} document record${posts.length !== 1 ? "s" : ""}:\n`,
     )
     for (const post of posts) {
-      const record = buildDocumentRecord({
-        site: publicationUri,
-        title: post.data.title,
-        description: post.data.description,
-        path: `/blog/${post.slug}/`,
-        tags: post.data.tags,
-        publishedAt: toInstant(post.data.timestamp).toString(),
-        textContent: markdownToPlainText(post.body),
-      })
+      const record = buildPostDocument(post, publicationUri)
       const existing = sidecar.documents[post.slug]
       const state = force
         ? "forced"
@@ -166,15 +241,7 @@ async function main() {
     const existing = documents[post.slug]
     const rkey = existing?.uri ? extractRkey(existing.uri) : generateTid()
 
-    const record = buildDocumentRecord({
-      site: publicationUri,
-      title: post.data.title,
-      description: post.data.description,
-      path: `/blog/${post.slug}/`,
-      tags: post.data.tags,
-      publishedAt: toInstant(post.data.timestamp).toString(),
-      textContent: markdownToPlainText(post.body),
-    })
+    const record = buildPostDocument(post, publicationUri)
 
     // Change detection: skip the PDS write when the record's source is
     // unchanged since the last sync (override with --force).
