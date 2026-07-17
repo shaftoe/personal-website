@@ -19,3 +19,4 @@ public/images/og/*.png
 public/images/profile.webp
 public/images/profile-pixel.webp
 .DS_Store
+.obsidian
