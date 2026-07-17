@@ -46,3 +46,5 @@ If you are curious you can browse [issues](https://github.com/shaftoe/personal-w
 ## My LLM Usage
 
 The [/usage](/usage) page shows live quota usage and remaining balance for my LLM accounts (Z.ai, DeepSeek, and the like).
+
+As you can see, generally speaking I only make use of **open weights models** such as Z.ai's, DeepSeek's and Mistral's. I look forward to the day my workstation will be able to run something like [GLM-5.2](https://huggingface.co/zai-org/GLM-5.2) locally.
