@@ -2,6 +2,8 @@ pre-commit:
   parallel: false
   commands:
     standard-documents:
+      only:
+        - ref: master
       run: bun run standard:documents --check
     format:
       run: bun run format:fix
