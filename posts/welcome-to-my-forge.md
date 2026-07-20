@@ -525,7 +525,7 @@ I acknowledge the worse case scenario (e.g. angry ex girlfriend exfiltrating all
 
 Ultimately, at least for now, I accept the trade-off: we can't have anything 100% secure anyway and comfort in life is important too. Security is also a process: I'll keep working on this setup to find the best balance for my needs, following best practices as well as I can and as soon as they are consolidated.
 
-For now I put my trust in the stack I chose and especially in Forgejo developers to do a good job, so far I have all the reasons to believe they are worthy my trust. You might want to consider adopting a stronger security stance if your scenario is different. I can't prove it but personally I believe these secrets are now safer in Forgejo hands than GitHub's anyway but you might want to consider adopting a stronger security stance if your scenario is different.
+For now I put my trust in the stack I chose and especially in Forgejo developers to do a good job, so far I have all the reasons to believe they are worthy my trust. I can't prove it but personally I believe these secrets are now safer in Forgejo hands than GitHub's anyway but you might want to consider adopting a stronger security stance if your scenario is different.
 
 ## Big Wins
 
@@ -537,7 +537,7 @@ I list here some of what I feel like big improvements I gained so far, in random
  - shorter build times and always up to date build image
  - I don't have to trust GH anymore in keeping my precious secrets safe
  - I now have a personal container image registry and hosting a new HTTPS/TLS service is almost trivial, I actually have to hold the urge to hammer every new itch into it 🔨
- - I've acquired new powers 💪 e.g. keeping mirrors from GH, build and publish packages for [the most common platforms](https://forgejo.org/docs/latest/user/packages/), and I bet more that I still have to learn
+ - I've acquired new powers 💪 e.g. keeping mirrors from GH, build and publish packages for [the most common platforms](https://forgejo.org/docs/latest/user/packages/), OAuth2 provider, and I bet more that I still have to learn
 
 ## Pitfalls, gotchas and limitations
 
