@@ -109,6 +109,11 @@
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57hibzvvwn2mt",
       "cid": "bafyreihhsnjpmqypyqx4g2xechno4pudxph7e6u2jfs7g5wovtipjjh7cm",
       "hash": "9a5126d8c4d632d7ffc365f4c00f486b31e1435f2c1638cca3dd503441462a67"
+    },
+    "welcome-to-my-forge": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57i4rc2cmg3kb",
+      "cid": "bafyreib5ooi2fwipzbggdo7m5bsprhkouidic7f7xyezguoxsugvmyk6nq",
+      "hash": "71cfe0ec2cf6069913f98ae916d9705a3b1330c8f5d23cb9c8d1e27d96cffe4d"
     }
   }
 }
