@@ -3,7 +3,6 @@ title: "For simple tasks plain vanilla is still my favorite flavour of JavaScrip
 slug: js-simple-mix-player
 description: "I developed a simple JS audio player for a recording studio website and put it on GitHub. In this article I share my thoughts and findings."
 timestamp: 2020-06-17
-readTime: 4
 tags:
   - "audio"
   - "howler"

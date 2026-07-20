@@ -19,7 +19,6 @@ export const blogSchema = z.object({
   longDescription: z.string().optional(),
   cardImage: z.url().optional(),
   tags: z.array(z.string()).optional(),
-  readTime: z.number().optional(),
   timestamp: z.date().optional(),
   date: z.coerce.date().optional(),
 })

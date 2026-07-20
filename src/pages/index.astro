@@ -7,7 +7,7 @@ import Layout from "../layouts/Layout.astro"
 import LinkListSection from "../components/home/LinkListSection.astro"
 import { siteConfig } from "../config"
 import { homepageGraph } from "../lib/jsonld"
-import { sortArticlesByDate } from "../lib/utils"
+import { sortArticlesByDate, readingTime } from "../lib/utils"
 import { getLatestPosts } from "../lib/atproto"
 import PostSnippet from "../components/social/PostSnippet.astro"
 import JsonLd from "../components/layout/JsonLd.astro"
@@ -66,7 +66,7 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
               title={article.data.title}
               url={`/blog/${article.data.slug}`}
               timestamp={article.data.timestamp}
-              duration={`${article.data.readTime} min`}
+              duration={`${readingTime(article.body)} min`}
               tags={article.data.tags}
             />
           </li>

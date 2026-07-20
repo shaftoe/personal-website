@@ -3,7 +3,6 @@ title: "Building a basic Jamstack webmail client with Vue 3"
 slug: serverless-web-client-with-vue-cli
 description: "Vue 3 is going to be released soon and I wanted to see how easy it is to create the simples possible useful application with it. It turns out it's pretty easy with vue-cli and serverless tools! Here I share my findings."
 timestamp: 2020-09-15T10:44:55+03:00
-readTime: 6
 ---
 
 Vue is arguably one of the most interesting web framework out there and, even though the upcoming version 3 [is not ready yet](https://isvue3readyyet.com/), is currently in _release candidate_ state so all Vue developers are encouraged to try it out and help report any bug that might still be lurking there.

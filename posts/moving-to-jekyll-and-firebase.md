@@ -3,7 +3,6 @@ title: "Migrating the blog to Jekyll and Firebase"
 slug: moving-to-jekyll-and-firebase
 description: "Migrating the blog to Jekyll and Firebase"
 timestamp: 2018-07-21
-readTime: 4
 tags:
   - "blog"
   - "bootstrap"

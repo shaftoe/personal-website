@@ -16,19 +16,16 @@ describe("blogSchema", () => {
       description: "desc",
       longDescription: "long desc",
       tags: ["aws", "cdk"],
-      readTime: 10,
     })
     expect(result.description).toBe("desc")
     expect(result.longDescription).toBe("long desc")
     expect(result.tags).toEqual(["aws", "cdk"])
-    expect(result.readTime).toBe(10)
   })
 
   it("sets optional fields to undefined when not provided", () => {
     const result = blogSchema.parse({ title: "Minimal" })
     expect(result.longDescription).toBeUndefined()
     expect(result.tags).toBeUndefined()
-    expect(result.readTime).toBeUndefined()
     expect(result.cardImage).toBeUndefined()
     expect(result.description).toBeUndefined()
     expect(result.slug).toBeUndefined()

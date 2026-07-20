@@ -3,7 +3,6 @@ title: "Integrating Sonos with Spreaker RSS feed"
 slug: sonos-spreaker
 description: "Integrating Sonos with Spreaker RSS feed"
 timestamp: 2016-02-23
-readTime: 4
 tags:
   - "fsm"
   - "ifttt"

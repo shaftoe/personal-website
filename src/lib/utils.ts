@@ -45,3 +45,21 @@ export const sortArticlesByDate = (
     const ib = toInstant(b.data.timestamp)
     return Temporal.Instant.compare(ib, ia)
   })
+
+/**
+ * Approximate reading time (in minutes) for a markdown body.
+ *
+ * Runs at build time — the site is fully static, so this is computed once per
+ * post when the pages are generated. Fenced and inline code are stripped
+ * before counting so the estimate reflects prose rather than source listings.
+ * The result is rounded and clamped to a minimum of 1 minute.
+ */
+const WORDS_PER_MINUTE = 200
+export const readingTime = (body: string | undefined): number => {
+  const prose = (body ?? "")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`[^`]*`/g, " ")
+    .trim()
+  const words = prose.length ? prose.split(/\s+/).length : 0
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE))
+}

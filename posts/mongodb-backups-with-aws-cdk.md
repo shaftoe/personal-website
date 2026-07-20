@@ -3,7 +3,6 @@ title: "Automate database backups with AWS Fargate, S3 and CDK"
 slug: mongodb-backups-with-aws-cdk
 description: "I love how Serverless enables simple solutions to common DevOps tasks: in this article I describe one simple way to automate MongoDB database backups using AWS Fargate, S3, and CDK."
 timestamp: 2020-08-12
-readTime: 8
 tags:
   - "aws"
   - "cdk"

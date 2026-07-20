@@ -3,7 +3,6 @@ title: "sslnotify.me - yet another OpenSource Serverless MVP"
 slug: sslnotifyme
 description: "sslnotify.me - yet another OpenSource Serverless MVP"
 timestamp: 2017-05-30
-readTime: 12
 tags:
   - "aws"
   - "lambda"

@@ -3,7 +3,6 @@ title: "Replace p2k.co (Pocket to Kindle) SaaS with an event-driven serverless a
 slug: replace-p2k-with-serverless-app
 description: "For my reading habits in the recent years I've been using p2k.co service to send Pocket articles to my Kindle. I decided to fix some of p2k shortcomings replacing it with an event-driven serverless application built with AWS Lambda, Fargate and CDK"
 timestamp: 2020-04-03
-readTime: 18
 tags:
   - "aws"
   - "cdk"

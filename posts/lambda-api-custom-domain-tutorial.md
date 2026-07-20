@@ -3,7 +3,6 @@ title: "Setup a custom domain REST API endpoint on AWS Lambda: a step by step tu
 slug: lambda-api-custom-domain-tutorial
 description: "Setup a custom domain REST API endpoint on AWS Lambda: a step by step tutorial"
 timestamp: 2018-07-25
-readTime: 16
 tags:
   - "api"
   - "aws"

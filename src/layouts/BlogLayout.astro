@@ -10,9 +10,9 @@ import { blogPostingSchema } from "../lib/jsonld"
 import { getDocumentUri } from "../lib/standard"
 import Layout from "./Layout.astro"
 
-type Props = { frontmatter: ArticleFrontmatter }
+type Props = { frontmatter: ArticleFrontmatter; readTime: number }
 
-const { frontmatter } = Astro.props
+const { frontmatter, readTime } = Astro.props
 const timestamp = toInstant(frontmatter.timestamp)
 const articleDate = processArticleDate(timestamp)
 
@@ -50,7 +50,7 @@ const standardDocumentUri = frontmatter.slug
       </h1>
       <div class="flex flex-wrap justify-between items-center gap-y-3">
         <time class="dt-published" datetime={timestamp.toString()}>{articleDate}</time>
-        <span>{frontmatter.readTime} min</span>
+        <span>{readTime} min</span>
         {frontmatter.tags && <TagList tags={frontmatter.tags} microformats={true} />}
       </div>
     </div>

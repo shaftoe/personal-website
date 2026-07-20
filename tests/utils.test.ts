@@ -3,6 +3,7 @@ import { Temporal } from "temporal-polyfill"
 import {
   getShortDescription,
   processArticleDate,
+  readingTime,
   sortArticlesByDate,
 } from "../src/lib/utils"
 import type { CollectionEntry } from "astro:content"
@@ -60,6 +61,39 @@ describe("processArticleDate", () => {
   })
 })
 
+describe("readingTime", () => {
+  it("returns 1 minute for an empty body (clamped minimum)", () => {
+    expect(readingTime("")).toBe(1)
+  })
+
+  it("estimates 200 words per minute", () => {
+    const words = Array.from({ length: 400 }, (_, i) => `word${i}`)
+    expect(readingTime(words.join(" "))).toBe(2)
+  })
+
+  it("rounds to the nearest minute", () => {
+    // 500 words / 200 = 2.5 -> rounds to 3
+    const words = Array.from({ length: 500 }, (_, i) => `word${i}`)
+    expect(readingTime(words.join(" "))).toBe(3)
+  })
+
+  it("excludes fenced code blocks from the word count", () => {
+    const prose = Array.from({ length: 200 }, (_, i) => `word${i}`).join(" ")
+    const code =
+      "```js\n" +
+      Array.from({ length: 1000 }, (_, i) => `tok${i}`).join(" ") +
+      "\n```"
+    // 200 prose words -> 1 min; the 1000 code tokens must not inflate it
+    expect(readingTime(`${prose}\n\n${code}`)).toBe(1)
+  })
+
+  it("excludes inline code from the word count", () => {
+    const prose = Array.from({ length: 200 }, (_, i) => `word${i}`).join(" ")
+    const inline = "`const x = getValueFromSomeReallyLongIdentifier()`"
+    expect(readingTime(`${prose} ${inline}`)).toBe(1)
+  })
+})
+
 describe("sortArticlesByDate", () => {
   // Minimal mock satisfying the shape expected by sortArticlesByDate
   function makeArticle(
@@ -76,7 +110,6 @@ describe("sortArticlesByDate", () => {
         longDescription: undefined,
         cardImage: undefined,
         tags: undefined,
-        readTime: undefined,
         timestamp,
       },
       body: "",

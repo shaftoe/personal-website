@@ -3,7 +3,6 @@ title: "An AWS Lambda execution report webpage built with Lambda Destinations, C
 slug: lambda-reports-with-destinations
 description: "Moving from a previous CDK article I expand the publish-to-social code base to add a nice report functionality. In this article I show you how easy it is to introduce Lambda Destinations in your CDK project and make use of them for this particular use case. For the frontend part I use Svelte web framework to present the Lambda report JSON output as web page content."
 timestamp: 2020-02-27
-readTime: 7
 tags:
   - "aws"
   - "cdk"

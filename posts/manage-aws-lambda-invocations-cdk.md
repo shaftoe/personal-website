@@ -3,7 +3,6 @@ title: "Setup AWS Lambda-to-Lambda invocations between CDK Stacks"
 slug: manage-aws-lambda-invocations-cdk
 description: "With CDK is easy to organize AWS resources and share them between Stacks when needed. In this article I show you how I split an `api` Lambda in two, one for handling the API Gateway requests and the other for sending messages to an external notifications service."
 timestamp: 2020-02-25
-readTime: 4
 tags:
   - "api"
   - "aws"

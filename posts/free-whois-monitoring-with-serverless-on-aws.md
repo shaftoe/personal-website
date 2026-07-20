@@ -3,7 +3,6 @@ title: "Setup free WHOIS monitoring to avoid unwanted domain expirations with Se
 slug: free-whois-monitoring-with-serverless-on-aws
 description: "A few days ago I forgot to renew one of my registered Internet domains which I believed was set to auto-renew and received a few alerts when affected services started to fail. I hence took the chance to setup a simple and free monitoring solution to avoid incurring again in this same problem once and for all. Powered by AWS CDK, Python and WhoisXML"
 timestamp: 2020-07-23
-readTime: 7
 tags:
   - "api"
   - "aws"

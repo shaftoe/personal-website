@@ -3,7 +3,6 @@ title: "Introducing AWS CDK with a real life Lambda and API gateway example"
 slug: migrating-from-terraform-to-cdk
 description: "After successfully replacing Terraform with CDK in a real life project I take the chance to wrap up the new knowledge along with some Terraform vs. CDK kind of considerations. I also synthesize the acquired know-how in a mini tutorial based on the actual code used in the production scenario."
 timestamp: 2020-02-04
-readTime: 16
 tags:
   - "api"
   - "aws"

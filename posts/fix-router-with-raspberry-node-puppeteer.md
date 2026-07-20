@@ -3,7 +3,6 @@ title: "Automate router WiFi bridge setup with Raspberry Pi, Node.js, Puppeteer 
 slug: fix-router-with-raspberry-node-puppeteer
 description: "Automate router WiFi bridge setup with Raspberry Pi, Node.js, Puppeteer and Ansible"
 timestamp: 2020-04-27
-readTime: 8
 tags:
   - "ansible"
   - "javascript"

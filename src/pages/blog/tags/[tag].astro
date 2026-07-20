@@ -4,7 +4,7 @@ import ArticleSnippet from "../../../components/blog/ArticleSnippet.astro"
 import Section from "../../../components/base/Section.astro"
 import Layout from "../../../layouts/Layout.astro"
 import { siteConfig } from "../../../config"
-import { sortArticlesByDate } from "../../../lib/utils"
+import { sortArticlesByDate, readingTime } from "../../../lib/utils"
 
 export async function getStaticPaths() {
   const articles = await getCollection("blog")
@@ -41,7 +41,7 @@ const { tag, articles } = Astro.props
             <ArticleSnippet
               title={article.data.title}
               description={article.data.description}
-              duration={`${article.data.readTime} min`}
+              duration={`${readingTime(article.body)} min`}
               url={`/blog/${article.data.slug}`}
               timestamp={article.data.timestamp}
               tags={article.data.tags}

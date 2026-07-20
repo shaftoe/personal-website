@@ -3,7 +3,6 @@ title: "Lastversion: a Go serverless proof of concept developed on OpenWhisk"
 slug: lastversion
 description: "Lastversion: a Go serverless proof of concept developed on OpenWhisk"
 timestamp: 2017-02-28
-readTime: 5
 tags:
   - "docker"
   - "golang"

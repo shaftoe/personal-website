@@ -3,7 +3,6 @@ title: "My quest for identity in Software Engineering"
 slug: my-quest-for-identity-in-software-engineering
 description: "A wrap up of my last 20 years as a professional in IT, along with some considerations about the current state of the art."
 timestamp: 2020-01-29
-readTime: 19
 tags:
   - "jamstack"
   - "serverless"

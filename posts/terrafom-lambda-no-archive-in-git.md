@@ -3,7 +3,6 @@ title: "Deploy AWS Lambda with Terraform without storing the Zip archive"
 slug: terrafom-lambda-no-archive-in-git
 description: "Terraform is a great tool but managing AWS Lambda is arguably not one of its strength. In this post I'll describe one approach that I follow to work around this limitation."
 timestamp: 2021-09-18
-readTime: 4
 tags:
   - "terraform"
   - "serverless"

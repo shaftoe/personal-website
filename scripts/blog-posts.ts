@@ -11,6 +11,7 @@ import { join } from "node:path"
 import matter from "gray-matter"
 import type { BlogEntry } from "../src/lib/blog-collection"
 import { blogSchema } from "../src/lib/blog-collection"
+import { readingTime } from "../src/lib/utils"
 
 const POSTS_DIR = new URL("../posts", import.meta.url).pathname
 
@@ -23,12 +24,13 @@ function readMarkdownFiles(dir: string): string[] {
 interface PostParseResult {
   file: string
   entry: BlogEntry
+  readTime: number
   errors: string[]
 }
 
 function parsePost(filePath: string): PostParseResult {
   const raw = readFileSync(filePath, "utf-8")
-  const { data: frontmatter } = matter(raw)
+  const { data: frontmatter, content } = matter(raw)
 
   const result = blogSchema.safeParse(frontmatter)
 
@@ -36,10 +38,20 @@ function parsePost(filePath: string): PostParseResult {
     const errors = result.error.issues.map(
       (i) => `  - ${i.path.join(".")}: ${i.message}`,
     )
-    return { file: filePath, entry: null as unknown as BlogEntry, errors }
+    return {
+      file: filePath,
+      entry: null as unknown as BlogEntry,
+      readTime: 0,
+      errors,
+    }
   }
 
-  return { file: filePath, entry: result.data, errors: [] }
+  return {
+    file: filePath,
+    entry: result.data,
+    readTime: readingTime(content),
+    errors: [],
+  }
 }
 
 function main() {
@@ -59,6 +71,7 @@ function main() {
     const output = successes.map((r) => ({
       file: r.file,
       ...r.entry,
+      readTime: r.readTime,
     }))
     console.log(JSON.stringify(output, null, 2))
   } else {
@@ -66,9 +79,8 @@ function main() {
       `\n  📝 ${successes.length} blog post${successes.length !== 1 ? "s" : ""} found\n`,
     )
 
-    for (const { file, entry } of successes) {
+    for (const { file, entry, readTime } of successes) {
       const tags = entry.tags?.length ? ` [${entry.tags.join(", ")}]` : ""
-      const readTime = entry.readTime ? ` · ${entry.readTime} min` : ""
       console.log(`  ${entry.title}`)
       console.log(
         `    slug: ${
@@ -77,7 +89,7 @@ function main() {
             .toLowerCase()
             .replace(/\s+/g, "-")
             .replace(/[^\w-]/g, "")
-        }${tags}${readTime}`,
+        }${tags} · ${readTime} min`,
       )
       const dateStr = entry.timestamp
         ? entry.timestamp.toISOString().slice(0, 10)

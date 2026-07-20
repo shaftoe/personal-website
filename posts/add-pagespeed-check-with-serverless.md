@@ -3,7 +3,6 @@ title: "Add free performance monitoring to your websites with Lighthouse and AWS
 slug: add-pagespeed-check-with-serverless
 description: "Google's Lighthouse is a powerful free resource that helps developers build performant, accessible and SEO friendly websites. Here I show one way to make use of Lighthouse to add performance monitoring for web pages using Serverless components on AWS."
 timestamp: 2020-05-30
-readTime: 7
 tags:
   - "aws"
   - "cdk"

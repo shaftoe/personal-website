@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content"
 import BlogLayout from "../../layouts/BlogLayout.astro"
+import { readingTime } from "../../lib/utils"
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog")
@@ -14,6 +15,6 @@ const { article } = Astro.props
 const { Content } = await render(article)
 ---
 
-<BlogLayout frontmatter={article.data}>
+<BlogLayout frontmatter={article.data} readTime={readingTime(article.body)}>
   <Content />
 </BlogLayout>

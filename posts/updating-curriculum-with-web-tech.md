@@ -3,7 +3,6 @@ title: "Remaking my curriculum vitæ with modern web technologies"
 slug: updating-curriculum-with-web-tech
 description: "For a while I wanted to manage my CV in a more flexible way. I stumbled upon a great article on CSS-Tricks that made me think I had no more excuses to procrastinate. In this article I present my solution along with some considerations."
 timestamp: 2020-01-31
-readTime: 5
 tags:
   - "css3"
   - "html5"
