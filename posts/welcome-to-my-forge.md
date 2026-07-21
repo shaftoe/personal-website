@@ -29,7 +29,7 @@ To be honest I didn't spend much time selecting which OpenSource git forge to ad
 
 I heard well about other options like [SourceHut](https://sourcehut.org/) for example BUT
 
-- I already had a Codeberg (the company behind Forgejo development) account and I like [their mission](https://docs.codeberg.org/getting-started/what-is-codeberg/#our-mission)
+- I already had a Codeberg (the ~~company~~ *registered non-profit association*[^codeberg] behind Forgejo development) account and I like [their mission](https://docs.codeberg.org/getting-started/what-is-codeberg/#our-mission)
 - it exposes most of GitHub APIs verbatim so things like [GitHub actions should work](https://forgejo.org/docs/latest/user/actions/github-actions/) out of the box
 - it's feature rich, considered stable and follows a regular release cycle
 - the UI is almost identical to GitHub's
@@ -605,3 +605,4 @@ Keep forging! ✌️
 [^atproto]: I recently moved from Mastodon to [Bluesky](https://bsky.app/profile/l3x.in/post/3mpgefohuls2t) and I host my own PDS at https://social.l3x.in 
 [^copilot]: "just choke `copilot` down every possible throat" seems to be their current business strategy
 [^packages]: I'm also glossing over other core components like e.g. DNS records and SMTP relaying, I consider them to be out of scope for this article
+[^codeberg]: In Germany, an [*eingetragener Verein*](https://docs.codeberg.org/getting-started/what-is-codeberg/#what-is-codeberg-e.v.%3F)
