@@ -1,21 +1,87 @@
 ---
 import { toInstant, processArticleDate } from "../../lib/utils"
 import Anchor from "../base/Anchor.astro"
+import { microblogImageUrl } from "../../lib/microblog-images"
+import type { PostImage, PostLinkCard } from "../../lib/atproto"
 
 export type Props = {
   content: string
   url: string
   timestamp: unknown
+  /** Embedded photos, already processed into local WebP thumbnails */
+  images?: PostImage[]
+  /** External link card, with a local thumbnail when available */
+  linkCard?: PostLinkCard
 }
 
-const { content, url, timestamp: rawTimestamp } = Astro.props
+const {
+  content,
+  url,
+  timestamp: rawTimestamp,
+  images = [],
+  linkCard,
+} = Astro.props
 const timestamp = toInstant(rawTimestamp)
+
+/** Hostname of the link card URL, for a compact "via" label. */
+const linkCardHost = (() => {
+  if (!linkCard) return undefined
+  try {
+    return new URL(linkCard.url).hostname
+  } catch {
+    return undefined
+  }
+})()
 ---
 
 <article class="relative zag-text zag-transition flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
   <div class="text-base prose prose-sm dark:prose-invert max-w-none [&_a]:zag-offset [&_a]:underline [&_a]:font-medium [&_a]:break-all break-words">
     <Fragment set:html={content} />
   </div>
+  {images.length > 0 && (
+    <div class:list={["grid gap-2", images.length === 1 ? "grid-cols-1" : "grid-cols-2"]}>
+      {images.map((image) => (
+        <img
+          src={microblogImageUrl(image.cid)}
+          alt={image.alt}
+          width={image.width > 0 ? image.width : undefined}
+          height={image.height > 0 ? image.height : undefined}
+          loading="lazy"
+          decoding="async"
+          class:list={[
+            "zag-transition rounded-lg border-2 border-zag-dark/10 dark:border-zag-light/10 w-full object-cover",
+            images.length === 1 ? "max-h-96" : "aspect-square",
+          ]}
+        />
+      ))}
+    </div>
+  )}
+  {linkCard && (
+    <a
+      href={linkCard.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="zag-text zag-transition flex items-stretch rounded-lg overflow-hidden border-2 border-zag-dark/10 dark:border-zag-light/10 hover:border-zag-dark/30 dark:hover:border-zag-light/30 max-w-xl text-left"
+    >
+      {linkCard.thumb && (
+        <img
+          src={microblogImageUrl(linkCard.thumb.cid)}
+          alt={linkCard.thumb.alt}
+          width={linkCard.thumb.width > 0 ? linkCard.thumb.width : undefined}
+          height={linkCard.thumb.height > 0 ? linkCard.thumb.height : undefined}
+          loading="lazy"
+          decoding="async"
+          class="w-24 sm:w-28 max-h-32 object-cover shrink-0"
+        />
+      )}
+      <span class="flex flex-col justify-center gap-1 py-2 pl-3 pr-3 min-w-0">
+        {linkCard.title && (
+          <span class="text-sm font-medium leading-snug line-clamp-2 break-words">{linkCard.title}</span>
+        )}
+        {linkCardHost && <span class="zag-muted text-xs break-all">{linkCardHost}</span>}
+      </span>
+    </a>
+  )}
   <footer class="zag-muted zag-transition flex flex-wrap gap-x-3 gap-y-1 items-center">
     {timestamp ? <time datetime={timestamp.toString()}>{processArticleDate(timestamp)}</time> : null}
     <Anchor url={url} class="text-sm">View on Bluesky</Anchor>

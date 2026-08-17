@@ -48,6 +48,8 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
               content={toot.content}
               url={toot.url}
               timestamp={toot.createdAt}
+              images={toot.images}
+              linkCard={toot.linkCard}
             />
           </li>
         ))

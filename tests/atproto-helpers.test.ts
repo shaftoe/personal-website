@@ -2,6 +2,7 @@ import { describe, expect, it } from "bun:test"
 import {
   escapeHtml,
   extractFirstUrl,
+  extractPostMedia,
   renderRichText,
 } from "../src/lib/atproto"
 import type { Facet } from "../src/lib/atproto"
@@ -139,6 +140,92 @@ describe("renderRichText", () => {
     ]
     // Should just render the escaped text without breaking
     expect(renderRichText(text, facets)).toBe("abc def")
+  })
+})
+
+describe("extractPostMedia", () => {
+  const blob = (cid: string) => ({
+    $type: "blob" as const,
+    ref: { $link: cid },
+    mimeType: "image/jpeg",
+    size: 1234,
+  })
+
+  it("extracts attached photos from an images embed", () => {
+    const media = extractPostMedia({
+      $type: "app.bsky.embed.images",
+      images: [
+        {
+          image: blob("bafyphoto1"),
+          alt: "a flight view",
+          aspectRatio: { width: 3000, height: 4000 },
+        },
+        { image: blob("bafyphoto2"), alt: "" },
+      ],
+    })
+    expect(media.images).toEqual([
+      {
+        cid: "bafyphoto1",
+        alt: "a flight view",
+        mimeType: "image/jpeg",
+        aspectRatio: { width: 3000, height: 4000 },
+      },
+      { cid: "bafyphoto2", alt: "", mimeType: "image/jpeg" },
+    ])
+    expect(media.linkCard).toBeUndefined()
+  })
+
+  it("extracts an external link card with its thumbnail", () => {
+    const media = extractPostMedia({
+      $type: "app.bsky.embed.external",
+      external: {
+        uri: "https://example.com/article",
+        title: "An article",
+        description: "Worth reading.",
+        thumb: blob("bafythumb"),
+      },
+    })
+    expect(media.images).toEqual([])
+    expect(media.linkCard).toEqual({
+      url: "https://example.com/article",
+      title: "An article",
+      description: "Worth reading.",
+      thumb: {
+        cid: "bafythumb",
+        alt: "An article",
+        mimeType: "image/jpeg",
+      },
+    })
+  })
+
+  it("falls back to the description for the thumbnail alt text", () => {
+    const media = extractPostMedia({
+      $type: "app.bsky.embed.external",
+      external: {
+        uri: "https://example.com/no-title",
+        description: "Only a description",
+        thumb: blob("bafythumb"),
+      },
+    })
+    expect(media.linkCard?.thumb?.alt).toBe("Only a description")
+  })
+
+  it("returns a thumb-less link card when the embed has no thumbnail", () => {
+    const media = extractPostMedia({
+      $type: "app.bsky.embed.external",
+      external: { uri: "https://example.com/bare" },
+    })
+    expect(media.images).toEqual([])
+    expect(media.linkCard).toEqual({ url: "https://example.com/bare" })
+  })
+
+  it("ignores other embed types (e.g. video) and missing embeds", () => {
+    expect(extractPostMedia().images).toEqual([])
+    const videoEmbed = {
+      $type: "app.bsky.embed.video",
+      video: blob("bafyvideo"),
+    }
+    expect(extractPostMedia(videoEmbed).images).toEqual([])
   })
 })
 

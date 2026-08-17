@@ -31,6 +31,16 @@ async function main() {
       console.log(`  ${post.text.replace(/\n/g, " ")}`)
       console.log(`    url:   ${post.url}`)
       console.log(`    date:  ${post.createdAt.toString().slice(0, 10)}`)
+      const media: string[] = []
+      if (post.images.length > 0) {
+        media.push(
+          `${post.images.length} image${post.images.length !== 1 ? "s" : ""}`,
+        )
+      }
+      if (post.linkCard) {
+        media.push(`link card${post.linkCard.thumb ? " (thumb)" : ""}`)
+      }
+      console.log(`    media: ${media.length > 0 ? media.join(", ") : "—"}`)
       console.log(
         `    stats: ${post.likeCount} like${post.likeCount !== 1 ? "s" : ""} · ${post.repostCount} repost${post.repostCount !== 1 ? "s" : ""} · ${post.replyCount} repl${post.replyCount !== 1 ? "ies" : "y"}`,
       )

@@ -13,6 +13,11 @@
  */
 import { Temporal } from "temporal-polyfill"
 import { siteConfig } from "../config"
+import {
+  readMicroblogImageSize,
+  resizeMicroblogImage,
+  writeMicroblogImage,
+} from "./microblog-images"
 
 // ---- Public types ----
 
@@ -29,6 +34,28 @@ export interface MicroPost {
   likeCount: number
   repostCount: number
   replyCount: number
+  /** Embedded photos, hydrated with local WebP thumbnail paths (may be empty) */
+  images: PostImage[]
+  /** External link card (with a local thumbnail when one could be processed) */
+  linkCard?: PostLinkCard
+}
+
+/** A post image served from this site as a size-capped WebP derivative. */
+export interface PostImage {
+  /** Blob CID — the deterministic filename stem under /images/microblog/ */
+  cid: string
+  alt: string
+  /** Pixel dimensions of the processed file (for width/height attributes) */
+  width: number
+  height: number
+}
+
+/** External link card attached to a post (app.bsky.embed.external). */
+export interface PostLinkCard {
+  url: string
+  title?: string
+  description?: string
+  thumb?: PostImage
 }
 
 export interface PostrollEntry {
@@ -81,6 +108,21 @@ interface PostEmbedExternal {
   uri: string
   title?: string
   description?: string
+  thumb?: BlobRef
+}
+
+/** A single image of an `app.bsky.embed.images` embed. */
+interface EmbedImage {
+  image: BlobRef
+  alt?: string
+  aspectRatio?: { width: number; height: number }
+}
+
+/** An `embed` on a post record — only the shapes we consume are modelled. */
+interface PostEmbed {
+  $type: string
+  images?: EmbedImage[]
+  external?: PostEmbedExternal
 }
 
 /** The `value` envelope of a record from `com.atproto.repo.listRecords`. */
@@ -89,10 +131,7 @@ interface PostRecordValue {
   createdAt: string
   facets?: Facet[]
   reply?: { root: { uri: string }; parent: { uri: string } }
-  embed?: {
-    $type: string
-    external?: PostEmbedExternal
-  }
+  embed?: PostEmbed
 }
 
 /** A single item from a `com.atproto.repo.listRecords` response. */
@@ -110,6 +149,8 @@ interface ListRecordsResponse {
 const LINK_FACET = "app.bsky.richtext.facet#link"
 const MENTION_FACET = "app.bsky.richtext.facet#mention"
 const TAG_FACET = "app.bsky.richtext.facet#tag"
+const IMAGES_EMBED = "app.bsky.embed.images"
+const EXTERNAL_EMBED = "app.bsky.embed.external"
 
 // ---- HTML utilities ----
 
@@ -202,6 +243,72 @@ export function extractFirstUrl(
   return null
 }
 
+/** An image blob referenced by a post embed, before local processing. */
+export interface RawPostImage {
+  cid: string
+  alt: string
+  mimeType: string
+  aspectRatio?: { width: number; height: number }
+}
+
+/** An external link card before its thumbnail (if any) is processed. */
+export interface RawPostLinkCard {
+  url: string
+  title?: string
+  description?: string
+  thumb?: RawPostImage
+}
+
+/** Media extracted from a post embed, awaiting local image processing. */
+export interface RawPostMedia {
+  images: RawPostImage[]
+  linkCard?: RawPostLinkCard
+}
+
+/**
+ * Extracts the displayable media from a post embed: attached photos
+ * (`app.bsky.embed.images`) and external link cards
+ * (`app.bsky.embed.external`, with an optional thumbnail blob). Other embed
+ * types (video, quoted posts, …) are intentionally ignored.
+ */
+export function extractPostMedia(embed?: PostEmbed): RawPostMedia {
+  if (!embed) return { images: [] }
+
+  if (embed.$type === IMAGES_EMBED && Array.isArray(embed.images)) {
+    const images = embed.images
+      .filter((image) => image.image?.ref?.$link)
+      .map((image) => ({
+        cid: image.image.ref.$link,
+        alt: image.alt ?? "",
+        mimeType: image.image.mimeType,
+        ...(image.aspectRatio ? { aspectRatio: image.aspectRatio } : {}),
+      }))
+    return { images }
+  }
+
+  if (embed.$type === EXTERNAL_EMBED && embed.external?.uri) {
+    const external = embed.external
+    const thumb = external.thumb?.ref?.$link
+      ? {
+          cid: external.thumb.ref.$link,
+          alt: external.title ?? external.description ?? "",
+          mimeType: external.thumb.mimeType,
+        }
+      : undefined
+    return {
+      images: [],
+      linkCard: {
+        url: external.uri,
+        ...(external.title ? { title: external.title } : {}),
+        ...(external.description ? { description: external.description } : {}),
+        ...(thumb ? { thumb } : {}),
+      },
+    }
+  }
+
+  return { images: [] }
+}
+
 // ---- Generic API client ----
 
 const PDS_TIMEOUT = 10_000
@@ -250,26 +357,12 @@ async function fetchPdsRecords(
   onPage: (items: ListRecordsItem[]) => boolean,
   label: string,
 ): Promise<void> {
-  const pds = siteConfig.atproto.pds
-  const handle = siteConfig.atproto.handle
-
   // Resolve handle to DID first (also validates the PDS is reachable)
-  let did: string
-  try {
-    const describeRes = await pdsFetch(
-      `${pds}/xrpc/com.atproto.repo.describeRepo?${new URLSearchParams({ repo: handle })}`,
-      `${label} — resolve handle`,
+  const did = await resolveDid(label)
+  if (!did) {
+    console.warn(
+      `⚠️ PDS did not return a DID for handle "${siteConfig.atproto.handle}" — ${label}`,
     )
-    const describe = (await describeRes.json()) as DescribeRepoResponse
-    if (!describe.did) {
-      console.warn(
-        `⚠️ PDS did not return a DID for handle "${handle}" — ${label}`,
-      )
-      return
-    }
-    did = describe.did
-  } catch {
-    console.warn(`⚠️ Could not resolve handle "${handle}" on PDS — ${label}`)
     return
   }
 
@@ -284,7 +377,7 @@ async function fetchPdsRecords(
 
     try {
       const res = await pdsFetch(
-        `${pds}/xrpc/com.atproto.repo.listRecords?${new URLSearchParams(params)}`,
+        `${siteConfig.atproto.pds}/xrpc/com.atproto.repo.listRecords?${new URLSearchParams(params)}`,
         `${label} — page ${page + 1}`,
       )
       const data = (await res.json()) as ListRecordsResponse
@@ -304,6 +397,132 @@ async function fetchPdsRecords(
 
 // ---- Helpers ----
 
+/** Cached handle → DID resolution, shared by every data path below. */
+let didCache: string | undefined
+
+/**
+ * Resolves the configured handle to its DID on the self-hosted PDS.
+ * Returns `null` (with a console warning) on failure — callers degrade
+ * gracefully rather than breaking the build.
+ */
+async function resolveDid(label: string): Promise<string | null> {
+  if (didCache) return didCache
+  try {
+    const describeRes = await pdsFetch(
+      `${siteConfig.atproto.pds}/xrpc/com.atproto.repo.describeRepo?${new URLSearchParams({ repo: siteConfig.atproto.handle })}`,
+      `${label} — resolve handle`,
+    )
+    const describe = (await describeRes.json()) as DescribeRepoResponse
+    if (!describe.did) return null
+    didCache = describe.did
+    return didCache
+  } catch (error) {
+    console.warn(
+      `⚠️ Could not resolve handle "${siteConfig.atproto.handle}" on PDS — ${label} (${error instanceof Error ? error.message : String(error)})`,
+    )
+    return null
+  }
+}
+
+/** Downloads raw blob bytes (e.g. an embedded image) from the PDS. */
+async function getBlob(did: string, cid: string): Promise<ArrayBuffer> {
+  const res = await pdsFetch(
+    `${siteConfig.atproto.pds}/xrpc/com.atproto.sync.getBlob?${new URLSearchParams({ did, cid })}`,
+    `download blob ${cid.slice(0, 12)}…`,
+  )
+  return res.arrayBuffer()
+}
+
+/** Per-process cache so each blob is downloaded and processed at most once. */
+const blobCache = new Map<string, Promise<PostImage | null>>()
+
+/**
+ * Ensures a local, size-capped WebP derivative exists for a post image blob
+ * (see src/lib/microblog-images.ts), returning its displayable shape — or
+ * `null` when the blob cannot be fetched or processed, in which case the
+ * post simply renders without that image.
+ */
+function ensureLocalImage(
+  did: string,
+  raw: RawPostImage,
+): Promise<PostImage | null> {
+  let pending = blobCache.get(raw.cid)
+  if (!pending) {
+    pending = processBlob(did, raw)
+    blobCache.set(raw.cid, pending)
+  }
+  return pending
+}
+
+async function processBlob(
+  did: string,
+  raw: RawPostImage,
+): Promise<PostImage | null> {
+  const cached = await readMicroblogImageSize(raw.cid)
+  if (cached) return { cid: raw.cid, alt: raw.alt, ...cached }
+
+  try {
+    const data = await getBlob(did, raw.cid)
+    const image = await resizeMicroblogImage(data)
+    writeMicroblogImage(raw.cid, image)
+    return {
+      cid: raw.cid,
+      alt: raw.alt,
+      width: image.width,
+      height: image.height,
+    }
+  } catch (error) {
+    console.warn(
+      `⚠️ Could not fetch or process blob ${raw.cid} — post will render without it (${error instanceof Error ? error.message : String(error)})`,
+    )
+    return null
+  }
+}
+
+/**
+ * Hydrates posts with locally-processed media: every referenced image blob
+ * is downloaded from the PDS, converted to a size-capped WebP under
+ * `/images/microblog/`, and described with its final pixel dimensions.
+ * Images that cannot be fetched are dropped, so pages never reference
+ * missing files — the post just renders text-only.
+ */
+async function hydratePostMedia(
+  posts: MicroPost[],
+  rawMedia: Map<string, RawPostMedia>,
+): Promise<void> {
+  const withMedia = posts.filter((post) => {
+    const media = rawMedia.get(post.uri)
+    return (
+      media !== undefined &&
+      (media.images.length > 0 || media.linkCard?.thumb !== undefined)
+    )
+  })
+  if (withMedia.length === 0) return
+
+  const did = await resolveDid("hydrate post media")
+  if (!did) {
+    console.warn("⚠️ Skipping microblog post media — could not resolve DID")
+    return
+  }
+
+  await Promise.all(
+    withMedia.map(async (post) => {
+      const media = rawMedia.get(post.uri)
+      if (!media) return
+
+      const images = await Promise.all(
+        media.images.map((raw) => ensureLocalImage(did, raw)),
+      )
+      post.images = images.filter((image): image is PostImage => image !== null)
+
+      if (post.linkCard && media.linkCard?.thumb) {
+        const thumb = await ensureLocalImage(did, media.linkCard.thumb)
+        if (thumb) post.linkCard = { ...post.linkCard, thumb }
+      }
+    }),
+  )
+}
+
 /** Build the bsky.app web URL for a post from its AT URI. */
 function postWebUrl(uri: string): string {
   const rkey = uri.split("/").pop()
@@ -311,7 +530,10 @@ function postWebUrl(uri: string): string {
 }
 
 /** Convert a `ListRecordsItem` into the public MicroPost shape. */
-function itemToMicroPost(item: ListRecordsItem): MicroPost {
+function itemToMicroPost(
+  item: ListRecordsItem,
+  media: RawPostMedia,
+): MicroPost {
   const value = item.value
   return {
     uri: item.uri,
@@ -322,6 +544,18 @@ function itemToMicroPost(item: ListRecordsItem): MicroPost {
     likeCount: 0,
     repostCount: 0,
     replyCount: 0,
+    images: [],
+    ...(media.linkCard
+      ? {
+          linkCard: {
+            url: media.linkCard.url,
+            ...(media.linkCard.title ? { title: media.linkCard.title } : {}),
+            ...(media.linkCard.description
+              ? { description: media.linkCard.description }
+              : {}),
+          },
+        }
+      : {}),
   }
 }
 
@@ -398,15 +632,19 @@ export async function getAvatarBlob(): Promise<{
 
 /**
  * Fetches the latest N original posts (no replies, no reposts) from the
- * author's self-hosted PDS.
+ * author's self-hosted PDS, with embedded media hydrated into local
+ * size-capped WebP images.
  */
 export async function getLatestPosts(limit = 3): Promise<MicroPost[]> {
   const posts: MicroPost[] = []
+  const rawMedia = new Map<string, RawPostMedia>()
 
   await fetchPdsRecords((items) => {
     for (const item of items) {
       if (!isTopLevelPost(item.value)) continue
-      posts.push(itemToMicroPost(item))
+      const media = extractPostMedia(item.value.embed)
+      rawMedia.set(item.uri, media)
+      posts.push(itemToMicroPost(item, media))
       if (posts.length >= limit) return false
     }
     return posts.length < limit
@@ -416,8 +654,10 @@ export async function getLatestPosts(limit = 3): Promise<MicroPost[]> {
     console.warn(
       "⚠️ PDS returned no posts — homepage will render without microblog posts",
     )
+    return posts
   }
 
+  await hydratePostMedia(posts, rawMedia)
   return posts
 }
 
@@ -450,20 +690,25 @@ export async function getPostrollEntries(): Promise<PostrollEntry[]> {
 }
 
 /**
- * Collects all posts tagged #til (Today I Learned) for the /til page.
+ * Collects all posts tagged #til (Today I Learned) for the /til page,
+ * with embedded media hydrated into local size-capped WebP images.
  */
 export async function getTilPosts(): Promise<MicroPost[]> {
   const posts: MicroPost[] = []
+  const rawMedia = new Map<string, RawPostMedia>()
 
   await fetchPdsRecords((items) => {
     for (const item of items) {
       const value = item.value
       if (!isTopLevelPost(value)) continue
       if (!recordHasTag(value, "til")) continue
-      posts.push(itemToMicroPost(item))
+      const media = extractPostMedia(value.embed)
+      rawMedia.set(item.uri, media)
+      posts.push(itemToMicroPost(item, media))
     }
     return true // keep paginating
   }, `getTilPosts — returning ${posts.length} posts fetched so far`)
 
+  await hydratePostMedia(posts, rawMedia)
   return posts
 }

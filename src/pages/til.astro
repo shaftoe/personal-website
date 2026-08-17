@@ -39,6 +39,8 @@ const entries = await getTilPosts()
                 content={entry.content}
                 url={entry.url}
                 timestamp={entry.createdAt}
+                images={entry.images}
+                linkCard={entry.linkCard}
               />
             </li>
           ))}
