@@ -1,7 +1,6 @@
 <script lang="ts">
   import "temporal-polyfill/global"
   import { fetchUsage, formatTimestamp, formatRelativeUntil } from "./lib.ts"
-  import type { UsageService } from "./lib.ts"
 
   let data = $state<Awaited<ReturnType<typeof fetchUsage>> | null>(null)
   let loading = $state(false)
@@ -23,13 +22,13 @@
   }
 
   /** Clamp a percentage into a valid 0–100 range for the progress bar width. */
-  function percentWidth(svc: UsageService): number {
-    return Math.min(100, Math.max(0, svc.percentage ?? 0))
+  function percentWidth(percentage: number): number {
+    return Math.min(100, Math.max(0, percentage))
   }
 
-  /** Services with high quota usage are highlighted in the error color. */
-  function isHighUsage(svc: UsageService): boolean {
-    return typeof svc.percentage === "number" && (svc.percentage ?? 0) >= 80
+  /** Quotas with high usage are highlighted in the error color. */
+  function isHighUsage(percentage: number): boolean {
+    return percentage >= 80
   }
 
   // Client-only initialization — fetch the live data on mount.
@@ -93,33 +92,72 @@
 
   <div class="space-y-4">
     {#each data.services as svc (svc.service)}
-      {@const isPercent = typeof svc.percentage === "number"}
+      {@const hasQuotas = Array.isArray(svc.quotas) && svc.quotas.length > 0}
       {@const isBalance = typeof svc.balance === "number"}
-      {@const showPercent = isPercent || (!isPercent && !isBalance)}
-      {@const pctValue = isPercent ? svc.percentage : 0}
-      {@const high = isHighUsage(svc)}
+      {@const isLegacyPercent = typeof svc.percentage === "number"}
       <div class="rounded-lg border-2 border-zag-dark/20 dark:border-zag-light/20 p-4 sm:p-5">
         <div class="mb-3 flex items-baseline justify-between gap-4">
           <h2 class="text-lg sm:text-xl font-semibold">{svc.service}</h2>
-          {#if showPercent}
-            <span class="font-mono text-base sm:text-lg {high ? "text-zag-error-light dark:text-zag-error-dark" : ""}">
-              {pctValue}%
+          {#if svc.level}
+            <span class="rounded-full bg-zag-dark/10 dark:bg-zag-light/10 px-2.5 py-0.5 font-mono text-xs uppercase tracking-wide zag-muted">
+              {svc.level}
             </span>
           {/if}
         </div>
 
-        {#if showPercent}
+        {#if hasQuotas}
+          <div class="space-y-4">
+            {#each svc.quotas as quota (quota.label)}
+              {@const pct = quota.percentage ?? 0}
+              {@const high = isHighUsage(pct)}
+              <div>
+                <div class="mb-1.5 flex items-baseline justify-between gap-4">
+                  <span class="font-mono text-sm font-medium">{quota.label}</span>
+                  <span class="font-mono text-sm {high ? "text-zag-error-light dark:text-zag-error-dark" : ""}">
+                    {pct}%
+                  </span>
+                </div>
+                <div
+                  class="h-3 rounded-full bg-zag-dark/10 dark:bg-zag-light/10 overflow-hidden"
+                  role="progressbar"
+                  aria-valuenow={pct}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-label={`${svc.service} ${quota.label} usage`}
+                >
+                  <div
+                    class="h-full rounded-full zag-transition {high ? "bg-zag-error-light dark:bg-zag-error-dark" : "bg-zag-accent-light dark:bg-zag-accent-dark"}"
+                    style={`width: ${percentWidth(pct)}%`}
+                  ></div>
+                </div>
+                {#if quota.reset_at}
+                  <p class="zag-muted mt-1.5 text-xs">
+                    Resets in {formatRelativeUntil(quota.reset_at)}
+                  </p>
+                {/if}
+              </div>
+            {/each}
+          </div>
+        {:else if isLegacyPercent || (!isBalance && !hasQuotas)}
+          {@const pct = svc.percentage ?? 0}
+          {@const high = isHighUsage(pct)}
+          <div class="mb-1.5 flex items-baseline justify-between gap-4">
+            <span class="zag-muted font-mono text-sm">usage</span>
+            <span class="font-mono text-base sm:text-lg {high ? "text-zag-error-light dark:text-zag-error-dark" : ""}">
+              {pct}%
+            </span>
+          </div>
           <div
             class="h-3 rounded-full bg-zag-dark/10 dark:bg-zag-light/10 overflow-hidden"
             role="progressbar"
-            aria-valuenow={pctValue}
+            aria-valuenow={pct}
             aria-valuemin="0"
             aria-valuemax="100"
             aria-label={`${svc.service} usage`}
           >
             <div
               class="h-full rounded-full zag-transition {high ? "bg-zag-error-light dark:bg-zag-error-dark" : "bg-zag-accent-light dark:bg-zag-accent-dark"}"
-              style={`width: ${percentWidth({ ...svc, percentage: pctValue })}%`}
+              style={`width: ${percentWidth(pct)}%`}
             ></div>
           </div>
           {#if svc.reset_at}

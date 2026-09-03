@@ -4,18 +4,36 @@ import { siteConfig } from "../../config"
 // Types
 // ---------------------------------------------------------------------------
 
+/** A single quota window within a subscription service (e.g. "5h", "weekly"). */
+export interface UsageQuota {
+  /** Human-readable window label, e.g. `"5h"`, `"weekly"`, `"tools"`. */
+  label: string
+  /** Quota kind, e.g. `"TOKENS_LIMIT"` or `"TIME_LIMIT"`. */
+  type?: string
+  /** Optional numeric limit / unit count for the window. */
+  unit?: number
+  /** Quota consumed, as a percentage (0–100). */
+  percentage: number
+  /** ISO-8601 timestamp when this window resets. */
+  reset_at?: string
+}
+
 /** A single LLM service usage entry. */
 export interface UsageService {
   service: string
   /** Billing model: `"sub"` for subscription, `"top_up"` for prepaid credit. */
   kind: "sub" | "top_up"
-  /** Quota consumed, as a percentage (0–100), for rate-limited services. */
+  /** Subscription tier, e.g. `"lite"`, `"pro"`. Only for `kind: "sub"`. */
+  level?: string
+  /** Per-window quotas for subscription services. */
+  quotas?: UsageQuota[]
+  /** Quota consumed, as a percentage (0–100), for rate-limited services (legacy, prefer `quotas`). */
   percentage?: number
   /** Remaining credit balance, for prepaid/pay-as-you-go services. */
   balance?: number
   /** Currency/unit prefix for the balance, e.g. `"HC"`. Defaults to `"$"` when absent. */
   unit?: string
-  /** ISO-8601 timestamp when the quota resets (rate-limited services). */
+  /** ISO-8601 timestamp when the quota resets (legacy, prefer `quotas[].reset_at`). */
   reset_at?: string
 }
 
