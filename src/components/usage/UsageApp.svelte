@@ -129,7 +129,7 @@
           {/if}
         {:else if isBalance}
           <p class="font-mono text-2xl sm:text-3xl font-semibold">
-            <span class="zag-muted">$</span>{svc.balance?.toFixed(2)}
+            <span class="zag-muted">{svc.unit ?? "$"}</span>{svc.balance?.toFixed(2)}
             <span class="zag-muted text-base font-normal"> remaining</span>
           </p>
         {/if}

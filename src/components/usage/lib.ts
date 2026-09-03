@@ -13,6 +13,8 @@ export interface UsageService {
   percentage?: number
   /** Remaining credit balance, for prepaid/pay-as-you-go services. */
   balance?: number
+  /** Currency/unit prefix for the balance, e.g. `"HC"`. Defaults to `"$"` when absent. */
+  unit?: string
   /** ISO-8601 timestamp when the quota resets (rate-limited services). */
   reset_at?: string
 }
