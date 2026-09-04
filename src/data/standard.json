@@ -114,6 +114,11 @@
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57i4rc2cmg3kb",
       "cid": "bafyreig4j5e6lbuvcvyoos7a3btmer64z7zt37j64tu4crtwiqgqpmafym",
       "hash": "b8506ff52dcf6cc3bbc4efb3160c2b59d87366197e67c66f5a22a4bc4a34bdbd"
+    },
+    "my-travel-setup": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57pnqwr2vll5i",
+      "cid": "bafyreie6flwiwwbxarpnetaqnsxgwrsv7cnftlq6g37wovv7k2dzha6fha",
+      "hash": "9d7fad8f11d8d3383a404955a86457c87b2556cb1996d2e75090dc94ca08938c"
     }
   }
 }
