@@ -7,19 +7,19 @@ timestamp: 2026-09-03
 slug: my-travel-setup
 description: I'm going to show you in details how the tech setup I bring with we wherever I go looks like
 ---
-As far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights and years long relocations. I therefore developed (and constantly refine) my own ideas of what comfort really is, learnt techniques and gathered technologies to try to recreate that feeling wherever I go (more or less).
+As far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights, changes of accommodation, and years long relocations. I therefore developed (and constantly refine) my own ideas of what comfort really is, built techniques and gathered technologies to try to recreate that sensation, that _warm fuzzy feeling_ I usually get while laying on my home couch, wherever I find myself to be.
 
-After a while spent living in the many comforts of my own house, I recently moved to Hua Hin, Thailand and realizing that I'm quite happy with the simple (but not _that_ simple) geeky setup I built so far. 
+After a while spent living in the many comforts of my own house, I recently moved to Hua Hin, Thailand and I'm now realising that I'm quite satisfied with this simple (ok, maybe not _that_ simple) geeky setup I'm enjoying right now. 
 
 In this article I'll try to describe it in some details in the hope it might give you some good ideas too and, even better, that I might receive new interesting ones as feedback.  See the [`/contact`](/contact) page for how to get in touch with me.
 ## Comfortably dumb
 
-Ideally I'd like to always be able to walk into any new house/apartment/hotel room I go by and have all the digital services I'm used to already there for me, preferably without having to setup a new (WiFi) connection for **each one** of the devices I own.
+Ideally I'd like to always be able to walk into any new house/apartment/hotel room I go by and, if I stay for more than just a few days, have all the digital services I'm used to there for me, preferably without having to setup a new (WiFi) connection for **each one** of the devices I own.
 
-More precisely, I want to be able to sync my files locally with Resilio Sync[^1], watch the occasional YouTube video, a movie or TV show episode streamed by my Plex Server, and listen to music and podcasts from various steaming services, all reproduced with decent audio fidelity[^2].
+More precisely, I want to be able to automatically sync my files locally with Resilio Sync[^1], watch the occasional YouTube video, a movie or TV show episode streamed by my Plex Server, and listen to music and podcasts from various steaming services, all reproduced with decent audio fidelity[^2].
 ## Assumptions I make
 
-- I'll have some way to connect to the public internet, either via Ethernet/Wifi lan provided by the place or some cellular 4-5G/LTE kind of (paid) service. Unless I'm planning to spend some days on a sailing cruise or in some _very_ remote area, that's practically true all the time
+- I'll have some way to connect to the public internet, either via Ethernet/Wifi lan provided by the place or some cellular 4-5G/LTE kind of (paid) service. Unless I'm planning to spend some days camping, on a sailing cruise or in some _very_ remote area, that's practically true all the time
 - there'll be a TV or a monitor with at least one HDMI port. Usually there is one almost everywhere I go nowadays, in the worse case scenario I might decide to buy a second hand (or even new, they come as cheap as ~100USD) one if I plan to stay for a long enough period of time
 - 110/220V A/C power outlets[^9]
 ## The Gear
@@ -28,20 +28,20 @@ This is an exhaustive (and admittedly a little exhausting to read) list of all t
 
 - Apple iPhone 16
 - Apple Macbook Air M1 + bluetooth keyboard and touchpad
-- GL-AR300M - https://www.gl-inet.com/products/gl-ar300m
-- Sonos Port - https://www.sonos.com/en-us/shop/port
-- Sonos Roam - https://www.sonos.com/en-us/shop/roam-2 [^4]
-- Sonos Ace - https://www.sonos.com/en-us/shop/sonos-ace-black
-- Minirig 3 - https://minirigs.co.uk/speakers/bluetooth-minirig-4
-- Beelink EQ mini N200 16+500G - https://www.bee-link.com/products/beelink-eq-mini
-- Anker Nano Docking station - https://www.anker.com/products/a83c3-13-in-1-docking-station-with-built-in-hub
-- Amazon Fire TV stick + remote control - https://www.amazon.com/clp/B0DJGDC3BD
-- Amazon Kindle Paperwhite 12th generation - https://www.amazon.com/clp/B0CFPJYX7P
-- Nintendo Switch + docking station + pro controller - https://www.nintendo.com/us/gaming-systems/switch/ / https://www.nintendo.com/us/store/products/pro-controller/
-- Reloop Ready DJing console - https://www.reloop.com/reloop-ready
-- Aveek mini audio mixer - https://www.amazon.com/Aveek-Channel-Mixer-Low-Noise-Sub-Mixing/dp/B0D872BVC3
-- unbranded 5 ports gigabit ethernet switch - e.g. https://www.tp-link.com/us/business-networking/unmanaged-switch/tl-sg105/
-- unbranded USB LTE modem - e.g. https://www.amazon.com/Portable-Router-300Mbps-Hotspot-Unlocked/dp/B0C79W8F52/
+- [GL-AR300M](https://www.gl-inet.com/products/gl-ar300m)
+- [Sonos Port](https://www.sonos.com/en-us/shop/port)
+- [Sonos Roam](https://www.sonos.com/en-us/shop/roam-2 )[^4]
+- [Sonos Ace](https://www.sonos.com/en-us/shop/sonos-ace-black)
+- [Minirig 3](https://minirigs.co.uk/speakers/bluetooth-minirig-4)
+- [Beelink EQ mini N200 16+500G](https://www.bee-link.com/products/beelink-eq-mini)
+- [Anker Nano Docking station](https://www.anker.com/products/a83c3-13-in-1-docking-station-with-built-in-hub)
+- [Amazon Fire TV stick](https://www.amazon.com/clp/B0DJGDC3BD) + remote control
+- [Amazon Kindle Paperwhite 12th generation](https://www.amazon.com/clp/B0CFPJYX7P)
+- [Nintendo Switch](https://www.nintendo.com/us/gaming-systems/switch/) + docking station + [pro controller](https://www.nintendo.com/us/store/products/pro-controller/)
+- [Reloop Ready](https://www.reloop.com/reloop-ready) DJing console
+- [Aveek mini audio mixer](https://www.amazon.com/Aveek-Channel-Mixer-Low-Noise-Sub-Mixing/dp/B0D872BVC3)
+- unbranded 5 ports gigabit ethernet switch - e.g. <https://www.tp-link.com/us/business-networking/unmanaged-switch/tl-sg105/>
+- unbranded USB LTE modem - e.g. <https://www.amazon.com/Portable-Router-300Mbps-Hotspot-Unlocked/dp/B0C79W8F52/>
 - unbranded power bank with solar panel for (*very* slow) recharging option
 - cords/adapters:
   - power adapters for each one of the above (some of which are just some sort of USB cable)
@@ -50,12 +50,12 @@ This is an exhaustive (and admittedly a little exhausting to read) list of all t
   - network: 5x `Cat.6` ethernet patch cords
   - power/data: various `USB-[A|C] to USB-[A|C]` cords plus a `USB-C to Lightning` one to charge keyboard and touchpad
 
-Macbook and iPhone are by far the most precious (and expensive) devices I own. I think I _could_ live without all the other pieces (albeit missing them dearly, of course) for a _reasonably long_ amount of time. I can't think of spending even a single day without Macbook and iPhone at reach anymore...
+Macbook and iPhone are by far the most precious (and expensive) devices I own. I think I _could_ live without all the other pieces (albeit missing them dearly, of course) for a _reasonably long_ amount of time. I can't think of spending even a single day without Macbook and iPhone at reach anymore.
 
-I'm supposed to be talking about comfort though so... I'm going now to show you how I actually make use of the listed gear to reach that sweet nerdy spot.
+I'm supposed to be talking about comfort though so... let me show you how I actually make use of the listed gear to reach that sweet nerdy spot.
 ## Connect all the things 🔌
 
-The following [Mermaid flowchart](https://mermaid.ai/open-source/syntax/flowchart.html) represents _more or less_[^5] how the devices are interconnected:
+The following [Mermaid flowchart](https://mermaid.ai/open-source/syntax/flowchart.html) represents _more or less_[^5] how all the devices are interconnected:
 ****
 ```mermaid
 flowchart TD
@@ -103,7 +103,7 @@ It can actually get _a little_ more complicated then that if I drop the Aveek au
 Side note: Sonos devices connected to a single _system_ also join their own proprietary mesh network (_SonosNet_), adding that to the chart just seems to add confusion, I mention it here for completeness sake.
 ## Home is where WiFi auto joins
 
-The delightfully small `GL-AR300M` mini router (which I map in my `/etc/hosts` as `minirouter` for easy access) is probably the most important piece of all. It's an OpenWRT-based network router which gives me all the possible flexibility I could think of when travelling.
+The delightfully small `GL-AR300M` mini router (which I map in my `/etc/hosts` as `minirouter` for easy access) is probably the most important piece of all. It's an OpenWRT-based network router which gives me all the possible flexibility I could ask for when travelling.
 
 To prove the point, I tell you one of the very first things I usually do, once I got a hold into some kind of internet connection, is to enter the new place and:
 
@@ -118,6 +118,8 @@ That's it! What takes longer is connecting cords, the actual router setup is ~5 
 The fact I can now use my LAN has various benefits beside that I don't need to ~~type~~ copy&paste passwords again and again. Perhaps most notably I can now connect seamlessly to my Sonos devices and the Amazon TV stick is ready with my Youtube Premium, Twitch and Plex TV accounts to stream media from my Beelink server. I also like to have my Resilio Sync main storage close by so not to have to transfer data outside the LAN for quickly backing up all my files including new photos, videos and what not.
 
 Another perk is that I can use Wireguard[^6] out of the box to e.g. open an `ssh` session into the Beelink server without having to do anything specific, just turn on the Wireguard client on my carry-on device (iPhone/Macbook) when I'm not inside the LAN and target the private hostname. For the records, it works because the Beelink server connects at boot to an external Wireguard instance that acts as the central hub (star topology) and knows how to route network packets to private interfaces. To make it work I had to add a single persistent SNAT firewall rule for the GL-AR300M but this is out of scope for this article and I may decide to blog about that in the future[^7].
+
+There's also a non-tech practical reason to bring it all with me: if I won't take this stuff with me it means I'll have to leave it at home (which I might put for rent), drop at someone's place, sell or give away... and perhaps have to buy at least some of it yet one more time. It's just easier to take *literally* everything I own with me and forget that there might be other options.
 ## Audio routing
 
 Perhaps you've been wondering: why the Sonos Port? is the component which looks the most at odds in a travel setup but I'll make here my stand: it's awesome!
@@ -133,7 +135,7 @@ Essentially it works as a flexible audio router and lets me dynamically define a
 - any Sonos system is easily extensible, so far I'm more than happy with what I have but adding more speakers in case is going to be trivial[^10]
 ## Wrapping up
 
- Yes, yes... the final and apparently necessary disclaimer: I _did_ ask my coding agent to write the initial draft of the Mermaid chart for me, because I'm lazy and, most notably, free inference[^8] is just too tempting not to be used. That said, I actually wrote every other single word in this article personally, manually typing them, without asking for help nor advise to anyone, LLM or humans alike. I don't know if we'll ever figure out a way to prove it so for now you gotta trust me on this, I guess.
+ And... the final and apparently necessary disclaimer: I _did_ ask my coding agent to write the initial draft of the Mermaid chart for me, because I'm lazy and, most notably, free inference[^8] is just too tempting not to be used. That said, I actually wrote every other single word in this article personally, manually typing them, without asking for help nor advise to anyone, LLM or humans alike. I don't know if we'll ever figure out a way to prove it so for now you gotta trust me on this, I guess.
 
 And that's really all I had to share for today. Stay geeky, folks! ✌️
 
