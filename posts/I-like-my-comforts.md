@@ -1,5 +1,5 @@
 ---
-title: I like my comforts, especially of the nerdy kind
+title: Who said a tech addict can't be comfortable everywhere?
 tags:
   - travel
   - gear
@@ -130,7 +130,7 @@ Essentially it works as a flexible audio router and lets me dynamically define a
 - plug the laptop / docking station audio interface as input and use the speakers as output when e.g. I want to play music / recorded live sets from my hard drive
 - setup a timer and let the music (or a sleeping inducing story) to turn off automatically
 - normally I let myself wake up naturally but when I need to e.g. catch an early flight I find that waking up with (low but not too low) music is a somehow less unpleasant experience
-- any Sonos system is easily extensible, so far I'm more than happy with what I have but adding more speakers in case is going to be trivial
+- any Sonos system is easily extensible, so far I'm more than happy with what I have but adding more speakers in case is going to be trivial[^10]
 ## Wrapping up
 
  Yes, yes... the final and apparently necessary disclaimer: I _did_ ask my coding agent to write the initial draft of the Mermaid chart for me, because I'm lazy and, most notably, free inference[^8] is just too tempting not to be used. That said, I actually wrote every other single word in this article personally, manually typing them, without asking for help nor advise to anyone, LLM or humans alike. I don't know if we'll ever figure out a way to prove it so for now you gotta trust me on this, I guess.
@@ -155,3 +155,5 @@ And that's really all I had to share for today. Stay geeky, folks! ✌️
 [^8]: Today there are many options to obtain LLM inference for free, e.g. https://opencode.ai/go and https://openrouter.ai/ both offer free models regularly
 
 [^9]: the more the merrier but always better to take a multiplier and an universal adapter
+
+[^10]: I confess I'd love to be able to replace the Minirig with some kind of portable soundbar that connects to the TV via [Arc](https://www.ac3filter.net/what-does-arc-mean-on-tv/)... a device that Sonos will _never_ produce, unfortunately. Oh well, a tech addict gotta dream
