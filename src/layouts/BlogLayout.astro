@@ -2,6 +2,7 @@
 import Section from "../components/base/Section.astro"
 import TagList from "../components/blog/TagList.astro"
 import Prose from "../components/base/Prose.astro"
+import Mermaid from "../components/base/Mermaid.astro"
 import JsonLd from "../components/layout/JsonLd.astro"
 import type { ArticleFrontmatter } from "../lib/blog-collection"
 import { toInstant, processArticleDate } from "../lib/utils"
@@ -60,5 +61,6 @@ const standardDocumentUri = frontmatter.slug
       </Prose>
     </div>
     <p class="pt-8 p-author h-card">~{siteConfig.globalMeta.name}</p>
+    <Mermaid />
   </Section>
 </Layout>
