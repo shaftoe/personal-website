@@ -1,0 +1,157 @@
+---
+title: I like my comforts, especially of the nerdy kind
+tags:
+  - travel
+  - gear
+timestamp: 2026-09-03
+slug: my-travel-setup
+description: I'm going to show you in details how the tech setup I bring with we wherever I go looks like
+---
+As far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights and years long relocations. I therefore developed (and constantly refine) my own ideas of what comfort really is, learnt techniques and gathered technologies to try to recreate that feeling wherever I go (more or less).
+
+After a while spent living in the many comforts of my own house, I recently moved to Hua Hin, Thailand and realizing that I'm quite happy with the simple (but not _that_ simple) geeky setup I built so far. 
+
+In this article I'll try to describe it in some details in the hope it might give you some good ideas too and, even better, that I might receive new interesting ones as feedback.  See the [`/contact`](/contact) page for how to get in touch with me.
+## Comfortably dumb
+
+Ideally I'd like to always be able to walk into any new house/apartment/hotel room I go by and have all the digital services I'm used to already there for me, preferably without having to setup a new (WiFi) connection for **each one** of the devices I own.
+
+More precisely, I want to be able to sync my files locally with Resilio Sync[^1], watch the occasional YouTube video, a movie or TV show episode streamed by my Plex Server, and listen to music and podcasts from various steaming services, all reproduced with decent audio fidelity[^2].
+## Assumptions I make
+
+- I'll have some way to connect to the public internet, either via Ethernet/Wifi lan provided by the place or some cellular 4-5G/LTE kind of (paid) service. Unless I'm planning to spend some days on a sailing cruise or in some _very_ remote area, that's practically true all the time
+- there'll be a TV or a monitor with at least one HDMI port. Usually there is one almost everywhere I go nowadays, in the worse case scenario I might decide to buy a second hand (or even new, they come as cheap as ~100USD) one if I plan to stay for a long enough period of time
+- 110/220V A/C power outlets[^9]
+## The Gear
+
+This is an exhaustive (and admittedly a little exhausting to read) list of all the gear I have in my pockets or inside a luggage or backpack when I travel[^3]:
+
+- Apple iPhone 16
+- Apple Macbook Air M1 + bluetooth keyboard and touchpad
+- GL-AR300M - https://www.gl-inet.com/products/gl-ar300m
+- Sonos Port - https://www.sonos.com/en-us/shop/port
+- Sonos Roam - https://www.sonos.com/en-us/shop/roam-2 [^4]
+- Sonos Ace - https://www.sonos.com/en-us/shop/sonos-ace-black
+- Minirig 3 - https://minirigs.co.uk/speakers/bluetooth-minirig-4
+- Beelink EQ mini N200 16+500G - https://www.bee-link.com/products/beelink-eq-mini
+- Anker Nano Docking station - https://www.anker.com/products/a83c3-13-in-1-docking-station-with-built-in-hub
+- Amazon Fire TV stick + remote control - https://www.amazon.com/clp/B0DJGDC3BD
+- Amazon Kindle Paperwhite 12th generation - https://www.amazon.com/clp/B0CFPJYX7P
+- Nintendo Switch + docking station + pro controller - https://www.nintendo.com/us/gaming-systems/switch/ / https://www.nintendo.com/us/store/products/pro-controller/
+- Reloop Ready DJing console - https://www.reloop.com/reloop-ready
+- Aveek mini audio mixer - https://www.amazon.com/Aveek-Channel-Mixer-Low-Noise-Sub-Mixing/dp/B0D872BVC3
+- unbranded 5 ports gigabit ethernet switch - e.g. https://www.tp-link.com/us/business-networking/unmanaged-switch/tl-sg105/
+- unbranded USB LTE modem - e.g. https://www.amazon.com/Portable-Router-300Mbps-Hotspot-Unlocked/dp/B0C79W8F52/
+- unbranded power bank with solar panel for (*very* slow) recharging option
+- cords/adapters:
+  - power adapters for each one of the above (some of which are just some sort of USB cable)
+  - audio: 2x `mini-jack stereo to RCA` (for in + out of Sonos Port), 1x `RCA to RCA` (out of the Reloop Ready and into the Port, occasionally), and a few `mini-jack to jack` adapters
+  - video: 2x `HDMI to HDMI`
+  - network: 5x `Cat.6` ethernet patch cords
+  - power/data: various `USB-[A|C] to USB-[A|C]` cords plus a `USB-C to Lightning` one to charge keyboard and touchpad
+
+Macbook and iPhone are by far the most precious (and expensive) devices I own. I think I _could_ live without all the other pieces (albeit missing them dearly, of course) for a _reasonably long_ amount of time. I can't think of spending even a single day without Macbook and iPhone at reach anymore...
+
+I'm supposed to be talking about comfort though so... I'm going now to show you how I actually make use of the listed gear to reach that sweet nerdy spot.
+## Connect all the things 🔌
+
+The following [Mermaid flowchart](https://mermaid.ai/open-source/syntax/flowchart.html) represents _more or less_[^5] how the devices are interconnected:
+****
+```mermaid
+flowchart TD
+    SW((Ethernet Switch))
+
+    MR[GL-AR300M]
+    MODEM[4G/LTE Modem]
+    SONOSPORT[Sonos Port]
+    TV[TV]
+    SERVER[Server]
+    NSWD[Nintendo Switch Dock]
+    NSW[Nintendo Switch]
+    ANKER[Docking Station]
+    MBP[MacBook]
+    MINIRIG[Minirig 🔊]
+    ROAM[Sonos Roam 🔊]
+    IPHONE[iPhone]
+    STICK[TV Stick]
+    KINDLE[Kindle]
+
+    MODEM <-->|USB| MR
+    MR <-->|LAN| SW
+
+    SW <-->|LAN| SONOSPORT
+    TV -->|mini jack| SONOSPORT
+    SONOSPORT -->|mini jack| MINIRIG
+
+    SW <-->|LAN| SERVER
+
+    SW <-->|LAN| NSWD
+    NSWD -->|HDMI| TV
+    STICK -->|HDMI| TV
+
+    SW <-->|LAN| ANKER
+    ANKER <==>|USB-C 🔌| MBP
+
+    MR <-.->|Wi-Fi| ROAM
+    MR <-.->|Wi-Fi| IPHONE
+    MR <-.->|Wi-Fi| KINDLE
+    MR <-.->|Wi-Fi| NSW
+```
+
+It can actually get _a little_ more complicated then that if I drop the Aveek audio mixer into the picture, usually between the final speaker (e.g. Minirig) and other sources like Sonos Port, the Anker dock's sound card, the Reloop controller, and/or whatever else that could be plugged into a (mini) jack stereo port. Let's just say this is the _canonical_ setup that I usually settle for as a baseline.
+
+Side note: Sonos devices connected to a single _system_ also join their own proprietary mesh network (_SonosNet_), adding that to the chart just seems to add confusion, I mention it here for completeness sake.
+## Home is where WiFi auto joins
+
+The delightfully small `GL-AR300M` mini router (which I map in my `/etc/hosts` as `minirouter` for easy access) is probably the most important piece of all. It's an OpenWRT-based network router which gives me all the possible flexibility I could think of when travelling.
+
+To prove the point, I tell you one of the very first things I usually do, once I got a hold into some kind of internet connection, is to enter the new place and:
+
+1. power minirouter up and wait a couple of minutes for it to boot
+2. log into its admin web page and setup the WAN interface. If I have a wifi password I set it in repeater mode, if all I have is a mobile data plan I plug the LTE modem with the sim card in and make it use it as WAN. If I'm in a rush I might just plug the iPhone in with USB and set the router in tethering mode
+3. plug and turn on all my other devices, wait for them to connect to my (already configured) private LAN either via WIFI or ethernet
+
+That's it! What takes longer is connecting cords, the actual router setup is ~5 minutes, to be conservative.
+
+## Wait but why?
+
+The fact I can now use my LAN has various benefits beside that I don't need to ~~type~~ copy&paste passwords again and again. Perhaps most notably I can now connect seamlessly to my Sonos devices and the Amazon TV stick is ready with my Youtube Premium, Twitch and Plex TV accounts to stream media from my Beelink server. I also like to have my Resilio Sync main storage close by so not to have to transfer data outside the LAN for quickly backing up all my files including new photos, videos and what not.
+
+Another perk is that I can use Wireguard[^6] out of the box to e.g. open an `ssh` session into the Beelink server without having to do anything specific, just turn on the Wireguard client on my carry-on device (iPhone/Macbook) when I'm not inside the LAN and target the private hostname. For the records, it works because the Beelink server connects at boot to an external Wireguard instance that acts as the central hub (star topology) and knows how to route network packets to private interfaces. To make it work I had to add a single persistent SNAT firewall rule for the GL-AR300M but this is out of scope for this article and I may decide to blog about that in the future[^7].
+## Audio routing
+
+Perhaps you've been wondering: why the Sonos Port? is the component which looks the most at odds in a travel setup but I'll make here my stand: it's awesome!
+
+Essentially it works as a flexible audio router and lets me dynamically define all sorts of input/output setups so I can for example:
+
+- listen to what's the TV stick is reproducing on both the Roam and the Minirig speakers simultaneously
+- let a YT music podcast or a YT video concert play out on the Minirig, have the Roam come with me in the bathroom while I shower and listen to something else entirely
+- plug in the DJing console as input and play a live set using both Roam and Minirig (or whatever other speaker I might have at hand) as speakers
+- plug the laptop / docking station audio interface as input and use the speakers as output when e.g. I want to play music / recorded live sets from my hard drive
+- setup a timer and let the music (or a sleeping inducing story) to turn off automatically
+- normally I let myself wake up naturally but when I need to e.g. catch an early flight I find that waking up with (low but not too low) music is a somehow less unpleasant experience
+- any Sonos system is easily extensible, so far I'm more than happy with what I have but adding more speakers in case is going to be trivial
+## Wrapping up
+
+ Yes, yes... the final and apparently necessary disclaimer: I _did_ ask my coding agent to write the initial draft of the Mermaid chart for me, because I'm lazy and, most notably, free inference[^8] is just too tempting not to be used. That said, I actually wrote every other single word in this article personally, manually typing them, without asking for help nor advise to anyone, LLM or humans alike. I don't know if we'll ever figure out a way to prove it so for now you gotta trust me on this, I guess.
+
+And that's really all I had to share for today. Stay geeky, folks! ✌️
+
+
+[^1]: Kind of like Dropbox, but self hosted: https://www.resilio.com/sync/
+
+[^2]: That is: no TV nor laptop speakers involved, please do that to yourself too and never ever use these noise generators, at least plug in some bluetooth headphones instead...
+
+[^3]: I always put **all devices with batteries** in the carry-on trolley or backpack that I take into the cabin whenever I fly. I strongly recommend you to always do the same
+
+[^4]: Apparently the Roam v1 is not in production anymore, they _look_ exactly the same to me though
+
+[^5]: Glossing over a few components like the TV stick remote control, Switch pro controller, audio mixer, keyboard, touchpad, etc.
+
+[^6]: I hear good things about [Tailscale](https://tailscale.com/) services but I still prefer to setup my own networks
+
+[^7]: Or not, given that there are plenty of well made tutorials for how to setup Wireguard successfully
+
+[^8]: Today there are many options to obtain LLM inference for free, e.g. https://opencode.ai/go and https://openrouter.ai/ both offer free models regularly
+
+[^9]: the more the merrier but always better to take a multiplier and an universal adapter
