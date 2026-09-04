@@ -4,14 +4,13 @@
  * Client-side: only loads the Mermaid library when a mermaid block
  * is present on the page. Include once in a layout (e.g. BlogLayout).
  */
-
-type MermaidApi = {
-  initialize: (config: Record<string, unknown>) => void
-  render: (id: string, source: string) => Promise<{ svg: string }>
-}
 ---
 
 <script>
+  type MermaidApi = {
+    initialize: (config: Record<string, unknown>) => void
+    render: (id: string, source: string) => Promise<{ svg: string }>
+  }
   // Shiki-highlighted blocks render as <pre data-language="mermaid"><code>;
   // also match the plain class form just in case.
   const blocks = document.querySelectorAll<HTMLElement>(
