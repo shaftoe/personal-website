@@ -1,11 +1,11 @@
 ---
-title: Who said a tech addict can't be comfortable everywhere?
+title: Who said a tech addict can't be comfortable far from home?
 tags:
   - travel
   - gear
 timestamp: 2026-09-03
 slug: my-travel-setup
-description: I'm going to show you in details how the tech setup I bring with we wherever I go looks like
+description: I'm going to show you in details what gear I bring with me wherever I travel, and how I set it up
 ---
 As far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights, changes of accommodation, and years long relocations. I therefore developed (and constantly refine) my own ideas of what comfort really is, built techniques and gathered technologies to try to recreate that sensation, that _warm fuzzy feeling_ I usually get while laying on my home couch, wherever I find myself to be.
 
