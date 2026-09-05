@@ -101,7 +101,7 @@ flowchart TD
 It can actually get _a little_ more complicated then that if I drop the Aveek audio mixer into the picture, usually between the final speaker (e.g. Minirig) and other sources like Sonos Port, the Anker dock's sound card, the Reloop controller, and/or whatever else that could be plugged into a (mini) jack stereo port. Let's just say this is the _canonical_ setup that I usually settle for as a baseline.
 
 Side note: Sonos devices connected to a single _system_ also join their own proprietary mesh network (_SonosNet_), adding that to the chart just seems to add confusion, I mention it here for completeness sake.
-## Home is where WiFi auto joins
+### Home is where WiFi auto joins
 
 The delightfully small `GL-AR300M` mini router (which I map in my `/etc/hosts` as `minirouter` for easy access) is probably the most important piece of all. It's an OpenWRT-based network router which gives me all the possible flexibility I could ask for when travelling.
 
@@ -112,15 +112,7 @@ To prove the point, I tell you one of the very first things I usually do, once I
 3. plug and turn on all my other devices, wait for them to connect to my (already configured) private LAN either via WIFI or ethernet
 
 That's it! What takes longer is connecting cords, the actual router setup is ~5 minutes, to be conservative.
-
-## Wait but why?
-
-The fact I can now use my LAN has various benefits beside that I don't need to ~~type~~ copy&paste passwords again and again. Perhaps most notably I can now connect seamlessly to my Sonos devices and the Amazon TV stick is ready with my Youtube Premium, Twitch and Plex TV accounts to stream media from my Beelink server. I also like to have my Resilio Sync main storage close by so not to have to transfer data outside the LAN for quickly backing up all my files including new photos, videos and what not.
-
-Another perk is that I can use Wireguard[^6] out of the box to e.g. open an `ssh` session into the Beelink server without having to do anything specific, just turn on the Wireguard client on my carry-on device (iPhone/Macbook) when I'm not inside the LAN and target the private hostname. For the records, it works because the Beelink server connects at boot to an external Wireguard instance that acts as the central hub (star topology) and knows how to route network packets to private interfaces. To make it work I had to add a single persistent SNAT firewall rule for the GL-AR300M but this is out of scope for this article and I may decide to blog about that in the future[^7].
-
-There's also a non-tech practical reason to bring it all with me: if I won't take this stuff with me it means I'll have to leave it at home (which I might put for rent), drop at someone's place, sell or give away... and perhaps have to buy at least some of it yet one more time. It's just easier to take *literally* everything I own with me and forget that there might be other options.
-## Audio routing
+### Audio routing
 
 Perhaps you've been wondering: why the Sonos Port? is the component which looks the most at odds in a travel setup but I'll make here my stand: it's awesome!
 
@@ -133,6 +125,13 @@ Essentially it works as a flexible audio router and lets me dynamically define a
 - setup a timer and let the music (or a sleeping inducing story) to turn off automatically
 - normally I let myself wake up naturally but when I need to e.g. catch an early flight I find that waking up with (low but not too low) music is a somehow less unpleasant experience
 - any Sonos system is easily extensible, so far I'm more than happy with what I have but adding more speakers in case is going to be trivial[^10]
+## Wait but why?
+
+The fact I can now use my LAN has various benefits beside that I don't need to ~~type~~ copy&paste passwords again and again. Perhaps most notably I can now connect seamlessly to my Sonos devices and the Amazon TV stick is ready with my Youtube Premium, Twitch and Plex TV accounts to stream media from my Beelink server. I also like to have my Resilio Sync main storage close by so not to have to transfer data outside the LAN for quickly backing up all my files including new photos, videos and what not.
+
+Another perk is that I can use Wireguard[^6] out of the box to e.g. open an `ssh` session into the Beelink server without having to do anything specific, just turn on the Wireguard client on my carry-on device (iPhone/Macbook) when I'm not inside the LAN and target the private hostname. For the records, it works because the Beelink server connects at boot to an external Wireguard instance that acts as the central hub (star topology) and knows how to route network packets to private interfaces. To make it work I had to add a single persistent SNAT firewall rule for the GL-AR300M but this is out of scope for this article and I may decide to blog about that in the future[^7].
+
+There's also a non-tech practical reason to bring it all with me: if I won't take this stuff with me it means I'll have to leave it at home (which I might put for rent), drop at someone's place, sell or give away... and perhaps have to buy at least some of it yet one more time. It's just easier to take *literally* everything I own with me and forget that there might be other options.
 ## Wrapping up
 
  And... the final and apparently necessary disclaimer: I _did_ ask my coding agent to write the initial draft of the Mermaid chart for me, because I'm lazy and, most notably, free inference[^8] is just too tempting not to be used. That said, I actually wrote every other single word in this article personally, manually typing them, without asking for help nor advise to anyone, LLM or humans alike. I don't know if we'll ever figure out a way to prove it so for now you gotta trust me on this, I guess.
