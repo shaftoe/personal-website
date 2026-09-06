@@ -14,16 +14,19 @@ During this time I inevitably developed (and constantly refine) my own ideas of 
 Recently, after a relatively long while spent living surrounded by the many comforts of my own house in the Dominican Republic, I decided to visit South East Asia once more[^12] and I'm just now realising that I'm quite satisfied with this simple (ok, maybe not _that_ simple) geeky setup I came up with.
 
 In this article I'll try to describe it in some details in the hope it might give you some good ideas too and, even better, that I might receive new interesting ones as feedback.  See the [`/contact`](/contact) page for how to get in touch with me.
+
 ## Comfortably dumb
 
 Ideally I'd like to always be able to walk into any new house/apartment/hotel room I go by and, if I stay for more than just a few days, have all the digital goodies I'm used to there for me, preferably without having to setup a new (WiFi) connection for **each one** of the devices I own.
 
 More precisely, I want to be able to automatically sync my files locally with Resilio Sync[^1], watch the occasional YouTube video, a movie or TV show episode streamed by my Plex Server, play a videogame on a TV screen, or listen to music and podcasts from various steaming services, all reproduced with decent audio fidelity[^2].
+
 ## Assumptions I make
 
 - I'll have some way to connect to the public internet, either via Ethernet/Wifi lan provided by the place or some cellular 4-5G/LTE kind of (paid) service. Unless I'm planning to spend some days camping, on a sailing cruise or in some _very_ remote area, that's practically true all the time
-- there'll be a TV or a monitor with at least one HDMI port. Usually there is one almost everywhere I go nowadays, in the worse case scenario I might decide to buy a second hand (or even new, they come as cheap as ~100USD) one if I plan to stay for a long enough period of time
+- there'll be a TV or a monitor with at least one HDMI port. Usually there is one almost everywhere I go nowadays, in the worst case scenario I might decide to buy a second hand (or even new, they come as cheap as ~100USD) one if I plan to stay for a long enough period of time
 - 110/220V A/C power outlets[^9]
+
 ## The Gear
 
 This is an exhaustive (and admittedly a little exhausting to read) list of all the gear I have in my pockets or inside a luggage or backpack when I travel[^3]:
@@ -55,10 +58,11 @@ This is an exhaustive (and admittedly a little exhausting to read) list of all t
 Macbook and iPhone are by far the most precious (and expensive) devices I own. I think I _could_ live without all the other pieces (albeit missing them dearly, of course) for a _reasonably long_ amount of time. I can't think of spending even a single day without Macbook and iPhone at reach anymore.
 
 I'm supposed to be talking about comfort though so... let me show you how I actually make use of the listed gear to reach that sweet nerdy spot.
+
 ## Connect all the things 🔌
 
 The following [Mermaid flowchart](https://mermaid.ai/open-source/syntax/flowchart.html) represents _more or less_[^5] how all the devices are interconnected:
-****
+
 ```mermaid
 flowchart TD
     SW((Ethernet Switch))
@@ -119,7 +123,7 @@ Perhaps you've been wondering: why the Sonos Port? is the component which looks 
 
 Essentially it works as a flexible audio router and lets me dynamically define all sorts of input/output setups so I can for example:
 
-- listen to what's the TV stick or the docked Switch is reproducing on both the Roam and the Minirig speakers simultaneously
+- listen to what the TV stick or the docked Switch is reproducing on both the Roam and the Minirig speakers simultaneously
 - let a YT music podcast or a YT video concert play out on the Minirig, have the Roam come with me in the bathroom while I shower and listen to something else entirely
 - plug in the DJing console as input and play a live set using both Roam and Minirig (or whatever other speaker I might have at hand) as speakers
 - plug the laptop / docking station audio interface as input and use the speakers as output when e.g. I want to play music / recorded live sets from my hard drive
@@ -133,6 +137,7 @@ The fact I can now use my LAN has various benefits beside that I don't need to ~
 Another perk is that I can use Wireguard[^6] out of the box to e.g. open an `ssh` session into the Beelink server without having to do anything specific, just turn on the Wireguard client on my carry-on device (iPhone/Macbook) when I'm not inside the LAN and target the private hostname. For the records, it works because the Beelink server connects at boot to an external Wireguard instance that acts as the central hub (star topology) and knows how to route network packets to private interfaces. To make it work I had to add a single persistent SNAT firewall rule for the GL-AR300M but this is out of scope for this article and I may decide to blog about that in the future[^7].
 
 There's also a non-tech practical reason to bring it all with me: if I won't take this stuff with me it means I'll have to leave it... _somewhere_, either at home (which I might want to rent out), drop at some friend's place, sell or give away, and perhaps have to buy at least some of it down the road yet one more time. I realized that it's just easier for me to take *literally every piece of gear I own* with me and forget that there might be other options. I'm a computer nerd after all, remember? I don't own that many cloths anyway, there's usually plenty of room in the (big) luggage 🤓.
+
 ## Wrapping up
 
  And... the final and apparently necessary disclaimer: I _did_ ask my coding agent to write the initial draft of the Mermaid chart for me, because I'm lazy and, most notably, free inference[^8] is just too tempting not to be used. That said, I actually wrote every other single word in this article personally, manually typing them, without asking for help nor advise to anyone, LLM or humans alike. I don't know if we'll ever figure out a way to prove it so for now you gotta trust me on this, I guess.
