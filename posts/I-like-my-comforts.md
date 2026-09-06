@@ -7,9 +7,11 @@ timestamp: 2026-09-03
 slug: my-travel-setup
 description: I'm going to show you in details what gear I bring with me wherever I travel, and how I set it up
 ---
-As far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights, changes of accommodation, and years long relocations. I therefore developed (and constantly refine) my own ideas of what comfort really is, built techniques and gathered technologies to try to recreate that sensation, that _warm fuzzy feeling_ I usually get while laying on my home couch, wherever I find myself to be.
+**As** far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights, changes of accommodation, and lived in different foreign countries for various years.
 
-After a while spent living in the many comforts of my own house, I recently moved to Hua Hin, Thailand and I'm now realising that I'm quite satisfied with this simple (ok, maybe not _that_ simple) geeky setup I'm enjoying right now. 
+During this time I inevitably developed (and constantly refine) my own ideas of what comfort really is, built techniques and gathered technologies to try to recreate that sensation, that _warm fuzzy feeling_ I usually get while laying on my _real home's_[^11] couch, wherever I find myself to be.
+
+Recently, after a long while spent living in the many comforts of my own house in the Dominican Republic, I decided to visit South East Asia once more[^12] and I'm just now realising that I'm quite satisfied with this simple (ok, maybe not _that_ simple) geeky setup I came up with.
 
 In this article I'll try to describe it in some details in the hope it might give you some good ideas too and, even better, that I might receive new interesting ones as feedback.  See the [`/contact`](/contact) page for how to get in touch with me.
 ## Comfortably dumb
@@ -158,3 +160,7 @@ And that's really all I had to share for today. Stay geeky, folks! ✌️
 [^9]: the more the merrier but always better to take a multiplier and an universal adapter
 
 [^10]: I confess I'd love to be able to replace the Minirig with some kind of portable soundbar that connects to the TV via [Arc](https://www.ac3filter.net/what-does-arc-mean-on-tv/)... a device that Sonos will _never_ produce, unfortunately. Oh well, a tech addict gotta dream
+
+[^11]: whatever that really means is still a mystery to me
+
+[^12]: In Hua Hin, Thailand, while writing this piece. Last time in SEA was almost exactly 10 years ago... time really flies
