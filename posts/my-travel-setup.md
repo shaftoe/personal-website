@@ -3,9 +3,9 @@ title: Who said a tech addict can't be comfortable far from home?
 tags:
   - travel
   - gear
-timestamp: 2026-09-03
+timestamp: 2026-09-06
 slug: my-travel-setup
-description: I'm going to show you in details what gear I bring with me wherever I travel, and how I set it up
+description: When I relocate I like to be as much as comfortable as possible without having to buy new gear. In this article I describe my setup in details and some of the reasoning that made me come up with it.
 ---
 As far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights, changes of accommodation, and lived in different foreign countries for various years.
 
