@@ -16,7 +16,7 @@ Recently, after a relatively long while spent living surrounded by the many comf
 In this article I'll try to describe it in some details in the hope it might give you some good ideas too and, even better, that I might receive new interesting ones as feedback.  See the [`/contact`](/contact) page for how to get in touch with me.
 ## Comfortably dumb
 
-Ideally I'd like to always be able to walk into any new house/apartment/hotel room I go by and, if I stay for more than just a few days, have all the digital services I'm used to there for me, preferably without having to setup a new (WiFi) connection for **each one** of the devices I own.
+Ideally I'd like to always be able to walk into any new house/apartment/hotel room I go by and, if I stay for more than just a few days, have all the digital goodies I'm used to there for me, preferably without having to setup a new (WiFi) connection for **each one** of the devices I own.
 
 More precisely, I want to be able to automatically sync my files locally with Resilio Sync[^1], watch the occasional YouTube video, a movie or TV show episode streamed by my Plex Server, play a videogame on a TV screen, or listen to music and podcasts from various steaming services, all reproduced with decent audio fidelity[^2].
 ## Assumptions I make
@@ -105,12 +105,12 @@ It can actually get _a little_ more complicated then that if I drop the Aveek au
 Side note: Sonos devices connected to a single _system_ also join their own proprietary mesh network (_SonosNet_), adding that to the chart just seems to add confusion, I mention it here for completeness sake.
 ### Home is where WiFi auto joins
 
-The delightfully small `GL-AR300M` mini router (which I map in my `/etc/hosts` as `minirouter` for easy access) is probably the most important piece of all. It's an OpenWRT-based network router which gives me all the possible flexibility I could ask for when travelling.
+Despite its size the delightfully small `GL-AR300M` mini router (which I map in my `/etc/hosts` as `minirouter` for easy access) is probably the most important piece of all. It's an OpenWRT-based network router which gives me all the possible flexibility I could ask for when travelling.
 
-To prove the point, I tell you one of the very first things I usually do, once I got a hold into some kind of internet connection, is to enter the new place and:
+To prove the point, once I got a hold on some kind of internet connection, I generally enter the new place and:
 
-1. power minirouter up and wait a couple of minutes for it to boot
-2. log into its admin web page and setup the WAN interface: if I have a wifi password I set it in repeater mode, if all I have is a mobile data plan I plug the LTE modem with the sim card in and make it use it as WAN. If I'm in a rush I might just plug the iPhone in with an `USB-A to USB-C` cable and set the WAN router's interface in tethering mode
+1. power `minirouter` up and wait a couple of minutes for it to boot
+2. log into its admin web page and setup the WAN interface: if I have a wifi password I set it in repeater mode, if all I have is a mobile data plan I plug the LTE modem with the sim card in. If I'm in a rush I might just plug the iPhone in with an `USB-A to USB-C` cable and set the WAN router's interface in tethering mode
 
 That's it! What takes longer is perhaps deciding where to place the device, the actual router setup is ~5 minutes, to be conservative.
 ### Audio routing
