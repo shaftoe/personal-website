@@ -7,18 +7,18 @@ timestamp: 2026-09-03
 slug: my-travel-setup
 description: I'm going to show you in details what gear I bring with me wherever I travel, and how I set it up
 ---
-**As** far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights, changes of accommodation, and lived in different foreign countries for various years.
+As far as my memory goes back I always loved to travel. In the last ~30 years I had the privilege to go through my fair share of intercontinental flights, changes of accommodation, and lived in different foreign countries for various years.
 
 During this time I inevitably developed (and constantly refine) my own ideas of what comfort really is, built techniques and gathered technologies to try to recreate that sensation, that _warm fuzzy feeling_ I usually get while laying on my _real home's_[^11] couch, wherever I find myself to be.
 
-Recently, after a long while spent living in the many comforts of my own house in the Dominican Republic, I decided to visit South East Asia once more[^12] and I'm just now realising that I'm quite satisfied with this simple (ok, maybe not _that_ simple) geeky setup I came up with.
+Recently, after a relatively long while spent living surrounded by the many comforts of my own house in the Dominican Republic, I decided to visit South East Asia once more[^12] and I'm just now realising that I'm quite satisfied with this simple (ok, maybe not _that_ simple) geeky setup I came up with.
 
 In this article I'll try to describe it in some details in the hope it might give you some good ideas too and, even better, that I might receive new interesting ones as feedback.  See the [`/contact`](/contact) page for how to get in touch with me.
 ## Comfortably dumb
 
 Ideally I'd like to always be able to walk into any new house/apartment/hotel room I go by and, if I stay for more than just a few days, have all the digital services I'm used to there for me, preferably without having to setup a new (WiFi) connection for **each one** of the devices I own.
 
-More precisely, I want to be able to automatically sync my files locally with Resilio Sync[^1], watch the occasional YouTube video, a movie or TV show episode streamed by my Plex Server, and listen to music and podcasts from various steaming services, all reproduced with decent audio fidelity[^2].
+More precisely, I want to be able to automatically sync my files locally with Resilio Sync[^1], watch the occasional YouTube video, a movie or TV show episode streamed by my Plex Server, play a videogame on a TV screen, or listen to music and podcasts from various steaming services, all reproduced with decent audio fidelity[^2].
 ## Assumptions I make
 
 - I'll have some way to connect to the public internet, either via Ethernet/Wifi lan provided by the place or some cellular 4-5G/LTE kind of (paid) service. Unless I'm planning to spend some days camping, on a sailing cruise or in some _very_ remote area, that's practically true all the time
@@ -110,17 +110,16 @@ The delightfully small `GL-AR300M` mini router (which I map in my `/etc/hosts` a
 To prove the point, I tell you one of the very first things I usually do, once I got a hold into some kind of internet connection, is to enter the new place and:
 
 1. power minirouter up and wait a couple of minutes for it to boot
-2. log into its admin web page and setup the WAN interface. If I have a wifi password I set it in repeater mode, if all I have is a mobile data plan I plug the LTE modem with the sim card in and make it use it as WAN. If I'm in a rush I might just plug the iPhone in with USB and set the router in tethering mode
-3. plug and turn on all my other devices, wait for them to connect to my (already configured) private LAN either via WIFI or ethernet
+2. log into its admin web page and setup the WAN interface: if I have a wifi password I set it in repeater mode, if all I have is a mobile data plan I plug the LTE modem with the sim card in and make it use it as WAN. If I'm in a rush I might just plug the iPhone in with an `USB-A to USB-C` cable and set the WAN router's interface in tethering mode
 
-That's it! What takes longer is connecting cords, the actual router setup is ~5 minutes, to be conservative.
+That's it! What takes longer is perhaps deciding where to place the device, the actual router setup is ~5 minutes, to be conservative.
 ### Audio routing
 
 Perhaps you've been wondering: why the Sonos Port? is the component which looks the most at odds in a travel setup but I'll make here my stand: it's awesome!
 
 Essentially it works as a flexible audio router and lets me dynamically define all sorts of input/output setups so I can for example:
 
-- listen to what's the TV stick is reproducing on both the Roam and the Minirig speakers simultaneously
+- listen to what's the TV stick or the docked Switch is reproducing on both the Roam and the Minirig speakers simultaneously
 - let a YT music podcast or a YT video concert play out on the Minirig, have the Roam come with me in the bathroom while I shower and listen to something else entirely
 - plug in the DJing console as input and play a live set using both Roam and Minirig (or whatever other speaker I might have at hand) as speakers
 - plug the laptop / docking station audio interface as input and use the speakers as output when e.g. I want to play music / recorded live sets from my hard drive
@@ -133,7 +132,7 @@ The fact I can now use my LAN has various benefits beside that I don't need to ~
 
 Another perk is that I can use Wireguard[^6] out of the box to e.g. open an `ssh` session into the Beelink server without having to do anything specific, just turn on the Wireguard client on my carry-on device (iPhone/Macbook) when I'm not inside the LAN and target the private hostname. For the records, it works because the Beelink server connects at boot to an external Wireguard instance that acts as the central hub (star topology) and knows how to route network packets to private interfaces. To make it work I had to add a single persistent SNAT firewall rule for the GL-AR300M but this is out of scope for this article and I may decide to blog about that in the future[^7].
 
-There's also a non-tech practical reason to bring it all with me: if I won't take this stuff with me it means I'll have to leave it at home (which I might put for rent), drop at someone's place, sell or give away... and perhaps have to buy at least some of it yet one more time. It's just easier to take *literally* everything I own with me and forget that there might be other options.
+There's also a non-tech practical reason to bring it all with me: if I won't take this stuff with me it means I'll have to leave it... _somewhere_, either at home (which I might want to rent out), drop at some friend's place, sell or give away, and perhaps have to buy at least some of it down the road yet one more time. I realized that it's just easier for me to take *literally everything I own* with me and forget that there might be other options. I'm a computer nerd after all, remember? I don't own that many cloths anyway, there's usually plenty of room in the (big) luggage 🤓.
 ## Wrapping up
 
  And... the final and apparently necessary disclaimer: I _did_ ask my coding agent to write the initial draft of the Mermaid chart for me, because I'm lazy and, most notably, free inference[^8] is just too tempting not to be used. That said, I actually wrote every other single word in this article personally, manually typing them, without asking for help nor advise to anyone, LLM or humans alike. I don't know if we'll ever figure out a way to prove it so for now you gotta trust me on this, I guess.
@@ -161,6 +160,6 @@ And that's really all I had to share for today. Stay geeky, folks! ✌️
 
 [^10]: I confess I'd love to be able to replace the Minirig with some kind of portable soundbar that connects to the TV via [Arc](https://www.ac3filter.net/what-does-arc-mean-on-tv/)... a device that Sonos will _never_ produce, unfortunately. Oh well, a tech addict gotta dream
 
-[^11]: whatever that really means is still a mystery to me
+[^11]: Whatever that really means is still a mystery to me
 
 [^12]: In Hua Hin, Thailand, while writing this piece. Last time in SEA was almost exactly 10 years ago... time really flies
