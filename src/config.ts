@@ -67,8 +67,13 @@ export const siteConfig = {
 
   social: {
     Bluesky: {
+      handle: "l3x.in",
       url: "https://bsky.app/profile/l3x.in",
       rel: "me",
+    },
+    Signal: {
+      username: "l3x_in.01" as const,
+      url: "https://signal.me/#eu/4Y7z4DXkBZxlxTb3DODJflqur42k-lhidN34VduZL5kAbE6yd1BJdITqYUxXTZu4" as const,
     },
     Contact: "/contact",
     Follow: "/follow",

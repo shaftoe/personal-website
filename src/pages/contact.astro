@@ -74,15 +74,27 @@ import { siteConfig } from "../config"
       </div>
     </form>
 
-    <p class="pt-10 text-center text-sm sm:text-base">
-      You can also find me on <a
-        href={siteConfig.social.Bluesky.url}
-        rel={siteConfig.social.Bluesky.rel}
-        class="underline zag-text zag-transition hover:opacity-80"
-      >Bluesky</a>.
-    </p>
+    <div class="pt-16 text-center text-sm sm:text-base">
+      <p>You can also find me on:</p>
 
-    <p class="pt-4 text-center text-sm sm:text-base">
+      <ul class="text-center text-sm sm:text-base">
+        <li>
+            <a
+                href={siteConfig.social.Bluesky.url}
+                rel={siteConfig.social.Bluesky.rel}
+                class="underline zag-text zag-transition hover:opacity-80"
+            >🦋 Bluesky</a> (`{siteConfig.social.Bluesky.handle}`)
+        </li>
+        <li>
+            <a
+                href={siteConfig.social.Signal.url}
+                class="underline zag-text zag-transition hover:opacity-80"
+            >💬 Signal</a> (`{siteConfig.social.Signal.username}`)
+        </li>
+      </ul>
+    </div>
+
+    <p class="pt-12 text-center text-sm sm:text-base">
       Get my <a
         href="/keys"
         class="underline zag-text zag-transition hover:opacity-80"
