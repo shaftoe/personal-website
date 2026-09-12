@@ -9,9 +9,9 @@
  * always stays in sync with the site.
  *
  * Usage:
- *   ATP_APP_PASSWORD=<app-password> bun run standard:publication
- *   ATP_APP_PASSWORD=<app-password> bun run standard:publication --dry-run
- *   ATP_APP_PASSWORD=<app-password> bun run standard:publication --force
+ *   ATP_APP_PASSWORD=<app-password> pnpm run standard:publication
+ *   ATP_APP_PASSWORD=<app-password> pnpm run standard:publication --dry-run
+ *   ATP_APP_PASSWORD=<app-password> pnpm run standard:publication --force
  *
  * Requires a Bluesky **app password** (not the account password) via the
  * `ATP_APP_PASSWORD` environment variable — but only when something actually

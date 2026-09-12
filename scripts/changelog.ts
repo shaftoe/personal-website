@@ -4,7 +4,7 @@
  * logic as @semantic-release/changelog's prepare step.
  *
  * Usage:
- *   bun run changelog
+ *   pnpm run changelog
  */
 
 import { execSync } from "node:child_process"
@@ -53,7 +53,7 @@ function getVersion(tag: string) {
 function getCommitsSince(tag: string) {
   const range = tag ? `${tag}..HEAD` : "HEAD"
   const gitFormat = "%H %s"
-  // biome-ignore lint/style/useTemplate: %s gets consumed by Bun in template literals
+  // biome-ignore lint/style/useTemplate: %s in template literals
   const lines = execSync("git log " + range + ' --format="' + gitFormat + '"', {
     encoding: "utf8",
     env: GIT_ENV,

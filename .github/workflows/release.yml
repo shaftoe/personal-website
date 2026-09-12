@@ -25,12 +25,12 @@ jobs:
         with:
           node-version: 25
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: pnpm/action-setup@v6
 
-      - run: bun install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
 
       - name: Release
-        run: bunx semantic-release
+        run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

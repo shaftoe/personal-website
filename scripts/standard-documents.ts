@@ -10,11 +10,11 @@
  * records instead of creating duplicates.
  *
  * Usage:
- *   ATP_APP_PASSWORD=<app-password> bun run standard:documents
- *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --dry-run
- *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --slug <slug>
- *   ATP_APP_PASSWORD=<app-password> bun run standard:documents --force
- *   bun run standard:documents --check   # credential-free drift check (CI/pre-commit)
+ *   ATP_APP_PASSWORD=<app-password> pnpm run standard:documents
+ *   ATP_APP_PASSWORD=<app-password> pnpm run standard:documents --dry-run
+ *   ATP_APP_PASSWORD=<app-password> pnpm run standard:documents --slug <slug>
+ *   ATP_APP_PASSWORD=<app-password> pnpm run standard:documents --force
+ *   pnpm run standard:documents --check   # credential-free drift check (CI/pre-commit)
  *
  * Requires a Bluesky **app password** via `ATP_APP_PASSWORD` (except for
  * `--dry-run`/`--check`) and that the publication record already exists
@@ -150,7 +150,7 @@ function runCheck(publicationUri: string, posts: PostFile[]): void {
   for (const line of drift) console.error(line)
   console.error(
     "\n  Re-sync the records and commit the updated sidecar:\n" +
-      "    ATP_APP_PASSWORD=<app-password> bun run standard:documents\n" +
+      "    ATP_APP_PASSWORD=<app-password> pnpm run standard:documents\n" +
       `    git add ${siteConfig.standard.sidecarPath}\n`,
   )
   process.exit(1)
@@ -177,7 +177,7 @@ async function main() {
 
   if (!publicationUri) {
     console.error(
-      "✖ No publication record found. Run `bun run standard:publication` first.",
+      "✖ No publication record found. Run `pnpm run standard:publication` first.",
     )
     process.exit(1)
   }

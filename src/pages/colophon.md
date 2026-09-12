@@ -28,10 +28,11 @@ Mermaid fenced code blocks in articles (e.g. the network diagram in [I like my c
 
 ## Tooling
 
-- **[Bun](https://bun.sh)** — JavaScript runtime and package manager.
+- **[pnpm](https://pnpm.io)** — package manager and task runner.
 - **[Biome](https://biomejs.dev)** — fast linter and formatter, replacing ESLint + Prettier.
 - **[Astro](https://astro.build) · Check** — static type analysis for `.astro` files.
 - **[Vitest](https://vitest.dev)** — unit tests and integration tests.
+- **[tsx](https://tsx.is)** — TypeScript execution for the build/dev helper scripts.
 - **[Nu HTML Validator](https://validator.github.io/validator/)** (vnu-jar) — validates all generated HTML pages against the W3C spec.
 - **[Netlify](https://www.netlify.com)** — hosting and continuous deployment.
 
@@ -39,7 +40,7 @@ Mermaid fenced code blocks in articles (e.g. the network diagram in [I like my c
 
 Versioning and deploys are fully automated. Every push to master triggers a [release workflow](https://github.com/shaftoe/personal-website/actions/workflows/release.yml) powered by [semantic-release](https://semantic-release.gitbook.io), which analyzes [conventional commit](https://www.conventionalcommits.org/) messages, bumps `package.json` version, updates `CHANGELOG.md`, and publishes a GitHub Release.
 
-When a new version tag is created, a [deploy workflow](https://github.com/shaftoe/personal-website/actions/workflows/deploy.yml) triggers a [Netlify](https://www.netlify.com) build that runs `bun run build` and publishes the resulting `dist/` directory to their CDN. The same workflow also runs on a schedule every four hours to keep the homepage's Bluesky posts and blog content up to date without manual intervention.
+When a new version tag is created, a [deploy workflow](https://github.com/shaftoe/personal-website/actions/workflows/deploy.yml) triggers a [Netlify](https://www.netlify.com) build that runs `pnpm run build` and publishes the resulting `dist/` directory to their CDN. The same workflow also runs on a schedule every four hours to keep the homepage's Bluesky posts and blog content up to date without manual intervention.
 
 ## Analytics
 
@@ -55,7 +56,7 @@ The homepage avatar is not a static asset — it is fetched at build time from t
 
 ## Microblog Post Images
 
-Photos and external link-card thumbnails attached to Bluesky posts are processed at build time, straight from the author's self-hosted PDS. Whenever the latest microblog posts are fetched (the homepage's "Latest microblog posts" section, the [/til](/til) page, the [microblog RSS feed](/microblog.xml), or the `bun run bluesky` dev helper), every referenced image blob is downloaded PDS-natively via `com.atproto.sync.getBlob`, downscaled to at most 640px wide with [Sharp](https://sharp.pixelplumbing.com/) (EXIF orientation honoured) and re-encoded as WebP. Because blobs are content-addressed by their CID, each derivative gets an immutable, deterministic path — `/images/microblog/<cid>.webp` — which also makes `public/images/microblog/` a cache that can never go stale across builds. The processed images are served by the site itself, so pages never hot-link the PDS at runtime. Like the rest of the ATproto integration this path degrades gracefully: a blob that cannot be fetched or processed is simply dropped, and the post renders text-only rather than breaking the build.
+Photos and external link-card thumbnails attached to Bluesky posts are processed at build time, straight from the author's self-hosted PDS. Whenever the latest microblog posts are fetched (the homepage's "Latest microblog posts" section, the [/til](/til) page, the [microblog RSS feed](/microblog.xml), or the `pnpm run bluesky` dev helper), every referenced image blob is downloaded PDS-natively via `com.atproto.sync.getBlob`, downscaled to at most 640px wide with [Sharp](https://sharp.pixelplumbing.com/) (EXIF orientation honoured) and re-encoded as WebP. Because blobs are content-addressed by their CID, each derivative gets an immutable, deterministic path — `/images/microblog/<cid>.webp` — which also makes `public/images/microblog/` a cache that can never go stale across builds. The processed images are served by the site itself, so pages never hot-link the PDS at runtime. Like the rest of the ATproto integration this path degrades gracefully: a blob that cannot be fetched or processed is simply dropped, and the post renders text-only rather than breaking the build.
 
 ## Social Images
 

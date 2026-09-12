@@ -3,8 +3,8 @@
  * used by Astro's content layer.
  *
  * Usage:
- *   bun run blog-posts
- *   bun run blog-posts --json
+ *   pnpm run blog-posts
+ *   pnpm run blog-posts --json
  */
 import { readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"

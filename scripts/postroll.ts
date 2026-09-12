@@ -3,8 +3,8 @@
  * ATproto / Bluesky API logic used at build time.
  *
  * Usage:
- *   bun run postroll
- *   bun run postroll --json
+ *   pnpm run postroll
+ *   pnpm run postroll --json
  */
 import { getPostrollEntries } from "../src/lib/atproto"
 

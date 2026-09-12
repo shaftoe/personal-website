@@ -15,7 +15,7 @@ node_modules/
 
 # generated OG images (created at build time by scripts/generate-og-images.ts)
 public/images/og/*.png
-# generated profile picture (created locally by `bun run profile-image`)
+# generated profile picture (created locally by `pnpm run profile-image`)
 public/images/profile.webp
 public/images/profile-pixel.webp
 # generated microblog post images (created at build/dev time from PDS blobs)

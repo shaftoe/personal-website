@@ -14,14 +14,12 @@ jobs:
         with:
           node-version: 25
 
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+      - uses: pnpm/action-setup@v6
 
-      - run: bun install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
 
-      - run: bun run validate
+      - run: pnpm run validate
 
-      - run: bun run build
+      - run: pnpm run build
 
-      - run: bun run test
+      - run: pnpm run test

@@ -3,8 +3,8 @@
  * the homepage, using the same ATproto / Bluesky API logic used at build time.
  *
  * Usage:
- *   bun run bluesky
- *   bun run bluesky --json
+ *   pnpm run bluesky
+ *   pnpm run bluesky --json
  */
 import { getLatestPosts } from "../src/lib/atproto"
 

@@ -13,7 +13,7 @@
       "semanticCommitScope": "actions"
     },
     {
-      "description": "Scope umami submodule updates as deps(umami). After merging, rebuild the tracker with `bun run build:tracker`",
+      "description": "Scope umami submodule updates as deps(umami). After merging, rebuild the tracker with `pnpm run build:tracker`",
       "matchManagers": ["git-submodules"],
       "semanticCommitType": "deps",
       "semanticCommitScope": "umami"

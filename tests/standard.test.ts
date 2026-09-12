@@ -4,8 +4,8 @@ import {
   describe,
   expect,
   it,
-  mock,
-} from "bun:test"
+  vi,
+} from "vitest"
 import { createHash } from "node:crypto"
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
@@ -300,7 +300,7 @@ describe("putRecord", () => {
   // built-in validator store, so the request MUST be sent with
   // `validate: false` or the PDS rejects it as an "Unknown lexicon type".
   it("sends validate:false so the PDS skips unknown-lexicon validation", async () => {
-    const fetchMock = mock(
+    const fetchMock = vi.fn(
       (_url: unknown, _init: RequestInit): Promise<Response> =>
         Promise.resolve(
           new Response(

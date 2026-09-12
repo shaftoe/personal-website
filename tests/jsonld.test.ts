@@ -1,4 +1,4 @@
-import { describe, expect, it } from "bun:test"
+import { describe, expect, it } from "vitest"
 import { Temporal } from "temporal-polyfill"
 import {
   blogPostingSchema,

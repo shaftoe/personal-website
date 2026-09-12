@@ -9,7 +9,7 @@
  * production output stay in sync.
  *
  * Usage:
- *   bun run profile-image
+ *   pnpm run profile-image
  */
 import { existsSync, mkdirSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
@@ -42,7 +42,7 @@ async function main() {
     `\n  ✓ public/images/profile.webp (${OUTPUT_SIZE}×${OUTPUT_SIZE})`,
   )
   console.log("  ✓ public/images/profile-pixel.webp (pixelated)")
-  console.log("\n  Run `bun run dev` to preview.\n")
+  console.log("\n  Run `pnpm run dev` to preview.\n")
 }
 
 main()
