@@ -27,6 +27,8 @@ I'm now a _Mail Plus_ subscriber[^3] and with that I can also make use of their 
 
 One problem I have with this is that it won't let me choose the country on the exit side of the VPN. That's reasonable for a free service but it might not help in solving the blocking/filtering problem if the exit country is also applying filters. More in general the quality of service might be degraded because of overloaded servers, so all in all is mostly hit and miss and I can't rely on that as a stable solution.
 
+There are more reasons why I want to be able to decide where the access point is, for example some streaming platform might restrict or show different available content based on the _geographical_ position of the source IP address, and so on.
+
 I hear you: why not to pay for the pro ProtonVPN service too, or any of the many other VPN services out there? I could but it would be mostly a waste of money given that my need for a VPN connection is very spotty and never accounts for more than a few hours per month at worst.
 
 What if I could just boot a _pro VPN server_ on demand, pay only for the hours I use it and even choose in which region of the world it runs?
