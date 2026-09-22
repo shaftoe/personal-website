@@ -84,8 +84,8 @@ You can find the implementation in [this repository](https://forge.l3x.in/alex/a
 The module doesn't do much as you can see, I list the gist of it here for the ones who aren't interested in the code:
 
 - creates an EC2 security group for the instance to accept `ssh` and `wireguard` traffic in, allow all egress
-- boots an up-to-date `arm64` Amazon Linux 2023 EC2 instance, type `t4g.nano`, currently [the cheapest option](https://cloudprice.net/aws/ec2/instances/t4g.nano) which sells for ~0.0042USD/hour depending on the chosen region
-- runs `cloud-init` to upgrade packages, install WireGuard and configure it as server with the given keys, setup `iptables` rules
+- boots an up-to-date `arm64` Amazon Linux 2023 EC2 instance[^6], type `t4g.nano`, currently [the cheapest option](https://cloudprice.net/aws/ec2/instances/t4g.nano) which sells for ~0.0042USD/hour depending on the chosen region
+- runs `cloud-init` to upgrade packages, install WireGuard and configure it as server with the given keys, setup `iptables` rules. Full provisioning from `just apply` to having WireGuard daemon up and ready for connections usually takes roughly 5 minutes[^7]
 - optionally adds a DNS record so WireGuard client config can be static
 
 Most of the default configuration values can be changed, refer to [`variables.tf`](https://forge.l3x.in/alex/aws-ec2-vpn/src/branch/master/variables.tf) for more details.
@@ -119,3 +119,7 @@ Keep on rockin' in the Free ~~World~~ Internet 🤘
 [^4]: perhaps it works for freemium subscribers too, can't say for sure now
 
 [^5]: or Terraform... but you should really use OpenTofu
+
+[^6]: by default in the `eu-south-1` (Italy) region
+
+[^7]: you can cut this latency down sensibly if you are willing to ignore upgrading out-of-date OS packages, refer to <https://forge.l3x.in/alex/aws-ec2-vpn/src/branch/master/cloud-init.yaml.tftpl> for details
