@@ -19,7 +19,7 @@ By default I ignore the DNS resolvers offered by e.g. `DHCP` and use one of the 
 
 This simple change by itself doesn't help against filtered IP blocks or ports but it's already useful in avoiding a series of other annoyances and, most importantly, it's a fire-and-forget kind of configuration change that makes it a no brainer.
 
-## Next simple workaround - ProtonVPN
+## Next round - ProtonVPN
 
 For years I've been a happy customer of [Proton services](https://proton.me/) and I can't recommend them enough: they offer a simple and cost effective way to get rid of annoying ads-infested Google services while getting a big boost in privacy, there's a free plan too so you can start for free and pay for the pro services only once you feel the need, like I did.
 
@@ -27,13 +27,13 @@ I'm now a _Mail Plus_ subscriber[^3] and with that I can also make use of their 
 
 One problem I have with this is that it won't let me choose the country on the exit side of the VPN. That's reasonable for a free service but it might not help in solving the blocking/filtering problem if the exit country is also applying filters. More in general the quality of service might be degraded because of overloaded servers, so all in all is mostly hit and miss and I can't rely on that as a stable solution.
 
-There are more reasons why I want to be able to decide where the access point is, for example some streaming platform might restrict or show different available content based on the _geographical_ position of the source IP address, and so on.
+There are more reasons why I want to be able to choose where the VPN exit point is located, for example some streaming platform might restrict or show different available content based on the _geographical_ position of the source IP address, and so on.
 
 I hear you: why not to pay for the pro ProtonVPN service too, or any of the many other VPN services out there? I could but it would be mostly a waste of money given that my need for a VPN connection is very spotty and never accounts for more than a few hours per month at worst.
 
 What if I could just boot a _pro VPN server_ on demand, pay only for the hours I use it and even choose in which region of the world it runs?
 
-## Final workaround - enter EC2
+## Final round - enter EC2
 
 What I do when custom DNS and ProtonVPN aren't helping is simple enough: I just spin up a WireGuard server with a single CLI command, connect my WireGuard clients to it as full tunnel, tear it down once I'm done with another CLI command.
 
