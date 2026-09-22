@@ -9,7 +9,7 @@ timestamp: 2026-09-22
 slug: throwaway-vpn
 description: I travel a lot and I don't like censored internet, in this article I'm discussing the various workarounds I put in place to circumvent restrictions.
 ---
-In my [previous blog post](https://a.l3x.in/blog/my-travel-setup) I mention I use to travel far and frequently and describe the gear I take with me to make it a more pleasant experience. Unfortunately not every place I visit offers the same kind and levels of freedoms I got used to growing up in a liberal democracy 🇪🇺.
+In my [previous blog post](/blog/my-travel-setup) I mention I use to travel far and frequently and describe the gear I take with me to make it a more pleasant experience. Unfortunately not every place I visit offers the same kind and levels of freedoms I got used to growing up in a liberal democracy 🇪🇺.
 
 To be completely honest, that by itself doesn't usually limit my perceived freedoms much[^1], unrestricted internet access though might not always be possible without some kind of workaround and in this article I'm going to show you the ones I usually put in place to circumvent such restrictions.
 
@@ -79,7 +79,7 @@ Destroy complete! Resources: 4 destroyed.
 
 ### Under the hood
 
-You can find the implementation in [this repository](https://forge.l3x.in/alex/aws-ec2-vpn/) hosted on [my forge](https://a.l3x.in/blog/welcome-to-my-forge), it should be usable out of the box assuming you have [OpenTofu](https://opentofu.org/)[^5] installed and an AWS account to use.
+You can find the implementation in [this repository](https://forge.l3x.in/alex/aws-ec2-vpn/) hosted on [my forge](/blog/welcome-to-my-forge), it should be usable out of the box assuming you have [OpenTofu](https://opentofu.org/)[^5] installed and an AWS account to use.
 
 The module doesn't do much as you can see, I list the gist of it here for the ones who aren't interested in the code:
 
@@ -104,7 +104,7 @@ Most notably... where's the fun going to be otherwise?
 
 ## Conclusion
 
-I hope you have found this helpful, as usual I'm looking forward to your comments, see [`/contact`](https://a.l3x.in/contact) to get in touch with me.
+I hope you have found this helpful, as usual I'm looking forward to your comments, see [`/contact`](/contact) to get in touch with me.
 
 Disclaimer: I don't make use of any LLM help for writing my blog posts and this one is no exception.
 
@@ -112,7 +112,7 @@ Keep on rockin' in the Free ~~World~~ Internet 🤘
 
 [^1]: applying for visas is still a pain though, especially here in South East Asia where I'm living right now
 
-[^2]: see previous article about my travel setup: <https://a.l3x.in/blog/my-travel-setup/>
+[^2]: see [previous article](/blog/my-travel-setup/) about my travel setup
 
 [^3]: I currently pay them US$83.76 for 24 months, so ~3.5USD/month
 
