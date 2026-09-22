@@ -119,6 +119,11 @@
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57pnqwr2vll5i",
       "cid": "bafyreid56bwlrqp7qhx3ncfj4tzjcrlpb6wt7msujeypv2n3sgogd4o4aq",
       "hash": "b5eab5f82fd4fb5a93cfde3c1e755b879fa12456f64f6004387d4c10a8e470e2"
+    },
+    "throwaway-vpn": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57s56h7nz5lyk",
+      "cid": "bafyreiefva4byroby4w4vyhws4cdldbiqz46yzu2ajjaokruwii52e7irq",
+      "hash": "4fd09ec517c5e8d5b3c22fea07a266abe93d339307c653645cf6e88b7eff35f3"
     }
   }
 }
