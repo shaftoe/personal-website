@@ -21,7 +21,7 @@ This simple change by itself doesn't help against filtered IP blocks or ports bu
 
 ## Next simple workaround - ProtonVPN
 
-For years I've been a happy customer of [Proton services](https://proton.me/) and I can't recommend them enough: they offer a simple and cost effective way to get rid of annoying Google ads, there's a free plan too so you can start for free and pay for the pro services only once you feel the need, like I did.
+For years I've been a happy customer of [Proton services](https://proton.me/) and I can't recommend them enough: they offer a simple and cost effective way to get rid of annoying ads-infested Google services while getting a big boost in privacy, there's a free plan too so you can start for free and pay for the pro services only once you feel the need, like I did.
 
 I'm now a _Mail Plus_ subscriber[^3] and with that I can also make use of their free VPN service[^4]. It kind of works actually, the client is just a `brew install protonvpn` away and it's simple to use.
 
