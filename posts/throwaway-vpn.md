@@ -92,7 +92,7 @@ Most of the default configuration values can be changed, refer to [`variables.tf
 
 If for whatever reason you don't want to use AWS, it should be relatively easy to (_ask a coding agent to_) modify the module to use your favorite provider instead, like Digital Ocean or else, and spin up the instance there instead.
 
-The module has also a feature switch that lets me create a `CNAME` DNS record into my `l3x.in` zone that I host at [Njalla](https://njal.la/) but  you can consider that as an implementation detail and use a different provider for that too, or simply ignore the extra DNS record and use the public EC2 DNS hostname directly; the repository is meant to be used as a blueprint more than like a one-size-fits-all solution.
+The module has also a feature switch that lets me create a `CNAME` DNS record into my `l3x.in` zone that I host at [Njalla](https://njal.la/) but  you can consider that as an implementation detail and use a different provider for that too, or simply ignore the extra DNS record and use the public EC2 DNS hostname directly; the repository is meant to be used as a blueprint more than a one-size-fits-all solution.
 
 ## Why not XYZ?
 
@@ -104,7 +104,7 @@ Most notably... where's the fun going to be otherwise?
 
 ## Conclusion
 
-I hope you have found this helpful, as usual I'm looking forward to your comments, see [`/contact`](/contact) to get in touch with me.
+I hope you have found this helpful, as usual I'm looking forward to get your feedback, see [`/contact`](/contact) to get in touch with me.
 
 Disclaimer: I don't make use of any LLM help for writing my blog posts and this one is no exception.
 
