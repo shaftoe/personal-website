@@ -13,13 +13,13 @@ In my [previous blog post](https://a.l3x.in/blog/my-travel-setup) I mention I us
 
 To be completely honest, that by itself doesn't usually limit my perceived freedoms much[^1], unrestricted internet access though might not always be possible without some kind of workaround and in this article I'm going to show you the ones I usually put in place to circumvent such restrictions.
 
-## Simple workaround
+## Simple workaround - DNS resolvers
 
 By default I ignore the DNS resolvers offered by e.g. `DHCP` and use one of the freely available wildly known, usually [Cloudflare's](https://developers.cloudflare.com/1.1.1.1/ip-addresses/). Setting one up in my `minirouter`[^2] means that's going to be transparent for every other device connecting to my private LAN. Some provider allows for extra privacy like _DNS over TLS_ and I recommend to turn it on because it generally comes with no perceivable extra latency, so why not?
 
 This simple change by itself doesn't help against filtered IP blocks or ports but it's already useful in avoiding a series of other annoyances and, most importantly, it's a fire-and-forget kind of configuration change that makes it a no brainer.
 
-## Next simple workaround
+## Next simple workaround - ProtonVPN
 
 For years I've been a happy customer of [Proton services](https://proton.me/) and I can't recommend them enough: they offer a simple and cost effective way to get rid of annoying Google ads, there's a free plan too so you can start for free and pay for the pro services only once you feel the need, like I did.
 
@@ -31,7 +31,7 @@ I hear you: why not to pay for the pro ProtonVPN service too, or any of the many
 
 What if I could just boot a _pro VPN server_ on demand, pay only for the hours I use it and even choose in which region of the world it runs?
 
-## Enter EC2
+## Final workaround - enter EC2
 
 What I do when custom DNS and ProtonVPN aren't helping is simple enough: I just spin up a WireGuard server with a single CLI command, connect my WireGuard clients to it as full tunnel, tear it down once I'm done with another CLI command.
 
