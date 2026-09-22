@@ -9,7 +9,7 @@ timestamp: 2026-09-22
 slug: throwaway-vpn
 description: I travel a lot and I don't like censored internet, in this article I'm discussing the various workarounds I put in place to circumvent restrictions.
 ---
-In my [previous blog post](https://a.l3x.in/blog/my-travel-setup) I mention I use to travel far and frequently and describe the gear I take with me to make it a pleasant experience. Unfortunately not every place I visit offers the same kind and levels of freedoms I got used to growing up in an European liberal democracy 🇮🇹.
+In my [previous blog post](https://a.l3x.in/blog/my-travel-setup) I mention I use to travel far and frequently and describe the gear I take with me to make it a more pleasant experience. Unfortunately not every place I visit offers the same kind and levels of freedoms I got used to growing up in an European liberal democracy 🇮🇹.
 
 To be completely honest, that by itself doesn't usually limit my perceived freedoms much[^1], unrestricted internet access though might not always be possible without some kind of workaround and in this article I'm going to show you the ones I usually put in place to circumvent such restrictions.
 
