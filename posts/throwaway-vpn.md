@@ -9,7 +9,7 @@ timestamp: 2026-09-22
 slug: throwaway-vpn
 description: I travel a lot and I don't like censored internet, in this article I'm discussing the various workarounds I put in place to circumvent restrictions.
 ---
-In my [previous blog post](https://a.l3x.in/blog/my-travel-setup) I mention I use to travel far and frequently. Unfortunately not every place I visit offers the same kind and levels of freedoms I got used to growing up in an European liberal democracy 🇮🇹.
+In my [previous blog post](https://a.l3x.in/blog/my-travel-setup) I mention I use to travel far and frequently and describe the gear I take with me to make it a pleasant experience. Unfortunately not every place I visit offers the same kind and levels of freedoms I got used to growing up in an European liberal democracy 🇮🇹.
 
 To be completely honest, that by itself doesn't usually limit my perceived freedoms much[^1], unrestricted internet access though might not always be possible without some kind of workaround and in this article I'm going to show you the ones I usually put in place to circumvent such restrictions.
 
@@ -31,7 +31,7 @@ I hear you: why not to pay for the pro ProtonVPN service too, or any of the many
 
 What if I could just boot a _pro VPN server_ on demand, pay only for the hours I use it and even choose in which region of the world it runs?
 
-## Enter Ec2
+## Enter EC2
 
 What I do when custom DNS and ProtonVPN aren't helping is simple enough: I just spin up a WireGuard server with a single CLI command, connect my WireGuard clients to it as full tunnel, tear it down once I'm done with another CLI command.
 
@@ -81,8 +81,8 @@ You can find the implementation in [this repository](https://forge.l3x.in/alex/a
 
 The module doesn't do much as you can see, I list the gist of it here for the ones who aren't interested in the code:
 
-- creates an Ec2 security group for the instance to accept `ssh` and `wireguard` traffic in, allow all egress
-- boots an up-to-date `arm64` Amazon Linux 2023 Ec2 instance, type `t4g.nano`, currently [the cheapest option](https://cloudprice.net/aws/ec2/instances/t4g.nano) which sells for ~0.0042USD/hour depending on the chosen region
+- creates an EC2 security group for the instance to accept `ssh` and `wireguard` traffic in, allow all egress
+- boots an up-to-date `arm64` Amazon Linux 2023 EC2 instance, type `t4g.nano`, currently [the cheapest option](https://cloudprice.net/aws/ec2/instances/t4g.nano) which sells for ~0.0042USD/hour depending on the chosen region
 - runs `cloud-init` to upgrade packages, install WireGuard and configure it as server with the given keys, setup `iptables` rules
 - optionally adds a DNS record so WireGuard client config can be static
 
@@ -90,7 +90,7 @@ Most of the default configuration values can be changed, refer to [`variables.tf
 
 If for whatever reason you don't want to use AWS, it should be relatively easy to (_ask a coding agent to_) modify the module to use your favorite provider instead, like Digital Ocean or else, and spin up the instance there instead.
 
-The module has also a feature switch that lets me create a `CNAME` DNS record into my `l3x.in` zone that I host at [Njalla](https://njal.la/) but  you can consider that as an implementation detail and use a different provider for that too, or simply ignore the extra DNS record and use the public Ec2 DNS hostname directly; the repository is meant to be used as a blueprint more than like a one-size-fits-all solution.
+The module has also a feature switch that lets me create a `CNAME` DNS record into my `l3x.in` zone that I host at [Njalla](https://njal.la/) but  you can consider that as an implementation detail and use a different provider for that too, or simply ignore the extra DNS record and use the public EC2 DNS hostname directly; the repository is meant to be used as a blueprint more than like a one-size-fits-all solution.
 
 ## Why not XYZ?
 
