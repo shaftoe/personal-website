@@ -96,7 +96,9 @@ The module has also a feature switch that lets me create a `CNAME` DNS record in
 
 I'm sure many other valid solutions, like the ones offered by [Tailscale](https://tailscale.com/), exist. I still prefer to bake my own and avoid creating yet another account / install other software on my workstation when the effort is relatively low.
 
-For Tailscale in particular I find myself in this funny situation by which I admire their offering and at the same time I never feel like I need them because I can simply get away with just some WireGuard and `iptables`. Where's the fun otherwise?
+For Tailscale in particular I find myself in this funny situation by which I admire their offering and at the same time I never feel like I need them because I can simply get away with just some WireGuard and `iptables`.
+
+Most notably... where's the fun going to be otherwise?
 
 ## Conclusion
 
