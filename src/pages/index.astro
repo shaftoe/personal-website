@@ -54,6 +54,7 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
           <li>
             <ArticleSnippet
               title={article.data.title}
+              description={article.data.description}
               url={`/blog/${article.data.slug}`}
               timestamp={article.data.timestamp}
               duration={`${readingTime(article.body)} min`}
