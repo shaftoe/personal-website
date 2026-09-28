@@ -1,0 +1,36 @@
+---
+import PostSnippet from "./PostSnippet.astro"
+import type { PostImage, PostLinkCard } from "../../lib/atproto"
+
+export type PostListItem = {
+  content: string
+  url: string
+  createdAt: unknown
+  /** Embedded photos, already processed into local WebP thumbnails */
+  images?: PostImage[]
+  /** External link card, with a local thumbnail when available */
+  linkCard?: PostLinkCard
+}
+
+type Props = {
+  posts: PostListItem[]
+}
+
+const { posts } = Astro.props
+---
+
+<ul class:list={["my-8 space-y-12", "[&>li]:border-l-2 [&>li]:border-zag-dark/10 dark:[&>li]:border-zag-light/10 [&>li]:pl-5"]}>
+  {
+    posts.map((post) => (
+      <li class="zag-transition hover:border-zag-dark/30 dark:hover:border-zag-light/30">
+        <PostSnippet
+          content={post.content}
+          url={post.url}
+          timestamp={post.createdAt}
+          images={post.images}
+          linkCard={post.linkCard}
+        />
+      </li>
+    ))
+  }
+</ul>

@@ -9,7 +9,7 @@ import { siteConfig } from "../config"
 import { homepageGraph } from "../lib/jsonld"
 import { sortArticlesByDate, readingTime } from "../lib/utils"
 import { getLatestPosts } from "../lib/atproto"
-import PostSnippet from "../components/social/PostSnippet.astro"
+import PostList from "../components/social/PostList.astro"
 import JsonLd from "../components/layout/JsonLd.astro"
 
 // Get last maxArticles articles sorted by date (newest first)
@@ -38,23 +38,11 @@ const recentArticles = sortArticlesByDate(allArticles).slice(
   <LinkListSection title="Code" links={siteConfig.code} />
 
   <LinkListSection title="Latest microblog posts">
-    <ul class="my-8 space-y-12">
-      {latestPosts.length === 0 ? (
-        <li><p>Could not load posts.</p></li>
-      ) : (
-        latestPosts.map((toot) => (
-          <li>
-            <PostSnippet
-              content={toot.content}
-              url={toot.url}
-              timestamp={toot.createdAt}
-              images={toot.images}
-              linkCard={toot.linkCard}
-            />
-          </li>
-        ))
-      )}
-    </ul>
+    {latestPosts.length === 0 ? (
+      <p>Could not load posts.</p>
+    ) : (
+      <PostList posts={latestPosts} />
+    )}
   </LinkListSection>
 
   <LinkListSection title={siteConfig.texts.articlesName}>

@@ -1,7 +1,7 @@
 ---
 import Section from "../components/base/Section.astro"
 import Layout from "../layouts/Layout.astro"
-import PostSnippet from "../components/social/PostSnippet.astro"
+import PostList from "../components/social/PostList.astro"
 import { siteConfig } from "../config"
 import { getTilPosts } from "../lib/atproto"
 
@@ -32,19 +32,7 @@ const entries = await getTilPosts()
       {entries.length === 0 ? (
         <p class="text-center opacity-70">No TIL entries found.</p>
       ) : (
-        <ul class="space-y-12">
-          {entries.map((entry) => (
-            <li>
-              <PostSnippet
-                content={entry.content}
-                url={entry.url}
-                timestamp={entry.createdAt}
-                images={entry.images}
-                linkCard={entry.linkCard}
-              />
-            </li>
-          ))}
-        </ul>
+        <PostList posts={entries} />
       )}
     </div>
   </Section>
