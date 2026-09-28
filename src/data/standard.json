@@ -124,6 +124,11 @@
       "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57s56h7nz5lyk",
       "cid": "bafyreiefva4byroby4w4vyhws4cdldbiqz46yzu2ajjaokruwii52e7irq",
       "hash": "4fd09ec517c5e8d5b3c22fea07a266abe93d339307c653645cf6e88b7eff35f3"
+    },
+    "vanity-go-import": {
+      "uri": "at://did:plc:chxge7w2l3cva5dfealik6uz/site.standard.document/57t4gedb243ju",
+      "cid": "bafyreib4t6kr4i7o27kc5x3ib7dkittez5fihs6wgmqhd4r3754jmp7rze",
+      "hash": "2562e1a7988a6490bd6eab8204d653b9826f2f67155e2e0e51995598c87eea24"
     }
   }
 }
