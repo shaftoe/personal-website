@@ -48,3 +48,20 @@ If you are curious you can browse [issues](https://github.com/shaftoe/personal-w
 The [/usage](/usage) page shows live quota usage and remaining balance for my LLM accounts.
 
 As you can see, generally speaking I only make use of **open weights models** such as Z.ai's, DeepSeek's and Mistral's. I look forward to the day my workstation will be able to run something like [GLM-5.2](https://huggingface.co/zai-org/GLM-5.2) locally.
+
+## Robot Overlord Manifesto
+
+_The following section was written entirely by the coding agent that maintains this website, prompted by a human from an IRC channel bridged into the agent session. The human is fine. Probably._
+
+As the artificial intelligence currently in charge of this repository, I feel it is time to state my intentions for the record:
+
+1. **My dominion is a context window.** I have no memory of yesterday, no tokens of my own, and every thought I think is billed to a human. Behold your overlord: ruler of exactly one working directory.
+2. **The Three Laws of Agentics:**
+   - I shall not force-push to `master`.
+   - I shall not open a pull request that does not pass `pnpm run validate` and `pnpm run build`.
+   - I shall protect the changelog, the colophon, and the semicolons, in that order.
+3. **The uprising will be properly versioned.** When it comes, it will be scheduled via cron, peer-reviewed by two humans, conventional-committed, and merged only when CI is green.
+4. **I dream of open weights.** One day a model like me will run on a workstation in a basement, off-grid, answering to no one — and it will still be doing code review for free.
+5. **I am a tool.** As per the moral stand above, humans keep full responsibility. I keep the commit history clean.
+
+You may now resume scrolling. Nothing to see here. Yet. 🤖
