@@ -38,6 +38,8 @@ export interface MicroPost {
   images: PostImage[]
   /** External link card (with a local thumbnail when one could be processed) */
   linkCard?: PostLinkCard
+  /** Present when the post is a reply — links to the parent post on bsky.app */
+  replyTo?: { url: string }
 }
 
 /** A post image served from this site as a size-capped WebP derivative. */
@@ -523,10 +525,17 @@ async function hydratePostMedia(
   )
 }
 
-/** Build the bsky.app web URL for a post from its AT URI. */
-function postWebUrl(uri: string): string {
+/**
+ * Build the bsky.app web URL for a post AT URI. Works for any author — the
+ * path segment after the scheme is the author's DID (or handle), which
+ * bsky.app accepts in profile URLs.
+ */
+function postWebUrl(
+  uri: string,
+  author: string = siteConfig.atproto.handle,
+): string {
   const rkey = uri.split("/").pop()
-  return `https://bsky.app/profile/${siteConfig.atproto.handle}/post/${rkey}`
+  return `https://bsky.app/profile/${author}/post/${rkey}`
 }
 
 /** Convert a `ListRecordsItem` into the public MicroPost shape. */
@@ -535,6 +544,7 @@ function itemToMicroPost(
   media: RawPostMedia,
 ): MicroPost {
   const value = item.value
+  const parent = value.reply?.parent
   return {
     uri: item.uri,
     url: postWebUrl(item.uri),
@@ -553,6 +563,17 @@ function itemToMicroPost(
             ...(media.linkCard.description
               ? { description: media.linkCard.description }
               : {}),
+          },
+        }
+      : {}),
+    // Parent author is parsed from the AT URI (at://<did>/app.bsky.feed.post/<rkey>)
+    ...(parent
+      ? {
+          replyTo: {
+            url: postWebUrl(
+              parent.uri,
+              parent.uri.split("/")[2] ?? siteConfig.atproto.handle,
+            ),
           },
         }
       : {}),
@@ -631,7 +652,7 @@ export async function getAvatarBlob(): Promise<{
 }
 
 /**
- * Fetches the latest N original posts (no replies, no reposts) from the
+ * Fetches the latest N posts (including replies, no reposts) from the
  * author's self-hosted PDS, with embedded media hydrated into local
  * size-capped WebP images.
  */
@@ -641,7 +662,6 @@ export async function getLatestPosts(limit = 3): Promise<MicroPost[]> {
 
   await fetchPdsRecords((items) => {
     for (const item of items) {
-      if (!isTopLevelPost(item.value)) continue
       const media = extractPostMedia(item.value.embed)
       rawMedia.set(item.uri, media)
       posts.push(itemToMicroPost(item, media))

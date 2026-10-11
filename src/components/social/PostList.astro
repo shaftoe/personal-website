@@ -10,6 +10,8 @@ export type PostListItem = {
   images?: PostImage[]
   /** External link card, with a local thumbnail when available */
   linkCard?: PostLinkCard
+  /** Present when the post is a reply — links to the parent post */
+  replyTo?: { url: string }
 }
 
 type Props = {
@@ -29,6 +31,7 @@ const { posts } = Astro.props
           timestamp={post.createdAt}
           images={post.images}
           linkCard={post.linkCard}
+          replyTo={post.replyTo}
         />
       </li>
     ))

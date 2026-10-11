@@ -12,6 +12,8 @@ export type Props = {
   images?: PostImage[]
   /** External link card, with a local thumbnail when available */
   linkCard?: PostLinkCard
+  /** Present when the post is a reply — links to the parent post */
+  replyTo?: { url: string }
 }
 
 const {
@@ -20,6 +22,7 @@ const {
   timestamp: rawTimestamp,
   images = [],
   linkCard,
+  replyTo,
 } = Astro.props
 const timestamp = toInstant(rawTimestamp)
 
@@ -35,6 +38,18 @@ const linkCardHost = (() => {
 ---
 
 <article class="relative zag-text zag-transition flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
+  {
+    replyTo && (
+      <a
+        href={replyTo.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="zag-muted zag-transition text-xs hover:underline"
+      >
+        ↩ reply
+      </a>
+    )
+  }
   <div class="text-base prose prose-sm dark:prose-invert max-w-none [&_a]:zag-offset [&_a]:underline [&_a]:font-medium [&_a]:break-all break-words">
     <Fragment set:html={content} />
   </div>

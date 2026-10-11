@@ -30,6 +30,9 @@ async function main() {
     for (const post of posts) {
       console.log(`  ${post.text.replace(/\n/g, " ")}`)
       console.log(`    url:   ${post.url}`)
+      if (post.replyTo) {
+        console.log(`    reply to: ${post.replyTo.url}`)
+      }
       console.log(`    date:  ${post.createdAt.toString().slice(0, 10)}`)
       const media: string[] = []
       if (post.images.length > 0) {
