@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - move /gpg slash page to /keys and add SSH key (#392)
 
+## [1.37.2] - 2026-10-11
+
+### Fixed
+
+- **bluesky**: display replies in the homepage summary too
+
 ## [1.37.1] - 2026-09-28
 
 ### Fixed
@@ -543,7 +549,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.37.1...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.37.2...HEAD
+[1.37.2]: https://github.com/shaftoe/personal-website/compare/v1.37.1...v1.37.2
 [1.37.1]: https://github.com/shaftoe/personal-website/compare/v1.37.0...v1.37.1
 [1.37.0]: https://github.com/shaftoe/personal-website/compare/v1.36.0...v1.37.0
 [1.36.0]: https://github.com/shaftoe/personal-website/compare/v1.35.2...v1.36.0
