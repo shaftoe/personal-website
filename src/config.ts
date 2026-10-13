@@ -57,8 +57,8 @@ export const siteConfig = {
     locale: "it-IT" as const,
     defaultCurrency: "THB" as const,
     currencies: {
+      VND: "🇻🇳",
       THB: "🇹🇭",
-      RON: "🇷🇴",
       USD: "🇺🇸",
       EUR: "🇪🇺",
       DOP: "🇩🇴",
