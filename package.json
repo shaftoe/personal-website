@@ -57,7 +57,7 @@
     "sharp": "^0.35.3",
     "tsx": "^4.23.13",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.0",
+    "vitest": "^5.0.5",
     "vnu-jar": "^26.7.11"
   },
   "packageManager": "pnpm@12.4.1"
