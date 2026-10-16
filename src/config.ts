@@ -55,7 +55,7 @@ export const siteConfig = {
     path: "/expense" as const,
     localStorageKey: "expenses-password" as const,
     locale: "it-IT" as const,
-    defaultCurrency: "THB" as const,
+    defaultCurrency: "VND" as const,
     currencies: {
       VND: "🇻🇳",
       THB: "🇹🇭",
