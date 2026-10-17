@@ -14,7 +14,7 @@
   let error = $state("")
 
   let totalUSD = $derived(
-    expenses.reduce((sum, e) => sum + e.usd, 0).toFixed(2),
+    expenses.reduce((sum, e) => sum + (e.usd ?? 0), 0).toFixed(2),
   )
 
   function doFetch(): void {
@@ -106,7 +106,7 @@
             <td class="py-1 px-2">{expense.what}</td>
             <td class="py-1 px-2 hidden sm:table-cell">{expense.amount.toFixed(2)}</td>
             <td class="py-1 px-2 hidden sm:table-cell">{expense.currency}</td>
-            <td class="py-1 px-2">{expense.usd.toFixed(2)}</td>
+            <td class="py-1 px-2">{expense.usd != null ? expense.usd.toFixed(2) : "—"}</td>
           </tr>
         {/each}
       </tbody>
