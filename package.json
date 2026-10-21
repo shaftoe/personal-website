@@ -60,5 +60,5 @@
     "vitest": "^5.0.0",
     "vnu-jar": "^26.7.11"
   },
-  "packageManager": "pnpm@12.4.1"
+  "packageManager": "pnpm@12.14.0"
 }
