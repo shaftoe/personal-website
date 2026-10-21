@@ -92,6 +92,19 @@ const SUPPRESSED_MESSAGES: {
     reason: "Astro framework: astro-island inline styles",
   },
   {
+    // Astro (>= 7.4) injects the island display:contents <style> directly in
+    // <body> right before each island, which the validator rejects
+    pattern:
+      /A \u201cstyle\u201d element in \u201cbody\u201d must be the first child of its parent/,
+    reason: "Astro framework: astro-island inline styles in body",
+  },
+  {
+    // Companion error for the same injected island <style> block
+    pattern:
+      /Style rule \u201castro-island[^\u201c]*\u201d not allowed outside an \u201c@scope\u201d rule/,
+    reason: "Astro framework: astro-island inline styles in body",
+  },
+  {
     // The validator warns about trailing slashes on void elements like <br/>.
     // This comes from Markdown rendering (marked) and is harmless.
     pattern:
