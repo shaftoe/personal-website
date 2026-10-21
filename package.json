@@ -41,7 +41,7 @@
     "marked": "^18.0.6",
     "svelte": "^5.57.2",
     "tailwindcss": "^4.3.2",
-    "temporal-polyfill": "^1.0.1"
+    "temporal-polyfill": "^1.0.6"
   },
   "devDependencies": {
     "@alexanderfortin/semantic-release-keep-a-changelog": "^0.4.9",
