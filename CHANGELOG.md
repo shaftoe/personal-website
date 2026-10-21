@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - move /gpg slash page to /keys and add SSH key (#392)
 
+## [1.37.5] - 2026-10-21
+
+### Changed
+
+- **deps**: fix lock file
+- **deps-dev**: update dependency @alexanderfortin/semantic-release-keep-a-changelog to ^0.6.0 (#437)
+- **deps-dev**: update npm dev dependencies (#432)
+- **deps-dev**: update pnpm to v12.14.0 (#438)
+
+### Fixed
+
+- **deps-dev**: update dependency temporal-polyfill to ^1.0.6 (#435)
+
 ## [1.37.4] - 2026-10-17
 
 ### Fixed
@@ -565,7 +578,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Completely revamped tech and style, replaced Hugo with Astro
 - Thanks to <https://github.com/RATIU5/zaggonaut> for the free Astro theme
 
-[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.37.4...HEAD
+[unreleased]: https://github.com/shaftoe/personal-website/compare/v1.37.5...HEAD
+[1.37.5]: https://github.com/shaftoe/personal-website/compare/v1.37.4...v1.37.5
 [1.37.4]: https://github.com/shaftoe/personal-website/compare/v1.37.3...v1.37.4
 [1.37.3]: https://github.com/shaftoe/personal-website/compare/v1.37.2...v1.37.3
 [1.37.2]: https://github.com/shaftoe/personal-website/compare/v1.37.1...v1.37.2
