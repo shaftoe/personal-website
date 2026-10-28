@@ -85,6 +85,19 @@ export const siteConfig = {
     pgpKey: "https://gpg.l3x.in/" as const,
   },
 
+  // Alternative protocols — this site's presence beyond HTTPS. The gopher
+  // mirror is linked from the footer, the finger address from /contact.
+  protocols: {
+    finger: {
+      address: "a@l3x.in" as const,
+      url: "finger://l3x.in/a" as const,
+    },
+    gopher: {
+      address: "gopher.l3x.in" as const,
+      url: "gopher://gopher.l3x.in" as const,
+    },
+  },
+
   // ATproto / Bluesky identity — the source for build-time microblogging
   // content (latest posts, /postroll, /til). Hosted on a self-hosted PDS.
   // All reads go directly to the PDS via public `com.atproto.repo.*` XRPC
