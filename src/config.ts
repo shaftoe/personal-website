@@ -85,8 +85,7 @@ export const siteConfig = {
     pgpKey: "https://gpg.l3x.in/" as const,
   },
 
-  // Alternative protocols — this site's presence beyond HTTPS. The gopher
-  // mirror is linked from the footer, the finger address from /contact.
+  // Alternative protocols presence.
   protocols: {
     finger: {
       address: "a@l3x.in" as const,
