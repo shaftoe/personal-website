@@ -38,7 +38,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.4.2",
     "github-slugger": "^2.0.0",
-    "marked": "^18.0.6",
+    "marked": "^18.1.2",
     "svelte": "^5.57.2",
     "tailwindcss": "^4.3.3",
     "temporal-polyfill": "^1.0.6"
