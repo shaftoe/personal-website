@@ -95,6 +95,10 @@ export const siteConfig = {
       address: "gopher.l3x.in" as const,
       url: "gopher://gopher.l3x.in" as const,
     },
+    gemini: {
+      address: "gemini.l3x.in" as const,
+      url: "gemini://gemini.l3x.in" as const,
+    },
   },
 
   // ATproto / Bluesky identity — the source for build-time microblogging
