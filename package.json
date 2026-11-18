@@ -44,7 +44,7 @@
     "temporal-polyfill": "^1.0.8"
   },
   "devDependencies": {
-    "@alexanderfortin/semantic-release-keep-a-changelog": "^0.6.2",
+    "@alexanderfortin/semantic-release-keep-a-changelog": "^0.6.3",
     "@astrojs/check": "0.9.12",
     "@astrojs/ts-plugin": "^1.11.0",
     "@biomejs/biome": "^2.6.8",
