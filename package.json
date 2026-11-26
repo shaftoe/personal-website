@@ -31,7 +31,7 @@
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.10",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "3.7.4",
+    "@astrojs/sitemap": "3.7.6",
     "@astrojs/svelte": "^9.1.6",
     "@lucide/astro": "^1.79.0",
     "@tailwindcss/typography": "^0.5.20",
